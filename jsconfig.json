@@ -8,6 +8,8 @@
       "@/styles/*": ["styles/*"],
       "@/helpers/constants/*": ["constants/*"],
       "@/helpers/functions/*": ["functions/*"],
+      "@/assets/*": ["assets/*"],
+      "@/redux/*": ["redux/*"],
     }
   }
 }
