@@ -1,0 +1,23 @@
+{
+  "name": "kiira-portal",
+  "version": "1.0.0",
+  "description": "Kiira admin portal",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Steven Taglohner",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^9.4.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "classnames": "^2.2.6",
+    "npm": "^6.14.5",
+    "prop-types": "^15.7.2",
+    "sass": "^1.26.8"
+  }
+}
