@@ -1,8 +1,5 @@
-import { Header } from 'components'
-import './login.module.scss'
+import styles from './login.module.scss'
 
-export default function Login() {
-  return (
-    <Header />
-  )
+export const Login = () => {
+	return <h1 className={styles.title}>Login</h1>
 }

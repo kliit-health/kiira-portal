@@ -1,7 +1,4 @@
-import { memo } from 'react'
 
-export const Header = memo(
-  function Header() {
-    return <div>Header</div>
-  }
-)
+export const Header = () => {
+  return <div>Header</div>
+}
