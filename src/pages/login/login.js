@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { compose } from 'recompose'
+import { useRouter } from 'next/router'
+import { withRedirect, withLoadingIndicator } from 'HOCs'
 import { Container, Button, TextField } from '@material-ui/core'
 import { auth } from '../../firebase'
 import { intl } from 'i18n'
 import styles from './login.module.scss'
 
-export const Login = () => {
+const Login = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
@@ -36,3 +39,8 @@ export const Login = () => {
 		</div>
 	)
 }
+
+export default compose(
+	withLoadingIndicator,
+	withRedirect('/dashboard', true)
+)(Login)

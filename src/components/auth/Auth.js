@@ -2,11 +2,7 @@ import { cloneElement, useEffect, useState } from 'react'
 import { useUser } from '../../firebase'
 
 /**
- *
- * @desc inject firebase user details to the pages props.These details will be
- * later be used by the HOCs.
- * @param children page component
- *
+ * @desc injects firebase auth and user details to the children component props. These details can be then used by the HOCs.
  */
 
 export const Auth = ({ children }) => {

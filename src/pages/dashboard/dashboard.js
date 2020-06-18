@@ -6,4 +6,7 @@ const Dashboard = () => {
 	return <h1 className={styles.title}>Welcome to Kliit Dashboard</h1>
 }
 
-export default compose(withLoadingIndicator, withRedirect)(Dashboard)
+export default compose(
+	withLoadingIndicator,
+	withRedirect('/login', false)
+)(Dashboard)
