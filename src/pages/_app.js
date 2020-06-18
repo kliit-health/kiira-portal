@@ -1,15 +1,14 @@
-import { Provider } from 'react-redux'
-import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
-import { Layout } from 'components'
-import { store, rrfProps } from 'redux/store'
+import { UserProvider } from '../firebase'
+import { wrapper } from 'redux/store'
+import { Auth } from '../components'
 import '../styles/globals.scss'
 
-export default ({ Component, pageProps }) => (
-	<Provider store={store}>
-		<ReactReduxFirebaseProvider {...rrfProps}>
-			<Layout {...pageProps}>
-				<Component />
-			</Layout>
-		</ReactReduxFirebaseProvider>
-	</Provider>
+const App = ({ Component, pageProps }) => (
+	<UserProvider>
+		<Auth>
+			<Component {...pageProps} />
+		</Auth>
+	</UserProvider>
 )
+
+export default wrapper.withRedux(App)
