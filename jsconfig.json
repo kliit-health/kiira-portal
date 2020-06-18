@@ -9,7 +9,8 @@
 			"@/helpers/*": ["helpers/*"],
 			"@/hooks/*": ["hooks/*"],
 			"@/redux/*": ["redux/*"],
-			"@/styles/*": ["styles/*"]
+			"@/styles/*": ["styles/*"],
+			"@/i18n/*": ["i18n/*"]
 		}
 	}
 }

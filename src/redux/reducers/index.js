@@ -1,6 +1,25 @@
 import { combineReducers } from 'redux'
-import { firebaseReducer } from 'react-redux-firebase'
+import { auth } from './auth'
+import { HYDRATE } from 'next-redux-wrapper'
 
-export default combineReducers({
-	firebase: firebaseReducer
+/**
+ * @desc state reconciliation during hydration,find more info on
+ * https://github.com/kirill-konshin/next-redux-wrapper#motivation
+ */
+
+const combinedReducer = combineReducers({
+	auth
 })
+
+export const reducer = (state, action) => {
+	if (action.type === HYDRATE) {
+		const nextState = {
+			...state,
+			...action.payload
+		}
+		if (state.auth) nextState.auth = state.auth
+		return nextState
+	} else {
+		return combinedReducer(state, action)
+	}
+}
