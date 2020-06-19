@@ -1,24 +1,19 @@
-import { cloneElement } from 'react'
-import { IconButton } from '@material-ui/core'
-import ExitToAppIcon from '@material-ui/icons/ExitToApp'
-import { useRouter } from 'next/router'
-import { Sidebar } from 'components'
-import styles from './layout.module.scss'
+// import { cloneElement } from 'react'
+// import { useRouter } from 'next/router'
+// import { switchCase } from '@/helpers/functions'
+// import { model, LAYOUT_TYPES } from './model'
+// import { WithSidebar } from './components'
 
-export const Layout = ({ children }) => {
-	const router = useRouter()
+// const { WITH_SIDEBAR } = LAYOUT_TYPES
 
-	const isLoginPage = router.pathname === '/login'
+// export const Layout = ({ children }) => {
+// 	const router = useRouter()
 
-	return isLoginPage ? (
-		cloneElement(children)
-	) : (
-		<div className={styles.layout}>
-			<Sidebar />
-			{children}
-			{/* <IconButton className={styles['icon-button']} color="primary">
-				<ExitToAppIcon />
-			</IconButton> */}
-		</div>
-	)
-}
+// 	const renderPageWithLayout = children => {
+// 		const { type } = model.find(item => item.pathname === router.pathname)
+// 		return switchCase({
+// 			[WITH_SIDEBAR]: () => <WithSidebar>{children}</WithSidebar>
+// 		})(cloneElement(children))(type)
+// 	}
+// 	return renderPageWithLayout(children)
+// }

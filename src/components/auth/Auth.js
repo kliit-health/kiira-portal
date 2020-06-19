@@ -7,7 +7,7 @@ import { useUser } from '../../firebase'
 
 export const Auth = ({ children }) => {
 	const [user, setUser] = useState({
-		details: null,
+		user: null,
 		loading: true,
 		error: null
 	})
@@ -15,7 +15,8 @@ export const Auth = ({ children }) => {
 	const { details, loading, error } = useUser()
 
 	useEffect(() => {
-		setUser({ details, loading, error })
+		setUser({ user: details, loading, error })
 	}, [details, loading, error])
-	return cloneElement(children, { user })
+
+	return cloneElement(children, { ...user })
 }
