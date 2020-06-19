@@ -1,4 +1,4 @@
-import { auth } from './initializer'
+import { auth, firestore } from './initializer'
 import { SESSION } from '../constants'
 
 export const signIn = (email, password) =>
@@ -13,3 +13,12 @@ export const signIn = (email, password) =>
 			)
 			.catch(error => reject(error))
 	)
+
+export const getUserDetails = (uid, collection = '/users') =>
+	new Promise((resolve, reject) => {
+		const documentRef = firestore.collection(collection).doc(uid)
+		documentRef
+			.get()
+			.then(document => resolve(document))
+			.catch(error => reject(error))
+	})
