@@ -23,6 +23,7 @@ const Login = () => {
 			<TextField
 				label={intl.email.description}
 				onChange={handleOnEmailChange}
+				type="email"
 			/>
 			<TextField
 				label={intl.password.description}
