@@ -27,6 +27,7 @@ const Login = () => {
 			<TextField
 				label={intl.password.description}
 				onChange={handleOnPasswordChange}
+				type="password"
 			/>
 		</div>
 	)
