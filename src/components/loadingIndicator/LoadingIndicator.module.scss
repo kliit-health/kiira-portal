@@ -1,3 +1,5 @@
+@import 'styles/variables';
+
 .container {
   display: flex;
   justify-content: center;
@@ -9,4 +11,31 @@
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+.animation-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: move-up-down 800ms linear infinite;
+  position: absolute;
+}
+
+.logo {
+  user-select: none;
+  width: 40px;
+  height: auto
+}
+
+@keyframes move-up-down {
+
+  0%,
+  100% {
+    bottom: 51%;
+  }
+
+  50% {
+    bottom: 51.5%;
+  }
 }

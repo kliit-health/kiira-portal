@@ -3,6 +3,8 @@ import styles from './LoadingIndicator.module.scss'
 
 export const LoadingIndicator = () => (
 	<div className={styles.container}>
-		<CircularProgress />
+		<div className={styles['animation-container']}>
+			<img className={styles.logo} src="/assets/bird.png" />
+		</div>
 	</div>
 )
