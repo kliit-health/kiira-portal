@@ -1,0 +1,17 @@
+.card {
+  display: flex;
+  background-color: white;
+  height: 120px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.logo {
+  width: 50%;
+  height: auto;
+}
