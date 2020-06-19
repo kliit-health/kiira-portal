@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext, useContext } from 'react'
-import { auth } from './initializer'
+import { auth, getUserDetails } from '../firebase'
 
 export const UserContext = createContext()
 
@@ -13,13 +13,21 @@ export const UserProvider = ({ children }) => {
 			try {
 				if (user) {
 					const { uid, email } = user
-					// look for the user doc in your Firestore
-					// const userDoc = await firebase.firestore().doc(`users/${uid}`).get()
-					setDetails({ uid, email })
-				} else setDetails(null)
+					try {
+						const userDetails = await getUserDetails(uid)
+						console.log(userDetails, 'called')
+						setDetails(userDetails)
+						setLoading(false)
+					} catch (error) {
+						setDetails(null)
+						setLoading(false)
+					}
+				} else {
+					setDetails(null)
+					setLoading(false)
+				}
 			} catch (error) {
 				setError(error)
-			} finally {
 				setLoading(false)
 			}
 		})
