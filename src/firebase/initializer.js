@@ -27,7 +27,9 @@ const config = {
 	measurementId: FIREBASE_MEASUREMENT_ID
 }
 
-!firebase.apps.length && firebase.initializeApp(config)
+firebase.apps.length
+	? firebase.app().firestore()
+	: firebase.initializeApp(config)
 
 export const auth = firebase.auth()
 export const firestore = firebase.firestore()
