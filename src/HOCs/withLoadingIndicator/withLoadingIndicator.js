@@ -1,9 +1,8 @@
 import { LoadingIndicator } from 'components'
 
-export const withLoadingIndicator = WrappedComponent => {
+export const withLoadingIndicator = (key = 'loading') => WrappedComponent => {
 	const WithRedirectWrapper = props => {
-		const { loading } = props.user
-		return loading ? <LoadingIndicator /> : <WrappedComponent {...props} />
+		return props[key] ? <LoadingIndicator /> : <WrappedComponent {...props} />
 	}
 	return WithRedirectWrapper
 }
