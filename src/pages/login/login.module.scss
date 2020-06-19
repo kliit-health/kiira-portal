@@ -12,13 +12,45 @@
 
 .card {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 200px;
-  // background-color: red;
+  flex: 1;
+  max-width: 800px;
+  height: 500px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 1px 20px rgba(73, 73, 73, 0.11),
+    0 2px 2px rgba(73, 73, 73, 0.11),
+    0 4px 4px rgba(73, 73, 73, 0.11);
+  overflow: hidden;
 }
 
 .card-content {
   display: flex;
+  flex: 1;
+}
+
+.onboarding {
+  display: flex;
+  width: 60%;
+  flex: 3;
+  background-color: #0089FF
+}
+
+.login {
+  display: flex;
+  flex: 2;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.auth {
+  display: flex;
   flex-direction: column;
+  height: 200px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button-root {
+  width: 100%;
 }

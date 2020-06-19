@@ -1,12 +1,19 @@
-import { withRedirect, withLoadingIndicator } from 'HOCs'
+import {
+	withRedirect,
+	withLoadingIndicator,
+	withSidebar,
+	withLogoutButton
+} from 'HOCs'
 import { compose } from 'recompose'
 import styles from './dashboard.module.scss'
 
 const Dashboard = () => {
-	return <h1 className={styles.title}>Welcome to Kliit Dashboard</h1>
+	return <div />
 }
 
 export default compose(
-	withLoadingIndicator,
-	withRedirect('/login', false)
+	withLoadingIndicator('loading'),
+	withRedirect('user', '/'),
+	withSidebar,
+	withLogoutButton
 )(Dashboard)
