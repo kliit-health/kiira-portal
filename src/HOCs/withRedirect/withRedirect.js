@@ -1,8 +1,6 @@
 import { useRouter } from 'next/router'
 import { isClient } from 'helpers/functions'
 
-// TODO: Server side implementation is missing
-
 const isBrowser = isClient()
 
 export const withRedirect = (
