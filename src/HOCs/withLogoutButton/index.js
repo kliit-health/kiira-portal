@@ -1,0 +1,1 @@
+export { withLogoutButton } from './withLogoutButton'
