@@ -1,14 +1,14 @@
 @import 'styles/variables';
 
-.container {
+.floating-button {
   position: absolute;
   z-index: 1;
   margin: 20px;
   right: 0;
   top: 0;
-}
 
-.root {
-  z-index: 1;
-  background-color: white;
+  &__root {
+    z-index: 1;
+    background-color: white;
+  }
 }
