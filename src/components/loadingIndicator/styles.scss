@@ -1,0 +1,42 @@
+@import 'styles/variables';
+
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: $backgroundColor;
+  z-index: 11;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: move-up-down 800ms linear infinite;
+    position: absolute;
+  }
+
+  &__logo {
+    user-select: none;
+    width: 40px;
+    height: auto
+  }
+}
+
+
+@keyframes move-up-down {
+
+  0%,
+  100% {
+    bottom: 51%;
+  }
+
+  50% {
+    bottom: 51.5%;
+  }
+}
