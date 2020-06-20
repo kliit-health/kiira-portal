@@ -1,9 +1,9 @@
-import styles from './Card.module.scss'
+import './styles.scss'
 
 export const Card = () => (
-	<div className={styles.card}>
-		<div className={styles['logo-container']}>
-			<img className={styles.logo} src="/assets/kiira_logo.png" />
+	<div className="card">
+		<div className="card__logo">
+			<img className="card__logo-image" src="/assets/kiira_logo.png" />
 		</div>
 	</div>
 )

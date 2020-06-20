@@ -1,10 +1,12 @@
 import { LoadingIndicator } from 'components'
 import { useState, useEffect } from 'react'
-import timeout from 'smart-timeout'
 
-export const withLoadingIndicator = (key = 'loading') => WrappedComponent => {
+export const withLoadingIndicator = (
+	key = 'loading',
+	initialState = true
+) => WrappedComponent => {
 	const WithRedirectWrapper = props => {
-		const [isLoading, setIsLoading] = useState(true)
+		const [isLoading, setIsLoading] = useState(initialState)
 		useEffect(() => {
 			if (!props[key]) {
 				setTimeout(() => setIsLoading(false), 1000)
@@ -12,6 +14,5 @@ export const withLoadingIndicator = (key = 'loading') => WrappedComponent => {
 		}, [props[key]])
 		return isLoading ? <LoadingIndicator /> : <WrappedComponent {...props} />
 	}
-
 	return WithRedirectWrapper
 }

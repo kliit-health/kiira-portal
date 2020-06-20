@@ -1,5 +1,3 @@
-export { Header } from './header'
-export { Auth } from './auth'
 export { LoadingIndicator } from './loadingIndicator'
 export { Sidebar } from './sidebar'
 export { FloatingButton } from './floatingButton'

@@ -1,3 +1,3 @@
 export { auth, firestore } from './initializer'
-export { getUserDetails, signIn } from './functions'
-export { UserContext, UserProvider, useUser } from './UserContext'
+export { getUserDetails, signIn, signOut } from './functions'
+export { Auth } from './Auth'

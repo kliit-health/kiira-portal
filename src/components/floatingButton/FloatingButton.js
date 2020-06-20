@@ -1,9 +1,9 @@
 import { IconButton } from '@material-ui/core'
-import styles from './FloatingButton.module.scss'
+import './styles.scss'
 
 export const FloatingButton = ({ children, onClick }) => (
-	<div className={styles.container}>
-		<IconButton classes={{ root: styles.root }} onClick={onClick}>
+	<div className="floating-button">
+		<IconButton classes={{ root: 'floating-button__root' }} onClick={onClick}>
 			{children}
 		</IconButton>
 	</div>

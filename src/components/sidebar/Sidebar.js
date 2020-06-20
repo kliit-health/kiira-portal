@@ -1,9 +1,8 @@
 import { Card } from 'components'
-import styles from './Sidebar.module.scss'
-
+import './styles.scss'
 export const Sidebar = () => {
 	return (
-		<div className={styles.sidebar}>
+		<div className="sidebar">
 			<Card />
 		</div>
 	)

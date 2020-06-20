@@ -17,7 +17,7 @@ export const reducer = (state, action) => {
 			...state,
 			...action.payload
 		}
-		if (state.auth) nextState.auth = state.auth
+		if (state.auth) nextState = state
 		return nextState
 	} else {
 		return combinedReducer(state, action)

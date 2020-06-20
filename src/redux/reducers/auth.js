@@ -3,35 +3,31 @@ import {
 	LOG_IN_PENDING,
 	LOG_IN_FULFILLED,
 	LOG_IN_REJECTED,
-	LOG_OUT
+	LOG_OUT_PENDING,
+	LOG_OUT_FULFILLED,
+	LOG_OUT_REJECTED
 } from '../types'
 
 const INITIAL_STATE = {
-	user: null,
-	loginError: null,
-	loginPending: false
+	authDetails: null,
+	authError: null,
+	authLoading: false
 }
 
 export const auth = (state = INITIAL_STATE, action) => {
 	const { payload, type } = action
 	return switchCase({
-		[LOG_IN_PENDING]: { ...state, loginError: null, loginPending: true },
-		[LOG_IN_REJECTED]: () => {
-			const { code } = payload
-			return {
-				...state,
-				loginError: code,
-				loginPending: false
-			}
+		[LOG_IN_FULFILLED]: {
+			...state,
+			authError: null,
+			authLoading: false,
+			authDetails: payload
 		},
-		[LOG_IN_FULFILLED]: () => {
-			const { user } = payload
-			return {
-				...state,
-				user,
-				loginPending: false
-			}
-		},
-		[LOG_OUT]: { ...INITIAL_STATE }
+		[LOG_IN_REJECTED]: { ...state, authError: payload, authLoading: false },
+		[LOG_IN_PENDING]: { ...state, authLoading: true },
+
+		[LOG_OUT_PENDING]: { ...state, authLoading: true },
+		[LOG_OUT_FULFILLED]: { ...INITIAL_STATE, authLoading: false },
+		[LOG_OUT_REJECTED]: { ...INITIAL_STATE, authLoading: false }
 	})(state)(type)
 }

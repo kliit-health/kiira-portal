@@ -1,5 +1,3 @@
-import styles from './404.module.scss'
-
 export default () => {
-	return <h1 className={styles.title}>Page Not Found</h1>
+	return <h1>Page Not Found</h1>
 }

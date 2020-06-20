@@ -1,6 +1,7 @@
+const withSass = require('@zeit/next-sass')
 const path = require('path')
 
-module.exports = {
+module.exports = withSass({
 	publicRuntimeConfig: {
 		FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
 		FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
@@ -11,4 +12,4 @@ module.exports = {
 		FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
 		FIREBASE_MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID
 	}
-}
+})
