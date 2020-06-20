@@ -1,10 +1,9 @@
-import { CircularProgress } from '@material-ui/core'
-import styles from './LoadingIndicator.module.scss'
+import './styles.scss'
 
 export const LoadingIndicator = () => (
-	<div className={styles.container}>
-		<div className={styles['animation-container']}>
-			<img className={styles.logo} src="/assets/bird.png" />
+	<div className={'loading-indicator'}>
+		<div className={'loading-indicator__container'}>
+			<img className={'loading-indicator__logo'} src="/assets/bird.png" />
 		</div>
 	</div>
 )

@@ -1,10 +1,10 @@
 import { Sidebar } from 'components'
-import styles from './withSidebar.module.scss'
+import './styles.scss'
 
 export const withSidebar = WrappedComponent => {
 	const WithSidebarWrapper = props => {
 		return (
-			<div className={styles.container}>
+			<div className="with-sidebar">
 				<Sidebar />
 				<WrappedComponent {...props} />
 			</div>

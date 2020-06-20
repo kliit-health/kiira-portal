@@ -14,11 +14,18 @@ export const signIn = (email, password) =>
 			.catch(error => reject(error))
 	)
 
-export const getUserDetails = (uid, collection = '/users') =>
+export const signOut = () => auth.signOut()
+
+export const getUserDetails = (uid, collection = 'users') =>
 	new Promise((resolve, reject) => {
 		const documentRef = firestore.collection(collection).doc(uid)
 		documentRef
 			.get()
-			.then(document => resolve(document))
-			.catch(error => reject(error))
+			.then(document => {
+				resolve(document.data())
+			})
+			.catch(error => {
+				console.log(error, 'error')
+				reject(error)
+			})
 	})

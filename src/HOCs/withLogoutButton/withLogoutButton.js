@@ -1,12 +1,13 @@
+import { Fragment } from 'react'
 import { FloatingButton } from 'components'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
-import { auth } from '../../firebase'
-import styles from './withLogoutButton.module.scss'
-import { Fragment } from 'react'
+import { logOut } from 'redux/actions'
+import { useDispatch } from 'react-redux'
 
 export const withLogoutButton = WrappedComponent => {
 	const WithLogoutButtonWrapper = props => {
-		const handleOnSignOut = () => auth.signOut()
+		const dispatch = useDispatch()
+		const handleOnSignOut = () => dispatch(logOut())
 
 		return (
 			<Fragment>

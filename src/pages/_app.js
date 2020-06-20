@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
-import { UserProvider } from '../firebase'
+import { Auth } from '../firebase'
 import { wrapper } from 'redux/store'
-import { Auth } from '../components'
 import { StylesProvider } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { theme } from '../theme'
@@ -18,15 +17,13 @@ const App = ({ Component, pageProps }) => {
 	}, [])
 
 	return (
-		<UserProvider>
-			<StylesProvider injectFirst>
-				<ThemeProvider theme={theme}>
-					<Auth>
-						<Component {...pageProps} />
-					</Auth>
-				</ThemeProvider>
-			</StylesProvider>
-		</UserProvider>
+		<StylesProvider injectFirst>
+			<ThemeProvider theme={theme}>
+				<Auth>
+					<Component {...pageProps} />
+				</Auth>
+			</ThemeProvider>
+		</StylesProvider>
 	)
 }
 

@@ -16,5 +16,6 @@ export const intl = {
 		id: 'wrongPassword',
 		description: 'Wrong password.'
 	},
-	userNotFound: { id: 'userNotFound', description: 'User not found.' }
+	userNotFound: { id: 'userNotFound', description: 'User not found.' },
+	tooManyRequest: { id: 'tooManyRequest', description: 'Too many attempts.' }
 }
