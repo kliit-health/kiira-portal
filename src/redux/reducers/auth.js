@@ -27,7 +27,7 @@ export const auth = (state = INITIAL_STATE, action) => {
 		[LOG_IN_PENDING]: { ...state, authLoading: true },
 
 		[LOG_OUT_PENDING]: { ...state, authLoading: true },
-		[LOG_OUT_FULFILLED]: { ...INITIAL_STATE, authLoading: false },
-		[LOG_OUT_REJECTED]: { ...INITIAL_STATE, authLoading: false }
+		[LOG_OUT_FULFILLED]: { ...state, authLoading: false },
+		[LOG_OUT_REJECTED]: { ...INITIAL_STATE }
 	})(state)(type)
 }
