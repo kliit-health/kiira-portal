@@ -14,7 +14,7 @@ export const logIn = (email, password) => dispatch => {
 					if (!details.role || details.role.toLowerCase() !== 'admin') {
 						signOut().then(() =>
 							dispatch({
-								ype: LOG_IN_REJECTED,
+								type: LOG_IN_REJECTED,
 								payload: INSUFICIENT_PERMISSION
 							})
 						)
