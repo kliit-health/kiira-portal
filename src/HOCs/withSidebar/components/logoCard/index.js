@@ -1,0 +1,1 @@
+export { LogoCard } from './LogoCard'

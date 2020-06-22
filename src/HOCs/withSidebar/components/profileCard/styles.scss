@@ -1,31 +1,13 @@
 @import 'styles/variables';
 
-.with-sidebar {
+.profile-card {
   display: flex;
-  flex: 1;
-
-  &__menu {
-    display: flex;
-    margin: 24px;
-  }
-
-  &__avatar {
-    border-radius: 10px;
-    margin-right: 14px;
-    height: 48px;
-    width: 48px;
-  }
+  align-items: center;
 
   &__details {
     display: flex;
     flex-direction: column;
     flex: 1;
-  }
-
-  &__profile {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
   }
 
   &__name {
@@ -40,8 +22,15 @@
   }
 
   &__email {
-    @extend .with-sidebar__name;
+    @extend .profile-card__name;
     font-weight: 500;
     color: $backgroundColor;
+  }
+
+  &__avatar {
+    border-radius: 10px;
+    margin-right: 14px;
+    height: 48px;
+    width: 48px;
   }
 }
