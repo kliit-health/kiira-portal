@@ -1,5 +1,18 @@
-import styles from './dashboard.module.scss'
+import {
+	withRedirect,
+	withLoadingIndicator,
+	withSidebar,
+	withLogoutButton
+} from 'HOCs'
+import { compose } from 'recompose'
 
-export const Dashboard = () => {
-	return <h1 className={styles.title}>Welcome to Kliit Dashboard</h1>
+const Dashboard = () => {
+	return <div />
 }
+
+export default compose(
+	withLoadingIndicator('authLoading'),
+	withRedirect('authDetails', '/'),
+	withSidebar,
+	withLogoutButton
+)(Dashboard)
