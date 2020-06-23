@@ -6,13 +6,13 @@ import {
 } from 'HOCs'
 import { compose } from 'recompose'
 
-const Dashboard = () => {
-	return <div />
+const Overview = () => {
+	return <h1>Overview</h1>
 }
 
 export default compose(
-	withLoadingIndicator('authLoading', null, true),
+	withLoadingIndicator('authLoading', 'authDetails'),
 	withRedirect('authDetails', '/'),
 	withSidebar,
 	withLogoutButton
-)(Dashboard)
+)(Overview)

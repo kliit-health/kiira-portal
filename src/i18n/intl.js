@@ -17,5 +17,13 @@ export const intl = {
 		description: 'Wrong password.'
 	},
 	userNotFound: { id: 'userNotFound', description: 'User not found.' },
-	tooManyRequest: { id: 'tooManyRequest', description: 'Too many attempts.' }
+	tooManyRequest: {
+		id: 'tooManyRequest',
+		description: 'Too many attempts.'
+	},
+	dashboard: { id: 'dashboard', description: 'Dashboard' },
+	overview: { id: 'overview', description: 'Overview' },
+	experts: { id: 'experts', description: 'Experts' },
+	topics: { id: 'topics', description: 'Topics' },
+	invitations: { id: 'invitations', description: 'Invitations' }
 }
