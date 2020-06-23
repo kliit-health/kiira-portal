@@ -6,42 +6,15 @@
 
   &__menu {
     display: flex;
+    flex-direction: column;
     margin: 24px;
   }
 
-  &__avatar {
-    border-radius: 10px;
-    margin-right: 14px;
-    height: 48px;
-    width: 48px;
+  &__sections {
+    margin: 24px 0px;
   }
 
-  &__details {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  &__profile {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  &__name {
-    font-family: 'Avenir-Book';
-    color: white;
-    font-weight: 600;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 150px;
-    user-select: none;
-  }
-
-  &__email {
-    @extend .with-sidebar__name;
-    font-weight: 500;
-    color: $backgroundColor;
+  &__invitations-icon {
+    font-size: 1.4em;
   }
 }
