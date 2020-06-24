@@ -14,9 +14,9 @@ export const withSidebar = WrappedComponent => {
 	const WithSidebarWrapper = props => {
 		const router = useRouter()
 
-		if (!props.authDetails) return null
+		// if (!props.authDetails) return null
 
-		const { firstName, lastName, email } = props.authDetails.profileInfo
+		// const { firstName, lastName, email } = props.authDetails.profileInfo
 
 		const handleOnSection = path => {
 			path && router.push(path)
@@ -54,9 +54,9 @@ export const withSidebar = WrappedComponent => {
 					<LogoCard />
 					<div className="with-sidebar__menu">
 						<ProfileCard
-							firstName={firstName}
-							lastName={lastName}
-							email={email}
+						// firstName={firstName}
+						// lastName={lastName}
+						// email={email}
 						/>
 						<div className="with-sidebar__sections">{renderSections()}</div>
 					</div>

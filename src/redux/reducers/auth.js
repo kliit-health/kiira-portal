@@ -11,7 +11,7 @@ import {
 const INITIAL_STATE = {
 	authDetails: null,
 	authError: null,
-	authLoading: false
+	authLoading: true
 }
 
 export const auth = (state = INITIAL_STATE, action) => {
@@ -28,6 +28,6 @@ export const auth = (state = INITIAL_STATE, action) => {
 
 		[LOG_OUT_PENDING]: { ...state, authLoading: true },
 		[LOG_OUT_FULFILLED]: { ...INITIAL_STATE, authLoading: false },
-		[LOG_OUT_REJECTED]: { ...INITIAL_STATE }
+		[LOG_OUT_REJECTED]: { ...INITIAL_STATE, authLoading: false }
 	})(state)(type)
 }

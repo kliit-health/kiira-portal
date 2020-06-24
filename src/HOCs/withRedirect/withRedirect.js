@@ -4,19 +4,19 @@ import { isClient } from 'helpers/functions'
 const isBrowser = isClient()
 
 export const withRedirect = (
-	key,
 	location,
+	dataKey,
 	isProtected = true
 ) => WrappedComponent => {
 	const WithRedirectWrapper = props => {
 		const router = useRouter()
 
-		if (!props[key] && isProtected && isBrowser) {
+		if (!props[dataKey] && isProtected && isBrowser) {
 			router.replace(location)
 			return null
 		}
 
-		if (props[key] && !isProtected && isBrowser) {
+		if (props[dataKey] && !isProtected && isBrowser) {
 			router.replace(location)
 			return null
 		}

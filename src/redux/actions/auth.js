@@ -23,7 +23,7 @@ export const logIn = (email, password) => dispatch => {
 				.catch(() =>
 					dispatch({
 						type: GET_USER_DETAILS_FAILED,
-						payload: error.code
+						payload: 'test'
 					})
 				)
 		)
