@@ -2,7 +2,7 @@ import { useState, useEffect, cloneElement } from 'react'
 import { auth, getUserDetails, signOut } from '../firebase'
 import { INSUFICIENT_PERMISSION, ADMIN } from '../firebase/constants'
 
-export const Auth = ({ children }) => {
+export const Auth = ({ children, ...rest }) => {
 	const [details, setDetails] = useState(null)
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
@@ -51,6 +51,7 @@ export const Auth = ({ children }) => {
 	return cloneElement(children, {
 		authDetails: details,
 		authLoading: loading,
-		authError: error
+		authError: error,
+		...rest
 	})
 }
