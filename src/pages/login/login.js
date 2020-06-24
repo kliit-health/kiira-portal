@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { compose } from 'recompose'
-import { withRedirect, withLoadingIndicator } from 'HOCs'
+import { withRedirect, withLoadingIndicator } from '../../HOCs'
 import { Button, TextField, FormHelperText } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { logIn } from 'redux/actions'
@@ -8,7 +8,7 @@ import { intl } from 'i18n'
 import { getLoginErrorMessage } from './helpers'
 import './styles.scss'
 
-const Login = ({ authError }) => {
+const Login = props => {
 	const dispatch = useDispatch()
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -17,7 +17,9 @@ const Login = ({ authError }) => {
 	const handleOnEmailChange = event => setEmail(event.target.value)
 	const handleOnPasswordChange = event => setPassword(event.target.value)
 
-	const loginError = useSelector(state => state.auth.loginError)
+	const loginError = useSelector(state => state.auth.authError)
+
+	console.log(props)
 
 	const renderTextFields = () => (
 		<div className="login-page__auth-fields">
@@ -46,7 +48,7 @@ const Login = ({ authError }) => {
 
 	const renderHelpertext = () => (
 		<div className="login-page__helper-text">
-			<FormHelperText error>{getLoginErrorMessage(authError)}</FormHelperText>
+			<FormHelperText error>{getLoginErrorMessage(loginError)}</FormHelperText>
 		</div>
 	)
 
@@ -65,6 +67,6 @@ const Login = ({ authError }) => {
 }
 
 export default compose(
-	withLoadingIndicator('authLoading', null, true),
-	withRedirect('authDetails', '/dashboard', false)
+	withLoadingIndicator('authLoading'),
+	withRedirect('/dashboard', 'authDetails', false)
 )(Login)
