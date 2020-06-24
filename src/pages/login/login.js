@@ -74,5 +74,5 @@ const Login = ({ authError }) => {
 
 export default compose(
 	withLoadingIndicator('authLoading', true),
-	withRedirect('/dashboard', 'authDetails', false)
+	withRedirect('/dashboard/overview', 'authDetails', false)
 )(Login)
