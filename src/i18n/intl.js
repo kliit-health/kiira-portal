@@ -25,5 +25,9 @@ export const intl = {
 	overview: { id: 'overview', description: 'Overview' },
 	experts: { id: 'experts', description: 'Experts' },
 	topics: { id: 'topics', description: 'Topics' },
-	invitations: { id: 'invitations', description: 'Invitations' }
+	invitations: { id: 'invitations', description: 'Invitations' },
+	userProfileNotFound: {
+		id: 'userProfileNotFound',
+		description: 'User profile not found.'
+	}
 }

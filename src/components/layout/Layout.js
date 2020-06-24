@@ -1,11 +1,11 @@
-import { cloneElement } from 'react'
+import { compose } from 'recompose'
 import {
 	withLoadingIndicator,
 	withRedirect,
 	withLogoutButton,
 	withSidebar
-} from '../../HOCs'
-import { compose } from 'recompose'
+} from 'HOCs'
+import { cloneElement } from 'react'
 
 const Layout = ({ children, ...rest }) => {
 	return cloneElement(children, { ...rest })

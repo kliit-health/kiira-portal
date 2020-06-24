@@ -1,25 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { compose } from 'recompose'
-import { withRedirect, withLoadingIndicator } from '../../HOCs'
+import { withLoadingIndicator, withRedirect } from 'HOCs'
 import { Button, TextField, FormHelperText } from '@material-ui/core'
-import { useSelector, useDispatch } from 'react-redux'
-import { logIn } from 'redux/actions'
+import { signIn } from '../../firebase'
 import { intl } from 'i18n'
 import { getLoginErrorMessage } from './helpers'
 import './styles.scss'
 
-const Login = props => {
-	const dispatch = useDispatch()
+const Login = ({ authError }) => {
+	const [error, setError] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
-	const handleSubmit = (email, password) => dispatch(logIn(email, password))
-	const handleOnEmailChange = event => setEmail(event.target.value)
-	const handleOnPasswordChange = event => setPassword(event.target.value)
+	useEffect(() => {
+		setError(authError)
+	}, [authError, setError])
 
-	const loginError = useSelector(state => state.auth.authError)
+	const handleSubmit = (email, password) => {
+		signIn(email, password).catch(error => setError(error))
+	}
+	const handleOnEmailChange = event => {
+		setEmail(event.target.value)
+	}
 
-	console.log(props)
+	const handleOnPasswordChange = event => {
+		setPassword(event.target.value)
+	}
 
 	const renderTextFields = () => (
 		<div className="login-page__auth-fields">
@@ -48,7 +54,7 @@ const Login = props => {
 
 	const renderHelpertext = () => (
 		<div className="login-page__helper-text">
-			<FormHelperText error>{getLoginErrorMessage(loginError)}</FormHelperText>
+			<FormHelperText error>{getLoginErrorMessage(error)}</FormHelperText>
 		</div>
 	)
 
@@ -67,6 +73,6 @@ const Login = props => {
 }
 
 export default compose(
-	withLoadingIndicator('authLoading'),
+	withLoadingIndicator('authLoading', true),
 	withRedirect('/dashboard', 'authDetails', false)
 )(Login)

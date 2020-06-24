@@ -1,1 +1,1 @@
-export { default } from './topics'
+export { Topics as default } from './topics'

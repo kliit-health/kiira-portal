@@ -1,2 +1,2 @@
 export { LoadingIndicator } from './loadingIndicator'
-export { Layout } from './layout'
+export { default as Layout } from './layout'

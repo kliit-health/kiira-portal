@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
 						rel="stylesheet"
 						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
 					/>
-					<link rel="preload" href="/fonts/Avenir-Book.ttf" as="font" />
+					<link href="/fonts/Avenir-Book.ttf" as="font" />
 				</Head>
 				<body>
 					<Main />
