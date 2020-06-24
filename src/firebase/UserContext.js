@@ -1,48 +1,41 @@
 import { useState, useEffect, cloneElement } from 'react'
-import { useDispatch } from 'react-redux'
 import { auth, getUserDetails, signOut } from '../firebase'
 import { INSUFICIENT_PERMISSION, ADMIN } from '../firebase/constants'
-import { LOG_IN_REJECTED, LOG_IN_FULFILLED } from 'redux/types'
 
 export const UserContext = ({ children }) => {
-	const dispatch = useDispatch()
 	const [details, setDetails] = useState(null)
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
 
-	const logInRejected = () => {
-		signOut().then(() =>
-			dispatch({
-				type: LOG_IN_REJECTED,
-				payload: INSUFICIENT_PERMISSION
-			})
-		)
+	const logInRejected = error => {
+		signOut().then(() => {
+			setError(error)
+			setLoading(false)
+		})
 	}
 
-	const logInFullfiled = payload =>
-		dispatch({
-			type: LOG_IN_FULFILLED,
-			payload
-		})
+	const setInitialState = () => {
+		setLoading(false)
+		setDetails(null)
+	}
 
 	useEffect(() => {
 		const unsubscriber = auth.onAuthStateChanged(user => {
 			try {
 				if (user) {
 					const { uid } = user
-					getUserDetails(uid).then(details => {
-						if (!details || details.role.toLowerCase() !== ADMIN) {
-							logInRejected()
-							setLoading(false)
-						} else {
-							logInFullfiled(details)
-							setDetails(details)
-							setLoading(false)
-						}
-					})
+					getUserDetails(uid)
+						.then(details => {
+							if (!details.role || details.role.toLowerCase() !== ADMIN) {
+								logInRejected(INSUFICIENT_PERMISSION)
+							} else {
+								setDetails(details)
+								setLoading(false)
+							}
+						})
+						.catch(error => logInRejected(error))
 				} else {
-					setLoading(false)
-					setDetails(null)
+					setInitialState()
 				}
 			} catch (error) {
 				setError(error)

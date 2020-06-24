@@ -1,5 +1,5 @@
 import { auth, firestore } from './initializer'
-import { SESSION } from '../constants'
+import { SESSION, USER_PROFILE_NOT_FOUND } from './constants'
 
 export const signIn = (email, password) =>
 	new Promise((resolve, reject) =>
@@ -22,10 +22,13 @@ export const getUserDetails = (uid, collection = 'users') =>
 		documentRef
 			.get()
 			.then(document => {
-				resolve(document.data())
+				if (document.data()) {
+					resolve(document.data())
+				} else {
+					reject(USER_PROFILE_NOT_FOUND)
+				}
 			})
 			.catch(error => {
-				console.log(error, 'error')
 				reject(error)
 			})
 	})

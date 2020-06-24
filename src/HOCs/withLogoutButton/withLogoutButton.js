@@ -1,12 +1,10 @@
 import { Fragment } from 'react'
-import { logOut } from 'redux/actions'
-import { useDispatch } from 'react-redux'
+import { signOut } from '../../firebase'
 import { LogoutButton } from './components'
 
 export const withLogoutButton = WrappedComponent => {
 	const WithLogoutButtonWrapper = props => {
-		const dispatch = useDispatch()
-		const handleOnSignOut = () => dispatch(logOut())
+		const handleOnSignOut = () => signOut()
 
 		return (
 			<Fragment>
