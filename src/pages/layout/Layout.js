@@ -1,19 +1,19 @@
 import { compose } from 'recompose'
+import { cloneElement } from 'react'
 import {
-	withLoadingIndicator,
 	withRedirect,
 	withLogoutButton,
-	withSidebar
+	withSidebar,
+	withLoadingIndicator
 } from 'HOCs'
-import { cloneElement } from 'react'
 
-const Layout = ({ children, ...rest }) => {
+const LayoutFoundation = ({ children, ...rest }) => {
 	return cloneElement(children, { ...rest })
 }
 
-export default compose(
+export const Layout = compose(
 	withLoadingIndicator('authLoading'),
 	withRedirect('/login', 'authDetails', 'authLoading'),
 	withLogoutButton,
 	withSidebar
-)(Layout)
+)(LayoutFoundation)

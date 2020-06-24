@@ -1,5 +1,5 @@
-import { LoadingIndicator } from 'components'
 import { useState, useEffect } from 'react'
+import { LoadingIndicator } from 'components'
 
 export const withLoadingIndicator = (
 	loadingKey = 'authLoading',
