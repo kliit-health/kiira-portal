@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack')
 //github.com/vercel/next.js/issues/10752
 
 https: module.exports = withSass({
-	webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+	webpack: config => {
 		config.plugins.push(new Dotenv({ silent: true }))
 
 		return config
