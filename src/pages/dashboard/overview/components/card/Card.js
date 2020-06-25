@@ -1,5 +1,5 @@
 import { Avatar, Divider } from '@material-ui/core'
-import { Typography } from 'components'
+import { Typography, Link } from 'components'
 import './styles.scss'
 
 export const Card = ({
@@ -8,7 +8,8 @@ export const Card = ({
 	avatarUrl,
 	profession,
 	rating,
-	bio
+	bio,
+	uid
 }) => {
 	const caculateRating = rating => {
 		return rating / 2
@@ -36,6 +37,12 @@ export const Card = ({
 					<Typography className="overview-card__bio-text">{bio}</Typography>
 					<div className="overview-card__gradient" />
 				</div>
+				<Link
+					className="overview-card__link"
+					name="See More"
+					as={`/dashboard/experts/${uid}`}
+					href="/dashboard/experts/[uid]"
+				/>
 			</div>
 		</div>
 	)
