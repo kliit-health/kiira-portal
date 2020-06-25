@@ -16,10 +16,11 @@ export const signIn = (email, password) =>
 
 export const signOut = () => auth.signOut()
 
-export const getUserDetails = (uid, collection = 'users') =>
+export const getUserDetails = (uid, collectionName = 'users') =>
 	new Promise((resolve, reject) => {
-		const documentRef = firestore.collection(collection).doc(uid)
-		documentRef
+		const collection = firestore.collection(collectionName)
+		const query = collection.doc(uid)
+		query
 			.get()
 			.then(document => {
 				if (document.data()) {
@@ -31,4 +32,23 @@ export const getUserDetails = (uid, collection = 'users') =>
 			.catch(error => {
 				reject(error)
 			})
+	})
+
+export const firebaseSimpleFetch = (
+	collectionName = 'users',
+	condition,
+	limit = 1000
+) =>
+	new Promise(async (resolve, reject) => {
+		try {
+			const collection = firestore.collection(collectionName)
+			const query = collection.where(...condition).limit(limit)
+			const response = await query.get()
+			if (response) {
+				const data = response.docs.map(item => item.data())
+				resolve(data)
+			}
+		} catch (error) {
+			reject(error)
+		}
 	})

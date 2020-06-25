@@ -77,4 +77,10 @@
     flex: 1;
     margin-left: 35px;
   }
+
+  &__link {
+    margin-bottom: -5px;
+    display: flex;
+    align-self: flex-end;
+  }
 }

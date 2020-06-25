@@ -1,0 +1,9 @@
+@import 'styles/variables';
+
+.link {
+  font-family: $primaryFont;
+  user-select: none;
+  font-size: .8em;
+  color: $primaryColor;
+  text-decoration: none;
+}
