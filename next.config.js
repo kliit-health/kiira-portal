@@ -1,7 +1,10 @@
 const withSass = require('@zeit/next-sass')
 const path = require('path')
 
-module.exports = withSass({
+// styles are applyed only after a refresh ** dev only **.
+//github.com/vercel/next.js/issues/10752
+
+https: module.exports = withSass({
 	publicRuntimeConfig: {
 		FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
 		FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
