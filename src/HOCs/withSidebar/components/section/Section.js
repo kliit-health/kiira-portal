@@ -1,5 +1,6 @@
 import { useState, cloneElement } from 'react'
 import { Collapse } from 'react-collapse'
+import { Typography } from 'components'
 import classnames from 'classnames'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import './styles.scss'
@@ -46,7 +47,7 @@ export const Section = ({ icon: Icon, title, children, classes, onClick }) => {
 						)}
 					/>
 				</div>
-				<span className="sidebar-section__title">{title}</span>
+				<Typography className="sidebar-section__title">{title}</Typography>
 				{renderChevron()}
 			</div>
 			<Collapse
@@ -70,6 +71,8 @@ export const SectionItem = ({ title, onClick, isOpened }) => (
 		})}
 		onClick={onClick}
 	>
-		<span className="sidebar-section-item__title">{title}</span>
+		<Typography secondary className="sidebar-section-item__title">
+			{title}
+		</Typography>
 	</div>
 )

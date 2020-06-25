@@ -14,6 +14,10 @@ export default class MyDocument extends Document {
 						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
 					/>
 					<link href="/fonts/Avenir-Book.ttf" as="font" />
+					<link href="/fonts/Poppins-Regular.otf" as="font" />
+					<link href="/fonts/Poppins-Thin.otf" as="font" />
+					<link href="/fonts/Poppins-Light.otf" as="font" />
+					<link href="/fonts/Poppins-Bold.otf" as="font" />
 				</Head>
 				<body>
 					<Main />

@@ -1,3 +1,5 @@
+import { Container } from 'components'
+
 export const Experts = () => {
-	return <h1>Experts</h1>
+	return <Container />
 }

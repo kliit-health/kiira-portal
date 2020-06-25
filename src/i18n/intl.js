@@ -29,5 +29,8 @@ export const intl = {
 	userProfileNotFound: {
 		id: 'userProfileNotFound',
 		description: 'User profile not found.'
-	}
+	},
+	topExperts: { id: 'topExperts', description: 'Top Experts' },
+	experts: { id: 'experts', description: 'Experts' },
+	seeAllExperts: { id: 'seeAllExperts', description: 'See All Experts' }
 }

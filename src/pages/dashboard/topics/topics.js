@@ -1,3 +1,5 @@
+import { Container } from 'components'
+
 export const Topics = () => {
-	return <h1>Topics</h1>
+	return <Container />
 }
