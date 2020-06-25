@@ -9,7 +9,7 @@
 
   &__icon {
     display: flex;
-    color: $tertiaryColor;
+    color: $secondaryColor;
     width: 30px;
     align-items: center;
     justify-content: center;
@@ -18,13 +18,13 @@
   }
 
   &__icon-element {
-    color: $tertiaryColor;
+    color: $secondaryColor;
     font-size: 2em;
   }
 
   &__chevron {
     display: flex;
-    color: $tertiaryColor;
+    color: $secondaryColor;
     margin-left: auto;
     transition: transform .2s ease;
 
@@ -35,7 +35,7 @@
   }
 
   &__title {
-    color: $tertiaryColor;
+    color: $secondaryColor;
     font-family: $primaryFont;
     user-select: none;
     font-size: 1em;
@@ -51,7 +51,6 @@
   }
 }
 
-
 .sidebar-section-item {
   display: flex;
   margin: 5px 50px;
@@ -63,18 +62,14 @@
   }
 
   &__title {
-    color: $tertiaryColor;
-    font-family: $primaryFont;
     border-bottom: 2px solid transparent;
     transition: all .2s ease;
     user-select: none;
-    font-weight: 500;
   }
 
   &:hover {
     .sidebar-section-item__title {
       border-color: white;
-      color: $tertiaryColor;
     }
   }
 }
