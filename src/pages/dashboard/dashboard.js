@@ -1,3 +1,11 @@
-export const Dashboard = props => {
-	return <h1>Dashboard</h1>
+import { compose } from 'recompose'
+import { withLoadingIndicator, withRedirect } from 'HOCs'
+
+const Dashboard = () => {
+	return <div />
 }
+
+export default compose(
+	withLoadingIndicator('authLoading', true),
+	withRedirect('/dashboard/overview', 'authDetails', false)
+)(Dashboard)

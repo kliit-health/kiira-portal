@@ -1,5 +1,4 @@
 import NextLink from 'next/link'
-import { Typography } from 'components'
 import classnames from 'classnames'
 import './styles.scss'
 

@@ -1,5 +1,39 @@
+import { useFirebaseSimpleFetch } from 'hooks'
+import { intl } from 'i18n'
 import { Container } from 'components'
+import { Section, Card } from './components'
 
 export const Experts = () => {
-	return <Container />
+	const { data } = useFirebaseSimpleFetch('users', ['role', '==', 'Expert'])
+	return (
+		<Container>
+			<Section title={intl.kiiraCareTeam.description}>
+				{data &&
+					data.map(item => {
+						const { uid, rating, profileInfo } = item
+						const {
+							bio,
+							firstName,
+							lastName,
+							profileImageUrl,
+							profession
+						} = profileInfo
+						const { fullName } = profession
+
+						return (
+							<Card
+								key={uid}
+								uid={uid}
+								firstName={firstName}
+								lastName={lastName}
+								avatarUrl={profileImageUrl}
+								rating={rating}
+								profession={fullName}
+								bio={bio}
+							/>
+						)
+					})}
+			</Section>
+		</Container>
+	)
 }

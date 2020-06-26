@@ -4,14 +4,13 @@ import { Container } from 'components'
 import { Section, Card } from './components'
 
 export const Overview = () => {
-	const { data } = useFirebaseSimpleFetch('users', ['role', '==', 'Expert'])
+	const { data } = useFirebaseSimpleFetch('users', ['role', '==', 'Expert'], 4)
 	return (
 		<Container>
 			<Section title={intl.topExperts.description}>
 				{data &&
 					data.map(item => {
 						const { uid, rating, profileInfo } = item
-						console.log(uid)
 						const {
 							bio,
 							firstName,

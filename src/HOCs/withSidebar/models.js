@@ -8,8 +8,11 @@ export const sections = [
 		icon: BarChartIcon,
 		items: [
 			{ title: intl.overview.description, path: '/dashboard/overview' },
-			{ title: intl.topics.description, path: '/dashboard/topics' },
-			{ title: intl.experts.description, path: '/dashboard/experts' }
+			{ title: intl.experts.description, path: '/dashboard/experts' },
+			{
+				title: intl.activeUsers.description,
+				path: '/dashboard/active-users'
+			}
 		]
 	},
 	{

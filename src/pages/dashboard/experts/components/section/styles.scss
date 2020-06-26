@@ -1,12 +1,13 @@
 @import 'styles/variables.scss';
 
-.overview-section {
+.experts-section {
   display: flex;
   flex: 1;
   flex-direction: column;
 
   &__title {
-    margin-bottom: 10px;
+    align-self: center;
+    margin: 10px 0;
   }
 
   &__items {
