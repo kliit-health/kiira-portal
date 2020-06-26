@@ -20,10 +20,9 @@ const App = ({ Component, pageProps }) => {
 	}, [])
 
 	const layoutEnabled = [
-		'/dashboard',
-		'/dashboard/overview',
-		'/dashboard/topics',
+		'/dashboard/active-users',
 		'/dashboard/experts',
+		'/dashboard/overview',
 		'/invitations'
 	]
 

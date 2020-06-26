@@ -32,5 +32,10 @@ export const intl = {
 	},
 	topExperts: { id: 'topExperts', description: 'Top Experts' },
 	experts: { id: 'experts', description: 'Experts' },
-	seeAllExperts: { id: 'seeAllExperts', description: 'See All Experts' }
+	seeAllExperts: {
+		id: 'seeAllExperts',
+		description: 'See All Experts'
+	},
+	activeUsers: { id: 'activeUsers', description: 'Active Users' },
+	kiiraCareTeam: { id: 'kiiraCareTeam', description: 'Kiira Care Team' }
 }

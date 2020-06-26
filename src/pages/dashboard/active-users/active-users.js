@@ -1,5 +1,5 @@
 import { Container } from 'components'
 
-export const Topics = () => {
+export const ActiveUsers = () => {
 	return <Container />
 }

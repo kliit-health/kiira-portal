@@ -3,9 +3,10 @@
 .logout-button {
   position: absolute;
   z-index: 1;
-  margin: 14px;
-  right: 0;
-  top: 0;
+  margin: 20px;
+  left: 0px;
+  bottom: 0;
+  transform: (rotate(180deg));
 
   &__root {
     z-index: 1;

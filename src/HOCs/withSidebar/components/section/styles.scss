@@ -33,14 +33,6 @@
       transform: rotate(90deg);
     }
   }
-
-  &__title {
-    color: $secondaryColor;
-    font-family: $primaryFont;
-    user-select: none;
-    font-size: 1em;
-    font-weight: 500;
-  }
 }
 
 .sidebar-section-collapse {

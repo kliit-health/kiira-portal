@@ -47,7 +47,9 @@ export const Section = ({ icon: Icon, title, children, classes, onClick }) => {
 						)}
 					/>
 				</div>
-				<Typography className="sidebar-section__title">{title}</Typography>
+				<Typography h3 secondary>
+					{title}
+				</Typography>
 				{renderChevron()}
 			</div>
 			<Collapse
@@ -71,7 +73,7 @@ export const SectionItem = ({ title, onClick, isOpened }) => (
 		})}
 		onClick={onClick}
 	>
-		<Typography secondary className="sidebar-section-item__title">
+		<Typography h4 secondary className="sidebar-section-item__title">
 			{title}
 		</Typography>
 	</div>

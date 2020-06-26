@@ -16,28 +16,28 @@ export const Card = ({
 	}
 
 	return (
-		<div className="overview-card">
-			<Avatar src={avatarUrl} className="overview-card__avatar" />
-			<div className="overview-card__content">
-				<div className="overview-card__header">
-					<div className="overview-card__details">
+		<div className="experts-card">
+			<Avatar src={avatarUrl} className="experts-card__avatar" />
+			<div className="experts-card__content">
+				<div className="experts-card__header">
+					<div className="experts-card__details">
 						<Typography h3 tertiary>{`${firstName} ${lastName}`}</Typography>
 						<Typography quartenary>{profession}</Typography>
 					</div>
-					<div className="overview-card__rating">
-						<img className="overview-card__star-image" src="/assets/star.svg" />
+					<div className="experts-card__rating">
+						<img className="experts-card__star-image" src="/assets/star.svg" />
 						<Typography tertiary body>
 							{caculateRating(rating)}
 						</Typography>
 					</div>
 				</div>
-				<div className="overview-card__body"></div>
+				<div className="experts-card__body"></div>
 				<Divider variant="middle" />
-				<div className="overview-card__footer">
-					<Typography className="overview-card__bio-text">{bio}</Typography>
-					<div className="overview-card__gradient" />
+				<div className="experts-card__footer">
+					<Typography className="experts-card__bio-text">{bio}</Typography>
+					<div className="experts-card__gradient" />
 				</div>
-				<span className="overview-card__see-more">
+				<span className="experts-card__see-more">
 					<Typography primary>See more</Typography>
 				</span>
 			</div>
