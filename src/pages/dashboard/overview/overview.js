@@ -1,7 +1,10 @@
 import { useFirebaseSimpleFetch } from 'hooks'
 import { intl } from 'i18n'
-import { Container } from 'components'
-import { Section, Card } from './components'
+import { Container, Card, Typography } from 'components'
+import { calculateRating } from 'helpers/functions'
+import { Section } from './components'
+
+const { Header, Footer, Rating } = Card
 
 export const Overview = () => {
 	const { data } = useFirebaseSimpleFetch('users', ['role', '==', 'Expert'], 4)
@@ -21,16 +24,18 @@ export const Overview = () => {
 						const { fullName } = profession
 
 						return (
-							<Card
-								key={uid}
-								uid={uid}
-								firstName={firstName}
-								lastName={lastName}
-								avatarUrl={profileImageUrl}
-								rating={rating}
-								profession={fullName}
-								bio={bio}
-							/>
+							<Card>
+								<Header
+									avatarUrl={profileImageUrl}
+									title={`${firstName} ${lastName}`}
+									subtitle={fullName}
+								>
+									<Rating value={calculateRating(rating)} />
+								</Header>
+								<Footer divider>
+									<Typography>{bio}</Typography>
+								</Footer>
+							</Card>
 						)
 					})}
 			</Section>

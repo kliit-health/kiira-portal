@@ -1,3 +1,9 @@
-export default () => {
-	return <h1>Page Not Found</h1>
+import { Container, Typography } from 'components'
+
+export const PageNotFound = () => {
+	return (
+		<Container>
+			<Typography>Page Not Found</Typography>
+		</Container>
+	)
 }

@@ -1,0 +1,31 @@
+@import 'styles/variables';
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    flex: 1
+  }
+
+  &__avatar {
+    display: flex;
+    margin-right: 14px;
+    height: 60px;
+    width: 60px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__divider {
+    display: flex;
+    height: 1px;
+    margin: 20px 0;
+    background-color: $senaryColor;
+  }
+}

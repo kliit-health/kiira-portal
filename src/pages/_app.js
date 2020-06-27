@@ -19,17 +19,12 @@ const App = ({ Component, pageProps }) => {
 		}
 	}, [])
 
-	const layoutEnabled = [
-		'/dashboard/active-users',
-		'/dashboard/experts',
-		'/dashboard/overview',
-		'/invitations'
-	]
+	const layoutDisabled = ['/login']
 
 	return (
 		<StylesProvider injectFirst>
 			<ThemeProvider theme={theme}>
-				{layoutEnabled.includes(router.pathname) ? (
+				{!layoutDisabled.includes(router.pathname) ? (
 					<Auth>
 						<Layout>
 							<Component {...pageProps} />

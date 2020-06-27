@@ -1,2 +1,2 @@
 export { Section } from './section'
-export { Card } from './card'
+export { Profile } from './profile'

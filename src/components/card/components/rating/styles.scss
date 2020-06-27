@@ -1,0 +1,12 @@
+@import 'styles/variables';
+
+.card-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__image {
+    height: 14px;
+    padding: 3px;
+  }
+}

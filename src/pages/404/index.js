@@ -1,1 +1,1 @@
-export { default } from './404'
+export { PageNotFound as default } from './404'
