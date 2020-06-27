@@ -1,6 +1,17 @@
+@import 'styles/variables';
+
 body {
   margin: 0;
-  background-color: #F2F2F4;
+  background-color: lighten($base-gray, 35%);
+}
+
+html {
+  font-size: 15px;
+}
+
+@font-face {
+  font-family: 'OpenSans-Regular';
+  src: url('/fonts/OpenSans-Regular.ttf');
 }
 
 @font-face {

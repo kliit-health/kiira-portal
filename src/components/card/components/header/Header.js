@@ -12,7 +12,7 @@ export const Header = ({
 	children,
 	classes = {}
 }) => (
-	<div className={classnames('card-header', classes.header)}>
+	<div className={classnames('card-header', classes.root)}>
 		<div className="card-header__container">
 			{avatarUrl && (
 				<Avatar
@@ -21,10 +21,12 @@ export const Header = ({
 				/>
 			)}
 			<div className="card-header__details">
-				<Typography h3 tertiary>
+				<Typography h6 charcoal>
 					{title}
 				</Typography>
-				<Typography quartenary>{subtitle}</Typography>
+				<Typography h7 gray light>
+					{subtitle}
+				</Typography>
 			</div>
 			{children}
 		</div>

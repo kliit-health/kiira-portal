@@ -1,9 +1,9 @@
 @import 'styles/variables';
 
 .link {
-  font-family: $primaryFont;
+  font-family: $paragraph-font;
   user-select: none;
   font-size: .8em;
-  color: $primaryColor;
+  color: $base-blue;
   text-decoration: none;
 }

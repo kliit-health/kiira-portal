@@ -2,8 +2,8 @@ import NextLink from 'next/link'
 import classnames from 'classnames'
 import './styles.scss'
 
-export const Link = ({ className, href, name, as }) => (
+export const Link = ({ classes = {}, href, name, as }) => (
 	<NextLink passHref as={as} href={href}>
-		<a className={classnames('link', className && className)}>{name}</a>
+		<a className={classnames('link', classes.root)}>{name}</a>
 	</NextLink>
 )
