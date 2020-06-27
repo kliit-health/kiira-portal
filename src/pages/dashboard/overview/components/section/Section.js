@@ -3,7 +3,7 @@ import './styles.scss'
 
 export const Section = ({ children, title }) => (
 	<div className="overview-section">
-		<Typography tertiary h2 className="overview-section__title">
+		<Typography h5 charcoal>
 			{title}
 		</Typography>
 		<div className="overview-section__items">

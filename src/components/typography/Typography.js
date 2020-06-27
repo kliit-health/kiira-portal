@@ -2,7 +2,6 @@ import classnames from 'classnames'
 import './styles.scss'
 
 /**
- *
  * @description in order to obtain the correct sizes set the global object font-size to 15px
  */
 
@@ -19,9 +18,10 @@ export const Typography = ({
 	h7,
 	white,
 	black,
-	charcol,
+	charcoal,
 	gray,
-	light
+	light,
+	bold
 }) => {
 	const sizes = {
 		'typography--paragraph': paragraph,
@@ -37,12 +37,13 @@ export const Typography = ({
 	const colors = {
 		'typography--white': white,
 		'typography--black': black,
-		'typography--charcoal': charcol,
+		'typography--charcoal': charcoal,
 		'typography--gray': gray
 	}
 
 	const modifiers = {
-		'typography--light': light
+		'typography--light': light,
+		'typography--bold': bold
 	}
 
 	return (
