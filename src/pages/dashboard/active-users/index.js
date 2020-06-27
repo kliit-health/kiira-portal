@@ -1,1 +1,1 @@
-export { ActiveUsers as default } from './active-users'
+export { ActiveUsers as default } from './ActiveUsers'

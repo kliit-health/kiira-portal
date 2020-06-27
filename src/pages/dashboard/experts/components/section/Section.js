@@ -1,8 +1,8 @@
 import { Typography } from 'components'
 import './styles.scss'
 
-export const Section = ({ children, title }) => (
-	<div className="experts-section">
+export const Section = ({ children, title, popRef }) => (
+	<div ref={popRef} className="experts-section">
 		<Typography tertiary title className="experts-section__title">
 			{title}
 		</Typography>

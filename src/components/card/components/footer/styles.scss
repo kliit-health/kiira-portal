@@ -1,0 +1,13 @@
+@import 'styles/variables';
+
+.card-footer {
+  display: flex;
+  flex-direction: column;
+
+  &__divider {
+    display: flex;
+    height: 1px;
+    margin: 20px 0;
+    background-color: $senaryColor;
+  }
+}
