@@ -1,55 +1,67 @@
 @import 'styles/variables';
 
-
-
 .typography {
-  font-family: 'Poppins-Light';
+  font-family: 'OpenSans-Regular';
   user-select: none;
-  font-size: .9em;
+  line-height: 1.5em;
+  font-size: 1em;
 
-  &--title {
-    font-family: 'Poppins-Regular';
-    font-size: 1.8em;
-  }
-
-  &--header {
-    font-family: 'Poppins-Regular';
-    font-size: 1.2em;
+  &--paragraph {
+    @extend .typography;
   }
 
   &--h1 {
     font-family: 'Poppins-Regular';
-    font-size: 1.6em;
+    font-size: 2.98598em;
   }
 
   &--h2 {
     font-family: 'Poppins-Regular';
-    font-size: 1.3em;
+    font-size: 2.48832em;
   }
 
   &--h3 {
     font-family: 'Poppins-Regular';
-    font-size: 1.1em;
+    font-size: 2.0736em;
   }
 
   &--h4 {
     font-family: 'Poppins-Regular';
+    font-size: 1.728em;
+  }
+
+  &--h5 {
+    font-family: 'Poppins-Regular';
+    font-size: 1.44em;
+  }
+
+  &--h6 {
+    font-family: 'Poppins-Regular';
+    font-size: 1.2em;
+  }
+
+  &--h7 {
+    font-family: 'Poppins-Regular';
     font-size: 1em;
   }
 
-  &--primary {
-    color: $primaryColor
+  &--white {
+    color: $base-white;
   }
 
-  &--secondary {
-    color: $secondaryColor
+  &--black {
+    color: $base-black;
   }
 
-  &--tertiary {
-    color: $tertiaryColor
+  &--charcoal {
+    color: $base-charcoal;
   }
 
-  &--quartenary {
-    color: $quartenaryColor
+  &--gray {
+    color: lighten($base-gray, 9%);
+  }
+
+  &--light {
+    font-family: 'Poppins-Light';
   }
 }

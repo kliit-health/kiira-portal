@@ -4,9 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  user-select: none;
 
   &__image {
     height: 14px;
     padding: 3px;
+  }
+
+  &__value {
+    color: $base-black;
   }
 }

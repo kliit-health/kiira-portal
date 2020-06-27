@@ -47,7 +47,7 @@ export const Section = ({ icon: Icon, title, children, classes, onClick }) => {
 						)}
 					/>
 				</div>
-				<Typography h3 secondary>
+				<Typography h7 white>
 					{title}
 				</Typography>
 				{renderChevron()}
@@ -73,7 +73,7 @@ export const SectionItem = ({ title, onClick, isOpened }) => (
 		})}
 		onClick={onClick}
 	>
-		<Typography h4 secondary className="sidebar-section-item__title">
+		<Typography h7 white className="sidebar-section-item__title">
 			{title}
 		</Typography>
 	</div>

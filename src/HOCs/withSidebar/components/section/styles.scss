@@ -9,7 +9,7 @@
 
   &__icon {
     display: flex;
-    color: $secondaryColor;
+    color: $base-white;
     width: 30px;
     align-items: center;
     justify-content: center;
@@ -18,13 +18,13 @@
   }
 
   &__icon-element {
-    color: $secondaryColor;
+    color: $base-white;
     font-size: 2em;
   }
 
   &__chevron {
     display: flex;
-    color: $secondaryColor;
+    color: $base-white;
     margin-left: auto;
     transition: transform .2s ease;
 
