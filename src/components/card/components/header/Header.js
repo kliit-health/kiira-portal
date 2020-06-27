@@ -15,17 +15,16 @@ export const Header = ({
 		<div className="card-header__container">
 			{avatarUrl && (
 				<Avatar
-					classes={{
-						root: classnames('card-header__avatar', classes.avatar)
-					}}
+					medium
 					url={avatarUrl}
+					classes={{ root: 'card-header__avatar' }}
 				/>
 			)}
 			<div className="card-header__details">
-				<Typography h6 charcoal>
+				<Typography h6 black>
 					{title}
 				</Typography>
-				<Typography h7 gray light>
+				<Typography h7 charcoal light>
 					{subtitle}
 				</Typography>
 			</div>

@@ -3,4 +3,67 @@
 .avatar {
   display: flex;
   border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  background-color: lighten($base-gray, 35%);
+  position: relative;
+  justify-content: center;
+
+  &__label {
+    position: absolute;
+    display: flex;
+    background-color: $base-green;
+    align-self: flex-end;
+    padding: 1px 6px;
+    border-radius: 10px;
+    margin-top: 6px;
+  }
+
+  &__label-text {
+    font-size: .7em;
+  }
+
+  &--small {
+    height: 40px;
+    width: 40px;
+
+    .avatar__label {
+      display: none;
+    }
+
+    .avatar__label-text {
+      display: none;
+    }
+  }
+
+  &--medium {
+    height: 80px;
+    width: 80px;
+  }
+
+  &--large {
+    height: 120px;
+    width: 120px;
+
+    .avatar__label {
+      padding: 1px 6px;
+      border-radius: 10px;
+      margin-top: 6px;
+    }
+
+    .avatar__label-text {
+      font-size: .8em;
+    }
+  }
+
+  &--border {
+    border: 2px solid lighten($base-gray, 20%);
+  }
+
+  &__image {
+    display: flex;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
 }

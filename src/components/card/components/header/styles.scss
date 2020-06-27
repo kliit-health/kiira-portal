@@ -12,11 +12,7 @@
   }
 
   &__avatar {
-    display: flex;
     margin-right: 14px;
-    height: 60px;
-    width: 60px;
-    border: 1px solid lighten($base-gray, 20%);
   }
 
   &__container {
