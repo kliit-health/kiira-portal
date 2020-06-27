@@ -1,6 +1,5 @@
 import React from 'react'
-import { Typography } from 'components'
-import { Avatar } from '@material-ui/core'
+import { Typography, Avatar } from 'components'
 import classnames from 'classnames'
 import './styles.scss'
 
@@ -16,8 +15,10 @@ export const Header = ({
 		<div className="card-header__container">
 			{avatarUrl && (
 				<Avatar
-					className={classnames('card-header__avatar', classes.avatar)}
-					src={avatarUrl}
+					classes={{
+						root: classnames('card-header__avatar', classes.avatar)
+					}}
+					url={avatarUrl}
 				/>
 			)}
 			<div className="card-header__details">
