@@ -1,10 +1,15 @@
 import classnames from 'classnames'
 import './styles.scss'
 
-export const Container = ({ children, classes = {} }) => (
-	<div className={classnames('container', classes.root)}>
-		<div className={classnames('container__constrains', classes.constraints)}>
-			{children}
+export const Container = ({ children, classes = {} }) => {
+	const styles = {
+		container: classnames('container', classes.root),
+		constraints: classnames('container__constrains', classes.constraints)
+	}
+
+	return (
+		<div className={styles.container}>
+			<div className={styles.constraints}>{children}</div>
 		</div>
-	</div>
-)
+	)
+}

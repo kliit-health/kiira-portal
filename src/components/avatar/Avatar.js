@@ -5,37 +5,29 @@ import './styles.scss'
 export const Avatar = ({
 	classes = {},
 	url = '/assets/avatar.png',
-	border,
 	small,
-	medium,
 	large,
 	status
 }) => {
 	const sizes = {
 		'avatar--small': small,
-		'avatar--medium': medium,
 		'avatar--large': large
 	}
 
-	const modifiers = {
-		'avatar--border': border
+	const styles = {
+		avatar: classnames('avatar', classes.root, { ...sizes }),
+		image: classnames('avatar__image', classes.image),
+		label: classnames('avatar__label', classes.label),
+		font: { root: classnames('avatar__label-text', classes.labelText) }
 	}
 
 	return (
-		<div
-			className={classnames('avatar', classes.root, { ...sizes, ...modifiers })}
-		>
-			<img className={classnames('avatar__image', classes.image)} src={url} />
+		<div className={styles.avatar}>
+			<img className={styles.image} src={url} />
 			{status && (
-				<div className={classnames('avatar__label', classes.label)}>
-					<Typography
-						light
-						white
-						classes={{
-							root: classnames('avatar__label-text', classes.labelText)
-						}}
-					>
-						{status}
+				<div className={styles.label}>
+					<Typography light white classes={styles.font}>
+						online
 					</Typography>
 				</div>
 			)}
