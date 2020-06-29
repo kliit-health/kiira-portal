@@ -3,21 +3,24 @@ import { Typography, Avatar, Divider } from 'components'
 import classnames from 'classnames'
 import './styles.scss'
 
-export const Header = ({
-	title,
-	subtitle,
-	avatarUrl,
-	divider,
-	children,
-	status,
-	classes = {}
-}) => {
+export const Header = props => {
+	const {
+		title,
+		subtitle,
+		avatarUrl,
+		divider,
+		children,
+		status,
+		classes = {}
+	} = props
+
 	const styles = {
 		header: classnames('card-header', classes.root),
 		container: 'card-header__container',
 		avatar: { root: 'card-header__avatar' },
 		details: 'card-header__details'
 	}
+
 	return (
 		<div className={styles.header}>
 			<div className={styles.container}>

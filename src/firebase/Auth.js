@@ -9,7 +9,6 @@ export const Auth = ({ children, ...rest }) => {
 
 	const setInitialState = () => {
 		setLoading(false)
-		setDetails(null)
 	}
 
 	const logInRejected = error => {
