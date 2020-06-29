@@ -10,10 +10,13 @@
 @mixin gradient-background {
   background: rgb(131, 89, 255);
   background: linear-gradient(90deg, rgba(131, 89, 255, 1) 0%, rgba(0, 137, 255, 1) 40%, rgba(0, 137, 255, 1) 60%, rgba(131, 89, 255, 1) 96%);
+<<<<<<< HEAD
 }
 
 @mixin user-select-none {
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
+=======
+>>>>>>> improves code structure
 }
