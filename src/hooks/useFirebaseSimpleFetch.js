@@ -4,7 +4,7 @@ import { firestore } from '../firebase'
 export const useFirebaseSimpleFetch = (
 	collectionName,
 	condition,
-	limit = 1000
+	limit = 100
 ) => {
 	const [data, setData] = useState(null)
 	const [loading, setLoading] = useState(true)

@@ -5,24 +5,26 @@ import './styles.scss'
  * @description in order to obtain the correct sizes set the global object font-size to 15px
  */
 
-export const Typography = ({
-	children,
-	classes = {},
-	paragraph,
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	h7,
-	white,
-	black,
-	charcoal,
-	gray,
-	light,
-	bold
-}) => {
+export const Typography = props => {
+	const {
+		children,
+		classes = {},
+		paragraph,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		h7,
+		white,
+		black,
+		charcoal,
+		gray,
+		light,
+		bold
+	} = props
+
 	const sizes = {
 		'typography--paragraph': paragraph,
 		'typography--h1': h1,
