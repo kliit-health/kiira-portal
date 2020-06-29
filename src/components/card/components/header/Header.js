@@ -20,7 +20,6 @@ export const Header = props => {
 		avatar: { root: 'card-header__avatar' },
 		details: 'card-header__details'
 	}
-
 	return (
 		<div className={styles.header}>
 			<div className={styles.container}>
