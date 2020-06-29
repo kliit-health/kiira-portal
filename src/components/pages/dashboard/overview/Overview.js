@@ -37,7 +37,6 @@ export const Overview = () => {
 							profession
 						} = profileInfo
 						const { fullName } = profession
-
 						return (
 							<Card key={uid} onClick={() => handleClick(item)}>
 								<Header
