@@ -1,18 +1,11 @@
-import {
-	withRedirect,
-	withLoadingIndicator,
-	withSidebar,
-	withLogoutButton
-} from 'HOCs'
 import { compose } from 'recompose'
+import { withLoadingIndicator, withRedirect } from 'HOCs'
 
 const Dashboard = () => {
 	return <div />
 }
 
 export default compose(
-	withLoadingIndicator('authLoading'),
-	withRedirect('authDetails', '/'),
-	withSidebar,
-	withLogoutButton
+	withLoadingIndicator('authLoading', true),
+	withRedirect('/dashboard/overview', 'authDetails', false)
 )(Dashboard)

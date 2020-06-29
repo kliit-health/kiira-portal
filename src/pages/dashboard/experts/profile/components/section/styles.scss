@@ -1,0 +1,10 @@
+@import 'styles/variables';
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin: 30px 0 10px;
+  }
+}

@@ -1,26 +1,43 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { compose } from 'recompose'
-import { withRedirect, withLoadingIndicator } from 'HOCs'
+import { withLoadingIndicator, withRedirect } from 'HOCs'
 import { Button, TextField, FormHelperText } from '@material-ui/core'
-import { useSelector, useDispatch } from 'react-redux'
-import { logIn } from 'redux/actions'
+import { signIn } from '../../firebase'
 import { intl } from 'i18n'
 import { getLoginErrorMessage } from './helpers'
 import './styles.scss'
 
 const Login = ({ authError }) => {
-	const dispatch = useDispatch()
+	const [error, setError] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
-	const handleSubmit = (email, password) => dispatch(logIn(email, password))
-	const handleOnEmailChange = event => setEmail(event.target.value)
-	const handleOnPasswordChange = event => setPassword(event.target.value)
+	const styles = {
+		fields: 'login-page__auth-fields',
+		helper: 'login-page__helper-text',
+		page: 'login-page',
+		card: 'login-page__card',
+		onboarding: 'login-page__onboarding',
+		auth: 'login-page__auth'
+	}
 
-	const loginError = useSelector(state => state.auth.loginError)
+	useEffect(() => {
+		setError(authError)
+	}, [authError, setError])
+
+	const handleSubmit = (email, password) => {
+		signIn(email, password).catch(error => setError(error))
+	}
+	const handleOnEmailChange = event => {
+		setEmail(event.target.value)
+	}
+
+	const handleOnPasswordChange = event => {
+		setPassword(event.target.value)
+	}
 
 	const renderTextFields = () => (
-		<div className="login-page__auth-fields">
+		<div className={styles.fields}>
 			<TextField
 				label={intl.email.description}
 				onChange={handleOnEmailChange}
@@ -45,16 +62,16 @@ const Login = ({ authError }) => {
 	)
 
 	const renderHelpertext = () => (
-		<div className="login-page__helper-text">
-			<FormHelperText error>{getLoginErrorMessage(authError)}</FormHelperText>
+		<div className={styles.helper}>
+			<FormHelperText error>{getLoginErrorMessage(error)}</FormHelperText>
 		</div>
 	)
 
 	return (
-		<div className="login-page">
-			<div className="login-page__card">
-				<div className="login-page__onboarding"></div>
-				<div className="login-page__auth">
+		<div className={styles.page}>
+			<div className={styles.card}>
+				<div className={styles.onboarding}></div>
+				<div className={styles.auth}>
 					{renderTextFields()}
 					{renderHelpertext()}
 					{renderLoginButton()}
@@ -66,5 +83,5 @@ const Login = ({ authError }) => {
 
 export default compose(
 	withLoadingIndicator('authLoading', true),
-	withRedirect('authDetails', '/dashboard', false)
+	withRedirect('/dashboard/overview', 'authDetails', false)
 )(Login)

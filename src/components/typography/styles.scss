@@ -1,0 +1,71 @@
+@import 'styles/variables';
+
+.typography {
+  font-family: 'OpenSans-Regular';
+  user-select: none;
+  line-height: 1.5em;
+  font-size: 1em;
+
+  &--paragraph {
+    @extend .typography;
+  }
+
+  &--h1 {
+    font-family: 'Poppins-Regular';
+    font-size: 2.98598em;
+  }
+
+  &--h2 {
+    font-family: 'Poppins-Regular';
+    font-size: 2.48832em;
+  }
+
+  &--h3 {
+    font-family: 'Poppins-Regular';
+    font-size: 2.0736em;
+  }
+
+  &--h4 {
+    font-family: 'Poppins-Regular';
+    font-size: 1.728em;
+  }
+
+  &--h5 {
+    font-family: 'Poppins-Regular';
+    font-size: 1.44em;
+  }
+
+  &--h6 {
+    font-family: 'Poppins-Regular';
+    font-size: 1.2em;
+  }
+
+  &--h7 {
+    font-family: 'Poppins-Regular';
+    font-size: 1em;
+  }
+
+  &--white {
+    color: $base-white;
+  }
+
+  &--black {
+    color: $base-black;
+  }
+
+  &--charcoal {
+    color: $base-charcoal;
+  }
+
+  &--gray {
+    color: lighten($base-gray, 9%);
+  }
+
+  &--light {
+    font-family: 'Poppins-Light';
+  }
+
+  &--bold {
+    font-family: 'Poppins-Bold';
+  }
+}

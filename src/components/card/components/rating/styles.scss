@@ -1,0 +1,17 @@
+@import 'styles/variables';
+
+.card-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+
+  &__image {
+    height: 17px;
+    padding: 2px;
+  }
+
+  &__value {
+    color: $base-black;
+  }
+}

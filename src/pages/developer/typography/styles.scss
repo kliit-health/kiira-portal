@@ -1,0 +1,11 @@
+.typography-sample {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+
+  &__font {
+    margin-bottom: 20px;
+  }
+}

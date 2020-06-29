@@ -1,4 +1,20 @@
+@import 'styles/variables';
+
 .with-sidebar {
   display: flex;
   flex: 1;
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    margin: 24px;
+  }
+
+  &__sections {
+    margin: 24px 0px;
+  }
+
+  &__invitations-icon {
+    font-size: 1.5em;
+  }
 }

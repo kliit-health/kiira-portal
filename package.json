@@ -11,14 +11,20 @@
 	"dependencies": {
 		"@material-ui/core": "^4.10.2",
 		"@material-ui/icons": "^4.9.1",
+		"@material-ui/lab": "^4.0.0-alpha.56",
+		"@zeit/next-css": "^1.0.1",
 		"@zeit/next-sass": "^1.0.1",
 		"axios": "^0.19.2",
 		"firebase": "^7.15.1",
 		"formik": "^2.1.4",
 		"next": "^9.4.4",
+		"next-fonts": "^1.2.0",
 		"next-redux-wrapper": "^6.0.2",
+		"nextjs-fonts": "^0.22.0",
 		"node-sass": "^4.14.1",
+		"proptypes": "^1.1.0",
 		"react": "^16.13.1",
+		"react-collapse": "^5.0.1",
 		"react-dom": "^16.13.1",
 		"react-redux": "^7.2.0",
 		"recompose": "^0.30.0",
@@ -31,6 +37,7 @@
 	},
 	"devDependencies": {
 		"classnames": "^2.2.6",
+		"dotenv-webpack": "^1.8.0",
 		"prettier": "2.0.5",
 		"prop-types": "^15.7.2",
 		"redux-devtools-extension": "^2.13.8"

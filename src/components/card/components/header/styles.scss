@@ -1,0 +1,22 @@
+@import 'styles/variables';
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1
+  }
+
+  &__avatar {
+    margin-right: 14px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
+}

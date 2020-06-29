@@ -1,0 +1,17 @@
+.logo-card {
+  display: flex;
+  background-color: white;
+  height: 120px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+
+  &__image {
+    width: 50%;
+    height: auto;
+  }
+}

@@ -1,0 +1,31 @@
+@import 'styles/variables';
+
+.profile-card {
+  display: flex;
+  align-items: center;
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 150px;
+    user-select: none;
+  }
+
+  &__email {
+    @extend .profile-card__name;
+  }
+
+  &__avatar {
+    border-radius: 10px;
+    margin-right: 14px;
+    height: 48px;
+    width: 48px;
+  }
+}

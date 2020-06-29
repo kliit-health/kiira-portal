@@ -1,44 +1,56 @@
 import { useState, useEffect, cloneElement } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { auth, getUserDetails, signOut } from '../firebase'
 import { INSUFICIENT_PERMISSION, ADMIN } from '../firebase/constants'
-import { LOG_IN_REJECTED, LOG_IN_FULFILLED } from 'redux/types'
 
-export const Auth = ({ children }) => {
-	const dispatch = useDispatch()
-	const { authDetails, authError, authLoading } = useSelector(
-		state => state.auth
-	)
+export const Auth = ({ children, ...rest }) => {
+	const [details, setDetails] = useState(null)
+	const [loading, setLoading] = useState(true)
+	const [error, setError] = useState(null)
 
-	const logInRejected = () => {
-		signOut().then(() =>
-			dispatch({
-				type: LOG_IN_REJECTED,
-				payload: INSUFICIENT_PERMISSION
-			})
-		)
+	const setInitialState = () => {
+		setLoading(false)
 	}
 
-	const logInFullfiled = payload =>
-		dispatch({
-			type: LOG_IN_FULFILLED,
-			payload
+	const logInRejected = error => {
+		signOut().then(() => {
+			setError(error)
+			setLoading(false)
 		})
+	}
+
+	const logInFullfilled = details => {
+		setDetails(details)
+		setLoading(false)
+	}
 
 	useEffect(() => {
 		const unsubscriber = auth.onAuthStateChanged(user => {
-			if (user) {
-				const { uid } = user
-				getUserDetails(uid).then(details => {
-					if (!details.role || details.role.toLowerCase() !== ADMIN) {
-						logInRejected()
-					} else {
-						logInFullfiled(details)
-					}
-				})
+			try {
+				if (user) {
+					const { uid } = user
+					getUserDetails(uid)
+						.then(details => {
+							if (!details.role || details.role.toLowerCase() !== ADMIN) {
+								logInRejected(INSUFICIENT_PERMISSION)
+							} else {
+								logInFullfilled(details)
+							}
+						})
+						.catch(error => logInRejected(error))
+				} else {
+					setInitialState()
+				}
+			} catch (error) {
+				setError(error)
 			}
+			return () => unsubscriber()
 		})
-		return () => unsubscriber()
 	}, [])
-	return cloneElement(children, { authDetails, authError, authLoading })
+
+	return cloneElement(children, {
+		authDetails: details,
+		authLoading: loading,
+		authError: error,
+		...rest
+	})
 }

@@ -1,9 +1,13 @@
+import { Header, Footer, Rating } from './components'
+import classnames from 'classnames'
 import './styles.scss'
 
-export const Card = () => (
-	<div className="card">
-		<div className="card__logo">
-			<img className="card__logo-image" src="/assets/kiira_logo.png" />
-		</div>
+export const Card = ({ classes = {}, children, onClick }) => (
+	<div onClick={onClick} className={classnames('card', classes.root)}>
+		{children}
 	</div>
 )
+
+Card.Header = Header
+Card.Footer = Footer
+Card.Rating = Rating

@@ -2,19 +2,13 @@ import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/core/styles'
 import { theme } from '../theme'
+import '../styles/globals.scss'
 
 export default class MyDocument extends Document {
 	render() {
 		return (
 			<Html lang="en">
-				<Head>
-					<meta name="theme-color" content={theme.palette.primary.main} />
-					<link
-						rel="stylesheet"
-						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-					/>
-					<link rel="preload" href="/fonts/Avenir-Book.ttf" as="font" />
-				</Head>
+				<Head></Head>
 				<body>
 					<Main />
 					<NextScript />
