@@ -9,6 +9,24 @@ export const Section = ({ icon: Icon, title, children, classes, onClick }) => {
 	const [isOpened, setIsOpened] = useState(false)
 	const hasChildren = children instanceof Array
 
+	const styles = {
+		chevron: classnames('sidebar-section__chevron', {
+			'sidebar-section__chevron--active': isOpened
+		}),
+		section: 'sidebar-section',
+		panel: 'sidebar-section__panel',
+		icon: 'sidebar-section__icon',
+		iconElement: classnames(
+			'sidebar-section__icon-element',
+			classes && classes.icon
+		),
+		collapse: {
+			collapse: classnames('sidebar-section-collapse', {
+				'sidebar-section-collapse--open': isOpened
+			})
+		}
+	}
+
 	const handleOnSection = () => {
 		setIsOpened(!isOpened)
 		if (onClick) {
@@ -25,56 +43,39 @@ export const Section = ({ icon: Icon, title, children, classes, onClick }) => {
 	}
 
 	const renderChevron = () => {
-		return (
-			hasChildren && (
-				<ChevronRightIcon
-					className={classnames('sidebar-section__chevron', {
-						'sidebar-section__chevron--active': isOpened
-					})}
-				/>
-			)
-		)
+		return hasChildren && <ChevronRightIcon className={styles.chevron} />
 	}
 
 	return (
-		<div className="sidebar-section">
-			<div className="sidebar-section__panel" onClick={handleOnSection}>
-				<div className="sidebar-section__icon">
-					<Icon
-						className={classnames(
-							'sidebar-section__icon-element',
-							classes && classes.icon
-						)}
-					/>
+		<div className={styles.section}>
+			<div className={styles.panel} onClick={handleOnSection}>
+				<div className={styles.icon}>
+					<Icon className={styles.iconElement} />
 				</div>
 				<Typography h7 white>
 					{title}
 				</Typography>
 				{renderChevron()}
 			</div>
-			<Collapse
-				isOpened={isOpened}
-				theme={{
-					collapse: classnames('sidebar-section-collapse', {
-						'sidebar-section-collapse--open': isOpened
-					})
-				}}
-			>
+			<Collapse isOpened={isOpened} theme={styles.collapse}>
 				{renderItem()}
 			</Collapse>
 		</div>
 	)
 }
 
-export const SectionItem = ({ title, onClick, isOpened }) => (
-	<div
-		className={classnames('sidebar-section-item', {
+export const SectionItem = ({ title, onClick, isOpened }) => {
+	const styles = {
+		item: classnames('sidebar-section-item', {
 			'sidebar-section-item--active': isOpened
-		})}
-		onClick={onClick}
-	>
-		<Typography h7 white className="sidebar-section-item__title">
-			{title}
-		</Typography>
-	</div>
-)
+		}),
+		title: 'sidebar-section-item__title'
+	}
+	return (
+		<div className={styles.item} onClick={onClick}>
+			<Typography h7 white className={styles.title}>
+				{title}
+			</Typography>
+		</div>
+	)
+}

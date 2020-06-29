@@ -1,4 +1,5 @@
 @import 'styles/variables';
+@import 'styles/mixins';
 
 .avatar {
   display: flex;
@@ -8,19 +9,30 @@
   background-color: lighten($base-gray, 35%);
   position: relative;
   justify-content: center;
+  border: 2px solid lighten($base-gray, 20%);
 
   &__label {
     position: absolute;
     display: flex;
     background-color: $base-green;
     align-self: flex-end;
-    padding: 1px 6px;
-    border-radius: 10px;
-    margin-top: 6px;
+    bottom: -2px;
+    right: 3px;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
   }
 
   &__label-text {
-    font-size: .7em;
+    display: none;
+  }
+
+  &__image {
+    user-select: none;
+    display: flex;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
   }
 
   &--small {
@@ -36,34 +48,26 @@
     }
   }
 
-  &--medium {
-    height: 80px;
-    width: 80px;
-  }
-
   &--large {
     height: 120px;
     width: 120px;
+    border: 3px solid lighten($base-gray, 20%);
 
     .avatar__label {
-      padding: 1px 6px;
+      height: auto;
+      width: auto;
+      padding: 1px 7px;
       border-radius: 10px;
-      margin-top: 6px;
+      position: absolute;
+      bottom: -7px;
+      right: auto;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .avatar__label-text {
+      display: flex;
       font-size: .8em;
     }
-  }
-
-  &--border {
-    border: 2px solid lighten($base-gray, 20%);
-  }
-
-  &__image {
-    display: flex;
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
   }
 }

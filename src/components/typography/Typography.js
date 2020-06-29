@@ -46,15 +46,13 @@ export const Typography = ({
 		'typography--bold': bold
 	}
 
-	return (
-		<span
-			className={classnames('typography', classes.root, {
-				...sizes,
-				...colors,
-				...modifiers
-			})}
-		>
-			{children}
-		</span>
-	)
+	const styles = {
+		typography: classnames('typography', classes.root, {
+			...sizes,
+			...colors,
+			...modifiers
+		})
+	}
+
+	return <span className={styles.typography}>{children}</span>
 }

@@ -1,5 +1,5 @@
 import './styles.scss'
 
-export const Sidebar = ({ children }) => {
-	return <div className="sidebar">{children}</div>
-}
+export const Sidebar = ({ children }) => (
+	<div className="sidebar">{children}</div>
+)

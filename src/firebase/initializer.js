@@ -1,4 +1,3 @@
-import getConfig from 'next/config'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'

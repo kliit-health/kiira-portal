@@ -19,11 +19,4 @@
     display: flex;
     flex-direction: row;
   }
-
-  &__divider {
-    display: flex;
-    height: 1px;
-    margin: 20px 0;
-    background-color: lighten($base-gray, 30%);
-  }
 }

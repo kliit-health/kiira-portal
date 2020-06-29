@@ -12,6 +12,15 @@ const Login = ({ authError }) => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
+	const styles = {
+		fields: 'login-page__auth-fields',
+		helper: 'login-page__helper-text',
+		page: 'login-page',
+		card: 'login-page__card',
+		onboarding: 'login-page__onboarding',
+		auth: 'login-page__auth'
+	}
+
 	useEffect(() => {
 		setError(authError)
 	}, [authError, setError])
@@ -28,7 +37,7 @@ const Login = ({ authError }) => {
 	}
 
 	const renderTextFields = () => (
-		<div className="login-page__auth-fields">
+		<div className={styles.fields}>
 			<TextField
 				label={intl.email.description}
 				onChange={handleOnEmailChange}
@@ -53,16 +62,16 @@ const Login = ({ authError }) => {
 	)
 
 	const renderHelpertext = () => (
-		<div className="login-page__helper-text">
+		<div className={styles.helper}>
 			<FormHelperText error>{getLoginErrorMessage(error)}</FormHelperText>
 		</div>
 	)
 
 	return (
-		<div className="login-page">
-			<div className="login-page__card">
-				<div className="login-page__onboarding"></div>
-				<div className="login-page__auth">
+		<div className={styles.page}>
+			<div className={styles.card}>
+				<div className={styles.onboarding}></div>
+				<div className={styles.auth}>
 					{renderTextFields()}
 					{renderHelpertext()}
 					{renderLoginButton()}

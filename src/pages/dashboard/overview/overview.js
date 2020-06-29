@@ -1,19 +1,34 @@
+import { useState, useRef } from 'react'
 import { useFirebaseSimpleFetch } from 'hooks'
-import { intl } from 'i18n'
-import { Container, Card, Typography } from 'components'
+import { Card, Typography, Page } from 'components'
 import { calculateRating } from 'helpers/functions'
-import { Section } from './components'
+import { Profile } from '../experts/profile'
+import './styles.scss'
 
-const { Header, Footer, Rating } = Card
+const { Header, Rating } = Card
 
 export const Overview = () => {
-	const { data } = useFirebaseSimpleFetch('users', ['role', '==', 'Expert'], 4)
+	const popRef = useRef(null)
+	const [anchorEl, setAnchorEl] = useState(null)
+	const [profileData, setProfileData] = useState(null)
+
+	const handleClick = item => {
+		setAnchorEl(popRef.current)
+		setProfileData(item)
+	}
+
+	const handleClose = () => {
+		setAnchorEl(null)
+	}
+
+	const { data } = useFirebaseSimpleFetch('users', ['role', '==', 'Expert'], 3)
+
 	return (
-		<Container>
-			<Section title={intl.topExperts.description}>
+		<Page elementRef={popRef}>
+			<div className="experts__items">
 				{data &&
 					data.map(item => {
-						const { uid, rating, profileInfo } = item
+						const { uid, rating, profileInfo, isOnline } = item
 						const {
 							bio,
 							firstName,
@@ -22,23 +37,25 @@ export const Overview = () => {
 							profession
 						} = profileInfo
 						const { fullName } = profession
-
 						return (
-							<Card>
+							<Card key={uid} onClick={() => handleClick(item)}>
 								<Header
+									divider
 									avatarUrl={profileImageUrl}
 									title={`${firstName} ${lastName}`}
 									subtitle={fullName}
+									status={isOnline}
 								>
 									<Rating value={calculateRating(rating)} />
 								</Header>
-								<Footer divider>
-									<Typography>{bio}</Typography>
-								</Footer>
+								<Typography>{bio}</Typography>
 							</Card>
 						)
 					})}
-			</Section>
-		</Container>
+			</div>
+			{profileData && (
+				<Profile onClose={handleClose} anchorEl={anchorEl} data={profileData} />
+			)}
+		</Page>
 	)
 }

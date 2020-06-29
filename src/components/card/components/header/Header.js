@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Avatar } from 'components'
+import { Typography, Avatar, Divider } from 'components'
 import classnames from 'classnames'
 import './styles.scss'
 
@@ -9,29 +9,37 @@ export const Header = ({
 	avatarUrl,
 	divider,
 	children,
+	status,
 	classes = {}
-}) => (
-	<div className={classnames('card-header', classes.root)}>
-		<div className="card-header__container">
-			{avatarUrl && (
-				<Avatar
-					medium
-					url={avatarUrl}
-					classes={{ root: 'card-header__avatar' }}
-				/>
-			)}
-			<div className="card-header__details">
-				<Typography h6 black>
-					{title}
-				</Typography>
-				<Typography h7 charcoal light>
-					{subtitle}
-				</Typography>
+}) => {
+	const styles = {
+		header: classnames('card-header', classes.root),
+		container: 'card-header__container',
+		avatar: { root: 'card-header__avatar' },
+		details: 'card-header__details'
+	}
+	return (
+		<div className={styles.header}>
+			<div className={styles.container}>
+				{avatarUrl && (
+					<Avatar
+						status={status}
+						border
+						url={avatarUrl}
+						classes={styles.avatar}
+					/>
+				)}
+				<div className={styles.details}>
+					<Typography h6 black>
+						{title}
+					</Typography>
+					<Typography h7 charcoal light>
+						{subtitle}
+					</Typography>
+				</div>
+				{children}
 			</div>
-			{children}
+			{divider && <Divider />}
 		</div>
-		{divider && (
-			<div className={classnames('card-header__divider', classes.divider)} />
-		)}
-	</div>
-)
+	)
+}

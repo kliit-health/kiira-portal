@@ -19,6 +19,12 @@ export const withSidebar = WrappedComponent => {
 			path && router.push(path)
 		}
 
+		const styles = {
+			sidebar: 'with-sidebar',
+			menu: 'with-sidebar__menu',
+			sections: 'with-sidebar__sections'
+		}
+
 		const renderSections = () =>
 			sections.map(section => {
 				const { icon, title, classes, items, path } = section
@@ -46,16 +52,16 @@ export const withSidebar = WrappedComponent => {
 			})
 
 		return (
-			<div className="with-sidebar">
+			<div className={styles.sidebar}>
 				<Sidebar>
 					<LogoCard />
-					<div className="with-sidebar__menu">
+					<div className={styles.menu}>
 						<ProfileCard
 							firstName={firstName}
 							lastName={lastName}
 							email={email}
 						/>
-						<div className="with-sidebar__sections">{renderSections()}</div>
+						<div className={styles.sections}>{renderSections()}</div>
 					</div>
 				</Sidebar>
 				<WrappedComponent {...props} />
