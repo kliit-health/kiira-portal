@@ -21,6 +21,15 @@ const Login = ({ authError }) => {
 		auth: 'login-page__auth'
 	}
 
+	const styles = {
+		fields: 'login-page__auth-fields',
+		helper: 'login-page__helper-text',
+		page: 'login-page',
+		card: 'login-page__card',
+		onboarding: 'login-page__onboarding',
+		auth: 'login-page__auth'
+	}
+
 	useEffect(() => {
 		setError(authError)
 	}, [authError, setError])
