@@ -1,18 +1,20 @@
 import { useState, useRef } from 'react'
 import { useFirebaseSimpleFetch } from 'hooks'
-import { Container, Card, Typography } from 'components'
-import { Section, Profile } from './components'
+import { Card, Typography, Page } from 'components'
 import { calculateRating } from 'helpers/functions'
+import { Profile } from './profile'
 import './styles.scss'
 
-const { Header, Footer, Rating } = Card
+const { Header, Rating } = Card
 
 export const Experts = () => {
 	const popRef = useRef(null)
 	const [anchorEl, setAnchorEl] = useState(null)
+	const [profileData, setProfileData] = useState(null)
 
-	const handleClick = () => {
+	const handleClick = item => {
 		setAnchorEl(popRef.current)
+		setProfileData(item)
 	}
 
 	const handleClose = () => {
@@ -22,11 +24,11 @@ export const Experts = () => {
 	const { data } = useFirebaseSimpleFetch('users', ['role', '==', 'Expert'])
 
 	return (
-		<Container>
-			<Section popRef={popRef}>
+		<Page elementRef={popRef}>
+			<div className="experts__items">
 				{data &&
 					data.map(item => {
-						const { uid, rating, profileInfo } = item
+						const { uid, rating, profileInfo, isOnline } = item
 						const {
 							bio,
 							firstName,
@@ -35,14 +37,14 @@ export const Experts = () => {
 							profession
 						} = profileInfo
 						const { fullName } = profession
-
 						return (
-							<Card onClick={handleClick}>
+							<Card key={uid} onClick={() => handleClick(item)}>
 								<Header
 									divider
 									avatarUrl={profileImageUrl}
 									title={`${firstName} ${lastName}`}
 									subtitle={fullName}
+									status={isOnline}
 								>
 									<Rating value={calculateRating(rating)} />
 								</Header>
@@ -50,8 +52,10 @@ export const Experts = () => {
 							</Card>
 						)
 					})}
-			</Section>
-			<Profile onClose={handleClose} anchorEl={anchorEl} />
-		</Container>
+			</div>
+			{profileData && (
+				<Profile onClose={handleClose} anchorEl={anchorEl} data={profileData} />
+			)}
+		</Page>
 	)
 }

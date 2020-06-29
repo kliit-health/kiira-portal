@@ -1,0 +1,31 @@
+@import 'styles/variables';
+@import 'styles/mixins';
+
+.expert-profile {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  max-width: 700px;
+  height: 80vh;
+  padding: 40px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+
+  @include hide-scrollbar;
+
+  &__divider {
+    margin: 0;
+    opacity: 0.7;
+  }
+
+  &__hours-section {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  &__typography {
+    line-height: 2em;
+  }
+}

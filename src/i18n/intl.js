@@ -37,5 +37,14 @@ export const intl = {
 		description: 'See All Experts'
 	},
 	activeUsers: { id: 'activeUsers', description: 'Active Users' },
-	kiiraCareTeam: { id: 'kiiraCareTeam', description: 'Kiira Care Team' }
+	kiiraCareTeam: {
+		id: 'kiiraCareTeam',
+		description: 'Kiira Care Team'
+	},
+	bio: { id: 'bio', description: 'Bio' },
+	specialties: { id: 'specialties', description: 'Specialties' },
+	languages: { id: 'languages', description: 'Languages' },
+	clinicInfo: { id: 'clinicInfo', description: 'Clinic Info' },
+	hours: { id: 'hours', description: 'Hours' },
+	closed: { id: 'closed', description: 'Closed' }
 }
