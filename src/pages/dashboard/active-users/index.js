@@ -1,1 +1,3 @@
-export { ActiveUsers as default } from './ActiveUsers'
+import { ActiveUsers } from 'components/pages'
+
+export default props => <ActiveUsers {...props} />

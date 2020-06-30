@@ -39,6 +39,7 @@ export const Auth = ({ children, ...rest }) => {
 						.catch(error => logInRejected(error))
 				} else {
 					setInitialState()
+					setDetails(null)
 				}
 			} catch (error) {
 				setError(error)
@@ -46,7 +47,6 @@ export const Auth = ({ children, ...rest }) => {
 			return () => unsubscriber()
 		})
 	}, [])
-
 	return cloneElement(children, {
 		authDetails: details,
 		authLoading: loading,

@@ -1,1 +1,3 @@
-export { Experts as default } from './Experts'
+import { Experts } from 'components/pages'
+
+export default props => <Experts {...props} />

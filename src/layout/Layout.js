@@ -13,7 +13,7 @@ const LayoutFoundation = ({ children, ...rest }) => {
 
 export const Layout = compose(
 	withLoadingIndicator('authLoading'),
-	withRedirect('/login', 'authDetails', 'authLoading'),
+	withRedirect('/', 'authDetails', 'authLoading'),
 	withLogoutButton,
 	withSidebar
 )(LayoutFoundation)

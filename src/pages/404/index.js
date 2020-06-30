@@ -1,1 +1,3 @@
-export { PageNotFound as default } from './404'
+import { PageNotFound } from 'components/pages'
+
+export default props => <PageNotFound {...props} />

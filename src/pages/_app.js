@@ -19,7 +19,7 @@ const App = ({ Component, pageProps }) => {
 		}
 	}, [])
 
-	const layoutDisabled = ['/login']
+	const layoutDisabled = ['/']
 
 	return (
 		<StylesProvider injectFirst>

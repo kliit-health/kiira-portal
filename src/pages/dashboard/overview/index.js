@@ -1,1 +1,3 @@
-export { Overview as default } from './Overview'
+import { Overview } from 'components/pages'
+
+export default props => <Overview {...props} />
