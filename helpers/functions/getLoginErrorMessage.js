@@ -6,7 +6,7 @@ import {
 	WRONG_PASSWORD,
 	TOO_MANY_REQUESTS,
 	USER_PROFILE_NOT_FOUND
-} from '../../firebase/constants'
+} from 'helpers/firebase/constants'
 
 const {
 	insuficientPermission,

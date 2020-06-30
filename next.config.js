@@ -13,6 +13,13 @@ module.exports = withFonts(
 			webpack: (config, options) => {
 				config.plugins.push(new Dotenv({ silent: true }))
 				return config
+			},
+			distDir: 'nextjs',
+			env: {
+				FIREBASE_PROJECT_ID: 'kliit-health-dev'
+			},
+			experimental: {
+				sprFlushToDisk: false
 			}
 		})
 	)
