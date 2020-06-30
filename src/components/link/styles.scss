@@ -1,8 +1,10 @@
 @import 'styles/variables';
+@import 'styles/mixins';
 
 .link {
+  @include user-select-none;
+
   font-family: $paragraph-font;
-  user-select: none;
   font-size: .8em;
   color: $base-blue;
   text-decoration: none;

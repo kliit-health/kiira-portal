@@ -1,4 +1,5 @@
 @import 'styles/variables';
+@import 'styles/mixins';
 
 .loading-indicator {
   display: flex;
@@ -22,7 +23,7 @@
   }
 
   &__image {
-    user-select: none;
+    @include user-select-none;
     width: 40px;
     height: auto
   }

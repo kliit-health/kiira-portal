@@ -1,13 +1,15 @@
+@import 'styles/mixins';
+
 .logo-card {
   display: flex;
   background-color: white;
   height: 120px;
 
   &__container {
+    @include user-select-none;
     display: flex;
     align-items: center;
     justify-content: center;
-    user-select: none;
   }
 
   &__image {
