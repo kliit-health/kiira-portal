@@ -1,10 +1,11 @@
 @import 'styles/variables';
+@import 'styles/mixins';
 
 .card-rating {
   display: flex;
   flex-direction: column;
   align-items: center;
-  user-select: none;
+  @include user-select-none;
 
   &__image {
     height: 17px;

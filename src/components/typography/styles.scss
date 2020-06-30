@@ -1,8 +1,9 @@
 @import 'styles/variables';
+@import 'styles/mixins';
 
 .typography {
+  @include user-select-none;
   font-family: 'OpenSans-Regular';
-  user-select: none;
   line-height: 1.5em;
   font-size: 1em;
 
