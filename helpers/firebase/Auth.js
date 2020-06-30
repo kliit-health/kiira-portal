@@ -1,6 +1,6 @@
 import { useState, useEffect, cloneElement } from 'react'
-import { auth, getUserDetails, signOut } from '../firebase'
-import { INSUFICIENT_PERMISSION, ADMIN } from '../firebase/constants'
+import { auth, getUserDetails, signOut } from 'helpers/firebase'
+import { INSUFICIENT_PERMISSION, ADMIN } from 'helpers/firebase/constants'
 
 export const Auth = ({ children, ...rest }) => {
 	const [details, setDetails] = useState(null)
