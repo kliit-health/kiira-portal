@@ -10,7 +10,6 @@ export const withRedirect = (
 ) => WrappedComponent => {
 	const WithRedirectWrapper = props => {
 		const router = useRouter()
-
 		if (!props[dataKey] && isProtected && isBrowser) {
 			router.replace(location)
 			return null
