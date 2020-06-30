@@ -1,9 +1,0 @@
-.overview {
-
-  &__items {
-    position: relative;
-    display: grid;
-    gap: 1.4rem;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  }
-}
