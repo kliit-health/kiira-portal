@@ -2,12 +2,9 @@
 @import 'styles/mixins';
 
 .expert-profile {
-  display: flex;
-  flex-direction: column;
+  @include hide-scrollbar;
   padding: 40px;
   overflow-y: scroll;
-
-  @include hide-scrollbar;
 
   &__divider {
     margin: 0;
