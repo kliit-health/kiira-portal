@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 import { LoadingIndicator } from 'components'
-import { useState, useEffect } from 'react'
-import timeout from 'smart-timeout'
 
 export const withLoadingIndicator = (
 	loadingKey = 'authLoading',
@@ -14,7 +12,6 @@ export const withLoadingIndicator = (
 				setTimeout(() => setIsLoading(false), 1000)
 			}
 		}, [props[loadingKey]])
-
 		return isLoading ? <LoadingIndicator /> : <WrappedComponent {...props} />
 	}
 
