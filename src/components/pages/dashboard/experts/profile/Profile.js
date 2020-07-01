@@ -18,7 +18,7 @@ export const Profile = ({ anchorEl, onClose, data }) => {
 	const { state, city, name, address, zipcode, hours } = clinicInfo
 	const lang = languages.map(item => item.value).join(', ')
 
-	const classes = {
+	const styles = {
 		profile: 'expert-profile',
 		font: { root: 'expert-profile__typography' },
 		divider: { root: 'expert-profile__divider' },
@@ -28,7 +28,7 @@ export const Profile = ({ anchorEl, onClose, data }) => {
 	return (
 		<Popover anchorEl={anchorEl} onClose={onClose}>
 			<CancelButton onCancel={onClose} />
-			<div className={classes.profile}>
+			<div className={styles.profile}>
 				<Header
 					fullName={`${firstName} ${lastName}`}
 					profession={fullName}
@@ -37,8 +37,8 @@ export const Profile = ({ anchorEl, onClose, data }) => {
 					rating={rating}
 					location={`${city}, ${state.code}`}
 				/>
-				<div className={classes.sections}>
-					<Divider bold gradient classes={classes.divider} />
+				<div className={styles.sections}>
+					<Divider bold gradient styles={styles.divider} />
 					<Section title={intl.bio.description} description={bio} />
 					<Section
 						title={intl.specialties.description}
@@ -46,15 +46,15 @@ export const Profile = ({ anchorEl, onClose, data }) => {
 					/>
 					<Section title={intl.languages.description} description={`${lang}`} />
 					<Section title={intl.clinicInfo.description}>
-						<Typography classes={classes.font}>{name}</Typography>
-						<Typography classes={classes.font}>{address}</Typography>
-						<Typography classes={classes.font}>
+						<Typography styles={styles.font}>{name}</Typography>
+						<Typography styles={styles.font}>{address}</Typography>
+						<Typography styles={styles.font}>
 							{formatAddress(city, state.value, zipcode)}
 						</Typography>
 					</Section>
 					<Section title={intl.hours.description}>
 						{hours.map(({ day, startTime, endTime }, index) => (
-							<Typography key={index + day} classes={classes.font}>
+							<Typography key={index + day} styles={styles.font}>
 								{formatHours(day, startTime, endTime)}
 							</Typography>
 						))}
