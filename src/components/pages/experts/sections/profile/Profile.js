@@ -1,7 +1,7 @@
 import { Typography, Divider, Popover, CancelButton } from 'components'
-import { Header, Section } from './components'
+import { Header, Section } from '../../components'
 import { intl } from 'i18n'
-import { formatAddress, formatHours } from './helpers'
+import { formatAddress, formatHours } from '../../helpers'
 import './styles.scss'
 
 export const Profile = ({ anchorEl, onClose, data }) => {
