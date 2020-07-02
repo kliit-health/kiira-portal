@@ -46,5 +46,10 @@ export const intl = {
 	languages: { id: 'languages', description: 'Languages' },
 	clinicInfo: { id: 'clinicInfo', description: 'Clinic Info' },
 	hours: { id: 'hours', description: 'Hours' },
-	closed: { id: 'closed', description: 'Closed' }
+	closed: { id: 'closed', description: 'Closed' },
+	ourExperts: { id: 'ourExperts', description: 'Our Experts' },
+	weCare: {
+		id: 'weCare',
+		description: 'We take care of your health.'
+	}
 }

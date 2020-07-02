@@ -17,6 +17,7 @@ export const Typography = props => {
 		h5,
 		h6,
 		h7,
+		blue,
 		white,
 		black,
 		charcoal,
@@ -37,6 +38,7 @@ export const Typography = props => {
 	}
 
 	const colors = {
+		'typography--blue': blue,
 		'typography--white': white,
 		'typography--black': black,
 		'typography--charcoal': charcoal,

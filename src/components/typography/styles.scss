@@ -14,16 +14,19 @@
   &--h1 {
     font-family: 'Poppins-Regular';
     font-size: 2.98598em;
+    line-height: auto;
   }
 
   &--h2 {
     font-family: 'Poppins-Regular';
     font-size: 2.48832em;
+    line-height: auto;
   }
 
   &--h3 {
     font-family: 'Poppins-Regular';
     font-size: 2.0736em;
+    line-height: auto;
   }
 
   &--h4 {
@@ -44,6 +47,10 @@
   &--h7 {
     font-family: 'Poppins-Regular';
     font-size: 1em;
+  }
+
+  &--blue {
+    color: $base-blue;
   }
 
   &--white {
@@ -67,6 +74,6 @@
   }
 
   &--bold {
-    font-family: 'Poppins-Bold';
+    font-family: 'Poppins-Medium';
   }
 }

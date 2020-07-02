@@ -3,6 +3,7 @@ import { useFirebaseSimpleFetch } from 'hooks'
 import { Card, Typography, Page } from 'components'
 import { calculateRating } from 'helpers/functions'
 import { Profile } from './profile'
+import { intl } from 'i18n'
 import './styles.scss'
 
 const { Header, Rating } = Card
@@ -24,7 +25,11 @@ export const Experts = () => {
 	const { data } = useFirebaseSimpleFetch('users', ['role', '==', 'Expert'])
 
 	return (
-		<Page elementRef={popRef}>
+		<Page
+			elementRef={popRef}
+			title={intl.ourExperts.description}
+			subtitle={intl.weCare.description}
+		>
 			<div className="experts__items">
 				{data &&
 					data.map(item => {
