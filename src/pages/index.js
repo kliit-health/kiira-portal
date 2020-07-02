@@ -1,1 +1,3 @@
-export { default } from './login'
+import { Login } from 'components/pages'
+
+export default props => <Login {...props} />

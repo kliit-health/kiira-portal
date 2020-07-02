@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { Auth } from '../firebase'
-import { wrapper } from 'redux/store'
+import { Auth } from 'helpers/firebase'
 import { Layout } from '../layout'
 import { StylesProvider } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
@@ -19,7 +18,7 @@ const App = ({ Component, pageProps }) => {
 		}
 	}, [])
 
-	const layoutDisabled = ['/login']
+	const layoutDisabled = ['/']
 
 	return (
 		<StylesProvider injectFirst>
@@ -40,4 +39,4 @@ const App = ({ Component, pageProps }) => {
 	)
 }
 
-export default wrapper.withRedux(App)
+export default App

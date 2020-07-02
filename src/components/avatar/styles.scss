@@ -28,7 +28,7 @@
   }
 
   &__image {
-    user-select: none;
+    @include user-select-none;
     display: flex;
     width: 100%;
     height: auto;

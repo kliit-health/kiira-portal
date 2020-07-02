@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { firestore } from '../firebase'
+import { firestore } from 'helpers/firebase'
 
 export const useFirebaseSingleFetch = (collectionName, id) => {
 	const [data, setData] = useState(null)

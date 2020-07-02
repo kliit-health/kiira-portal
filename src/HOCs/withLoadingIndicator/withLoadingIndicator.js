@@ -12,8 +12,8 @@ export const withLoadingIndicator = (
 				setTimeout(() => setIsLoading(false), 1000)
 			}
 		}, [props[loadingKey]])
-
 		return isLoading ? <LoadingIndicator /> : <WrappedComponent {...props} />
 	}
+
 	return WithRedirectWrapper
 }

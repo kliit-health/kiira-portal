@@ -2,16 +2,9 @@
 @import 'styles/mixins';
 
 .expert-profile {
-  display: flex;
-  flex-direction: column;
-  width: 60vw;
-  max-width: 700px;
-  height: 80vh;
-  padding: 40px;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-
   @include hide-scrollbar;
+  padding: 50px;
+  overflow-y: scroll;
 
   &__divider {
     margin: 0;
