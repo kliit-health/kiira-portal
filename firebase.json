@@ -39,7 +39,7 @@
 			"rewrites": [
 				{
 					"source": "**",
-					"function": "nextjs-server"
+					"function": "kiira-admin-server"
 				}
 			]
 		}
