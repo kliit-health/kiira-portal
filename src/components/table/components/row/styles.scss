@@ -1,0 +1,18 @@
+@import 'styles/variables';
+
+.table-row {
+  display: flex;
+
+  &__container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid $base-gray;
+    margin: 0 20px;
+
+    &--first {
+      border: none
+    }
+  }
+}
