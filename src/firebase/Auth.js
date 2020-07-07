@@ -1,6 +1,6 @@
 import { useState, useEffect, cloneElement } from 'react'
-import { auth, getUserDetails, signOut } from 'helpers/firebase'
-import { INSUFICIENT_PERMISSION, ADMIN } from 'helpers/firebase/constants'
+import { auth, getUserDetails, signOut } from '../firebase'
+import { ERRORS, CLAIMS } from '../firebase/constants'
 
 export const Auth = ({ children, ...rest }) => {
 	const [details, setDetails] = useState(null)
@@ -30,8 +30,11 @@ export const Auth = ({ children, ...rest }) => {
 					const { uid } = user
 					getUserDetails(uid)
 						.then(details => {
-							if (!details.role || details.role.toLowerCase() !== ADMIN) {
-								logInRejected(INSUFICIENT_PERMISSION)
+							if (
+								!details.role ||
+								details.role.toLowerCase() !== CLAIMS.ADMIN
+							) {
+								logInRejected(ERRORS.INSUFICIENT_PERMISSION)
 							} else {
 								logInFullfilled(details)
 							}

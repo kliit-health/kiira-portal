@@ -1,5 +1,10 @@
 .page {
 
+  &__content {
+    display: flex;
+    flex: 1;
+  }
+
   &__container-constraints {
     flex-direction: column;
     padding-top: 0;

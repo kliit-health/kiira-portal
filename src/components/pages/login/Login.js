@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react'
 import { compose } from 'recompose'
 import { withLoadingIndicator, withRedirect } from 'HOCs'
 import { Button, TextField, FormHelperText } from '@material-ui/core'
-import { signIn } from 'helpers/firebase'
+import { signIn } from '../../../firebase'
+import { FIREBASE_ERRORS } from 'errors'
 import { intl } from 'i18n'
-import { getLoginErrorMessage } from 'helpers/functions'
 import './styles.scss'
 
 const Login = ({ authError }) => {
-	const [error, setError] = useState('')
+	const [error, setError] = useState(null)
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
@@ -28,6 +28,7 @@ const Login = ({ authError }) => {
 	const handleSubmit = (email, password) => {
 		signIn(email, password).catch(error => setError(error))
 	}
+
 	const handleOnEmailChange = event => {
 		setEmail(event.target.value)
 	}
@@ -63,7 +64,9 @@ const Login = ({ authError }) => {
 
 	const renderHelpertext = () => (
 		<div className={styles.helper}>
-			<FormHelperText error>{getLoginErrorMessage(error)}</FormHelperText>
+			<FormHelperText error>
+				{FIREBASE_ERRORS[error && error.code]}
+			</FormHelperText>
 		</div>
 	)
 

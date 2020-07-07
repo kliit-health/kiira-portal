@@ -1,10 +1,15 @@
-import { auth, firestore } from './initializer'
-import { SESSION, USER_PROFILE_NOT_FOUND } from './constants'
+import { auth, firestore, functions } from './initializer'
+import { ERRORS, PERSISTANCE } from './constants'
+import { FIREBASE_ERRORS } from 'errors'
+
+export const getErrorDescription = errorCode => {
+	return FIREBASE_ERRORS[errorCode]
+}
 
 export const signIn = (email, password) =>
 	new Promise((resolve, reject) =>
 		auth
-			.setPersistence(SESSION)
+			.setPersistence(PERSISTANCE.SESSION)
 			.then(() =>
 				auth
 					.signInWithEmailAndPassword(email, password)
@@ -26,7 +31,7 @@ export const getUserDetails = (uid, collectionName = 'users') =>
 				if (document.data()) {
 					resolve(document.data())
 				} else {
-					reject(USER_PROFILE_NOT_FOUND)
+					reject(ERRORS.USER_PROFILE_NOT_FOUND)
 				}
 			})
 			.catch(error => {
@@ -48,6 +53,27 @@ export const firebaseSimpleFetch = (
 				const data = response.docs.map(item => item.data())
 				resolve(data)
 			}
+		} catch (error) {
+			reject(error)
+		}
+	})
+
+/**
+ *
+ * @desc Batch create new users using firebase custom function
+ * @param { Object[] } users - The array of users to be created
+ * @param { string } users[].displayName - the user's display name
+ * @param { string } users[].email - the user's email address
+ * @param { string } oid organization id
+ *
+ */
+
+export const createUsers = users =>
+	new Promise(async (resolve, reject) => {
+		const createUsers = functions.httpsCallable('batchCreateUsers')
+		try {
+			const response = await createUsers({ users, oid: '389bOyT8Adsr8VtUhekE' })
+			resolve(response)
 		} catch (error) {
 			reject(error)
 		}

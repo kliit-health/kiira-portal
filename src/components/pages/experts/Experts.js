@@ -5,6 +5,10 @@ import { intl } from 'i18n'
 import './styles.scss'
 
 export const Experts = () => {
+	const styles = {
+		page: { content: 'experts__page' }
+	}
+
 	const popRef = useRef(null)
 	const [anchorEl, setAnchorEl] = useState(null)
 	const [profileData, setProfileData] = useState(null)
@@ -23,6 +27,7 @@ export const Experts = () => {
 			elementRef={popRef}
 			title={intl.ourExperts.description}
 			subtitle={intl.weCare.description}
+			classes={styles.page}
 		>
 			<List onClick={handleClick} />
 			{profileData && (

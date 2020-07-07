@@ -21,6 +21,10 @@ export const intl = {
 		id: 'tooManyRequest',
 		description: 'Too many attempts.'
 	},
+	emailAlreadyInUse: {
+		id: 'emailAlreadyInUse',
+		description: 'Email already in use'
+	},
 	dashboard: { id: 'dashboard', description: 'Dashboard' },
 	overview: { id: 'overview', description: 'Overview' },
 	experts: { id: 'experts', description: 'Experts' },

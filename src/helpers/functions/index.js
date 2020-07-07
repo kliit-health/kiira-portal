@@ -1,6 +1,6 @@
 export { switchCase } from './switchCase'
 export { isClient } from './isClient'
 export { calculateRating } from './calculateRating'
-export { getLoginErrorMessage } from './getLoginErrorMessage'
 export { parseCSV } from './parseCSV'
 export { generateIdentifier } from './generateIdentifier'
+export { cloneChild } from './cloneChild'

@@ -10,7 +10,8 @@
 			"@/hooks/*": ["hooks/*"],
 			"@/redux/*": ["redux/*"],
 			"@/styles/*": ["styles/*"],
-			"@/i18n/*": ["i18n/*"]
+			"@/i18n/*": ["i18n/*"],
+			"@/errors/*": ["errors/*"]
 		}
 	}
 }

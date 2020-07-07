@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { signOut } from 'helpers/firebase'
+import { signOut } from '../../firebase'
 import { LogoutButton } from './components'
 
 export const withLogoutButton = WrappedComponent => {

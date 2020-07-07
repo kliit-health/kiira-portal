@@ -4,6 +4,9 @@ import { List, Profile } from '../experts/sections'
 import './styles.scss'
 
 export const Overview = () => {
+	const styles = {
+		page: { content: 'overview__page' }
+	}
 	const popRef = useRef(null)
 	const [anchorEl, setAnchorEl] = useState(null)
 	const [profileData, setProfileData] = useState(null)
@@ -18,7 +21,7 @@ export const Overview = () => {
 	}
 
 	return (
-		<Page elementRef={popRef}>
+		<Page elementRef={popRef} classes={styles.page}>
 			<List onClick={handleClick} limit={3} />
 			{profileData && (
 				<Profile onClose={handleClose} anchorEl={anchorEl} data={profileData} />
