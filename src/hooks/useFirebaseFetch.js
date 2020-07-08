@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react'
 import { firestore } from '../firebase'
 
-export const useFirebaseSimpleFetch = (
-	collectionName,
-	condition,
-	limit = 100
-) => {
+export const useFirebaseFetch = (collectionName, conditions, limit = 100) => {
 	const [data, setData] = useState(null)
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
@@ -14,8 +10,13 @@ export const useFirebaseSimpleFetch = (
 		const queryFirestore = async () => {
 			try {
 				const collection = firestore.collection(collectionName)
-				const query = collection.where(...condition).limit(limit)
-				const response = await query.get()
+				let query
+
+				conditions.forEach(condition => {
+					query = collection.where(...condition)
+				})
+
+				const response = await query.limit(limit).get()
 				if (response) {
 					const data = response.docs.map(item => item.data())
 					setData(data)
@@ -26,7 +27,10 @@ export const useFirebaseSimpleFetch = (
 				setLoading(false)
 			}
 		}
-		queryFirestore()
+
+		if (conditions && collectionName) {
+			queryFirestore()
+		}
 	}, [])
 
 	return { loading, data, error }
