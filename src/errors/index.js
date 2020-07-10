@@ -2,10 +2,10 @@ import { intl } from 'i18n'
 import { ERRORS } from '../firebase/constants'
 
 export const PARSE_CSV_ERRORS = {
-	MISSING_FILE: {
-		description: 'Please provide a valid file',
-		code: 'MISSING_FILE'
-	}
+	MISSING_FILE: 'Please provide a valid file',
+	FAILED_PARSING: 'Failed parsing object to file.',
+	BAD_FILE:
+		'Please verify the file format and layout. We recommend that you download and use the sample file to prevent further issues.'
 }
 
 export const FIREBASE_ERRORS = {

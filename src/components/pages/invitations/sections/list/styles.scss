@@ -1,0 +1,91 @@
+@import 'styles/variables';
+
+@mixin common-styles {
+  color: $base-gray;
+  font-size: .9em;
+}
+
+.invitations-list {
+
+  &__list {
+    border-radius: 0 0 6px 6px;
+    background-color: white;
+  }
+
+  &__column {
+    flex: 1;
+    background-color: red;
+    overflow: hidden;
+
+    &--large {
+      flex: 2;
+      overflow: hidden;
+      background-color: blue;
+    }
+  }
+
+  &__paper {
+    flex: 1;
+  }
+}
+
+.name-cell__details {
+  @include common-styles;
+}
+
+.email-cell__details {
+  @include common-styles;
+}
+
+.created-at-cell__details {
+  @include common-styles;
+}
+
+.signed-up-cell__details {
+  @include common-styles;
+}
+
+.invitatios-table-header {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    background-color: lighten($base-gray, 30%);
+    color: darken($base-gray, 14%);
+    width: 100%;
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: lighten($base-gray, 35%);
+    overflow: hidden;
+    border-radius: 6px 6px 0 0;
+    height: 50px;
+    padding: 0px 20px;
+  }
+
+  &__item {
+    padding: 0 20px;
+  }
+
+  &__button {
+    align-self: flex-end;
+  }
+
+  &__icon {
+    font-size: .9em;
+  }
+
+  &__title {
+    font-size: .9em;
+    font-family: Roboto;
+  }
+}

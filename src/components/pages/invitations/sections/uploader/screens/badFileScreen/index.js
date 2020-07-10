@@ -1,0 +1,1 @@
+export { BadFileScreen } from './badFileScreen'

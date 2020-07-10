@@ -55,5 +55,9 @@ export const intl = {
 	weCare: {
 		id: 'weCare',
 		description: 'We take care of your health.'
+	},
+	tryAgain: {
+		id: 'tryAgain',
+		description: 'Try Again'
 	}
 }
