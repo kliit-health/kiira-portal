@@ -6,6 +6,7 @@
   font-family: 'OpenSans-Regular';
   line-height: 1.5em;
   font-size: 1em;
+  color: darken($base-gray, 20%);
 
   &--paragraph {
     @extend .typography;
@@ -65,8 +66,8 @@
     color: $base-charcoal;
   }
 
-  &--gray {
-    color: lighten($base-gray, 9%);
+  &--black {
+    color: black
   }
 
   &--light {
@@ -75,5 +76,9 @@
 
   &--bold {
     font-family: 'Poppins-Medium';
+  }
+
+  &--control {
+    font-family: Roboto;
   }
 }

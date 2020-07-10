@@ -73,7 +73,7 @@ export const SectionItem = ({ title, onClick, isOpened }) => {
 	}
 	return (
 		<div className={styles.item} onClick={onClick}>
-			<Typography h7 white className={styles.title}>
+			<Typography white className={styles.title}>
 				{title}
 			</Typography>
 		</div>

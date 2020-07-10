@@ -1,5 +1,9 @@
 @import 'styles/variables';
 
+b {
+  font-weight: 600;
+}
+
 body {
   margin: 0;
   background-color: lighten($base-gray, 35%);
