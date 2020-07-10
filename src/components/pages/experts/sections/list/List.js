@@ -1,4 +1,4 @@
-import { useFirebaseSimpleFetch } from 'hooks'
+import { useFirebaseFetch } from 'hooks'
 import { Card, Typography } from 'components'
 import { calculateRating } from 'helpers/functions'
 import './styles.scss'
@@ -6,8 +6,8 @@ import './styles.scss'
 const { Header, Rating } = Card
 
 export const List = ({ onClick, limit = 100 }) => {
-	const query = ['role', '==', 'Expert']
-	const { data } = useFirebaseSimpleFetch('users', query, limit)
+	const conditions = [{ key: 'role', operator: '==', value: 'Expert' }]
+	const { data } = useFirebaseFetch('users', conditions, limit)
 	const styles = { list: 'experts-list' }
 
 	return (
