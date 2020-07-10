@@ -9,12 +9,11 @@ export const useFirebaseFetch = (collectionName, conditions, limit = 100) => {
 	useEffect(() => {
 		const queryFirestore = async () => {
 			try {
-				const collection = firestore.collection(collectionName)
-				let query
-
-				conditions.forEach(condition => {
-					query = collection.where(...condition)
-				})
+				let query = firestore.collection(collectionName)
+				for (let condition of conditions) {
+					const { key, operator, value } = condition
+					query = query.where(key, operator, value)
+				}
 
 				const response = await query.limit(limit).get()
 				if (response) {
