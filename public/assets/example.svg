@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="468" height="178" viewBox="0 0 468 178">
+  <g fill="none" fill-rule="evenodd">
+    <rect width="467" height="119" x=".5" y="58.5" stroke="#979797"/>
+    <rect width="241" height="59" x=".5" y=".5" fill="#78C46E" stroke="#78C46E"/>
+    <text fill="#FFF" font-family="Roboto-Bold, Roboto" font-size="24" font-weight="bold">
+      <tspan x="20.219" y="38">Name</tspan>
+    </text>
+    <rect width="292" height="59" x="175.5" y=".5" fill="#78C46E" stroke="#78C46E"/>
+    <text fill="#FFF" font-family="Roboto-Bold, Roboto" font-size="24" font-weight="bold">
+      <tspan x="202.064" y="38">Email</tspan>
+    </text>
+    <line x1=".389" x2="467.611" y1="118.5" y2="118.5" stroke="#979797"/>
+    <line x1="180.5" x2="180.5" y1="178" y2="58" stroke="#979797"/>
+    <line x1="180.5" x2="180" y1="60" stroke="#FFF"/>
+    <text fill="#706D6D" font-family="Roboto-Regular, Roboto" font-size="24">
+      <tspan x="22.91" y="97">Paige Turner</tspan>
+    </text>
+    <text fill="#706D6D" font-family="Roboto-Regular, Roboto" font-size="24">
+      <tspan x="202.494" y="97">paige.turner@me.com</tspan>
+    </text>
+    <text fill="#706D6D" font-family="Roboto-Regular, Roboto" font-size="24">
+      <tspan x="202.33" y="156">polly.ester@gmail.com</tspan>
+    </text>
+    <text fill="#706D6D" font-family="Roboto-Regular, Roboto" font-size="24">
+      <tspan x="20.344" y="156">Polly Ester</tspan>
+    </text>
+  </g>
+</svg>
