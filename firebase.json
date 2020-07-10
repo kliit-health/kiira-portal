@@ -22,10 +22,13 @@
 			"firebase.json",
 			"firbease-debug.log",
 			"**/.*",
+			"**/node_modules/**",
+			"components/**",
+			"helpers/**",
+			"pages/**",
 			"public/**",
 			"firestore.rules",
 			"readme.md",
-			"**/node_modules/**",
 			"src/components/**",
 			"src/config/**",
 			"src/constants/**",
@@ -47,7 +50,7 @@
 			"rewrites": [
 				{
 					"source": "**",
-					"function": "kiira-admin-server"
+					"function": "nextjs-server"
 				}
 			]
 		}

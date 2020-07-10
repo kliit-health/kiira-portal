@@ -5,7 +5,6 @@ import { Layout } from '../layout'
 import { StylesProvider } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { theme } from '../theme'
-import { wrapper } from 'redux/store'
 import '../styles/globals.scss'
 
 const App = ({ Component, pageProps }) => {
@@ -40,4 +39,4 @@ const App = ({ Component, pageProps }) => {
 	)
 }
 
-export default wrapper.withRedux(App)
+export default App
