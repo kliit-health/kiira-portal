@@ -6,7 +6,10 @@ export const Divider = ({ classes = {}, bold, gradient }) => {
 		'divider--bold': bold,
 		'divider--gradient': gradient
 	}
-	return (
-		<div className={classnames('divider', classes.root, { ...modifiers })} />
-	)
+
+	const styles = {
+		divider: classnames('divider', classes.root, modifiers)
+	}
+
+	return <div className={styles.divider} />
 }
