@@ -1,18 +1,24 @@
 import { Popover as MaterialPopover } from '@material-ui/core'
+import classnames from 'classnames'
 import './styles.scss'
 
-export const Popover = ({ children, onClose, anchorEl }) => {
+export const Popover = props => {
+	const {
+		children,
+		onClose,
+		anchorEl,
+		transformOrigin = {
+			vertical: 'center',
+			horizontal: 'center'
+		},
+		anchorOrigin = {
+			vertical: 'center',
+			horizontal: 'center'
+		},
+		classes = {}
+	} = props
 	const styles = {
-		paper: { paper: 'popover__paper' }
-	}
-	const transformOrigin = {
-		vertical: 'center',
-		horizontal: 'center'
-	}
-
-	const anchorOrigin = {
-		vertical: 'center',
-		horizontal: 'center'
+		popover: { paper: classnames('popover', classes.root) }
 	}
 
 	return (
@@ -22,7 +28,7 @@ export const Popover = ({ children, onClose, anchorEl }) => {
 			onClose={onClose}
 			anchorOrigin={anchorOrigin}
 			transformOrigin={transformOrigin}
-			classes={styles.paper}
+			classes={styles.popover}
 		>
 			{children}
 		</MaterialPopover>
