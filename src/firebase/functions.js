@@ -68,13 +68,20 @@ export const firebaseSimpleFetch = (
  *
  */
 
-export const createUsers = users =>
+export const createUsers = (users, organizationId) =>
 	new Promise(async (resolve, reject) => {
 		const createUsers = functions.httpsCallable('batchCreateUsers')
-		try {
-			const response = await createUsers({ users, oid: '389bOyT8Adsr8VtUhekE' })
-			resolve(response)
-		} catch (error) {
-			reject(error)
+		if (organizationId && users) {
+			try {
+				const response = await createUsers({
+					users,
+					organizationId
+				})
+				resolve(response)
+				return
+			} catch (error) {
+				reject(error)
+				return
+			}
 		}
 	})
