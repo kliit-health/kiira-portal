@@ -6,10 +6,7 @@
   &__container {
     display: flex;
     flex: 1;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid $base-gray;
-    margin: 0 20px;
+    border-top: 1px solid lighten($base-gray, 35%);
 
     &--first {
       border: none

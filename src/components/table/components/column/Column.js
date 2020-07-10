@@ -1,10 +1,9 @@
 import { cloneElement } from 'react'
 import classnames from 'classnames'
-import { Typography } from 'components'
 import './styles.scss'
 
 export const Column = props => {
-	const { flex, children, classes = {}, ...rest } = props
+	const { children, style, classes = {}, ...rest } = props
 
 	const styles = {
 		column: classnames('table-column', classes.root),
@@ -12,8 +11,10 @@ export const Column = props => {
 	}
 
 	return (
-		<div className={styles.column} style={{ flex }}>
-			{children(rest)}
+		<div className={styles.column} style={style}>
+			{children && cloneElement(children, rest)}
 		</div>
 	)
 }
+
+Column.displayName = 'Column'

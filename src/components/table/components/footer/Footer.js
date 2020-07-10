@@ -9,3 +9,5 @@ export const Footer = props => {
 	}
 	return <div className={styles.footer}></div>
 }
+
+Footer.displayName = 'Footer'
