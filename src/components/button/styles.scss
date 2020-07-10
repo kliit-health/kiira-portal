@@ -1,0 +1,51 @@
+@import 'styles/variables';
+
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: $base-blue;
+  transition: opacity 0.2s ease-in-out;
+  outline: none;
+  font-family: Roboto;
+  border-radius: 4px;
+  padding: 10px;
+  border: 0;
+
+  &:hover {
+    opacity: 0.5
+  }
+
+  &__container {
+    color: white;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: Roboto;
+  }
+
+  &--outlined {
+    border: 1px solid $base-blue;
+    background-color: transparent;
+
+    .button__container {
+      color: $base-blue;
+    }
+  }
+
+  &--link {
+    padding: 0;
+    background-color: transparent;
+
+    .button__container {
+      color: $base-blue;
+    }
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
