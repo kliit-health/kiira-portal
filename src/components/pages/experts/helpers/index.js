@@ -1,4 +1,4 @@
-import { intl } from 'i18n'
+import { intl } from 'src/i18n'
 
 export const formatHours = (day, startTime, endTime) =>
 	startTime

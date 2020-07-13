@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
 import { CSVLink } from 'react-csv'
-import { Typography } from 'components'
+import { Typography } from 'src/components'
 import { UploaderContext } from '../../Uploader'
-import { parseToCsv } from 'helpers/functions'
+import { parseToCsv } from 'src/helpers/functions'
 import { formatData } from './helpers'
+import { intl } from 'src/i18n'
 import './styles.scss'
 
 export const ReportScreen = () => {
@@ -13,8 +14,7 @@ export const ReportScreen = () => {
 
 	const styles = {
 		root: 'report-screen',
-		image: 'report-screen__image',
-		link: 'report-screen__link'
+		image: 'report-screen__image'
 	}
 
 	return (
@@ -27,16 +27,12 @@ export const ReportScreen = () => {
 }
 
 const CreatedUsers = ({ count }) => {
-	const styles = {
-		link: 'report-screen__link'
-	}
-
 	return (
 		<div>
 			{count === 1 ? (
-				<Typography>{`One invitation was successfully sent.`}</Typography>
+				<Typography>{intl.sentOneInvitation.description}</Typography>
 			) : (
-				<Typography>{`${count} invitations were successfully sent.`}</Typography>
+				<Typography>{`${count} ${intl.invitationsSent.description}`}</Typography>
 			)}
 		</div>
 	)
@@ -58,17 +54,17 @@ const RejectedUsers = ({ failed }) => {
 
 	return (
 		<div className={styles.description}>
-			<Typography>{`Unable to send ${failed.length} invitations. `}</Typography>
+			<Typography>{`${intl.unableToSend.description} ${failed.length} ${intl.invitations.description}. `}</Typography>
 			{report && (
 				<CSVLink
 					className={styles.link}
 					filename={'kiira-invitations-report'}
 					data={report}
 				>
-					Download
+					{intl.download.description}
 				</CSVLink>
 			)}
-			<Typography> the full report to find out more.</Typography>
+			<Typography>{intl.fullReport.description}</Typography>
 		</div>
 	)
 }

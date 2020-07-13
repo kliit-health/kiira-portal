@@ -1,6 +1,6 @@
 import { auth, firestore, functions } from './initializer'
 import { ERRORS, PERSISTANCE } from './constants'
-import { FIREBASE_ERRORS } from 'errors'
+import { FIREBASE_ERRORS } from 'src/errors'
 
 export const getErrorDescription = errorCode => {
 	return FIREBASE_ERRORS[errorCode]

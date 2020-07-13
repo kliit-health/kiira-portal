@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { Container, Typography } from 'components'
+import { Container, Typography } from 'src/components'
 import './styles.scss'
 
 export const Page = props => {

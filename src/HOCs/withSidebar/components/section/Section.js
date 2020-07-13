@@ -1,6 +1,6 @@
 import { useState, cloneElement } from 'react'
 import { Collapse } from 'react-collapse'
-import { Typography } from 'components'
+import { Typography } from 'src/components'
 import classnames from 'classnames'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import './styles.scss'

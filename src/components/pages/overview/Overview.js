@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { Page } from 'components'
+import { Page } from 'src/components'
 import { List, Profile } from '../experts/sections'
 import './styles.scss'
 

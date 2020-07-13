@@ -1,5 +1,5 @@
 import Papa from 'papaparse'
-import { PARSE_CSV_ERRORS } from 'errors'
+import { PARSE_CSV_ERRORS } from 'src/errors'
 import { renameObjectKeys } from './renameObjectKeys'
 const { MISSING_FILE, BAD_FILE } = PARSE_CSV_ERRORS
 

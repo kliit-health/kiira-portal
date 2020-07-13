@@ -1,6 +1,6 @@
-import { useFirebaseFetch } from 'hooks'
-import { Card, Typography } from 'components'
-import { calculateRating } from 'helpers/functions'
+import { useFirebaseFetch } from 'src/hooks'
+import { Card, Typography } from 'src/components'
+import { calculateRating } from 'src/helpers/functions'
 import './styles.scss'
 
 const { Header, Rating } = Card

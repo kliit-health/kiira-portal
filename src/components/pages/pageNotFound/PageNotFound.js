@@ -1,4 +1,4 @@
-import { Container, Typography } from 'components'
+import { Container, Typography } from 'src/components'
 
 export const PageNotFound = () => (
 	<Container>

@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
-import { Dropzone as ReactDropzone, Typography } from 'components'
+import { Dropzone as ReactDropzone, Typography } from 'src/components'
 import { UploaderContext } from '../../Uploader'
-import { parseToCsv } from 'helpers/functions'
+import { intl } from 'src/i18n'
+import { parseToCsv } from 'src/helpers/functions'
 import { CSVLink } from 'react-csv'
 import './styles.scss'
 
@@ -41,11 +42,12 @@ const Sample = () => {
 						filename={'kiira-invitations-list'}
 						data={file}
 					>
-						{`Download `}
+						{intl.download.description}
 					</CSVLink>
 				)}
-				the sample <Typography bold>.CSV</Typography> file and list everyone you
-				would like to invite.
+				{intl.theSample.description}
+				<Typography bold>{intl.dotCsv.description}</Typography>
+				{intl.listEveryone.description}
 			</Typography>
 		</div>
 	)
@@ -62,7 +64,7 @@ const Example = () => {
 		<div className={styles.sample}>
 			<img className={styles.image} alt="" src="/assets/example.svg" />
 			<Typography classes={styles.description}>
-				It is important that the format matches this example.
+				{intl.matchExample.description}
 			</Typography>
 		</div>
 	)
@@ -83,8 +85,10 @@ const Dropzone = () => {
 			<div className={styles.root}>
 				<img className={styles.image} alt="" src="/assets/inbox.svg" />
 				<Typography classes={styles.description}>
-					<Typography bold>Drag and Drop</Typography> the file here or{' '}
-					<Typography bold>click</Typography> to select.
+					<Typography bold>{intl.dragAndDrop.description}</Typography>
+					{intl.fileHere.description}
+					<Typography bold>{intl.click.description}</Typography>
+					{intl.toSelect.description}
 				</Typography>
 			</div>
 		</ReactDropzone>

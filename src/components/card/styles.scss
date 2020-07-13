@@ -1,4 +1,6 @@
-@import 'styles/variables';
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
 
 .card {
   display: flex;
@@ -6,4 +8,5 @@
   border-radius: 10px;
   padding: 20px;
   background-color: $base-white;
+  @include pointer-on-hover;
 }

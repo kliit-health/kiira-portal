@@ -1,5 +1,5 @@
 import Papa from 'papaparse'
-import { PARSE_CSV_ERRORS } from 'errors'
+import { PARSE_CSV_ERRORS } from 'src/errors'
 const { MISSING_FILE } = PARSE_CSV_ERRORS
 
 export const parseToCsv = data =>

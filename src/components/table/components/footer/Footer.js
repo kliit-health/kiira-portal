@@ -1,5 +1,4 @@
 import classnames from 'classnames'
-import { Typography } from 'components'
 import './styles.scss'
 
 export const Footer = props => {

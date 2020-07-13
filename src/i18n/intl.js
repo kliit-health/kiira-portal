@@ -59,5 +59,73 @@ export const intl = {
 	tryAgain: {
 		id: 'tryAgain',
 		description: 'Try Again'
+	},
+	onBoard: { id: 'onBoard', description: 'Get everyone onboard.' },
+	invitations: { id: 'invitations', description: 'Invitations' },
+	addUsers: { id: 'addUsers', description: 'Add Users' },
+	pending: { id: 'pending', description: 'Pending' },
+	confirmed: { id: 'confirmed', description: 'Confirmed' },
+	badFile: {
+		id: 'badFile',
+		description:
+			'Please verify the file format and layout. We recommend that you download and use the sample file to prevent issues.'
+	},
+	matchExample: {
+		id: 'matchExample',
+		description: 'It is important that the format matches this example.'
+	},
+	dragAndDrop: {
+		id: 'dragAndDrop',
+		description: 'Drag and Drop'
+	},
+	fileHere: {
+		id: 'fileHere',
+		description: ' the file here or '
+	},
+	click: {
+		id: 'click',
+		description: 'click'
+	},
+	toSelect: {
+		id: 'toSelect',
+		description: ' to select.'
+	},
+	download: {
+		id: 'download',
+		description: 'Download'
+	},
+	theSample: {
+		id: 'theSample',
+		description: ' the sample '
+	},
+	dotCsv: { id: 'dotCsv', decription: '.CSV' },
+	listEveryone: {
+		id: 'listEveryone',
+		description: ' file and list everyone you would like to invite.'
+	},
+	sentOneInvitation: {
+		id: 'sentOneInvitation',
+		description: 'One invitation was successfully sent.'
+	},
+	invitationsSent: {
+		id: 'invitationsSent',
+		description: 'invitations were successfully sent.'
+	},
+	invitations: {
+		id: 'invitations',
+		description: 'invitations'
+	},
+	unableToSend: {
+		id: 'unableToSend',
+		description: 'Unable to sent'
+	},
+	fullReport: {
+		id: 'fullReport',
+		description: ' the full report to find out more.'
+	},
+	technicalProblem: {
+		id: 'technicalProblem',
+		description:
+			'A technical problem occurred. Please try again and if the problem persists contact out support team.'
 	}
 }

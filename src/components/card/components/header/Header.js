@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Avatar, Divider } from 'components'
+import { Typography, Avatar, Divider } from 'src/components'
 import classnames from 'classnames'
 import './styles.scss'
 

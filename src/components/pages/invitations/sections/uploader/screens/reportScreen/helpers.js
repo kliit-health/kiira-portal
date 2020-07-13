@@ -1,4 +1,4 @@
-import { renameObjectKeys } from 'helpers/functions'
+import { renameObjectKeys } from 'src/helpers/functions'
 
 export const formatData = data => {
 	const rejected = data.map(({ user: { displayName, email }, error }) => {

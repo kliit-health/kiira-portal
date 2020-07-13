@@ -1,4 +1,4 @@
-import { Divider } from 'components'
+import { Divider } from 'src/components'
 import classnames from 'classnames'
 import './styles.scss'
 

@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
-import { Page } from 'components'
+import { Page } from 'src/components'
 import { List, Profile } from './sections'
-import { intl } from 'i18n'
+import { intl } from 'src/i18n'
 import './styles.scss'
 
 export const Experts = () => {

@@ -1,3 +1,3 @@
-import { Invitations } from 'components/pages'
+import { Invitations } from 'src/components/pages'
 
 export default props => <Invitations {...props} />

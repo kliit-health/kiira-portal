@@ -5,7 +5,7 @@ import {
 	withLogoutButton,
 	withSidebar,
 	withLoadingIndicator
-} from 'HOCs'
+} from 'src/HOCs'
 
 const LayoutFoundation = ({ children, ...rest }) => {
 	return cloneElement(children, { ...rest })

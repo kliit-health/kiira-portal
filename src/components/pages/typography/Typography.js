@@ -1,4 +1,4 @@
-import { Page, Typography } from 'components'
+import { Page, Typography } from 'src/components'
 import './styles.scss'
 
 export default () => {

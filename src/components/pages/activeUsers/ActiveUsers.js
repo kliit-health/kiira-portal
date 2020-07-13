@@ -1,4 +1,4 @@
-import { Container } from 'components'
+import { Container } from 'src/components'
 
 export const ActiveUsers = () => {
 	return <Container />

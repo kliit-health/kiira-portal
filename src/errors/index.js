@@ -1,4 +1,4 @@
-import { intl } from 'i18n'
+import { intl } from 'src/i18n'
 import { ERRORS } from '../firebase/constants'
 
 export const PARSE_CSV_ERRORS = {

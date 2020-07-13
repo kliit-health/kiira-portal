@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { compose } from 'recompose'
-import { withLoadingIndicator, withRedirect } from 'HOCs'
+import { withLoadingIndicator, withRedirect } from 'src/HOCs'
 import { Button, TextField, FormHelperText } from '@material-ui/core'
-import { signIn } from '../../../firebase'
-import { FIREBASE_ERRORS } from 'errors'
-import { intl } from 'i18n'
+import { signIn } from 'src/firebase'
+import { FIREBASE_ERRORS } from 'src/errors'
+import { intl } from 'src/i18n'
 import './styles.scss'
 
 const Login = ({ authError }) => {

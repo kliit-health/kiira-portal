@@ -1,6 +1,6 @@
-import { Typography, Divider, Popover, CancelButton } from 'components'
+import { Typography, Divider, Popover, CancelButton } from 'src/components'
 import { Header, Section } from '../../components'
-import { intl } from 'i18n'
+import { intl } from 'src/i18n'
 import { formatAddress, formatHours } from '../../helpers'
 import './styles.scss'
 

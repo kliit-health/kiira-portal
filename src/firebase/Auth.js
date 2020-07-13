@@ -50,6 +50,7 @@ export const Auth = ({ children, ...rest }) => {
 			return () => unsubscriber()
 		})
 	}, [])
+
 	return cloneElement(children, {
 		authDetails: details,
 		authLoading: loading,

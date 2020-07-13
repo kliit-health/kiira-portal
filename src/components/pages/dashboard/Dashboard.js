@@ -1,5 +1,5 @@
 import { compose } from 'recompose'
-import { withLoadingIndicator, withRedirect } from 'HOCs'
+import { withLoadingIndicator, withRedirect } from 'src/HOCs'
 
 const Dashboard = () => {
 	return <div />

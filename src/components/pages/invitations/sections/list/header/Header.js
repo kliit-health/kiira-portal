@@ -1,17 +1,19 @@
-import { Typography, Button } from 'components'
-import { PlusIcon } from 'components/icons'
-import model from '../../model'
+import { PlusIcon } from 'src/components/icons'
+import { Typography, Button } from 'src/components'
+import { intl } from 'src/i18n'
+import { HEADER } from 'src/helpers/constants'
+import model from '../model'
 import './styles.scss'
 
 export const Header = ({ onAddUsersClick, elementRef }) => {
 	const styles = {
-		header: 'invitatios-table-header',
-		item: 'invitatios-table-header__item',
-		title: { root: 'invitatios-table-header__title' },
-		controls: 'invitatios-table-header__controls',
-		container: 'invitatios-table-header__container',
-		button: { root: 'invitatios-table-header__button' },
-		icon: { root: 'invitatios-table-header__icon' }
+		header: 'invitations-table-header',
+		item: 'invitations-table-header__item',
+		title: { root: 'invitations-table-header__title' },
+		controls: 'invitations-table-header__controls',
+		container: 'invitations-table-header__container',
+		button: { root: 'invitations-table-header__button' },
+		icon: { root: 'invitations-table-header__icon' }
 	}
 
 	return (
@@ -24,7 +26,7 @@ export const Header = ({ onAddUsersClick, elementRef }) => {
 					link
 				>
 					<PlusIcon classes={styles.icon} />
-					Add Users
+					{intl.addUsers.description}
 				</Button>
 			</div>
 			<div className={styles.container}>
@@ -37,3 +39,5 @@ export const Header = ({ onAddUsersClick, elementRef }) => {
 		</div>
 	)
 }
+
+Header.displayName = HEADER

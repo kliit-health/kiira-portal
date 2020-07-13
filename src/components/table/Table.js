@@ -1,7 +1,7 @@
 import classnames from 'classnames'
-import { VirtualizedList } from 'components'
+import { VirtualizedList } from 'src/components'
 import { Header, Row, Column, Footer } from './components'
-import { cloneChild } from 'helpers/functions'
+import { cloneChild } from 'src/helpers/functions'
 import './styles.scss'
 
 /**
