@@ -1,5 +1,5 @@
 import { useFirebaseFetch } from 'src/hooks'
-import { Card, Typography } from 'src/components'
+import { Card, Typography, CircularProgress } from 'src/components'
 import { calculateRating } from 'src/helpers/functions'
 import './styles.scss'
 
@@ -12,11 +12,11 @@ export const List = ({ onClick, limit = 100 }) => {
 
 	return (
 		<div className={styles.list}>
-			{data &&
+			{data ? (
 				data.map(item => {
 					const { uid, rating, profileInfo, isOnline } = item
 					return (
-						<Card key={uid} onClick={() => onClick(item)}>
+						<Card gradient key={uid} onClick={() => onClick(item)}>
 							<Header
 								divider
 								avatarUrl={profileInfo.profileImageUrl}
@@ -29,7 +29,10 @@ export const List = ({ onClick, limit = 100 }) => {
 							<Typography>{profileInfo.bio}</Typography>
 						</Card>
 					)
-				})}
+				})
+			) : (
+				<CircularProgress />
+			)}
 		</div>
 	)
 }
