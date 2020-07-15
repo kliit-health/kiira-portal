@@ -1,4 +1,11 @@
+@import 'src/styles/variables';
+
 .page {
+
+  &__title {
+    color: $base-blue;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
