@@ -1,0 +1,24 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.expert-profile {
+  @include hide-scrollbar;
+  padding: 50px;
+  overflow-y: scroll;
+
+  &__divider {
+    margin: 0;
+    opacity: 0.7;
+  }
+
+  &__hours-section {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  &__typography {
+    line-height: 2em;
+  }
+}

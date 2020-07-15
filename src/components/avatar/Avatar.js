@@ -1,4 +1,4 @@
-import { Typography } from 'components'
+import { Typography } from 'src/components'
 import classnames from 'classnames'
 import './styles.scss'
 

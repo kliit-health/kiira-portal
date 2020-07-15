@@ -1,5 +1,5 @@
 import { Avatar } from '@material-ui/core'
-import { Typography } from 'components'
+import { Typography } from 'src/components'
 import './styles.scss'
 
 export const ProfileCard = ({ firstName, lastName, email }) => {

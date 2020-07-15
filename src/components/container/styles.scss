@@ -1,4 +1,4 @@
-@import "styles/variables";
+@import "src/styles/variables";
 
 .container {
   display: flex;
@@ -11,8 +11,7 @@
     display: flex;
     flex: 1;
     max-width: 1280px;
-    padding: 60px;
+    padding: 50px;
     display: flex;
-    justify-content: center;
   }
 }

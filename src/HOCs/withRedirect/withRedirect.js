@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { isClient } from 'helpers/functions'
+import { isClient } from 'src/helpers/functions'
 
 const isBrowser = isClient()
 

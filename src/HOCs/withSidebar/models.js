@@ -1,6 +1,6 @@
 import BarChartIcon from '@material-ui/icons/BarChart'
 import DraftsIcon from '@material-ui/icons/Drafts'
-import { intl } from 'i18n'
+import { intl } from 'src/i18n'
 
 export const sections = [
 	{

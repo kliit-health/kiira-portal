@@ -1,0 +1,9 @@
+@import 'src/styles/variables';
+
+.table-footer {
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  background-color: white;
+  box-shadow: 0px 0px 4px 1px $base-gray;
+}

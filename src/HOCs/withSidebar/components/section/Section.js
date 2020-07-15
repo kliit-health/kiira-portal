@@ -1,6 +1,6 @@
 import { useState, cloneElement } from 'react'
 import { Collapse } from 'react-collapse'
-import { Typography } from 'components'
+import { Typography } from 'src/components'
 import classnames from 'classnames'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import './styles.scss'
@@ -73,7 +73,7 @@ export const SectionItem = ({ title, onClick, isOpened }) => {
 	}
 	return (
 		<div className={styles.item} onClick={onClick}>
-			<Typography h7 white className={styles.title}>
+			<Typography white className={styles.title}>
 				{title}
 			</Typography>
 		</div>

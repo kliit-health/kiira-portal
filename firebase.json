@@ -28,7 +28,18 @@
 			"pages/**",
 			"public/**",
 			"firestore.rules",
-			"readme.md"
+			"readme.md",
+			"src/components/**",
+			"src/config/**",
+			"src/constants/**",
+			"src/firebase/**",
+			"src/helpers/**",
+			"src/HOCs/**",
+			"src/i18n/**",
+			"src/pages/**",
+			"src/redux/**",
+			"src/styles/**",
+			"src/theme/**"
 		]
 	},
 	"hosting": [

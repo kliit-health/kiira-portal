@@ -1,0 +1,25 @@
+@import 'src/styles/variables';
+
+.invitations-list {
+
+  &__list {
+    border-radius: 0 0 6px 6px;
+    background-color: white;
+  }
+
+  &__column {
+    flex: 1;
+    background-color: red;
+    overflow: hidden;
+
+    &--large {
+      flex: 2;
+      overflow: hidden;
+      background-color: blue;
+    }
+  }
+
+  &__paper {
+    flex: 1;
+  }
+}

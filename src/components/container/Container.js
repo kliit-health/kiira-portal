@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import './styles.scss'
 
-export const Container = ({ children, classes = {} }) => {
+export const Container = ({ children, classes = {}, elementRef }) => {
 	const styles = {
 		container: classnames('container', classes.root),
 		constraints: classnames('container__constrains', classes.constraints)
@@ -9,7 +9,9 @@ export const Container = ({ children, classes = {} }) => {
 
 	return (
 		<div className={styles.container}>
-			<div className={styles.constraints}>{children}</div>
+			<div ref={elementRef} className={styles.constraints}>
+				{children}
+			</div>
 		</div>
 	)
 }

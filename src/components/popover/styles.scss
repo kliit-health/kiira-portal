@@ -1,12 +1,8 @@
-@import 'styles/mixins';
+@import 'src/styles/mixins';
 
 .popover {
-
-  &__paper {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    max-width: 700px;
-    max-height: 80vh;
-  }
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  max-height: 80vh;
 }
