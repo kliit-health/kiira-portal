@@ -1,0 +1,9 @@
+.active-users-list {
+  display: flex;
+  flex: 1;
+
+  &__list {
+    border-radius: 0 0 6px 6px;
+    background-color: white;
+  }
+}
