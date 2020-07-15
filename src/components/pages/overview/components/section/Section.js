@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { Typography } from 'components'
+import { Typography } from 'src/components'
 import './styles.scss'
 
 export const Section = ({ title, description, children, classes = {} }) => {
