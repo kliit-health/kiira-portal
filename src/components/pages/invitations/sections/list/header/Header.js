@@ -30,8 +30,8 @@ export const Header = ({ onAddUsersClick, elementRef }) => {
 				</Button>
 			</div>
 			<div className={styles.container}>
-				{model.map(({ dataKey, label, flex }) => (
-					<div className={styles.item} key={dataKey} style={{ flex }}>
+				{model.map(({ dataKey, label, style }) => (
+					<div className={styles.item} key={dataKey} style={style}>
 						<Typography classes={styles.title}>{label}</Typography>
 					</div>
 				))}

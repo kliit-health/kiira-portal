@@ -29,7 +29,10 @@ export const intl = {
 	overview: { id: 'overview', description: 'Overview' },
 	experts: { id: 'experts', description: 'Experts' },
 	topics: { id: 'topics', description: 'Topics' },
-	invitations: { id: 'invitations', description: 'Invitations' },
+	invitationsTitle: {
+		id: 'invitationsTitle',
+		description: 'Invitations'
+	},
 	userProfileNotFound: {
 		id: 'userProfileNotFound',
 		description: 'User profile not found.'
@@ -127,5 +130,7 @@ export const intl = {
 		id: 'technicalProblem',
 		description:
 			'A technical problem occurred. Please try again and if the problem persists contact out support team.'
-	}
+	},
+	activeUsers: { id: 'activeUsers', description: 'Active Users' },
+	easyManaging: { id: 'easyManaging', description: 'Easy access managing.' }
 }

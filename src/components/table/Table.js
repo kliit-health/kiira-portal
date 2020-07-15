@@ -1,6 +1,14 @@
 import classnames from 'classnames'
-import { VirtualizedList } from 'src/components'
-import { Header, Row, Column, Footer } from './components'
+import { VirtualizedList, CircularProgress } from 'src/components'
+import {
+	Header,
+	Row,
+	Column,
+	Footer,
+	DateCell,
+	TextCell,
+	AvatarCell
+} from './components'
 import { cloneChild } from 'src/helpers/functions'
 import './styles.scss'
 
@@ -30,17 +38,21 @@ export const Table = ({
 		<div className={styles.table}>
 			{cloneChild(children, 'Header')}
 			<div className={styles.list}>
-				<VirtualizedList
-					itemData={data}
-					itemCount={data.length}
-					itemSize={rowHeight}
-				>
-					{({ style, index, data }) => (
-						<Row classes={styles.row} key={index} style={style} index={index}>
-							{cloneChild(children, 'Column', { data: data[index] })}
-						</Row>
-					)}
-				</VirtualizedList>
+				{data.length > 0 ? (
+					<VirtualizedList
+						itemData={data}
+						itemCount={data.length}
+						itemSize={rowHeight}
+					>
+						{({ style, index, data }) => (
+							<Row classes={styles.row} key={index} style={style} index={index}>
+								{cloneChild(children, 'Column', { data: data[index] })}
+							</Row>
+						)}
+					</VirtualizedList>
+				) : (
+					<CircularProgress />
+				)}
 			</div>
 			{cloneChild(children, 'Footer')}
 		</div>
@@ -50,3 +62,6 @@ export const Table = ({
 Table.Header = Header
 Table.Footer = Footer
 Table.Column = Column
+Table.DateCell = DateCell
+Table.TextCell = TextCell
+Table.AvatarCell = AvatarCell

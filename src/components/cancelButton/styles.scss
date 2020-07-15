@@ -11,6 +11,8 @@
   right: 10px;
   top: 10px;
 
+  @include pointer-on-hover;
+
   &__image {
     @include user-select-none;
     background-color: white;

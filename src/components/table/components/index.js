@@ -1,4 +1,5 @@
 export { Header } from './header'
 export { Row } from './row'
+export { DateCell, TextCell, AvatarCell } from './cells'
 export { Column } from './column'
 export { Footer } from './footer'

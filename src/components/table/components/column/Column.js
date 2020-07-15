@@ -1,4 +1,3 @@
-import { cloneElement } from 'react'
 import classnames from 'classnames'
 import './styles.scss'
 
@@ -12,7 +11,7 @@ export const Column = props => {
 
 	return (
 		<div className={styles.column} style={style}>
-			{children && cloneElement(children, rest)}
+			{children && children(rest)}
 		</div>
 	)
 }

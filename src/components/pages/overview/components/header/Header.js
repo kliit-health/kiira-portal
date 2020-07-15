@@ -1,5 +1,5 @@
 import { Rating } from '@material-ui/lab'
-import { Avatar, Typography } from 'components'
+import { Avatar, Typography } from 'src/components'
 import { calculateRating } from 'helpers/functions'
 import './styles.scss'
 

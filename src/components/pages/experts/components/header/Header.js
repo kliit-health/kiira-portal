@@ -17,14 +17,17 @@ export const Header = ({
 		header: 'experts-profile-header',
 		avatar: { root: 'experts-profile-header__avatar' },
 		details: 'experts-profile-header__details',
-		rating: { root: 'experts-profile-header__rating' }
+		rating: { root: 'experts-profile-header__rating' },
+		title: { root: 'experts-profile-header__title' }
 	}
 
 	return (
 		<div className={styles.header}>
-			<Avatar status={isOnline} large url={avatarUrl} classes={styles.avatar} />
+			<Avatar status={isOnline} url={avatarUrl} classes={styles.avatar} large />
 			<div className={styles.details}>
-				<Typography h5>{fullName}</Typography>
+				<Typography classes={styles.title} h5>
+					{fullName}
+				</Typography>
 				<Typography charcoal light h6>
 					{profession}
 				</Typography>

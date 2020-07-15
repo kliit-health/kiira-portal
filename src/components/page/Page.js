@@ -12,7 +12,8 @@ export const Page = props => {
 		},
 		content: classnames('page__content', classes.content),
 		header: classnames('page__header', classes.header),
-		title: classnames('page__title', classes.title)
+		title: { root: classnames('page__title', classes.title) },
+		subtitle: { root: classnames('page__subtitle', classes.subtitle) }
 	}
 
 	return (
@@ -20,10 +21,10 @@ export const Page = props => {
 			<div className={styles.content}>
 				{title && (
 					<div className={styles.header}>
-						<Typography h4 bold blue className={styles.title}>
+						<Typography h4 bold classes={styles.title}>
 							{title}
 						</Typography>
-						<Typography h7 charcoal className={styles.title}>
+						<Typography h7 charcoal classes={styles.subtitle}>
 							{subtitle}
 						</Typography>
 					</div>
