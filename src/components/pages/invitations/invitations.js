@@ -12,7 +12,7 @@ export const Invitations = ({ authDetails }) => {
 	return (
 		<Page
 			classes={styles.page}
-			title={intl.invitations.description}
+			title={intl.invitationsTitle.description}
 			subtitle={intl.onBoard.description}
 		>
 			<List organizationId={organizationId} />

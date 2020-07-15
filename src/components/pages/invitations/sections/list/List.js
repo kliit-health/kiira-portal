@@ -1,24 +1,19 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { switchCase } from 'src/helpers/functions'
 import { useFirebaseFetch } from 'src/hooks'
 import { Table, Paper, Popover } from 'src/components'
 import { Uploader } from '../uploader'
-import {
-	CREATED_AT,
-	EMAIL,
-	DISPLAY_NAME,
-	SIGNED_UP_DATE
-} from 'src/helpers/constants'
-import { NameCell, EmailCell, CreatedAtCell, SignedUpCell } from './cells'
+import { DATE, TEXT } from 'src/helpers/constants'
 import model from './model'
 import { Header } from './header'
 import './styles.scss'
 
-const { Column } = Table
+const { Column, DateCell, TextCell } = Table
 
 export const List = ({ organizationId }) => {
 	const popRef = useRef(null)
 	const [anchorEl, setAnchorEl] = useState(null)
+	const [formatedData, setFormatedData] = useState([])
 
 	const queryConditions = [
 		{ key: 'organizationId', operator: '==', value: organizationId },
@@ -26,6 +21,20 @@ export const List = ({ organizationId }) => {
 	]
 
 	const { data } = useFirebaseFetch('users', queryConditions)
+
+	useEffect(() => {
+		if (data) {
+			setFormatedData(
+				data.map(item => {
+					const { firstLogin, ...rest } = item
+					return {
+						signUp: firstLogin ? 'Pending' : 'Confirmed',
+						...rest
+					}
+				})
+			)
+		}
+	}, [data])
 
 	const handleAddUser = () => {
 		setAnchorEl(popRef.current)
@@ -49,28 +58,29 @@ export const List = ({ organizationId }) => {
 	}
 
 	const styles = {
-		paper: { root: 'invitations-list__paper' },
+		root: 'invitations-list',
 		table: { list: 'invitations-list__list' }
 	}
 
 	return (
-		<Paper classes={styles.paper}>
-			<Table classes={styles.table} data={data || []}>
+		<div className={styles.root}>
+			<Table classes={styles.table} data={formatedData}>
 				<Header elementRef={popRef} onAddUsersClick={handleAddUser} />
-				{model.map(({ dataKey, flex }, index) => (
-					<Column style={{ flex }} key={`${index}-${dataKey}`}>
-						{switchCase({
-							[DISPLAY_NAME]: <NameCell />,
-							[EMAIL]: <EmailCell />,
-							[CREATED_AT]: <CreatedAtCell />,
-							[SIGNED_UP_DATE]: <SignedUpCell />
-						})(undefined)(dataKey)}
+				{model.map(({ dataKey, style, type }, index) => (
+					<Column style={style} key={`${index}-${dataKey}`}>
+						{({ data }) => {
+							const props = { data, dataKey }
+							return switchCase({
+								[TEXT]: <TextCell {...props} />,
+								[DATE]: <DateCell calendar {...props} />
+							})(undefined)(type)
+						}}
 					</Column>
 				))}
 			</Table>
 			<Popover {...popoverProps}>
 				<Uploader onCancel={handleClose} organizationId={organizationId} />
 			</Popover>
-		</Paper>
+		</div>
 	)
 }

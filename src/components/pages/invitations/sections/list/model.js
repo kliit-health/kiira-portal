@@ -1,22 +1,28 @@
+import { DATE, TEXT } from 'src/helpers/constants'
+
 export default [
 	{
-		flex: 4,
+		style: { minWidth: 180, flex: 8 },
 		label: 'Name',
-		dataKey: 'displayName'
+		dataKey: 'displayName',
+		type: TEXT
 	},
 	{
-		flex: 5,
+		style: { minWidth: 180, flex: 10 },
 		label: 'Email',
-		dataKey: 'email'
+		dataKey: 'email',
+		type: TEXT
 	},
 	{
-		flex: 4,
+		style: { minWidth: 170, flex: 7 },
 		label: 'Date of Invite',
-		dataKey: 'createdAt'
+		dataKey: 'createdAt',
+		type: DATE
 	},
 	{
-		flex: 2,
+		style: { minWidth: 65, flex: 2 },
 		label: 'Sign Up',
-		dataKey: 'signedUpDate'
+		dataKey: 'signUp',
+		type: TEXT
 	}
 ]
