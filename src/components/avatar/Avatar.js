@@ -4,7 +4,7 @@ import './styles.scss'
 
 export const Avatar = ({
 	classes = {},
-	url = '/assets/avatar.png',
+	url = '/assets/avatar.svg',
 	small,
 	large,
 	status
@@ -14,8 +14,12 @@ export const Avatar = ({
 		'avatar--large': large
 	}
 
+	const modifiers = {
+		'avatar--border': url === '/assets/avatar.svg'
+	}
+
 	const styles = {
-		avatar: classnames('avatar', classes.root, { ...sizes }),
+		avatar: classnames('avatar', classes.root, { ...sizes, ...modifiers }),
 		image: classnames('avatar__image', classes.image),
 		label: classnames('avatar__label', classes.label),
 		font: { root: classnames('avatar__label-text', classes.labelText) }
