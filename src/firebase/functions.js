@@ -21,6 +21,19 @@ export const signIn = (email, password) =>
 
 export const signOut = () => auth.signOut()
 
+export const forgotPassword = email =>
+	new Promise((resolve, reject) =>
+		auth
+			.setPersistence(PERSISTANCE.SESSION)
+			.then(() =>
+				auth
+					.sendPasswordResetEmail(email)
+					.then(response => resolve(response))
+					.catch(error => reject(error))
+			)
+			.catch(error => reject(error))
+	)
+
 export const getUserDetails = (uid, collectionName = 'users') =>
 	new Promise((resolve, reject) => {
 		const collection = firestore.collection(collectionName)

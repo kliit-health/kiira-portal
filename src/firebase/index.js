@@ -3,6 +3,7 @@ export {
 	getUserDetails,
 	signIn,
 	signOut,
+	forgotPassword,
 	firebaseSimpleFetch,
 	createUsers
 } from './functions'
