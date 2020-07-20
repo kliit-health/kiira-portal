@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { compose } from 'recompose'
 import { withLoadingIndicator, withRedirect } from 'src/HOCs'
-import { Button, TextField, FormHelperText } from '@material-ui/core'
+import { TextField, FormHelperText } from '@material-ui/core'
+import { Button } from 'src/components'
 import { Alert } from '@material-ui/lab'
 import { signIn, forgotPassword } from 'src/firebase'
 import { FIREBASE_ERRORS } from 'src/errors'
@@ -22,7 +23,7 @@ const Login = ({ authError }) => {
 		card: 'login-page__card',
 		onboarding: 'login-page__onboarding',
 		auth: 'login-page__auth',
-		forgotPassword: 'login-page__forgotPassword'
+		button: { root: 'login-page__link-button' }
 	}
 
 	useEffect(() => {
@@ -78,10 +79,11 @@ const Login = ({ authError }) => {
 
 	const renderForgotPasswordButton = () => (
 		<Button
-			className={styles.forgotPassword}
+			classes={styles.button}
 			variant="outlined"
 			color="primary"
 			onClick={handleForgotPassword}
+			link
 		>
 			{intl.forgotPassword.description}
 		</Button>
