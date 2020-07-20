@@ -8,7 +8,7 @@ export const CancelButton = ({ onCancel, classes = {} }) => {
 	}
 	return (
 		<div className={styles.button} onClick={onCancel}>
-			<img className={styles.image} src="/assets/cancel.png" />
+			<img className={styles.image} src="/assets/cancel.svg" />
 		</div>
 	)
 }

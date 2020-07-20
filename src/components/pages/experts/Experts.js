@@ -25,8 +25,8 @@ export const Experts = () => {
 	return (
 		<Page
 			elementRef={popRef}
-			title={intl.ourExperts.description}
-			subtitle={intl.weCare.description}
+			title={intl.kiiraCareTeam.description}
+			subtitle={intl.kiiraExpertsCheckOut.description}
 			classes={styles.page}
 		>
 			<List onClick={handleClick} />

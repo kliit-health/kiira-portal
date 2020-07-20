@@ -13,7 +13,7 @@ export const ActiveUsers = ({ authDetails }) => {
 		<Page
 			classes={styles.page}
 			title={intl.activeUsers.description}
-			subtitle={intl.easyManaging.description}
+			subtitle={intl.activatedKiira.description}
 		>
 			<List organizationId={organizationId} />
 		</Page>

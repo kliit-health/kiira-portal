@@ -1,7 +1,10 @@
 // TODO: add i18n library e.g. react-intl
 export const intl = {
 	login: { id: 'login', description: 'Log In' },
-	forgotPassword: { id: 'forgotPassword', description: 'Forgot Password' },
+	forgotPassword: {
+		id: 'forgotPassword',
+		description: 'Forgot Password'
+	},
 	email: { id: 'email', description: 'Email' },
 	password: { id: 'password', description: 'Password' },
 	welcome: { id: 'welcome', description: 'Welcome to Kiira Portal' },
@@ -133,5 +136,20 @@ export const intl = {
 			'A technical problem occurred. Please try again and if the problem persists contact out support team.'
 	},
 	activeUsers: { id: 'activeUsers', description: 'Active Users' },
-	easyManaging: { id: 'easyManaging', description: 'Easy access managing.' }
+	easyManaging: {
+		id: 'easyManaging',
+		description: 'Easy access managing.'
+	},
+	kiiraCareTeam: {
+		id: 'kiiraCareTeam',
+		description: 'Kiira Care Team'
+	},
+	kiiraExpertsCheckOut: {
+		id: 'kiiraExpertsCheckOut',
+		description: 'Check out the experts on your care team.'
+	},
+	activatedKiira: {
+		id: 'activatedKiira',
+		description: 'Find out who has activated Kiira'
+	}
 }
