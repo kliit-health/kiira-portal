@@ -1,0 +1,22 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.text-field {
+  display: flex;
+  flex-direction: column;
+
+  &__input {
+    border-radius: 6px;
+    outline: none;
+    padding: 10px;
+    box-shadow: 0;
+    border: 0;
+    font-family: Roboto;
+    font-size: .9em;
+    outline: none;
+  }
+
+  &__label {
+    font-family: Roboto;
+  }
+}

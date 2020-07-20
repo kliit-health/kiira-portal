@@ -132,5 +132,39 @@ export const intl = {
 			'A technical problem occurred. Please try again and if the problem persists contact out support team.'
 	},
 	activeUsers: { id: 'activeUsers', description: 'Active Users' },
-	easyManaging: { id: 'easyManaging', description: 'Easy access managing.' }
+	easyManaging: {
+		id: 'easyManaging',
+		description: 'Easy access managing.'
+	},
+	password: { id: 'password', description: 'Password' },
+	confirmPassword: {
+		id: 'confirmPassword',
+		description: 'Confirm Password'
+	},
+	submit: { id: 'submit', description: 'Submit' },
+	userProfileNotFound: {
+		id: 'userProfileNotFound',
+		description: 'User profile not found.'
+	},
+	expiredActionCode: {
+		id: 'expiredActionCode',
+		description: 'Expired action code.'
+	},
+	invalidaActionCode: {
+		id: 'invalidaActionCode',
+		description: 'Invalid action code.'
+	},
+	userDisabled: {
+		id: 'userDisabled',
+		description: 'User Disabled.'
+	},
+	passwordsMismatch: {
+		id: 'passwordsMismatch',
+		description: `Passwords don't match`
+	},
+	weakPassword: {
+		id: 'weakPassword',
+		description:
+			'Password must be at least 8 characters long and contain number and letters'
+	}
 }

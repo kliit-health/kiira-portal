@@ -4,6 +4,10 @@ export {
 	signIn,
 	signOut,
 	firebaseSimpleFetch,
-	createUsers
+	createUsers,
+	verifyPasswordResetCode,
+	checkActionCode,
+	confirmPasswordReset,
+	getFirebaseErrorMessage
 } from './functions'
 export { Auth } from './Auth'

@@ -18,7 +18,7 @@ const App = ({ Component, pageProps }) => {
 		}
 	}, [])
 
-	const layoutDisabled = ['/']
+	const layoutDisabled = ['/', '/actions', '/success']
 
 	return (
 		<StylesProvider injectFirst>

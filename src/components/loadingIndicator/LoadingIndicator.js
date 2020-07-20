@@ -12,7 +12,7 @@ export const LoadingIndicator = ({ classes = {}, children }) => {
 		<div className={styles.indicator}>
 			<div className={styles.animation}>
 				{children}
-				<img className={styles.image} src="/assets/bird.png" />
+				<img className={styles.image} src="/assets/penguin.svg" />
 			</div>
 		</div>
 	)

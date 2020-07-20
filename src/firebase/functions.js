@@ -85,3 +85,43 @@ export const createUsers = (users, organizationId) =>
 			}
 		}
 	})
+
+export const verifyPasswordResetCode = code =>
+	new Promise(async (resolve, reject) => {
+		try {
+			const response = await auth.verifyPasswordResetCode(code)
+			resolve(response)
+			return
+		} catch (error) {
+			reject(error)
+			return
+		}
+	})
+
+export const checkActionCode = code =>
+	new Promise(async (resolve, reject) => {
+		try {
+			const response = await auth.checkActionCode(code)
+			resolve(response)
+			return
+		} catch (error) {
+			reject(error)
+			return
+		}
+	})
+
+export const confirmPasswordReset = (code, newPassword) =>
+	new Promise(async (resolve, reject) => {
+		try {
+			const response = await auth.confirmPasswordReset(code, newPassword)
+			resolve(response)
+			return
+		} catch (error) {
+			reject(error)
+			return
+		}
+	})
+
+export const getFirebaseErrorMessage = code => {
+	FIREBASE_ERRORS[code]
+}
