@@ -7,7 +7,7 @@ export const intl = {
 	},
 	email: { id: 'email', description: 'Email' },
 	password: { id: 'password', description: 'Password' },
-	welcome: { id: 'welcome', description: 'Welcome to Kiira Portal' },
+	welcomeToKiira: { id: 'welcome', description: 'Welcome to Kiira!' },
 	insuficientPermission: {
 		id: 'insuficientPermision',
 		description: 'Insuficient Permission.'
@@ -150,6 +150,22 @@ export const intl = {
 	},
 	activatedKiira: {
 		id: 'activatedKiira',
-		description: 'Find out who has activated Kiira'
+		description: 'Find out who has activated Kiira.'
+	},
+	virtualWomensClinic: {
+		id: 'virtualWomensClinic',
+		description: `The Virtual Women's Clinic`
+	},
+	submit: {
+		id: 'submit',
+		description: 'Submit'
+	},
+	resetLinkSent: {
+		id: 'resetLinkSent',
+		description: 'Password reset request succeeded. Please verify your email.'
+	},
+	careTeam: {
+		id: 'careTeam',
+		description: 'Care Team'
 	}
 }
