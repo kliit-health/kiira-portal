@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="468" height="178" viewBox="0 0 468 178">
   <g fill="none" fill-rule="evenodd">
     <rect width="467" height="119" x=".5" y="58.5" stroke="#979797"/>
-    <rect width="241" height="59" x=".5" y=".5" fill="#78C46E" stroke="#78C46E"/>
+    <rect width="241" height="59" x=".5" y=".5" fill="#1666CB" stroke="#1666CB"/>
     <text fill="#FFF" font-family="Roboto-Bold, Roboto" font-size="24" font-weight="bold">
       <tspan x="20.219" y="38">Name</tspan>
     </text>
-    <rect width="292" height="59" x="175.5" y=".5" fill="#78C46E" stroke="#78C46E"/>
+    <rect width="292" height="59" x="175.5" y=".5" fill="#1666CB" stroke="#1666CB"/>
     <text fill="#FFF" font-family="Roboto-Bold, Roboto" font-size="24" font-weight="bold">
       <tspan x="202.064" y="38">Email</tspan>
     </text>
