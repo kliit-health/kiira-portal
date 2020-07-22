@@ -3,15 +3,45 @@
 
 
 .card {
-  position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  padding: 20px;
-  background-color: $base-white;
-  height: 300px;
-  overflow: hidden;
-  @include pointer-on-hover;
+  max-height: 350px;
+
+  &__header-container {
+    position: relative;
+    padding: 20px;
+  }
+
+  &__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    border-radius: 0px 0px 10px 10px;
+    padding: 0px 20px 20px;
+    background-color: $base-white;
+    overflow: hidden;
+    margin-left: 50px;
+    position: relative;
+    @include pointer-on-hover;
+  }
+
+  &__header-background {
+    background-color: white;
+    margin-left: 50px;
+    border-radius: 10px 10px 0px 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -10;
+  }
+
+
+  &__divider {
+    margin-bottom: 20px;
+  }
+
 
   &__gradient {
     display: none;

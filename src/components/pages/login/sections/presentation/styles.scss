@@ -1,0 +1,33 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.login-page-presentation {
+  display: flex;
+  width: 60%;
+  background-color: $base-blue;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 50px;
+
+  &__logo {
+    height: 30px;
+    width: auto;
+    margin-bottom: 5px;
+    @include user-select-none;
+  }
+
+  &__slogan {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: flex-start;
+    margin-bottom: 30px;
+  }
+
+  &__image {
+    display: flex;
+    width: 100%;
+    @include user-select-none;
+  }
+}

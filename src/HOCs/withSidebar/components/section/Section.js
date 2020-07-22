@@ -5,7 +5,14 @@ import classnames from 'classnames'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import './styles.scss'
 
-export const Section = ({ icon: Icon, title, children, classes, onClick }) => {
+export const Section = ({
+	iconUrl,
+	title,
+	children,
+	classes = {},
+	onClick,
+	active
+}) => {
 	const [isOpened, setIsOpened] = useState(false)
 	const hasChildren = children instanceof Array
 
@@ -13,13 +20,11 @@ export const Section = ({ icon: Icon, title, children, classes, onClick }) => {
 		chevron: classnames('sidebar-section__chevron', {
 			'sidebar-section__chevron--active': isOpened
 		}),
-		section: 'sidebar-section',
+		section: classnames('sidebar-section', {
+			'sidebar-section--active': active
+		}),
 		panel: 'sidebar-section__panel',
-		icon: 'sidebar-section__icon',
-		iconElement: classnames(
-			'sidebar-section__icon-element',
-			classes && classes.icon
-		),
+		icon: classnames('sidebar-section__icon', classes.icon),
 		collapse: {
 			collapse: classnames('sidebar-section-collapse', {
 				'sidebar-section-collapse--open': isOpened
@@ -49,9 +54,7 @@ export const Section = ({ icon: Icon, title, children, classes, onClick }) => {
 	return (
 		<div className={styles.section}>
 			<div className={styles.panel} onClick={handleOnSection}>
-				<div className={styles.icon}>
-					<Icon className={styles.iconElement} />
-				</div>
+				<img className={styles.icon} src={iconUrl} />
 				<Typography h7 white>
 					{title}
 				</Typography>

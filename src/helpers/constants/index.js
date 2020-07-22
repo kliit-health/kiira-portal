@@ -15,6 +15,7 @@ export const DISPLAY_NAME = 'displayName'
 export const SIGNED_UP_DATE = 'signedUpDate'
 export const FIRST_LOGIN = 'firstLogin'
 export const HEADER = 'Header'
+export const FOOTER = 'Footer'
 
 export const INITIAL_SCREEN = 'INITIAL_SCREEN'
 export const BAD_FILE_SCREEN = 'BAD_FILE_SCREEN'

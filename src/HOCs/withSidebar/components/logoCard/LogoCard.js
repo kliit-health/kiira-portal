@@ -9,7 +9,7 @@ export const LogoCard = () => {
 	return (
 		<div className={styles.card}>
 			<div className={styles.container}>
-				<img className={styles.image} src="/assets/kiira_logo.png" />
+				<img className={styles.image} src="/assets/kiira_logo.svg" />
 			</div>
 		</div>
 	)

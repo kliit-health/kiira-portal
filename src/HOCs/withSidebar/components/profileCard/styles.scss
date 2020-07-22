@@ -16,11 +16,13 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    width: 150px;
+    width: 120px;
   }
 
   &__email {
     @extend .profile-card__name;
+    font-size: .8em;
+    opacity: .7;
   }
 
   &__avatar {

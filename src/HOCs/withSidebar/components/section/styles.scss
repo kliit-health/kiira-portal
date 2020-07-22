@@ -2,6 +2,19 @@
 @import 'src/styles/mixins';
 
 .sidebar-section {
+  display: flex;
+  margin: 14px 0px;
+  opacity: 0.6;
+  transition: opacity ease-in-out .2s;
+  align-items: center;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &--active {
+    opacity: 1;
+  }
 
   &__panel {
     display: flex;
@@ -9,12 +22,8 @@
   }
 
   &__icon {
-    display: flex;
-    color: $base-white;
-    width: 30px;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
+    height: 20px;
+    width: auto;
     margin-right: 20px;
   }
 

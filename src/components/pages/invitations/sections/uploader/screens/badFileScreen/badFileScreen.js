@@ -15,7 +15,7 @@ export const BadFileScreen = () => {
 
 	return (
 		<div className={styles.root}>
-			<img className={styles.image} alt="" src="/assets/bad_csv.svg" />
+			<img className={styles.image} alt="" src="/assets/csv.svg" />
 			<Typography classes={styles.description}>
 				{intl.badFile.description}
 			</Typography>

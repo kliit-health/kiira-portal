@@ -24,13 +24,8 @@ export const signOut = () => auth.signOut()
 export const forgotPassword = email =>
 	new Promise((resolve, reject) =>
 		auth
-			.setPersistence(PERSISTANCE.SESSION)
-			.then(() =>
-				auth
-					.sendPasswordResetEmail(email)
-					.then(response => resolve(response))
-					.catch(error => reject(error))
-			)
+			.sendPasswordResetEmail(email)
+			.then(response => resolve(response))
 			.catch(error => reject(error))
 	)
 

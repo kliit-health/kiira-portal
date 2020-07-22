@@ -7,14 +7,10 @@
   &__menu {
     display: flex;
     flex-direction: column;
-    margin: 24px;
+    margin: 40px;
   }
 
   &__sections {
-    margin: 24px 0px;
-  }
-
-  &__invitations-icon {
-    font-size: 1.5em;
+    margin: 20px 0px;
   }
 }

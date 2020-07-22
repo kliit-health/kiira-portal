@@ -34,7 +34,7 @@ export const Auth = ({ children, ...rest }) => {
 								!details.role ||
 								details.role.toLowerCase() !== CLAIMS.ADMIN
 							) {
-								logInRejected(ERRORS.INSUFICIENT_PERMISSION)
+								logInRejected({ code: ERRORS.INSUFICIENT_PERMISSION })
 							} else {
 								logInFullfilled(details)
 							}
@@ -47,8 +47,8 @@ export const Auth = ({ children, ...rest }) => {
 			} catch (error) {
 				setError(error)
 			}
-			return () => unsubscriber()
 		})
+		return () => unsubscriber()
 	}, [])
 
 	return cloneElement(children, {
