@@ -81,4 +81,12 @@
   &--control {
     font-family: Roboto;
   }
+
+  &--error {
+    color: $base-red;
+  }
+
+  &--success {
+    color: $base-green;
+  }
 }

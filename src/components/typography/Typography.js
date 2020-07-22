@@ -23,7 +23,9 @@ export const Typography = props => {
 		charcoal,
 		gray,
 		light,
-		bold
+		bold,
+		error,
+		success
 	} = props
 
 	const sizes = {
@@ -47,7 +49,9 @@ export const Typography = props => {
 
 	const modifiers = {
 		'typography--light': light,
-		'typography--bold': bold
+		'typography--bold': bold,
+		'typography--error': error,
+		'typography--success': success
 	}
 
 	const styles = {
