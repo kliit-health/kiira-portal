@@ -12,6 +12,7 @@ import './styles.scss'
 export const withSidebar = WrappedComponent => {
 	const WithSidebarWrapper = props => {
 		const router = useRouter()
+		const pathname = router.pathname
 
 		const { firstName, lastName, email } = props.authDetails.profileInfo
 
@@ -27,14 +28,15 @@ export const withSidebar = WrappedComponent => {
 
 		const renderSections = () =>
 			sections.map(section => {
-				const { icon, title, classes, items, path } = section
+				const { title, classes, items, path, ...rest } = section
 				return (
 					<Section
 						key={title}
-						icon={icon}
 						title={title}
 						onClick={() => handleOnSection(path)}
 						classes={classes}
+						active={path === pathname}
+						{...rest}
 					>
 						{items &&
 							items.map(item => {
