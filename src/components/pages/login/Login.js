@@ -3,7 +3,7 @@ import { compose } from 'recompose'
 import { withLoadingIndicator, withRedirect } from 'src/HOCs'
 import { Authentication, Presentation, ForgotPassword } from './sections'
 import { Page } from 'src/components'
-import { signIn, forgotPassword } from 'src/firebase'
+import { signIn, sendPasswordResetEmail } from 'src/firebase'
 import { FIREBASE_ERRORS } from 'src/errors'
 import { intl } from 'src/i18n'
 import './styles.scss'
@@ -42,7 +42,7 @@ const Login = ({ authError }) => {
 
 	const handleSubmit = () => {
 		showForgotPassword
-			? forgotPassword(email)
+			? sendPasswordResetEmail(email)
 					.then(() => {
 						setMessage(intl.resetLinkSent.description)
 						setTimeout(function () {

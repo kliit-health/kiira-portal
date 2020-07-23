@@ -3,12 +3,11 @@ export {
 	getUserDetails,
 	signIn,
 	signOut,
-	forgotPassword,
 	firebaseSimpleFetch,
 	createUsers,
 	verifyPasswordResetCode,
 	checkActionCode,
 	confirmPasswordReset,
-	getFirebaseErrorMessage
+	sendPasswordResetEmail
 } from './functions'
 export { FirebaseAuth } from './FirebaseAuth'
