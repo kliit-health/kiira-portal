@@ -3,23 +3,26 @@ import { PASSWORD } from 'src/helpers/constants'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-export const Auth = ({ onPasswordChange, onSubmit, errorMessage }) => {
+export const Authentication = ({
+	onPasswordChange,
+	onSubmit,
+	errorMessage
+}) => {
 	const styles = {
-		root: 'password-reset-auth',
-		container: 'password-reset-auth__container',
-		logo: 'password-reset-auth__logo',
-		fieldsContainer: 'password-reset-auth__fields-container',
+		root: 'password-reset-authentication',
+		container: 'password-reset-authentication__container',
+		logo: 'password-reset-authentication__logo',
+		fieldsContainer: 'password-reset-authentication__fields-container',
 		button: {
-			root: 'password-reset-auth__button',
-			text: 'password-reset-auth__button-text'
+			root: 'password-reset-authentication__button'
 		},
-		error: { root: 'password-reset-auth__error' }
+		error: { root: 'password-reset-authentication__error' }
 	}
 
 	return (
 		<div className={styles.root}>
 			<div className={styles.container}>
-				<img className={styles.logo} src="/assets/logo_white.svg" />
+				<img className={styles.logo} src="/assets/kiira_logo.svg" />
 				<div className={styles.fieldsContainer}>
 					<TextField
 						data-section={PASSWORD}

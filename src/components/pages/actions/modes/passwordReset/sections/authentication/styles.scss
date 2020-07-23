@@ -1,18 +1,17 @@
 @import 'src/styles/variables';
 @import 'src/styles/mixins';
 
-.password-reset-auth {
+.password-reset-authentication {
   display: flex;
-  flex: 6;
-  background-color: $base-blue;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 
   &__container {
     display: flex;
+    width: 240px;
     justify-content: space-between;
     flex-direction: column;
-    width: 70%;
     height: 300px;
   }
 
@@ -32,15 +31,8 @@
   }
 
   &__button {
-    background-color: $base-white;
-    color: $base-blue;
     width: 100px;
     align-self: center;
-  }
-
-  &__button-text {
-    color: $base-blue;
-    font-weight: 600;
   }
 
   &__error {

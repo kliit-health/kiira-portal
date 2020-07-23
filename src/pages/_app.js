@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { Auth } from '../firebase'
+import { FirebaseAuth } from '../firebase'
 import { Layout } from '../layout'
 import { StylesProvider } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
@@ -18,21 +18,21 @@ const App = ({ Component, pageProps }) => {
 		}
 	}, [])
 
-	const layoutDisabled = ['/', '/actions', '/success']
+	const layoutDisabled = ['/', '/actions']
 
 	return (
 		<StylesProvider injectFirst>
 			<ThemeProvider theme={theme}>
 				{!layoutDisabled.includes(router.pathname) ? (
-					<Auth>
+					<FirebaseAuth>
 						<Layout>
 							<Component {...pageProps} />
 						</Layout>
-					</Auth>
+					</FirebaseAuth>
 				) : (
-					<Auth>
+					<FirebaseAuth>
 						<Component {...pageProps} />
-					</Auth>
+					</FirebaseAuth>
 				)}
 			</ThemeProvider>
 		</StylesProvider>

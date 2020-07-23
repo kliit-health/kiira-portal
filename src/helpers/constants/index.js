@@ -1,5 +1,3 @@
-// pathnames
-
 export const DASHBOARD_PAGE = '/dashboard'
 export const LOGIN_PAGE = '/'
 export const HOME = '/'
@@ -25,3 +23,14 @@ export const LOADING_SCREEN = 'LOADING_SCREEN'
 
 export const PASSWORD = 'PASSWORD'
 export const CONFIRM_PASSWORD = 'CONFIRM_PASSWORD'
+
+export const RESET_STATE = {}
+
+export const RESET_PASSWORD = 'resetPassword'
+export const RECOVER_EMAIL = 'recoverEmail'
+export const VERIFY_EMAIL = 'verifyEmail'
+export const REJECTED = 'Rejected'
+export const LOADING = 'Loading'
+export const ERROR = 'Error'
+export const INITIAL = 'Initial'
+export const SUCCESS = 'Success'

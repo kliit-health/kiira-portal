@@ -1,0 +1,31 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.password-reset-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  &__container {
+    display: flex;
+    min-width: 240px;
+    flex-direction: column;
+  }
+
+  &__logo {
+    @include user-select-none;
+    width: 120px;
+    height: auto;
+    align-self: center;
+    margin-bottom: 30px;
+  }
+
+  &__text {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1em;
+    font-family: Roboto;
+    height: 30px;
+  }
+}

@@ -1,2 +1,2 @@
-export { Auth } from './auth'
-export { SetPassword, ResetPassword } from './presentations'
+export { Authentication } from './authentication'
+export { Success } from './success'

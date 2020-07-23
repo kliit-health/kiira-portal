@@ -2,7 +2,7 @@ import { useState, useEffect, cloneElement } from 'react'
 import { auth, getUserDetails, signOut } from '../firebase'
 import { ERRORS, CLAIMS } from '../firebase/constants'
 
-export const Auth = ({ children, ...rest }) => {
+export const FirebaseAuth = ({ children, ...rest }) => {
 	const [details, setDetails] = useState(null)
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)

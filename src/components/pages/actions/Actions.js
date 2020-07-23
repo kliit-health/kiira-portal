@@ -1,17 +1,17 @@
 import { createContext, useEffect, useState } from 'react'
 import { Container, Typography, LoadingIndicator } from 'src/components'
+import { FIREBASE_ERRORS } from 'src/errors'
 import { useRouter } from 'next/router'
 import { checkActionCode } from 'src/firebase'
 import { switchCase } from 'src/helpers/functions'
-import { PasswordReset, VerifyEmail, RecoverEmail } from './modes'
-
-const ACTION_MODE = {
-	RESET_PASSWORD: 'resetPassword',
-	RECOVER_EMAIL: 'recoverEmail',
-	VERIFY_EMAIL: 'verifyEmail'
-}
-
-const { RESET_PASSWORD, RECOVER_EMAIL, VERIFY_EMAIL } = ACTION_MODE
+import {
+	RESET_PASSWORD,
+	RECOVER_EMAIL,
+	VERIFY_EMAIL,
+	ERROR,
+	LOADING
+} from 'src/helpers/constants'
+import { PasswordReset, VerifyEmail, RecoverEmail, Error } from './modes'
 
 export const ActionsContext = createContext()
 const { Provider } = ActionsContext
@@ -19,35 +19,29 @@ const { Provider } = ActionsContext
 export const Actions = () => {
 	const router = useRouter()
 	const [errorCode, setErrorCode] = useState(null)
-	const [errorMessage, setErrorMessage] = useState(null)
-	const [loading, setLoading] = useState(true)
+	const [actionMode, setActionMode] = useState(LOADING)
 	const { mode, oobCode: code, firstReset, displayName } = router.query
 
 	useEffect(() => {
 		if (code) {
-			checkActionCode(code).catch(({ code, message }) => {
-				setErrorCode(code)
-				setErrorMessage(message)
-				setLoading(false)
-			})
+			checkActionCode(code)
+				.then(() => setActionMode(mode))
+				.catch(({ code }) => {
+					setErrorCode(code)
+					setActionMode(ERROR)
+				})
 		}
 	}, [code, checkActionCode])
 
-	return loading ? (
-		<LoadingIndicator />
-	) : errorCode ? (
-		<Container>
-			<Typography h6 error>
-				{errorMessage}
-			</Typography>
-		</Container>
-	) : (
+	return (
 		<Provider value={{ mode, code, firstReset, displayName }}>
 			{switchCase({
+				[LOADING]: <LoadingIndicator />,
 				[RESET_PASSWORD]: <PasswordReset />,
 				[RECOVER_EMAIL]: <RecoverEmail />,
-				[VERIFY_EMAIL]: <VerifyEmail />
-			})(undefined)(mode)}
+				[VERIFY_EMAIL]: <VerifyEmail />,
+				[ERROR]: <Error errorMessage={FIREBASE_ERRORS[errorCode]} />
+			})(undefined)(actionMode)}
 		</Provider>
 	)
 }
