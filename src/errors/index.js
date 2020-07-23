@@ -14,5 +14,10 @@ export const FIREBASE_ERRORS = {
 	[ERRORS.WRONG_PASSWORD]: intl.wrongPassword.description,
 	[ERRORS.USER_NOT_FOUND]: intl.userNotFound.description,
 	[ERRORS.TOO_MANY_REQUESTS]: intl.tooManyRequest.description,
-	[ERRORS.USER_PROFILE_NOT_FOUND]: intl.userProfileNotFound.description
+	[ERRORS.USER_PROFILE_NOT_FOUND]: intl.userProfileNotFound.description,
+	[ERRORS.EXPIRED_ACTION_CODE]: intl.expiredActionCode.description,
+	[ERRORS.INVALID_ACTION_CODE]: intl.invalidaActionCode.description,
+	[ERRORS.USER_DISABLED]: intl.userDisabled.description,
+	[ERRORS.PASSWORDS_MISMATCH]: intl.passwordsMismatch.description,
+	[ERRORS.WEAK_PASSWORD]: intl.weakPassword.description
 }

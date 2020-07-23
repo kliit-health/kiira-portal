@@ -16,11 +16,11 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    width: 120px;
+    width: 110px;
   }
 
   &__email {
-    @extend .profile-card__name;
+    @extend .profile-card;
     font-size: .8em;
     opacity: .7;
   }

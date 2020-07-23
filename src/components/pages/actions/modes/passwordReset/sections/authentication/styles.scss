@@ -1,0 +1,47 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.password-reset-authentication {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    max-width: 220px;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 300px;
+    flex: 1;
+  }
+
+  &__logo {
+    @include user-select-none;
+    width: 100px;
+    height: auto;
+    align-self: center;
+    margin-bottom: 30px;
+  }
+
+  &__fields-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 120px;
+  }
+
+  &__button {
+    width: 100px;
+    align-self: center;
+  }
+
+  &__error {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: .8em;
+    font-family: 'Roboto-Regular';
+    height: 30px;
+  }
+}

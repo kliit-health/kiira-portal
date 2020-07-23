@@ -167,5 +167,38 @@ export const intl = {
 	careTeam: {
 		id: 'careTeam',
 		description: 'Care Team'
+	},
+	userDisabled: {
+		id: 'userDisabled',
+		decription: 'User is disabled.'
+	},
+	passwordsMismatch: {
+		id: 'passwordsMismatch',
+		description: `Passwords don't match.`
+	},
+	weakPassword: {
+		id: 'weakPassword',
+		description:
+			'Password must contain at least 8 characters, letters and numbers.'
+	},
+	invalidaActionCode: {
+		id: 'invalidaActionCode',
+		description: 'Invalid Action Code.'
+	},
+	expiredActionCode: {
+		id: 'expiredActionCode',
+		description: 'Expired Action Code.'
+	},
+	confirmPassword: {
+		id: 'confirmPassword',
+		description: 'Confirm Password'
+	},
+	somethingWentWrong: {
+		id: 'somethingWentWrong',
+		description: 'Something Went Wrong'
+	},
+	passwordChanged: {
+		id: 'passwordChanged',
+		description: 'Password has been successfully updated!'
 	}
 }
