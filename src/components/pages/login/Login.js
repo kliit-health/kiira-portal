@@ -1,86 +1,94 @@
 import { useState, useEffect } from 'react'
 import { compose } from 'recompose'
 import { withLoadingIndicator, withRedirect } from 'src/HOCs'
-import { Button, TextField, FormHelperText } from '@material-ui/core'
-import { signIn } from 'src/firebase'
+import { Authentication, Presentation, ForgotPassword } from './sections'
+import { Page } from 'src/components'
+import { signIn, forgotPassword } from 'src/firebase'
 import { FIREBASE_ERRORS } from 'src/errors'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
+const tenSeconds = 10000
+
 const Login = ({ authError }) => {
-	const [error, setError] = useState(null)
+	const [errorCode, setErrorCode] = useState(null)
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
-
-	const styles = {
-		fields: 'login-page__auth-fields',
-		helper: 'login-page__helper-text',
-		page: 'login-page',
-		card: 'login-page__card',
-		onboarding: 'login-page__onboarding',
-		auth: 'login-page__auth'
-	}
+	const [message, setMessage] = useState('')
+	const [showForgotPassword, setShowForgotPassword] = useState(false)
 
 	useEffect(() => {
-		setError(authError)
-	}, [authError, setError])
+		if (authError) {
+			const { code } = authError
+			setErrorCode(code)
+		}
+	}, [authError, setErrorCode])
 
-	const handleSubmit = (email, password) => {
-		signIn(email, password).catch(error => setError(error))
-	}
-
-	const handleOnEmailChange = event => {
+	const handleEmailChange = event => {
 		setEmail(event.target.value)
 	}
 
-	const handleOnPasswordChange = event => {
+	const handlePasswordChange = event => {
 		setPassword(event.target.value)
 	}
 
-	const renderTextFields = () => (
-		<div className={styles.fields}>
-			<TextField
-				label={intl.email.description}
-				onChange={handleOnEmailChange}
-				type="email"
-			/>
-			<TextField
-				label={intl.password.description}
-				onChange={handleOnPasswordChange}
-				type="password"
-			/>
-		</div>
-	)
+	const handleForgotPassword = () => {
+		setShowForgotPassword(true)
+	}
 
-	const renderLoginButton = () => (
-		<Button
-			variant="contained"
-			color="primary"
-			onClick={() => handleSubmit(email, password)}
-		>
-			{intl.login.description}
-		</Button>
-	)
+	const handleLogIn = () => {
+		setInitialState()
+	}
 
-	const renderHelpertext = () => (
-		<div className={styles.helper}>
-			<FormHelperText error>
-				{FIREBASE_ERRORS[error && error.code]}
-			</FormHelperText>
-		</div>
-	)
+	const handleSubmit = () => {
+		showForgotPassword
+			? forgotPassword(email)
+					.then(() => {
+						setMessage(intl.resetLinkSent.description)
+						setTimeout(function () {
+							setInitialState()
+						}, tenSeconds)
+					})
+					.catch(({ code }) => setErrorCode(code))
+			: signIn(email, password).catch(({ code }) => setErrorCode(code))
+	}
+
+	const setInitialState = () => {
+		setShowForgotPassword(false)
+		setErrorCode('')
+		setMessage('')
+	}
+
+	const styles = {
+		page: { content: 'login__page' },
+		card: 'login__card'
+	}
 
 	return (
-		<div className={styles.page}>
+		<Page classes={styles.page}>
 			<div className={styles.card}>
-				<div className={styles.onboarding}></div>
-				<div className={styles.auth}>
-					{renderTextFields()}
-					{renderHelpertext()}
-					{renderLoginButton()}
-				</div>
+				<Presentation />
+				{showForgotPassword ? (
+					<ForgotPassword
+						onLogIn={handleLogIn}
+						onEmailChange={handleEmailChange}
+						onSubmit={handleSubmit}
+						emailValue={email}
+						errorMessage={FIREBASE_ERRORS[errorCode]}
+						message={message}
+					/>
+				) : (
+					<Authentication
+						onEmailChange={handleEmailChange}
+						onPasswordChange={handlePasswordChange}
+						onSubmit={handleSubmit}
+						onForgotPassword={handleForgotPassword}
+						errorMessage={FIREBASE_ERRORS[errorCode]}
+						emailValue={email}
+					/>
+				)}
 			</div>
-		</div>
+		</Page>
 	)
 }
 

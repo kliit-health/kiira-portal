@@ -1,9 +1,13 @@
 // TODO: add i18n library e.g. react-intl
 export const intl = {
 	login: { id: 'login', description: 'Log In' },
+	forgotPassword: {
+		id: 'forgotPassword',
+		description: 'Forgot Password'
+	},
 	email: { id: 'email', description: 'Email' },
 	password: { id: 'password', description: 'Password' },
-	welcome: { id: 'welcome', description: 'Welcome to Kiira Portal' },
+	welcomeToKiira: { id: 'welcome', description: 'Welcome to Kiira!' },
 	insuficientPermission: {
 		id: 'insuficientPermision',
 		description: 'Insuficient Permission.'
@@ -136,35 +140,32 @@ export const intl = {
 		id: 'easyManaging',
 		description: 'Easy access managing.'
 	},
-	password: { id: 'password', description: 'Password' },
-	confirmPassword: {
-		id: 'confirmPassword',
-		description: 'Confirm Password'
+	kiiraCareTeam: {
+		id: 'kiiraCareTeam',
+		description: 'Kiira Care Team'
 	},
-	submit: { id: 'submit', description: 'Submit' },
-	userProfileNotFound: {
-		id: 'userProfileNotFound',
-		description: 'User profile not found.'
+	kiiraExpertsCheckOut: {
+		id: 'kiiraExpertsCheckOut',
+		description: 'Check out the experts on your care team.'
 	},
-	expiredActionCode: {
-		id: 'expiredActionCode',
-		description: 'Expired action code.'
+	activatedKiira: {
+		id: 'activatedKiira',
+		description: 'Find out who has activated Kiira.'
 	},
-	invalidaActionCode: {
-		id: 'invalidaActionCode',
-		description: 'Invalid action code.'
+	virtualWomensClinic: {
+		id: 'virtualWomensClinic',
+		description: `The Virtual Women's Clinic`
 	},
-	userDisabled: {
-		id: 'userDisabled',
-		description: 'User Disabled.'
+	submit: {
+		id: 'submit',
+		description: 'Submit'
 	},
-	passwordsMismatch: {
-		id: 'passwordsMismatch',
-		description: `Passwords don't match`
+	resetLinkSent: {
+		id: 'resetLinkSent',
+		description: 'Password reset request succeeded. Please verify your email.'
 	},
-	weakPassword: {
-		id: 'weakPassword',
-		description:
-			'Password must be at least 8 characters long and contain number and letters'
+	careTeam: {
+		id: 'careTeam',
+		description: 'Care Team'
 	}
 }

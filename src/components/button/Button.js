@@ -10,12 +10,12 @@ export const Button = props => {
 	}
 
 	const styles = {
-		button: classnames('button', classes.root, modifiers),
+		root: classnames('button', classes.root, modifiers),
 		text: classnames('button__text', classes.text)
 	}
 
 	return (
-		<button ref={elementRef} onClick={onClick} className={styles.button}>
+		<button ref={elementRef} onClick={onClick} className={styles.root}>
 			<span className={styles.text}>{children}</span>
 		</button>
 	)

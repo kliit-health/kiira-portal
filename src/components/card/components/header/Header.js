@@ -1,18 +1,11 @@
 import React from 'react'
-import { Typography, Avatar, Divider } from 'src/components'
+import { Typography, Avatar } from 'src/components'
+import { HEADER } from 'src/helpers/constants'
 import classnames from 'classnames'
 import './styles.scss'
 
-export const Header = props => {
-	const {
-		title,
-		subtitle,
-		avatarUrl,
-		divider,
-		children,
-		status,
-		classes = {}
-	} = props
+const Header = props => {
+	const { title, subtitle, avatarUrl, children, status, classes = {} } = props
 
 	const styles = {
 		header: classnames('card-header', classes.root),
@@ -36,7 +29,10 @@ export const Header = props => {
 				</div>
 				{children}
 			</div>
-			{divider && <Divider />}
 		</div>
 	)
 }
+
+Header.displayName = HEADER
+
+export default Header

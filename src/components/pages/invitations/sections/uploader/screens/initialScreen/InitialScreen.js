@@ -83,7 +83,7 @@ const Dropzone = () => {
 	return (
 		<ReactDropzone classes={styles.dropzone} onDrop={handleDrop}>
 			<div className={styles.root}>
-				<img className={styles.image} alt="" src="/assets/inbox.svg" />
+				<img className={styles.image} alt="" src="/assets/select.svg" />
 				<Typography classes={styles.description}>
 					<Typography bold>{intl.dragAndDrop.description}</Typography>
 					{intl.fileHere.description}

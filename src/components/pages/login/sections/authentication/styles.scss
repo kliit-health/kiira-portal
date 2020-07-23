@@ -1,0 +1,43 @@
+@import 'src/styles/mixins';
+
+.login-authentication {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 40px;
+
+  &__logo {
+    height: 30px;
+    width: auto;
+    @include user-select-none;
+  }
+
+  &__auth {
+    display: flex;
+    width: 220px;
+    flex-direction: column;
+  }
+
+  &__button {
+    width: 120px;
+    align-self: center;
+    margin-top: 10px;
+  }
+
+  &__link {
+    width: 120px;
+    align-self: center;
+  }
+
+  &__text-field {
+    margin-top: 5px;
+  }
+
+  &__error {
+    margin-top: 2px;
+    height: 30px;
+    font-size: .7em;
+  }
+}

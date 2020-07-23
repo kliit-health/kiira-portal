@@ -1,24 +1,24 @@
-import BarChartIcon from '@material-ui/icons/BarChart'
-import DraftsIcon from '@material-ui/icons/Drafts'
 import { intl } from 'src/i18n'
 
 export const sections = [
 	{
-		title: intl.dashboard.description,
-		icon: BarChartIcon,
-		items: [
-			{ title: intl.overview.description, path: '/dashboard/overview' },
-			{ title: intl.experts.description, path: '/dashboard/experts' },
-			{
-				title: intl.activeUsers.description,
-				path: '/dashboard/active-users'
-			}
-		]
+		title: intl.overview.description,
+		iconUrl: '/assets/dashboard.svg',
+		path: '/dashboard/overview'
 	},
 	{
-		title: intl.invitations.description,
-		icon: DraftsIcon,
-		classes: { icon: 'with-sidebar__invitations-icon' },
+		title: intl.activeUsers.description,
+		iconUrl: '/assets/users.svg',
+		path: '/dashboard/active-users'
+	},
+	{
+		title: intl.careTeam.description,
+		iconUrl: '/assets/experts.svg',
+		path: '/dashboard/experts'
+	},
+	{
+		title: intl.invitationsTitle.description,
+		iconUrl: '/assets/invitations.svg',
 		path: '/invitations'
 	}
 ]
