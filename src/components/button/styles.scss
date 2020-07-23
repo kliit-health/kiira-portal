@@ -9,7 +9,7 @@
   background-color: $base-blue;
   transition: opacity 0.2s ease-in-out;
   outline: none;
-  font-family: Roboto;
+  font-family: 'Roboto-Regular';
   border-radius: 20px;
   padding: 10px 15px;
   border: 0;
@@ -26,7 +26,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    font-family: Roboto;
+    font-family: 'Roboto-Regular';
   }
 
   &--outlined {
