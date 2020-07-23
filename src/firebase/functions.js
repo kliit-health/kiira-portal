@@ -1,6 +1,5 @@
 import { auth, firestore, functions } from './initializer'
 import { ERRORS, PERSISTANCE } from './constants'
-import { FIREBASE_ERRORS } from 'src/errors'
 
 export const signIn = (email, password) =>
 	new Promise((resolve, reject) =>
@@ -136,7 +135,3 @@ export const confirmPasswordReset = (code, newPassword) =>
 			return
 		}
 	})
-
-export const getFirebaseErrorMessage = code => {
-	FIREBASE_ERRORS[code]
-}
