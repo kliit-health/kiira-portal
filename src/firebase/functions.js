@@ -1,10 +1,5 @@
 import { auth, firestore, functions } from './initializer'
 import { ERRORS, PERSISTANCE } from './constants'
-import { FIREBASE_ERRORS } from 'src/errors'
-
-export const getErrorDescription = errorCode => {
-	return FIREBASE_ERRORS[errorCode]
-}
 
 export const signIn = (email, password) =>
 	new Promise((resolve, reject) =>
@@ -20,14 +15,6 @@ export const signIn = (email, password) =>
 	)
 
 export const signOut = () => auth.signOut()
-
-export const forgotPassword = email =>
-	new Promise((resolve, reject) =>
-		auth
-			.sendPasswordResetEmail(email)
-			.then(response => resolve(response))
-			.catch(error => reject(error))
-	)
 
 export const getUserDetails = (uid, collectionName = 'users') =>
 	new Promise((resolve, reject) => {
@@ -94,6 +81,25 @@ export const createUsers = (users, organizationId) =>
 		}
 	})
 
+export const sendPasswordResetEmail = email =>
+	new Promise(async (resolve, reject) => {
+		const sendPasswordResetEmail = functions.httpsCallable(
+			'sendPasswordResetEmail'
+		)
+		if (email) {
+			try {
+				await sendPasswordResetEmail(email)
+				resolve('Password reset link has been sent.')
+				return
+			} catch (error) {
+				reject(error)
+				return
+			}
+		} else {
+			reject('Email address is required.')
+		}
+	})
+
 export const verifyPasswordResetCode = code =>
 	new Promise(async (resolve, reject) => {
 		try {
@@ -129,7 +135,3 @@ export const confirmPasswordReset = (code, newPassword) =>
 			return
 		}
 	})
-
-export const getFirebaseErrorMessage = code => {
-	FIREBASE_ERRORS[code]
-}
