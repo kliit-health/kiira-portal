@@ -16,9 +16,7 @@ const Header = props => {
 	return (
 		<div className={styles.header}>
 			<div className={styles.container}>
-				{avatarUrl && (
-					<Avatar status={status} url={avatarUrl} classes={styles.avatar} />
-				)}
+				<Avatar status={status} url={avatarUrl} classes={styles.avatar} />
 				<div className={styles.details}>
 					<Typography h6 black>
 						{title}
