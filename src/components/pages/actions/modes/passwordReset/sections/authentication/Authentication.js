@@ -29,13 +29,13 @@ export const Authentication = ({
 						onChange={onPasswordChange}
 						placeholder={intl.password.description}
 						type="password"
-						autoComplete={false}
+						autoComplete="off"
 					/>
 					<TextField
 						onChange={onPasswordChange}
 						placeholder={intl.confirmPassword.description}
 						type="password"
-						autoComplete={false}
+						autoComplete="off"
 					/>
 					<Typography classes={styles.error} error>
 						{errorMessage}
