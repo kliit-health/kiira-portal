@@ -4,11 +4,13 @@ import { withLoadingIndicator, withRedirect } from 'src/HOCs'
 import { Authentication, Presentation, ForgotPassword } from './sections'
 import { Page } from 'src/components'
 import { signIn, sendPasswordResetEmail } from 'src/firebase'
-import { FIREBASE_ERRORS } from 'src/errors'
+import { FIREBASE_ERROR } from 'src/error'
 import { intl } from 'src/i18n'
 import './styles.scss'
+import { ERROR } from 'src/firebase/constants'
 
 const tenSeconds = 10000
+const { INTERNAL_ERROR } = ERROR
 
 const Login = ({ authError }) => {
 	const [errorCode, setErrorCode] = useState(null)
@@ -34,6 +36,8 @@ const Login = ({ authError }) => {
 
 	const handleForgotPassword = () => {
 		setShowForgotPassword(true)
+		setErrorCode('')
+		setMessage('')
 	}
 
 	const handleLogIn = () => {
@@ -49,7 +53,11 @@ const Login = ({ authError }) => {
 							setInitialState()
 						}, tenSeconds)
 					})
-					.catch(({ code }) => setErrorCode(code))
+					.catch(({ details }) => {
+						details.code
+							? setErrorCode(details.code)
+							: setErrorCode(INTERNAL_ERROR)
+					})
 			: signIn(email, password).catch(({ code }) => setErrorCode(code))
 	}
 
@@ -74,7 +82,7 @@ const Login = ({ authError }) => {
 						onEmailChange={handleEmailChange}
 						onSubmit={handleSubmit}
 						emailValue={email}
-						errorMessage={FIREBASE_ERRORS[errorCode]}
+						errorMessage={FIREBASE_ERROR[errorCode]}
 						message={message}
 					/>
 				) : (
@@ -83,7 +91,7 @@ const Login = ({ authError }) => {
 						onPasswordChange={handlePasswordChange}
 						onSubmit={handleSubmit}
 						onForgotPassword={handleForgotPassword}
-						errorMessage={FIREBASE_ERRORS[errorCode]}
+						errorMessage={FIREBASE_ERROR[errorCode]}
 						emailValue={email}
 					/>
 				)}

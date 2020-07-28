@@ -30,8 +30,9 @@
     @include user-select-none;
     display: flex;
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 50%;
+    object-fit: cover;
   }
 
   &--small {

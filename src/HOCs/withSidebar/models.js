@@ -18,7 +18,7 @@ export const sections = [
 	},
 	{
 		title: intl.invitationsTitle.description,
-		iconUrl: '/assets/invitations.svg',
+		iconUrl: '/assets/envelope.svg',
 		path: '/invitations'
 	}
 ]

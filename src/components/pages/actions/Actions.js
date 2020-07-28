@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from 'react'
 import { Container, Typography, LoadingIndicator } from 'src/components'
-import { FIREBASE_ERRORS } from 'src/errors'
+import { FIREBASE_ERROR } from 'src/error'
 import { useRouter } from 'next/router'
 import { checkActionCode } from 'src/firebase'
 import { switchCase } from 'src/helpers/functions'
@@ -40,7 +40,7 @@ export const Actions = () => {
 				[RESET_PASSWORD]: <PasswordReset />,
 				[RECOVER_EMAIL]: <RecoverEmail />,
 				[VERIFY_EMAIL]: <VerifyEmail />,
-				[ERROR]: <Error errorMessage={FIREBASE_ERRORS[errorCode]} />
+				[ERROR]: <Error errorMessage={FIREBASE_ERROR[errorCode]} />
 			})(undefined)(actionMode)}
 		</Provider>
 	)

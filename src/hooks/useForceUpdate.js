@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react'
 //   equivalence check will always be false, resulting in a re-render, even
 //   when multiple calls to forceUpdate are batched.
 
-export default function useForceUpdate() {
+export function useForceUpdate() {
 	const [, dispatch] = useState(Object.create(null))
 
 	// Turn dispatch(required_parameter) into dispatch().

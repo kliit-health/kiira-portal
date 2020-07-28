@@ -8,6 +8,7 @@ export {
 	verifyPasswordResetCode,
 	checkActionCode,
 	confirmPasswordReset,
-	sendPasswordResetEmail
+	sendPasswordResetEmail,
+	firebaseFetch
 } from './functions'
 export { FirebaseAuth } from './FirebaseAuth'

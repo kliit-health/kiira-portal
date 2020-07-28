@@ -200,5 +200,33 @@ export const intl = {
 	passwordChanged: {
 		id: 'passwordChanged',
 		description: 'Password has been successfully updated!'
+	},
+	internalError: {
+		id: 'internalError',
+		description: 'Internal Error'
+	},
+	emailAlreadyExists: {
+		id: 'emailAlreadyExists',
+		description: 'Email already exists.'
+	},
+	invalidCredential: {
+		id: 'invalidCredential',
+		description: 'Invalid credential.'
+	},
+	invalidPassword: {
+		id: 'invalidPassword',
+		description: 'Invalid password.'
+	},
+	linkHasBeenSent: {
+		id: 'linkHasBeenSent',
+		description: 'Password reset link has been sent.'
+	},
+	emailAddressRequired: {
+		id: 'emailAddressRequired',
+		description: 'Email address is required.'
+	},
+	emptyList: {
+		id: 'emptyList',
+		description: 'There are no items to be displayed.'
 	}
 }

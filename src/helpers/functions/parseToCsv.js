@@ -1,6 +1,6 @@
 import Papa from 'papaparse'
-import { PARSE_CSV_ERRORS } from 'src/errors'
-const { MISSING_FILE } = PARSE_CSV_ERRORS
+import { PARSE_CSV_ERROR } from 'src/error'
+const { MISSING_FILE } = PARSE_CSV_ERROR
 
 export const parseToCsv = data =>
 	new Promise((resolve, reject) => {

@@ -3,12 +3,12 @@ import { switchCase } from 'src/helpers/functions'
 import { ActionsContext } from '../../Actions'
 import { confirmPasswordReset } from 'src/firebase'
 import { Authentication, Success } from './sections'
-import { FIREBASE_ERRORS } from 'src/errors'
-import { ERRORS } from 'src/firebase/constants'
+import { FIREBASE_ERROR } from 'src/error'
+import { ERROR } from 'src/firebase/constants'
 import { PASSWORD, INITIAL, SUCCESS } from 'src/helpers/constants'
 import './styles.scss'
 
-const { PASSWORDS_MISMATCH } = ERRORS
+const { PASSWORDS_MISMATCH } = ERROR
 
 export const PasswordReset = () => {
 	const { code } = useContext(ActionsContext)

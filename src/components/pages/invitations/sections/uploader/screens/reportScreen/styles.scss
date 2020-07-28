@@ -13,12 +13,12 @@
   &__description {
     @include user-select-none;
     max-width: 300px;
-    margin: 20px;
   }
 
   &__image {
     @include user-select-none;
     height: 90px;
+    margin: 20px;
   }
 
   &__link {
