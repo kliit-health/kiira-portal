@@ -18,7 +18,7 @@ export const List = ({ organizationId }) => {
 		{ key: 'firstLogin', operator: '==', value: false }
 	]
 
-	const { data } = useFirebaseFetch('users', queryConditions)
+	const { data, loading } = useFirebaseFetch('users', queryConditions)
 
 	useEffect(() => {
 		if (data) {
@@ -40,7 +40,12 @@ export const List = ({ organizationId }) => {
 
 	return (
 		<div className={styles.root}>
-			<Table rowHeight={60} classes={styles.table} data={formatedData}>
+			<Table
+				rowHeight={60}
+				classes={styles.table}
+				data={formatedData}
+				loading={loading}
+			>
 				<Header />
 				{model.map(({ dataKey, style, type }, index) => (
 					<Column style={style} key={`${index}-${dataKey}`}>

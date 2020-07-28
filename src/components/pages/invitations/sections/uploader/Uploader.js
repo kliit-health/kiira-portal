@@ -21,7 +21,7 @@ import './styles.scss'
 export const UploaderContext = createContext()
 const { Provider } = UploaderContext
 
-export const Uploader = ({ onCancel, organizationId }) => {
+export const Uploader = ({ onCancel, organizationId, onSuccess }) => {
 	const [response, setResponse] = useState(null)
 	const [screen, setScreen] = useState(INITIAL_SCREEN)
 
@@ -44,7 +44,10 @@ export const Uploader = ({ onCancel, organizationId }) => {
 		parseCsv(file, keysMap)
 			.then(data =>
 				createUsers(data, organizationId)
-					.then(({ data }) => handleResponse({ ...data }, REPORT_SCREEN))
+					.then(({ data }) => {
+						handleResponse({ ...data }, REPORT_SCREEN)
+						onSuccess()
+					})
 					.catch(error => handleResponse(error, SERVER_ERROR))
 			)
 			.catch(error => handleResponse(error, BAD_FILE_SCREEN))

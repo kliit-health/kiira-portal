@@ -1,5 +1,8 @@
 import { auth, firestore, functions } from './initializer'
-import { ERRORS, PERSISTANCE } from './constants'
+import { intl } from 'src/i18n'
+import { ERROR, PERSISTANCE } from './constants'
+
+const { USER_PROFILE_NOT_FOUND, INVALID_EMAIL } = ERROR
 
 export const signIn = (email, password) =>
 	new Promise((resolve, reject) =>
@@ -26,7 +29,7 @@ export const getUserDetails = (uid, collectionName = 'users') =>
 				if (document.data()) {
 					resolve(document.data())
 				} else {
-					reject(ERRORS.USER_PROFILE_NOT_FOUND)
+					reject(USER_PROFILE_NOT_FOUND)
 				}
 			})
 			.catch(error => {
@@ -73,10 +76,8 @@ export const createUsers = (users, organizationId) =>
 					organizationId
 				})
 				resolve(response)
-				return
 			} catch (error) {
 				reject(error)
-				return
 			}
 		}
 	})
@@ -86,17 +87,11 @@ export const sendPasswordResetEmail = email =>
 		const sendPasswordResetEmail = functions.httpsCallable(
 			'sendPasswordResetEmail'
 		)
-		if (email) {
-			try {
-				await sendPasswordResetEmail(email)
-				resolve('Password reset link has been sent.')
-				return
-			} catch (error) {
-				reject(error)
-				return
-			}
-		} else {
-			reject('Email address is required.')
+		try {
+			await sendPasswordResetEmail(email)
+			resolve(intl.linkHasBeenSent.description)
+		} catch (error) {
+			reject(error)
 		}
 	})
 
@@ -105,10 +100,8 @@ export const verifyPasswordResetCode = code =>
 		try {
 			const response = await auth.verifyPasswordResetCode(code)
 			resolve(response)
-			return
 		} catch (error) {
 			reject(error)
-			return
 		}
 	})
 
@@ -117,10 +110,8 @@ export const checkActionCode = code =>
 		try {
 			const response = await auth.checkActionCode(code)
 			resolve(response)
-			return
 		} catch (error) {
 			reject(error)
-			return
 		}
 	})
 
@@ -129,9 +120,25 @@ export const confirmPasswordReset = (code, newPassword) =>
 		try {
 			const response = await auth.confirmPasswordReset(code, newPassword)
 			resolve(response)
-			return
 		} catch (error) {
 			reject(error)
-			return
+		}
+	})
+
+export const firebaseFetch = (collectionName, conditions, limit = 100) =>
+	new Promise(async (resolve, reject) => {
+		try {
+			let query = firestore.collection(collectionName)
+			for (let condition of conditions) {
+				const { key, operator, value } = condition
+				query = query.where(key, operator, value)
+			}
+			const response = await query.limit(limit).get()
+			if (response) {
+				const data = response.docs.map(item => item.data())
+				resolve(data)
+			}
+		} catch (error) {
+			reject(error)
 		}
 	})

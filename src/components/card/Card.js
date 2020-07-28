@@ -24,7 +24,6 @@ export const Card = ({ classes = {}, children, onClick, gradient }) => {
 				<div className={styles.background} />
 			</div>
 			<div className={styles.content}>
-				<Divider classes={styles.divider} />
 				{cloneChildren(children, [HEADER])}
 				<div className={styles.gradient} />
 			</div>

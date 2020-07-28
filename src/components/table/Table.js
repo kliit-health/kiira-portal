@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { VirtualizedList, CircularProgress } from 'src/components'
+import { VirtualizedList, CircularProgress, Typography } from 'src/components'
 import {
 	Header,
 	Row,
@@ -10,6 +10,7 @@ import {
 	AvatarCell
 } from './components'
 import { cloneChild } from 'src/helpers/functions'
+import { intl } from 'src/i18n'
 import './styles.scss'
 
 /**
@@ -26,19 +27,25 @@ export const Table = ({
 	data = [],
 	classes = {},
 	children,
-	rowHeight = 50
+	rowHeight = 50,
+	loading
 }) => {
 	const styles = {
 		table: classnames('virtualized-list-table', classes.root),
 		list: classnames('virtualized-list-table__list', classes.list),
-		row: classes.row
+		row: classes.row,
+		fallback: {
+			root: classnames('virtualized-list-table__fallback', classes.fallback)
+		}
 	}
 
 	return (
 		<div className={styles.table}>
 			{cloneChild(children, 'Header')}
 			<div className={styles.list}>
-				{data.length > 0 ? (
+				{loading ? (
+					<CircularProgress />
+				) : data.length > 0 ? (
 					<VirtualizedList
 						itemData={data}
 						itemCount={data.length}
@@ -51,7 +58,9 @@ export const Table = ({
 						)}
 					</VirtualizedList>
 				) : (
-					<CircularProgress />
+					<Typography classes={styles.fallback}>
+						{intl.emptyList.description}
+					</Typography>
 				)}
 			</div>
 			{cloneChild(children, 'Footer')}

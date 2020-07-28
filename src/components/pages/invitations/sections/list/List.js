@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect } from 'react'
 import { switchCase } from 'src/helpers/functions'
-import { useFirebaseFetch } from 'src/hooks'
-import { Table, Paper, Popover } from 'src/components'
+import { Table, Popover } from 'src/components'
 import { Uploader } from '../uploader'
 import { DATE, TEXT } from 'src/helpers/constants'
+import { firebaseFetch } from 'src/firebase'
 import model from './model'
 import { Header } from './header'
 import './styles.scss'
@@ -14,16 +14,17 @@ export const List = ({ organizationId }) => {
 	const popRef = useRef(null)
 	const [anchorEl, setAnchorEl] = useState(null)
 	const [formatedData, setFormatedData] = useState([])
+	const [loading, setLoading] = useState(false)
 
 	const queryConditions = [
 		{ key: 'organizationId', operator: '==', value: organizationId },
 		{ key: 'role', operator: '==', value: 'User' }
 	]
 
-	const { data } = useFirebaseFetch('users', queryConditions)
-
-	useEffect(() => {
-		if (data) {
+	const fetchUsers = async () => {
+		setLoading(true)
+		try {
+			const data = await firebaseFetch('users', queryConditions)
 			setFormatedData(
 				data.map(item => {
 					const { firstLogin, ...rest } = item
@@ -33,8 +34,15 @@ export const List = ({ organizationId }) => {
 					}
 				})
 			)
+			setLoading(false)
+		} catch {
+			setLoading(false)
 		}
-	}, [data])
+	}
+
+	useEffect(() => {
+		fetchUsers()
+	}, [])
 
 	const handleAddUser = () => {
 		setAnchorEl(popRef.current)
@@ -42,6 +50,10 @@ export const List = ({ organizationId }) => {
 
 	const handleClose = () => {
 		setAnchorEl(null)
+	}
+
+	const handleSuccess = () => {
+		fetchUsers()
 	}
 
 	const popoverProps = {
@@ -64,7 +76,7 @@ export const List = ({ organizationId }) => {
 
 	return (
 		<div className={styles.root}>
-			<Table classes={styles.table} data={formatedData}>
+			<Table classes={styles.table} data={formatedData} loading={loading}>
 				<Header elementRef={popRef} onAddUsersClick={handleAddUser} />
 				{model.map(({ dataKey, style, type }, index) => (
 					<Column style={style} key={`${index}-${dataKey}`}>
@@ -79,7 +91,11 @@ export const List = ({ organizationId }) => {
 				))}
 			</Table>
 			<Popover {...popoverProps}>
-				<Uploader onCancel={handleClose} organizationId={organizationId} />
+				<Uploader
+					onSuccess={handleSuccess}
+					onCancel={handleClose}
+					organizationId={organizationId}
+				/>
 			</Popover>
 		</div>
 	)
