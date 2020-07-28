@@ -51,7 +51,7 @@ export const PasswordReset = () => {
 						<Authentication
 							onPasswordChange={handleOnPasswordChange}
 							onSubmit={handleOnSubmit}
-							errorMessage={FIREBASE_ERRORS[errorCode]}
+							errorMessage={FIREBASE_ERROR[errorCode]}
 						/>
 					),
 					[SUCCESS]: <Success />
