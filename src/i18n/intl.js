@@ -120,11 +120,11 @@ export const intl = {
 	},
 	invitations: {
 		id: 'invitations',
-		description: 'invitations'
+		description: 'invitation(s)'
 	},
 	unableToSend: {
 		id: 'unableToSend',
-		description: 'Unable to sent'
+		description: 'Unable to send'
 	},
 	fullReport: {
 		id: 'fullReport',
