@@ -37,9 +37,9 @@ export const List = ({ onClick, limit = 100 }) => {
 							</Card>
 						)
 					})}
+					<div className={styles.footer} />
 				</div>
 			)}
-			<div className={styles.footer}></div>
 		</div>
 	)
 }
