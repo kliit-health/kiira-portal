@@ -23,9 +23,9 @@ const Login = ({ authError }) => {
 	useEffect(() => {
 		if (authError) {
 			const { code } = authError
-			setErrorCode(code)
+			setErrorState(code)
 		}
-	}, [authError, setErrorCode])
+	}, [authError, setErrorState])
 
 	const handleEmailChange = event => {
 		setEmail(event.target.value)
