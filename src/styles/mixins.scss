@@ -23,3 +23,9 @@
     cursor: pointer;
   }
 }
+
+@mixin hide-backface-visibility {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}

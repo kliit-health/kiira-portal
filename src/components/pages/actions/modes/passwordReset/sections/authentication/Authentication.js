@@ -6,7 +6,8 @@ import './styles.scss'
 export const Authentication = ({
 	onPasswordChange,
 	onSubmit,
-	errorMessage
+	errorMessage,
+	loading
 }) => {
 	const styles = {
 		root: 'password-reset-authentication',
@@ -41,7 +42,7 @@ export const Authentication = ({
 						{errorMessage}
 					</Typography>
 				</div>
-				<Button classes={styles.button} onClick={onSubmit}>
+				<Button loading={loading} classes={styles.button} onClick={onSubmit}>
 					{intl.submit.description}
 				</Button>
 			</div>

@@ -1,12 +1,22 @@
 import classnames from 'classnames'
+import { intl } from 'src/i18n'
 import './styles.scss'
 
 export const Button = props => {
-	const { children, elementRef, onClick, outlined, link, classes = {} } = props
+	const {
+		children,
+		elementRef,
+		onClick,
+		outlined,
+		link,
+		loading,
+		classes = {}
+	} = props
 
 	const modifiers = {
 		'button--outlined': outlined,
-		'button--link': link
+		'button--link': link,
+		'button--loading': loading
 	}
 
 	const styles = {
@@ -15,8 +25,15 @@ export const Button = props => {
 	}
 
 	return (
-		<button ref={elementRef} onClick={onClick} className={styles.root}>
-			<span className={styles.text}>{children}</span>
+		<button
+			disabled={loading}
+			ref={elementRef}
+			onClick={onClick}
+			className={styles.root}
+		>
+			<span className={styles.text}>
+				{loading ? intl.loading.description : children}
+			</span>
 		</button>
 	)
 }

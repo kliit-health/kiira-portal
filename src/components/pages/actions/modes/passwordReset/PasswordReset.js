@@ -16,6 +16,7 @@ export const PasswordReset = () => {
 	const [password, setPassword] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState('')
 	const [resetState, setResetState] = useState(INITIAL)
+	const [loading, setLoading] = useState(false)
 
 	const handleOnPasswordChange = ({ target: { dataset, value } }) => {
 		if (dataset.section === PASSWORD) {
@@ -30,10 +31,12 @@ export const PasswordReset = () => {
 			setErrorCode(PASSWORDS_MISMATCH)
 			return
 		} else {
+			setLoading(true)
 			confirmPasswordReset(code, password)
 				.then(() => setResetState(SUCCESS))
 				.catch(({ code }) => {
 					setErrorCode(code)
+					setLoading(false)
 				})
 		}
 	}
@@ -52,6 +55,7 @@ export const PasswordReset = () => {
 							onPasswordChange={handleOnPasswordChange}
 							onSubmit={handleOnSubmit}
 							errorMessage={FIREBASE_ERROR[errorCode]}
+							loading={loading}
 						/>
 					),
 					[SUCCESS]: <Success />

@@ -228,5 +228,13 @@ export const intl = {
 	emptyList: {
 		id: 'emptyList',
 		description: 'There are no items to be displayed.'
+	},
+	loading: {
+		id: 'loading',
+		description: 'Loading...'
+	},
+	everthingInOnePlace: {
+		id: 'everthingInOnePlace',
+		description: 'Everything you need in one place.'
 	}
 }

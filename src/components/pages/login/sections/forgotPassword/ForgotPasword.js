@@ -8,7 +8,8 @@ export const ForgotPassword = ({
 	errorMessage,
 	onSubmit,
 	emailValue,
-	message
+	message,
+	loading
 }) => {
 	const styles = {
 		root: 'login-forgot-password',
@@ -32,7 +33,7 @@ export const ForgotPassword = ({
 				<Typography error success={message} classes={styles.error}>
 					{message || errorMessage}
 				</Typography>
-				<Button classes={styles.button} onClick={onSubmit}>
+				<Button loading={loading} classes={styles.button} onClick={onSubmit}>
 					{intl.submit.description}
 				</Button>
 			</div>

@@ -1,12 +1,19 @@
+@import 'src/styles/mixins';
+
 .experts-list {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  will-change: transform;
-  backface-visibility: hidden;
+  display: flex;
+  position: relative;
+  flex: 1;
 
   &__footer {
     display: flex;
     height: 50px;
+  }
+
+  &__element {
+    @include hide-backface-visibility;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
 }
