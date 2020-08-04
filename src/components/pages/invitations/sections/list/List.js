@@ -5,6 +5,7 @@ import { Uploader } from '../uploader'
 import { DATE, TEXT } from 'src/helpers/constants'
 import { firebaseFetch } from 'src/firebase'
 import model from './model'
+import { orderBy } from 'lodash'
 import { Header } from './header'
 import './styles.scss'
 
@@ -44,6 +45,11 @@ export const List = ({ organizationId }) => {
 		fetchUsers()
 	}, [])
 
+	const handleSort = (key, asc) => {
+		let sortedData = orderBy(formatedData, key, asc ? 'asc' : 'desc')
+		setFormatedData(sortedData)
+	}
+
 	const handleAddUser = () => {
 		setAnchorEl(popRef.current)
 	}
@@ -77,7 +83,11 @@ export const List = ({ organizationId }) => {
 	return (
 		<div className={styles.root}>
 			<Table classes={styles.table} data={formatedData} loading={loading}>
-				<Header elementRef={popRef} onAddUsersClick={handleAddUser} />
+				<Header
+					elementRef={popRef}
+					onAddUsers={handleAddUser}
+					onSort={handleSort}
+				/>
 				{model.map(({ dataKey, style, type }, index) => (
 					<Column style={style} key={`${index}-${dataKey}`}>
 						{({ data }) => {

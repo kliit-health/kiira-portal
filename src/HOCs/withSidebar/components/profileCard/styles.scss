@@ -20,7 +20,7 @@
   }
 
   &__email {
-    @extend .profile-card;
+    @extend .profile-card__name;
     font-size: .8em;
     opacity: .7;
   }

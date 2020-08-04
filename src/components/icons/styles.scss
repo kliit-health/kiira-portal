@@ -1,3 +1,14 @@
-.plus-icon {
+@import 'src/styles/mixins';
+
+@mixin icon-defaults {
+  @include user-select-none;
   margin: 5px;
+}
+
+.plus-icon {
+  @include icon-defaults;
+}
+
+.chevron-icon {
+  @include icon-defaults;
 }
