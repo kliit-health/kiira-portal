@@ -1,12 +1,17 @@
 .overview {
-  &__items {
-    position: relative;
-    display: grid;
-    gap: 1.4rem;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__section-title {
+    padding: 10px 0;
   }
 
   &__page {
-    display: inline;
+    position: relative;
+    display: flex;
+    flex-direction: column;
   }
 }

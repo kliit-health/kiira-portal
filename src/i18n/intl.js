@@ -120,11 +120,11 @@ export const intl = {
 	},
 	invitations: {
 		id: 'invitations',
-		description: 'invitations'
+		description: 'invitation(s)'
 	},
 	unableToSend: {
 		id: 'unableToSend',
-		description: 'Unable to sent'
+		description: 'Unable to send'
 	},
 	fullReport: {
 		id: 'fullReport',
@@ -228,5 +228,13 @@ export const intl = {
 	emptyList: {
 		id: 'emptyList',
 		description: 'There are no items to be displayed.'
+	},
+	loading: {
+		id: 'loading',
+		description: 'Loading...'
+	},
+	everthingInOnePlace: {
+		id: 'everthingInOnePlace',
+		description: 'Everything you need in one place.'
 	}
 }

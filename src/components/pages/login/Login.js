@@ -17,14 +17,15 @@ const Login = ({ authError }) => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [message, setMessage] = useState('')
+	const [loading, setLoading] = useState(false)
 	const [showForgotPassword, setShowForgotPassword] = useState(false)
 
 	useEffect(() => {
 		if (authError) {
 			const { code } = authError
-			setErrorCode(code)
+			setErrorState(code)
 		}
-	}, [authError, setErrorCode])
+	}, [authError, setErrorState])
 
 	const handleEmailChange = event => {
 		setEmail(event.target.value)
@@ -45,26 +46,31 @@ const Login = ({ authError }) => {
 	}
 
 	const handleSubmit = () => {
+		setLoading(true)
 		showForgotPassword
 			? sendPasswordResetEmail(email)
 					.then(() => {
 						setMessage(intl.resetLinkSent.description)
+						setLoading(false)
 						setTimeout(function () {
 							setInitialState()
 						}, tenSeconds)
 					})
 					.catch(({ details }) => {
-						details.code
-							? setErrorCode(details.code)
-							: setErrorCode(INTERNAL_ERROR)
+						setErrorState(details.code ? details.code : INTERNAL_ERROR)
 					})
-			: signIn(email, password).catch(({ code }) => setErrorCode(code))
+			: signIn(email, password).catch(({ code }) => setErrorState(code))
 	}
 
 	const setInitialState = () => {
 		setShowForgotPassword(false)
 		setErrorCode('')
 		setMessage('')
+	}
+
+	const setErrorState = code => {
+		setLoading(false)
+		setErrorCode(code)
 	}
 
 	const styles = {
@@ -84,6 +90,7 @@ const Login = ({ authError }) => {
 						emailValue={email}
 						errorMessage={FIREBASE_ERROR[errorCode]}
 						message={message}
+						loading={loading}
 					/>
 				) : (
 					<Authentication
@@ -93,6 +100,7 @@ const Login = ({ authError }) => {
 						onForgotPassword={handleForgotPassword}
 						errorMessage={FIREBASE_ERROR[errorCode]}
 						emailValue={email}
+						loading={loading}
 					/>
 				)}
 			</div>

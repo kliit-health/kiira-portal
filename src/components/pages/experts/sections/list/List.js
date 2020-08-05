@@ -8,15 +8,19 @@ const { Header, Rating } = Card
 export const List = ({ onClick, limit = 100 }) => {
 	const conditions = [{ key: 'role', operator: '==', value: 'Expert' }]
 	const { data, loading } = useFirebaseFetch('users', conditions, limit)
-	const styles = { list: 'experts-list', footer: 'experts-list__footer' }
+	const styles = {
+		root: 'experts-list',
+		list: 'experts-list__element',
+		footer: 'experts-list__footer'
+	}
 
 	return (
-		<>
-			<div className={styles.list}>
-				{loading ? (
-					<CircularProgress />
-				) : (
-					data.map(item => {
+		<div className={styles.root}>
+			{loading ? (
+				<CircularProgress />
+			) : (
+				<div className={styles.list}>
+					{data.map(item => {
 						const { uid, rating, profileInfo, isOnline } = item
 						return (
 							<Card gradient key={uid} onClick={() => onClick(item)}>
@@ -32,10 +36,10 @@ export const List = ({ onClick, limit = 100 }) => {
 								<Typography>{profileInfo.bio}</Typography>
 							</Card>
 						)
-					})
-				)}
-			</div>
-			<div className={styles.footer}></div>
-		</>
+					})}
+					<div className={styles.footer} />
+				</div>
+			)}
+		</div>
 	)
 }

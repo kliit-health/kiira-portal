@@ -8,7 +8,8 @@ export const Authentication = ({
 	onSubmit,
 	onForgotPassword,
 	errorMessage,
-	emailValue
+	emailValue,
+	loading
 }) => {
 	const styles = {
 		root: 'login-authentication',
@@ -39,7 +40,7 @@ export const Authentication = ({
 				<Typography error classes={styles.error}>
 					{errorMessage}
 				</Typography>
-				<Button classes={styles.button} onClick={onSubmit}>
+				<Button loading={loading} classes={styles.button} onClick={onSubmit}>
 					{intl.login.description}
 				</Button>
 			</div>

@@ -6,7 +6,8 @@ import './styles.scss'
 export const Authentication = ({
 	onPasswordChange,
 	onSubmit,
-	errorMessage
+	errorMessage,
+	loading
 }) => {
 	const styles = {
 		root: 'password-reset-authentication',
@@ -29,19 +30,19 @@ export const Authentication = ({
 						onChange={onPasswordChange}
 						placeholder={intl.password.description}
 						type="password"
-						autoComplete={false}
+						autoComplete="off"
 					/>
 					<TextField
 						onChange={onPasswordChange}
 						placeholder={intl.confirmPassword.description}
 						type="password"
-						autoComplete={false}
+						autoComplete="off"
 					/>
 					<Typography classes={styles.error} error>
 						{errorMessage}
 					</Typography>
 				</div>
-				<Button classes={styles.button} onClick={onSubmit}>
+				<Button loading={loading} classes={styles.button} onClick={onSubmit}>
 					{intl.submit.description}
 				</Button>
 			</div>
