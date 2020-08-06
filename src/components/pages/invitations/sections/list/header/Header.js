@@ -1,30 +1,31 @@
 import { useState, useEffect } from 'react'
 import classnames from 'classnames'
-import { usePrevious } from 'src/hooks'
 import { PlusIcon, ChevronIcon } from 'src/components/icons'
-import { Typography, Button } from 'src/components'
+import { Typography, Button, SearchField } from 'src/components'
 import { intl } from 'src/i18n'
 import { HEADER } from 'src/helpers/constants'
 import model from '../model'
 import './styles.scss'
 
-export const Header = ({ onAddUsers, elementRef, onSort }) => {
+export const Header = ({ onAddUsers, elementRef, onSort, onSearch }) => {
 	const [activeKey, setActiveKey] = useState('')
 	const [ascendant, setAscendant] = useState(false)
-
-	const handleActiveKey = key => {
-		if (onSort) {
-			onSort(key, ascendant)
-		}
-		setActiveKey(key)
-		setAscendant(!ascendant)
-	}
 
 	useEffect(() => {
 		if (!ascendant) {
 			setAscendant(!ascendant)
 		}
 	}, [activeKey])
+
+	const handleActiveKey = key => {
+		onSort(key, ascendant)
+		setActiveKey(key)
+		setAscendant(!ascendant)
+	}
+
+	const handleSearch = ({ target: { value } }) => {
+		onSearch(value)
+	}
 
 	const root = 'invitations-list-header'
 	const styles = {
@@ -33,7 +34,6 @@ export const Header = ({ onAddUsers, elementRef, onSort }) => {
 		title: { root: `${root}__title` },
 		controls: `${root}__controls`,
 		container: `${root}__container`,
-		button: { root: `${root}__button` },
 		icon: { root: `${root}__icon` },
 		chevron: `${root}__chevron`
 	}
@@ -41,12 +41,11 @@ export const Header = ({ onAddUsers, elementRef, onSort }) => {
 	return (
 		<div className={styles.root}>
 			<div className={styles.controls}>
-				<Button
-					elementRef={elementRef}
-					onClick={onAddUsers}
-					classes={styles.button}
-					link
-				>
+				<SearchField
+					onSearch={handleSearch}
+					placeholder={intl.searchInvitations.description}
+				/>
+				<Button elementRef={elementRef} onClick={onAddUsers} link>
 					<PlusIcon classes={styles.icon} />
 					{intl.addUsers.description}
 				</Button>

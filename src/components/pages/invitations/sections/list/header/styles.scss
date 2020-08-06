@@ -19,11 +19,12 @@
 
   &__controls {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     overflow: hidden;
     border-radius: 6px 6px 0 0;
-    height: 50px;
+    height: 70px;
     padding: 0px 20px;
   }
 
@@ -39,10 +40,6 @@
       background-color: lighten($base-pink, 18%);
       transition: all ease-in .2s;
     }
-  }
-
-  &__button {
-    align-self: flex-end;
   }
 
   &__icon {

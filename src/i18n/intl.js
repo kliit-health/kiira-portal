@@ -236,5 +236,13 @@ export const intl = {
 	everthingInOnePlace: {
 		id: 'everthingInOnePlace',
 		description: 'Everything you need in one place.'
+	},
+	search: {
+		id: 'search',
+		description: 'Search'
+	},
+	searchInvitations: {
+		id: 'searchInvitations',
+		description: 'Search by name, email or sign up status'
 	}
 }
