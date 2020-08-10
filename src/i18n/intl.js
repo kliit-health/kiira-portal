@@ -244,5 +244,9 @@ export const intl = {
 	searchInvitations: {
 		id: 'searchInvitations',
 		description: 'Search by name, email or sign up status'
+	},
+	searchActiveUsers: {
+		id: 'searchActiveUsers',
+		description: 'Search by name, email or date of birth'
 	}
 }
