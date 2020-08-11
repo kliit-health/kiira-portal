@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
-import { switchCase } from 'src/helpers/functions'
+import { orderBy } from 'lodash'
+import { switchCase, filterObjectArray } from 'src/helpers/functions'
 import { useFirebaseFetch } from 'src/hooks'
 import { Table } from 'src/components'
+import { Footer } from './footer'
 import { DATE, TEXT, AVATAR } from 'src/helpers/constants'
 import model from './model'
 import { Header } from './header'
@@ -11,6 +13,8 @@ const { Column, DateCell, TextCell, AvatarCell } = Table
 
 export const List = ({ organizationId }) => {
 	const [formatedData, setFormatedData] = useState([])
+	const [searchData, setSearchData] = useState([])
+	const [searching, setSearching] = useState(false)
 
 	const queryConditions = [
 		{ key: 'organizationId', operator: '==', value: organizationId },
@@ -33,6 +37,22 @@ export const List = ({ organizationId }) => {
 		}
 	}, [data])
 
+	const handleSort = (key, asc) => {
+		let sortedData = orderBy(
+			searching ? searchData : formatedData,
+			key,
+			asc ? 'asc' : 'desc'
+		)
+		searching ? setSearchData(sortedData) : setFormatedData(sortedData)
+	}
+
+	const handleSearch = value => {
+		const isSearching = Boolean(value)
+		const searchResult = filterObjectArray(formatedData, value)
+		setSearching(isSearching)
+		setSearchData(searchResult)
+	}
+
 	const styles = {
 		root: 'active-users-list',
 		table: { list: 'active-users-list__list' }
@@ -43,10 +63,10 @@ export const List = ({ organizationId }) => {
 			<Table
 				rowHeight={60}
 				classes={styles.table}
-				data={formatedData}
+				data={searching ? searchData : formatedData}
 				loading={loading}
 			>
-				<Header />
+				<Header onSort={handleSort} onSearch={handleSearch} />
 				{model.map(({ dataKey, style, type }, index) => (
 					<Column style={style} key={`${index}-${dataKey}`}>
 						{({ data }) => {
@@ -59,6 +79,9 @@ export const List = ({ organizationId }) => {
 						}}
 					</Column>
 				))}
+				<Footer
+					userCount={searching ? searchData.length : formatedData.length}
+				/>
 			</Table>
 		</div>
 	)

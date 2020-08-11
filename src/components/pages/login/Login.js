@@ -57,7 +57,7 @@ const Login = ({ authError }) => {
 						}, tenSeconds)
 					})
 					.catch(({ details }) => {
-						setErrorState(details.code ? details.code : INTERNAL_ERROR)
+						setErrorState(details ? details.code : INTERNAL_ERROR)
 					})
 			: signIn(email, password).catch(({ code }) => setErrorState(code))
 	}

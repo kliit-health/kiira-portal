@@ -1,0 +1,28 @@
+@import 'src/styles/variables';
+
+.search-field {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  overflow: hidden;
+
+  &__search-icon {
+    color: darken($base-gray, 10%);
+    font-size: 1.2em,
+  }
+
+  &__input {
+    display: flex;
+    flex: 1;
+    font-size: 1em;
+    margin: 0 10px;
+    outline: none;
+    padding: 8px 0;
+    font-family: 'Roboto-Regular';
+    border: none;
+
+    &::placeholder {
+      color: lighten($base-gray, 10%);
+    }
+  }
+}

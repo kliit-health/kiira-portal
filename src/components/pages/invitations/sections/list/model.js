@@ -20,7 +20,7 @@ export default [
 		type: DATE
 	},
 	{
-		style: { minWidth: 65, flex: 2 },
+		style: { minWidth: 80, flex: 2 },
 		label: 'Sign Up',
 		dataKey: 'signUp',
 		type: TEXT

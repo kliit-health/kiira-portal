@@ -1,5 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
+import {
+	faPlus,
+	faChevronDown,
+	faSearch
+} from '@fortawesome/free-solid-svg-icons'
+import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import classnames from 'classnames'
 import './styles.scss'
 
@@ -12,6 +17,45 @@ export const PlusIcon = ({ classes = {} }) => {
 	return (
 		<div className={styles.icon}>
 			<FontAwesomeIcon className={styles.element} icon={faPlus} />
+		</div>
+	)
+}
+
+export const ChevronIcon = ({ classes = {} }) => {
+	const styles = {
+		icon: classnames('chevron-icon', classes.root),
+		element: classnames('chevron-icon__element', classes.element)
+	}
+
+	return (
+		<div className={styles.icon}>
+			<FontAwesomeIcon className={styles.element} icon={faChevronDown} />
+		</div>
+	)
+}
+
+export const SearchIcon = ({ classes = {} }) => {
+	const styles = {
+		icon: classnames('search-icon', classes.root),
+		element: classnames('search-icon__element', classes.element)
+	}
+
+	return (
+		<div className={styles.icon}>
+			<FontAwesomeIcon className={styles.element} icon={faSearch} />
+		</div>
+	)
+}
+
+export const CancelCircle = ({ classes = {} }) => {
+	const styles = {
+		icon: classnames('cancel-circle-icon', classes.root),
+		element: classnames('cancel-circle__element', classes.element)
+	}
+
+	return (
+		<div className={styles.icon}>
+			<FontAwesomeIcon className={styles.element} icon={faTimesCircle} />
 		</div>
 	)
 }

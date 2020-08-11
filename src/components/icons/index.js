@@ -1,1 +1,1 @@
-export { PlusIcon } from './Icons'
+export { PlusIcon, ChevronIcon, SearchIcon, CancelCircle } from './Icons'
