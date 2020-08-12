@@ -7,7 +7,7 @@ export const formatData = data =>
 			firstName: 'First Name',
 			lastName: 'Last Name',
 			email: 'Email',
-			error: 'Reason'
+			message: 'Reason'
 		}
 		return renameObjectKeys(keysMap, { firstName, lastName, email, message })
 	})
