@@ -2,19 +2,25 @@ import { DATE, TEXT } from 'src/helpers/constants'
 
 export default [
 	{
-		style: { minWidth: 180, flex: 8 },
-		label: 'Name',
-		dataKey: 'displayName',
+		style: { minWidth: 100, flex: 6 },
+		label: 'First Name',
+		dataKey: 'firstName',
 		type: TEXT
 	},
 	{
-		style: { minWidth: 180, flex: 10 },
+		style: { minWidth: 100, flex: 6 },
+		label: 'Last Name',
+		dataKey: 'lastName',
+		type: TEXT
+	},
+	{
+		style: { minWidth: 180, flex: 12 },
 		label: 'Email',
 		dataKey: 'email',
 		type: TEXT
 	},
 	{
-		style: { minWidth: 170, flex: 7 },
+		style: { minWidth: 140, flex: 4 },
 		label: 'Date of Invite',
 		dataKey: 'createdAt',
 		type: DATE

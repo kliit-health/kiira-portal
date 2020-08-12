@@ -35,7 +35,11 @@ export const Uploader = ({ onCancel, organizationId, onSuccess }) => {
 		setScreen(INITIAL_SCREEN)
 	}
 
-	const keysMap = { Name: 'displayName', Email: 'email' }
+	const keysMap = {
+		firstName: '',
+		lastName: '',
+		email: ''
+	}
 
 	const handleDrop = files => {
 		setScreen(LOADING_SCREEN)

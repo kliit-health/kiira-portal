@@ -29,7 +29,9 @@ const Sample = () => {
 	}
 
 	useEffect(() => {
-		parseToCsv([{ Name: '', Email: '' }]).then(result => setFile(result))
+		parseToCsv([
+			{ ['First Name']: '', ['Last Name']: '', Email: '' }
+		]).then(result => setFile(result))
 	}, [])
 
 	return (

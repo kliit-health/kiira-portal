@@ -1,6 +1,6 @@
 import Papa from 'papaparse'
 import { PARSE_CSV_ERROR } from 'src/error'
-import { renameObjectKeys } from './renameObjectKeys'
+import { toCamelCase } from './toCamelCase'
 const { MISSING_FILE, BAD_FILE } = PARSE_CSV_ERROR
 
 export const parseCsv = (file, keysMap) =>
@@ -8,8 +8,10 @@ export const parseCsv = (file, keysMap) =>
 		if (!file) reject(MISSING_FILE)
 		Papa.parse(file, {
 			header: true,
+			transformHeader: header => {
+				return toCamelCase(header)
+			},
 			skipEmptyLines: true,
-			worker: true,
 			complete: ({ data, errors }) => {
 				if (errors.length > 0) {
 					reject(BAD_FILE)
@@ -24,7 +26,7 @@ export const parseCsv = (file, keysMap) =>
 							return
 						}
 					})
-					return renameObjectKeys(keysMap, item)
+					return item
 				})
 				resolve(validated)
 				return
