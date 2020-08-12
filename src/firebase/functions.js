@@ -60,9 +60,10 @@ export const firebaseSimpleFetch = (
  *
  * @desc Batch create new users using firebase custom function
  * @param { Object[] } users - The array of users to be created
- * @param { string } users[].displayName - the user's display name
+ * @param { string } users[].firstName - the user's first name
+ * @param { string } users[].lastName - the user's last name
  * @param { string } users[].email - the user's email address
- * @param { string } oid organization id
+ * @param { string } organizationId organization id
  *
  */
 

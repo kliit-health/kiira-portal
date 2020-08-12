@@ -1,14 +1,13 @@
 import { renameObjectKeys } from 'src/helpers/functions'
 
-export const formatData = data => {
-	const rejected = data.map(({ user: { displayName, email }, error }) => {
+export const formatData = data =>
+	data.map(({ user: { firstName, lastName, email }, error }) => {
 		const { message } = error.errorInfo
 		const keysMap = {
-			displayName: 'Name',
+			firstName: 'First Name',
+			lastName: 'Last Name',
 			email: 'Email',
 			message: 'Reason'
 		}
-		return renameObjectKeys(keysMap, { displayName, email, message })
+		return renameObjectKeys(keysMap, { firstName, lastName, email, message })
 	})
-	return rejected
-}

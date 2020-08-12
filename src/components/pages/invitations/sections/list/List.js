@@ -31,9 +31,10 @@ export const List = ({ organizationId }) => {
 			const data = await firebaseFetch('users', conditions)
 			setFormatedData(
 				data.map(item => {
-					const { firstLogin, ...rest } = item
+					const { firstLogin, profileInfo, ...rest } = item
 					return {
 						signUp: firstLogin ? 'Pending' : 'Confirmed',
+						...profileInfo,
 						...rest
 					}
 				})

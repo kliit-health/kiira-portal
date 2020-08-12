@@ -14,7 +14,10 @@ export const withSidebar = WrappedComponent => {
 		const router = useRouter()
 		const pathname = router.pathname
 
-		const { firstName, lastName, email } = props.authDetails.profileInfo
+		const {
+			email,
+			profileInfo: { firstName, lastName }
+		} = props.authDetails
 
 		const handleOnSection = path => {
 			path && router.push(path)
