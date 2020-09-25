@@ -5,6 +5,7 @@
   flex: 1;
 
   &__list {
+    min-width: 800px;
     background-color: lighten($base-gray, 38%);
   }
 }

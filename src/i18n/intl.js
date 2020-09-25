@@ -248,5 +248,22 @@ export const intl = {
 	searchActiveUsers: {
 		id: 'searchActiveUsers',
 		description: 'Search by name, email or date of birth'
+	},
+	fileUploaded: {
+		id: 'fileUploaded',
+		description: 'Invitation list has been uploaded!'
+	},
+	fileUploadedDescription: {
+		id: 'fileUploadedDescription',
+		description: 'Invitees will get an email within 24 hours.'
+	},
+	fileUploadFailed: {
+		id: 'fileUploadFailed',
+		description: 'Failed to upload the user list.'
+	},
+	fileUploadFailedDescription: {
+		id: 'fileUploadFailedDescription',
+		description:
+			'Please try again or get in touch with us for further assistence.'
 	}
 }

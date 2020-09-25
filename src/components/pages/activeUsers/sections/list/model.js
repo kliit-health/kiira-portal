@@ -2,37 +2,44 @@ import { DATE, TEXT, AVATAR } from 'src/helpers/constants'
 
 export default [
 	{
-		style: { flex: 2, minWidth: 40, pointerEvents: 'none' },
+		style: { maxWidth: 108, flex: 2, pointerEvents: 'none' },
 		label: '',
 		dataKey: 'profileImageUrl',
 		type: AVATAR,
 		sorting: false
 	},
 	{
-		style: { flex: 5, minWidth: 100 },
+		style: { maxWidth: 213.3, flex: 4 },
 		label: 'First Name',
 		dataKey: 'firstName',
 		type: TEXT,
 		sorting: true
 	},
 	{
-		style: { flex: 5, minWidth: 100 },
+		style: { maxWidth: 213.3, flex: 4 },
 		label: 'Last Name',
 		dataKey: 'lastName',
 		type: TEXT,
 		sorting: true
 	},
 	{
-		style: { flex: 7, minWidth: 200 },
+		style: { maxWidth: 266.6, flex: 5 },
 		label: 'Email',
 		dataKey: 'email',
 		type: TEXT,
 		sorting: true
 	},
 	{
-		style: { flex: 4, minWidth: 100 },
+		style: { maxWidth: 213.3, flex: 4 },
 		label: 'Date of Birth',
 		dataKey: 'dob',
+		type: TEXT,
+		sorting: true
+	},
+	{
+		style: { maxWidth: 266.6, flex: 5 },
+		label: 'Phone Number',
+		dataKey: 'phoneNumber',
 		type: TEXT,
 		sorting: true
 	}

@@ -5,12 +5,11 @@ export const Column = props => {
 	const { children, style, classes = {}, ...rest } = props
 
 	const styles = {
-		column: classnames('table-column', classes.root),
-		typography: classes.typography
+		root: classnames('table-column', classes.root)
 	}
 
 	return (
-		<div className={styles.column} style={style}>
+		<div className={styles.root} style={style}>
 			{children && children(rest)}
 		</div>
 	)

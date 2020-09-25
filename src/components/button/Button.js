@@ -10,13 +10,15 @@ export const Button = props => {
 		outlined,
 		link,
 		loading,
+		underlined,
 		classes = {}
 	} = props
 
 	const modifiers = {
 		'button--outlined': outlined,
 		'button--link': link,
-		'button--loading': loading
+		'button--loading': loading,
+		'button--underlined': underlined
 	}
 
 	const styles = {

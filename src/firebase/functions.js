@@ -2,7 +2,7 @@ import { auth, firestore, functions } from './initializer'
 import { intl } from 'src/i18n'
 import { ERROR, PERSISTANCE } from './constants'
 
-const { USER_PROFILE_NOT_FOUND, INVALID_EMAIL } = ERROR
+const { USER_PROFILE_NOT_FOUND } = ERROR
 
 export const signIn = (email, password) =>
 	new Promise((resolve, reject) =>
@@ -56,33 +56,6 @@ export const firebaseSimpleFetch = (
 		}
 	})
 
-/**
- *
- * @desc Batch create new users using firebase custom function
- * @param { Object[] } users - The array of users to be created
- * @param { string } users[].firstName - the user's first name
- * @param { string } users[].lastName - the user's last name
- * @param { string } users[].email - the user's email address
- * @param { string } organizationId organization id
- *
- */
-
-export const createUsers = (users, organizationId) =>
-	new Promise(async (resolve, reject) => {
-		const createUsers = functions.httpsCallable('batchCreateUsers')
-		if (organizationId && users) {
-			try {
-				const response = await createUsers({
-					users,
-					organizationId
-				})
-				resolve(response)
-			} catch (error) {
-				reject(error)
-			}
-		}
-	})
-
 export const sendPasswordResetEmail = email =>
 	new Promise(async (resolve, reject) => {
 		const sendPasswordResetEmail = functions.httpsCallable(
@@ -126,20 +99,40 @@ export const confirmPasswordReset = (code, newPassword) =>
 		}
 	})
 
-export const firebaseFetch = (collectionName, conditions, limit = 100) =>
-	new Promise(async (resolve, reject) => {
-		try {
-			let query = firestore.collection(collectionName)
-			for (let condition of conditions) {
-				const { key, operator, value } = condition
-				query = query.where(key, operator, value)
-			}
-			const response = await query.limit(limit).get()
-			if (response) {
-				const data = response.docs.map(item => item.data())
-				resolve(data)
-			}
-		} catch (error) {
-			reject(error)
+export const firebaseFetch = async (
+	collectionName,
+	conditions,
+	limit = 100
+) => {
+	try {
+		let query = firestore.collection(collectionName)
+		for (let condition of conditions) {
+			const { key, operator, value } = condition
+			query = query.where(key, operator, value)
 		}
-	})
+		const response = await query.limit(limit).get()
+		if (response) {
+			const data = response.docs.map(item => item.data())
+			return data
+		}
+	} catch (error) {
+		return error
+	}
+}
+
+export const sendInvitations = async (users, organizationId) => {
+	const addUsersToInvitationList = functions.httpsCallable(
+		'addUsersToInvitationList'
+	)
+	if (organizationId && users) {
+		try {
+			const response = await addUsersToInvitationList({
+				users,
+				organizationId
+			})
+			return response
+		} catch (error) {
+			return error
+		}
+	}
+}

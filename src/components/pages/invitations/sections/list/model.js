@@ -1,34 +1,43 @@
-import { DATE, TEXT } from 'src/helpers/constants'
+import { DATE, TEXT, POPOVER } from 'src/helpers/constants'
 
 export default [
 	{
-		style: { minWidth: 100, flex: 6 },
+		style: { maxWidth: 213.3, flex: 4 },
 		label: 'First Name',
 		dataKey: 'firstName',
 		type: TEXT
 	},
 	{
-		style: { minWidth: 100, flex: 6 },
+		style: {
+			maxWidth: 213.3,
+			flex: 4
+		},
 		label: 'Last Name',
 		dataKey: 'lastName',
 		type: TEXT
 	},
 	{
-		style: { minWidth: 180, flex: 12 },
+		style: { maxWidth: 228.8, flex: 5 },
 		label: 'Email',
 		dataKey: 'email',
 		type: TEXT
 	},
 	{
-		style: { minWidth: 140, flex: 4 },
+		style: { maxWidth: 213.3, flex: 4 },
 		label: 'Date of Invite',
-		dataKey: 'createdAt',
+		dataKey: 'invitationDate',
 		type: DATE
 	},
 	{
-		style: { minWidth: 80, flex: 2 },
-		label: 'Sign Up',
-		dataKey: 'signUp',
+		style: { maxWidth: 213.3, flex: 4 },
+		label: 'Phone Number',
+		dataKey: 'phoneNumber',
 		type: TEXT
+	},
+	{
+		style: { maxWidth: 177.8, flex: 3 },
+		label: 'Status',
+		dataKey: 'status',
+		type: POPOVER
 	}
 ]

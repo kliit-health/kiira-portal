@@ -12,7 +12,6 @@ export const InitialScreen = () => {
 	return (
 		<div className={styles.root}>
 			<Sample />
-			<Example />
 			<Dropzone />
 		</div>
 	)
@@ -30,7 +29,12 @@ const Sample = () => {
 
 	useEffect(() => {
 		parseToCsv([
-			{ ['First Name']: '', ['Last Name']: '', Email: '' }
+			{
+				['First Name']: 'Sarah',
+				['Last Name']: 'Boysen',
+				Email: 'sarah.boysen@example.com',
+				['Phone Number']: '2223331111'
+			}
 		]).then(result => setFile(result))
 	}, [])
 
@@ -55,35 +59,17 @@ const Sample = () => {
 	)
 }
 
-const Example = () => {
-	const styles = {
-		sample: 'uploader-example',
-		image: 'uploader-example__image',
-		description: { root: 'uploader-example__description' }
-	}
-
-	return (
-		<div className={styles.sample}>
-			<img className={styles.image} alt="" src="/assets/example.svg" />
-			<Typography classes={styles.description}>
-				{intl.matchExample.description}
-			</Typography>
-		</div>
-	)
-}
-
 const Dropzone = () => {
 	const { handleDrop } = useContext(UploaderContext)
 
 	const styles = {
 		root: 'uploader-dropzone',
 		image: 'uploader-dropzone__image',
-		description: { root: 'uploader-dropzone__description' },
-		dropzone: { root: 'uploader-dropzone__dropzone-component' }
+		description: { root: 'uploader-dropzone__description' }
 	}
 
 	return (
-		<ReactDropzone classes={styles.dropzone} onDrop={handleDrop}>
+		<ReactDropzone onDrop={handleDrop}>
 			<div className={styles.root}>
 				<img className={styles.image} alt="" src="/assets/select.svg" />
 				<Typography classes={styles.description}>
