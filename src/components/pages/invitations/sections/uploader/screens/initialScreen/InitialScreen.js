@@ -12,7 +12,6 @@ export const InitialScreen = () => {
 	return (
 		<div className={styles.root}>
 			<Sample />
-			<Example />
 			<Dropzone />
 		</div>
 	)
@@ -30,7 +29,12 @@ const Sample = () => {
 
 	useEffect(() => {
 		parseToCsv([
-			{ ['First Name']: '', ['Last Name']: '', Email: '' }
+			{
+				['First Name']: 'Sarah',
+				['Last Name']: 'Boysen',
+				Email: 'sarah.boysen@example.com',
+				['Phone Number']: '2223331111'
+			}
 		]).then(result => setFile(result))
 	}, [])
 
@@ -50,23 +54,6 @@ const Sample = () => {
 				{intl.theSample.description}
 				<Typography bold>{intl.dotCsv.description}</Typography>
 				{intl.listEveryone.description}
-			</Typography>
-		</div>
-	)
-}
-
-const Example = () => {
-	const styles = {
-		sample: 'uploader-example',
-		image: 'uploader-example__image',
-		description: { root: 'uploader-example__description' }
-	}
-
-	return (
-		<div className={styles.sample}>
-			<img className={styles.image} alt="" src="/assets/example.svg" />
-			<Typography classes={styles.description}>
-				{intl.matchExample.description}
 			</Typography>
 		</div>
 	)

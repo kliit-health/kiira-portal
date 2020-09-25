@@ -6,6 +6,7 @@ export const TEXT = 'TEXT'
 export const DATE = 'DATE'
 export const IMAGE = 'IMAGE'
 export const AVATAR = 'AVATAR'
+export const POPOVER = 'POPOVER'
 
 export const CREATED_AT = 'createdAt'
 export const EMAIL = 'email'

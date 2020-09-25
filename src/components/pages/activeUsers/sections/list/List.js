@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
 import { orderBy } from 'lodash'
-import { switchCase, filterObjectArray } from 'src/helpers/functions'
+import {
+	switchCase,
+	filterObjectArray,
+	formatPhoneNumber
+} from 'src/helpers/functions'
 import { useFirebaseFetch } from 'src/hooks'
 import { Table } from 'src/components'
 import { Footer } from './footer'
@@ -30,7 +34,8 @@ export const List = ({ organizationId }) => {
 				data.map(({ profileInfo, ...rest }) => {
 					return {
 						...profileInfo,
-						...rest
+						...rest,
+						phoneNumber: formatPhoneNumber(profileInfo.phoneNumber)
 					}
 				})
 			)

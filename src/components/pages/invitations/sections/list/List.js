@@ -1,16 +1,20 @@
 import { useRef, useState, useEffect } from 'react'
 import { orderBy } from 'lodash'
-import { switchCase, filterObjectArray } from 'src/helpers/functions'
+import {
+	switchCase,
+	filterObjectArray,
+	formatPhoneNumber
+} from 'src/helpers/functions'
 import { Table, Popover } from 'src/components'
 import { Uploader } from '../uploader'
-import { DATE, TEXT } from 'src/helpers/constants'
+import { DATE, TEXT, POPOVER } from 'src/helpers/constants'
 import { firebaseFetch } from 'src/firebase'
 import model from './model'
 import { Header } from './header'
 import { Footer } from './footer'
 import './styles.scss'
 
-const { Column, DateCell, TextCell } = Table
+const { Column, DateCell, TextCell, PopoverCell } = Table
 
 export const List = ({ organizationId }) => {
 	const popRef = useRef(null)
@@ -28,14 +32,15 @@ export const List = ({ organizationId }) => {
 	const fetchUsers = async () => {
 		setLoading(true)
 		try {
-			const data = await firebaseFetch('users', conditions)
+			const data = await firebaseFetch('invitations', conditions)
 			setFormatedData(
 				data.map(item => {
-					const { firstLogin, profileInfo, ...rest } = item
+					const { profileInfo, ...rest } = item
+
 					return {
-						signUp: firstLogin ? 'Pending' : 'Confirmed',
 						...profileInfo,
-						...rest
+						...rest,
+						phoneNumber: formatPhoneNumber(profileInfo.phoneNumber)
 					}
 				})
 			)
@@ -114,7 +119,13 @@ export const List = ({ organizationId }) => {
 							const props = { data, dataKey }
 							return switchCase({
 								[TEXT]: <TextCell {...props} />,
-								[DATE]: <DateCell calendar {...props} />
+								[DATE]: <DateCell calendar {...props} />,
+								[POPOVER]: (
+									<PopoverCell
+										message={data.error && data.error.message}
+										{...props}
+									/>
+								)
 							})(undefined)(type)
 						}}
 					</Column>

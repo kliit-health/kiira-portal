@@ -12,14 +12,17 @@ export const DateCell = ({ data, dataKey, classes = {}, calendar }) => {
 		}
 	}
 	const styles = {
+		root: classnames('date-cell', classes.root),
 		details: { root: classnames('date-cell__details', classes.details) }
 	}
 
 	const date = data[dataKey]
 
 	return (
-		<Typography classes={styles.details}>
-			{date ? formatDate(data[dataKey]) : ''}
-		</Typography>
+		<div className={styles.root}>
+			<Typography classes={styles.details}>
+				{date ? formatDate(data[dataKey]) : ''}
+			</Typography>
+		</div>
 	)
 }

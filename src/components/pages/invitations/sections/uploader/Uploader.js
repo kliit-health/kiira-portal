@@ -1,7 +1,7 @@
 import { useState, useMemo, createContext } from 'react'
 import { CircularProgress } from '@material-ui/core'
 import { parseCsv, switchCase } from 'src/helpers/functions'
-import { createUsers } from 'src/firebase'
+import { sendInvitations } from 'src/firebase'
 import { Paper, CancelButton } from 'src/components'
 import {
 	INITIAL_SCREEN,
@@ -38,7 +38,8 @@ export const Uploader = ({ onCancel, organizationId, onSuccess }) => {
 	const keysMap = {
 		firstName: '',
 		lastName: '',
-		email: ''
+		email: '',
+		phoneNumber: ''
 	}
 
 	const handleDrop = files => {
@@ -47,7 +48,7 @@ export const Uploader = ({ onCancel, organizationId, onSuccess }) => {
 
 		parseCsv(file, keysMap)
 			.then(data =>
-				createUsers(data, organizationId)
+				sendInvitations(data, organizationId)
 					.then(({ data }) => {
 						handleResponse({ ...data }, REPORT_SCREEN)
 						onSuccess()
@@ -65,8 +66,7 @@ export const Uploader = ({ onCancel, organizationId, onSuccess }) => {
 
 	const styles = {
 		uploader: { root: 'invitations-uploader' },
-		loading: { root: 'invitations-uploader__loading-indicator' },
-		container: 'invitations-uploader__container'
+		loading: { root: 'invitations-uploader__loading-indicator' }
 	}
 
 	return (

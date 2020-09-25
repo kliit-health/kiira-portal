@@ -6,16 +6,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 340px;
-  min-height: 600px;
+  width: 300px;
+  height: 350px;
 
   &__loading-indicator {
     background-color: white;
-  }
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 }

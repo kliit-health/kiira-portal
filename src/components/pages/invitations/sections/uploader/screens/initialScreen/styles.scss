@@ -3,6 +3,7 @@
 
 .uploader-initial-screen {
   display: flex;
+  height: 100%;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -13,17 +14,15 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
 
   &__image {
     @include user-select-none;
-    height: 80px;
-    margin-bottom: 20px;
+    height: 60px;
+    padding-bottom: 20px;
   }
 
   &__description {
     @include user-select-none;
-    max-width: 300px;
     color: darken($base-gray, 20%)
   }
 
@@ -36,27 +35,6 @@
     &:hover {
       opacity: 0.5
     }
-  }
-}
-
-.uploader-example {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
-
-  &__image {
-    @include user-select-none;
-    height: 100px;
-    margin-bottom: 20px;
-  }
-
-  &__description {
-    @include user-select-none;
-    max-width: 300px;
-    color: darken($base-gray, 20%)
   }
 }
 
@@ -75,11 +53,8 @@
 
   &__description {
     @include user-select-none;
-    max-width: 250px;
     color: darken($base-gray, 20%)
   }
 
-  &__dropzone-component {
-    margin-top: 20px;
-  }
+  &__dropzone-component {}
 }

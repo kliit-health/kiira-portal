@@ -7,21 +7,12 @@ import {
 	Footer,
 	DateCell,
 	TextCell,
+	PopoverCell,
 	AvatarCell
 } from './components'
 import { cloneChild } from 'src/helpers/functions'
 import { intl } from 'src/i18n'
 import './styles.scss'
-
-/**
- *
- * @param { Object[] } model
- * @param { number } model[].flex - The flex number that will determine the width of the column
- * @param { string } model[].label - The text for the header component label
- * @param { string } model[].dataKey - The data object key name
- * @param { Object } model[].style - Target styles to
- *
- */
 
 export const Table = ({
 	data = [],
@@ -74,3 +65,4 @@ Table.Column = Column
 Table.DateCell = DateCell
 Table.TextCell = TextCell
 Table.AvatarCell = AvatarCell
+Table.PopoverCell = PopoverCell
