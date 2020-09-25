@@ -65,12 +65,11 @@ const Dropzone = () => {
 	const styles = {
 		root: 'uploader-dropzone',
 		image: 'uploader-dropzone__image',
-		description: { root: 'uploader-dropzone__description' },
-		dropzone: { root: 'uploader-dropzone__dropzone-component' }
+		description: { root: 'uploader-dropzone__description' }
 	}
 
 	return (
-		<ReactDropzone classes={styles.dropzone} onDrop={handleDrop}>
+		<ReactDropzone onDrop={handleDrop}>
 			<div className={styles.root}>
 				<img className={styles.image} alt="" src="/assets/select.svg" />
 				<Typography classes={styles.description}>
