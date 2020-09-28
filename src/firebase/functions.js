@@ -40,7 +40,7 @@ export const getUserDetails = (uid, collectionName = 'users') =>
 export const firebaseSimpleFetch = (
 	collectionName = 'users',
 	condition,
-	limit = 1000
+	limit = 5000
 ) =>
 	new Promise(async (resolve, reject) => {
 		try {
@@ -102,7 +102,7 @@ export const confirmPasswordReset = (code, newPassword) =>
 export const firebaseFetch = async (
 	collectionName,
 	conditions,
-	limit = 100
+	limit = 5000
 ) => {
 	try {
 		let query = firestore.collection(collectionName)
