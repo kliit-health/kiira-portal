@@ -1,4 +1,4 @@
-import { compose } from 'recompose'
+import { compose, withProps } from 'recompose'
 import { cloneElement } from 'react'
 import {
 	withRedirect,
@@ -12,8 +12,13 @@ const LayoutFoundation = ({ children, ...rest }) => {
 }
 
 export const Layout = compose(
-	withLoadingIndicator('authLoading'),
-	withRedirect('/', 'authDetails', 'authLoading'),
+	withProps(({ auth: { loading, details, error } }) => ({
+		loading,
+		details,
+		error
+	})),
+	withLoadingIndicator('loading'),
+	withRedirect('/', 'details', 'loading'),
 	withLogoutButton,
 	withSidebar
 )(LayoutFoundation)

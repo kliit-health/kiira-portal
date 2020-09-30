@@ -20,3 +20,13 @@
 .cancel-circle-icon {
   @include icon-defaults;
 }
+
+.invites-icon {
+  @include user-select-none;
+  margin: 10px 10px 10px 0;
+}
+
+.click-icon {
+  @include user-select-none;
+  margin: 10px 10px 10px 0;
+}

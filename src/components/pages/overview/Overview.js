@@ -1,51 +1,41 @@
-import { useState, useRef } from 'react'
-import { Page, Typography } from 'src/components'
-import { List, Profile } from '../experts/sections'
+import { useState } from 'react'
+import { Page } from 'src/components'
 import { intl } from 'src/i18n'
+import {
+	TopExperts,
+	InvitationsSent,
+	SignUps,
+	AccountDetails
+} from './sections'
+import { SectionContainer } from './components'
 import './styles.scss'
 
-export const Overview = () => {
-	const popRef = useRef(null)
-	const [anchorEl, setAnchorEl] = useState(null)
-	const [profileData, setProfileData] = useState(null)
-
-	const handleClick = item => {
-		setAnchorEl(popRef.current)
-		setProfileData(item)
-	}
-
-	const handleClose = () => {
-		setAnchorEl(null)
-	}
+export const Overview = ({ auth }) => {
+	const [ref, setRef] = useState(null)
+	const { organizationId } = auth.details
 
 	const styles = {
 		page: { content: 'overview__page' },
-		title: 'overview__section-title',
-		section: 'overview__section'
+		container: 'overview__container'
 	}
 
 	return (
 		<Page
 			title={intl.overview.description}
 			subtitle={intl.everthingInOnePlace.description}
-			elementRef={popRef}
+			elementRef={ref}
 			classes={styles.page}
 		>
-			<div className={styles.section}>
-				<div className={styles.title}>
-					<Typography charcoal bold>
-						{intl.topExperts.description}
-					</Typography>
+			<AccountDetails details={auth.details} />
+			<SectionContainer>
+				<div className={styles.container}>
+					<InvitationsSent organizationId={organizationId} />
+					<SignUps organizationId={organizationId} />
 				</div>
-				<List onClick={handleClick} limit={3} />
-				{profileData && (
-					<Profile
-						onClose={handleClose}
-						anchorEl={anchorEl}
-						data={profileData}
-					/>
-				)}
-			</div>
+			</SectionContainer>
+			<SectionContainer title={intl.topExperts.description}>
+				<TopExperts onRefChange={setRef} />
+			</SectionContainer>
 		</Page>
 	)
 }

@@ -70,3 +70,9 @@ export const PERSISTANCE = {
 	LOCAL: 'local',
 	NONE: 'none'
 }
+
+export const collections = {
+	invitations: 'invitations',
+	users: 'users',
+	organizations: 'organizations'
+}

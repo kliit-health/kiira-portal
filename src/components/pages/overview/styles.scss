@@ -1,5 +1,4 @@
 .overview {
-
   &__section {
     display: flex;
     flex-direction: column;
@@ -13,5 +12,10 @@
     position: relative;
     display: flex;
     flex-direction: column;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
   }
 }

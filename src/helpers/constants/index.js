@@ -7,7 +7,6 @@ export const DATE = 'DATE'
 export const IMAGE = 'IMAGE'
 export const AVATAR = 'AVATAR'
 export const POPOVER = 'POPOVER'
-
 export const CREATED_AT = 'createdAt'
 export const EMAIL = 'email'
 export const DISPLAY_NAME = 'displayName'
@@ -15,18 +14,14 @@ export const SIGNED_UP_DATE = 'signedUpDate'
 export const FIRST_LOGIN = 'firstLogin'
 export const HEADER = 'Header'
 export const FOOTER = 'Footer'
-
 export const INITIAL_SCREEN = 'INITIAL_SCREEN'
 export const BAD_FILE_SCREEN = 'BAD_FILE_SCREEN'
 export const SERVER_ERROR_SCREEN = 'SERVER_ERROR_SCREEN'
 export const REPORT_SCREEN = 'REPORT_SCREEN'
 export const LOADING_SCREEN = 'LOADING_SCREEN'
-
 export const PASSWORD = 'PASSWORD'
 export const CONFIRM_PASSWORD = 'CONFIRM_PASSWORD'
-
 export const RESET_STATE = {}
-
 export const RESET_PASSWORD = 'resetPassword'
 export const RECOVER_EMAIL = 'recoverEmail'
 export const VERIFY_EMAIL = 'verifyEmail'
@@ -35,3 +30,8 @@ export const LOADING = 'Loading'
 export const ERROR = 'Error'
 export const INITIAL = 'Initial'
 export const SUCCESS = 'Success'
+
+export const routes = {
+	invitations: '/invitations',
+	activeUsers: '/dashboard/active-users'
+}

@@ -49,14 +49,7 @@
     padding: 0;
     background-color: transparent;
     min-width: 0px;
-
-    .button__text {
-      color: $base-blue;
-    }
-
-    .button__container {
-      color: $base-blue;
-    }
+    color: $base-blue;
 
     &:hover {
       background-color: transparent;

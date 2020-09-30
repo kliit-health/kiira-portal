@@ -12,7 +12,6 @@ export const withRedirect = (
 		const router = useRouter()
 		if (!props[dataKey] && isProtected && isBrowser) {
 			router.replace(location)
-			return null
 		}
 
 		if (props[dataKey] && !isProtected && isBrowser) {

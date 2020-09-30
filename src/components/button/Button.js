@@ -23,7 +23,7 @@ export const Button = props => {
 
 	const styles = {
 		root: classnames('button', classes.root, modifiers),
-		text: classnames('button__text', classes.text)
+		text: classnames('button__text', classes.text, modifiers)
 	}
 
 	return (

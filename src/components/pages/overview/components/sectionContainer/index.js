@@ -2,14 +2,15 @@ import classnames from 'classnames'
 import { Typography } from 'src/components'
 import './styles.scss'
 
-export const Section = ({ title, description, children, classes = {} }) => {
+const SectionContainer = ({ title, description, children, classes = {} }) => {
 	const styles = {
-		section: 'profile-section',
-		title: { root: 'profile-section__title' }
+		section: 'section-container',
+		title: { root: 'section-container__title' }
 	}
+
 	return (
 		<div className={classnames(styles.section, classes.root)}>
-			<Typography classes={styles.title} h5>
+			<Typography charcoal bold h6 classes={styles.title}>
 				{title}
 			</Typography>
 			{description && <Typography>{description}</Typography>}
@@ -17,3 +18,5 @@ export const Section = ({ title, description, children, classes = {} }) => {
 		</div>
 	)
 }
+
+export default SectionContainer
