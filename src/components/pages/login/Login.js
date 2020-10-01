@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { compose } from 'recompose'
+import { compose, withProps } from 'recompose'
 import { withLoadingIndicator, withRedirect } from 'src/HOCs'
 import { Authentication, Presentation, ForgotPassword } from './sections'
 import { Page } from 'src/components'
@@ -12,7 +12,7 @@ import { ERROR } from 'src/firebase/constants'
 const tenSeconds = 10000
 const { INTERNAL_ERROR } = ERROR
 
-const Login = ({ authError }) => {
+const Login = ({ auth }) => {
 	const [errorCode, setErrorCode] = useState(null)
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -21,11 +21,13 @@ const Login = ({ authError }) => {
 	const [showForgotPassword, setShowForgotPassword] = useState(false)
 
 	useEffect(() => {
-		if (authError) {
-			const { code } = authError
+		console.log(auth)
+
+		if (auth && auth.error) {
+			const { code } = error
 			setErrorState(code)
 		}
-	}, [authError, setErrorState])
+	}, [auth, setErrorState])
 
 	const handleEmailChange = event => {
 		setEmail(event.target.value)
@@ -109,6 +111,11 @@ const Login = ({ authError }) => {
 }
 
 export default compose(
-	withLoadingIndicator('authLoading', true),
-	withRedirect('/dashboard/overview', 'authDetails', false)
+	withProps(({ auth: { loading, details, error } }) => ({
+		loading,
+		details,
+		error
+	})),
+	withLoadingIndicator('loading', true),
+	withRedirect('/dashboard/overview', 'details', false)
 )(Login)

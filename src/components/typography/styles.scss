@@ -50,6 +50,11 @@
     font-size: 1em;
   }
 
+  &--h8 {
+    font-family: 'Poppins-Regular';
+    font-size: .8em;
+  }
+
   &--blue {
     color: $base-blue;
   }
@@ -68,6 +73,10 @@
 
   &--black {
     color: black
+  }
+
+  &--dark-blue {
+    color: $dark-blue
   }
 
   &--light {

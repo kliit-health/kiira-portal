@@ -3,8 +3,8 @@ import { List } from './sections'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-export const Invitations = ({ authDetails }) => {
-	const { organizationId } = authDetails
+export const Invitations = ({ auth }) => {
+	const { organizationId } = auth.details
 	const styles = {
 		page: { content: 'invitations__page-content' }
 	}

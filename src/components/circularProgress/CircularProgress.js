@@ -6,5 +6,11 @@ export const CircularProgress = ({ classes = {}, ...rest }) => {
 	const styles = {
 		root: { root: classnames('circular-progress', classes.root) }
 	}
-	return <LoadingIndicator classes={styles.root} {...rest}></LoadingIndicator>
+	return (
+		<LoadingIndicator
+			size={30}
+			classes={styles.root}
+			{...rest}
+		></LoadingIndicator>
+	)
 }

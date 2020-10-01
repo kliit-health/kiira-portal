@@ -1,2 +1,1 @@
-export { Header } from './header'
-export { Section } from './section'
+export { default as SectionContainer } from './sectionContainer'

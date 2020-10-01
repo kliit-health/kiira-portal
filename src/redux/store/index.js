@@ -7,4 +7,4 @@ import { reducer } from '../reducers'
 
 const middlewares = composeWithDevTools(applyMiddleware(thunk, promise))
 const makeStore = () => createStore(reducer, middlewares)
-export const wrapper = createWrapper(makeStore)
+export const reduxWrapper = createWrapper(makeStore)

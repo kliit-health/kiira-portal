@@ -3,8 +3,9 @@ import { List } from './sections'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-export const ActiveUsers = ({ authDetails }) => {
-	const { organizationId } = authDetails
+export const ActiveUsers = ({ auth }) => {
+	const { organizationId } = auth.details
+
 	const styles = {
 		page: { content: 'active-users__page-content' }
 	}

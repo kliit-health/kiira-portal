@@ -1,4 +1,4 @@
-import { compose } from 'recompose'
+import { compose, withProps } from 'recompose'
 import { withLoadingIndicator, withRedirect } from 'src/HOCs'
 
 const Dashboard = () => {
@@ -6,6 +6,11 @@ const Dashboard = () => {
 }
 
 export default compose(
-	withLoadingIndicator('authLoading', true),
-	withRedirect('/dashboard/overview', 'authDetails', false)
+	withProps(({ auth: { loading, details, error } }) => ({
+		loading,
+		details,
+		error
+	})),
+	withLoadingIndicator('loading', true),
+	withRedirect('/dashboard/overview', 'details', false)
 )(Dashboard)

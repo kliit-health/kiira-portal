@@ -59,3 +59,29 @@ export const CancelCircle = ({ classes = {} }) => {
 		</div>
 	)
 }
+
+export const InvitesIcon = ({ classes = {} }) => {
+	const styles = {
+		icon: classnames('invites-icon', classes.root),
+		element: classnames('invites-icon__image', classes.image)
+	}
+
+	return (
+		<div className={styles.icon}>
+			<img className={styles.image} src="/assets/invites.svg" />
+		</div>
+	)
+}
+
+export const ClickIcon = ({ classes = {} }) => {
+	const styles = {
+		icon: classnames('click-icon', classes.root),
+		element: classnames('click-icon__image', classes.image)
+	}
+
+	return (
+		<div className={styles.icon}>
+			<img className={styles.image} src="/assets/click.svg" />
+		</div>
+	)
+}

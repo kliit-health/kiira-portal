@@ -265,5 +265,37 @@ export const intl = {
 		id: 'fileUploadFailedDescription',
 		description:
 			'Please try again or get in touch with us for further assistence.'
+	},
+	invitationsSent: {
+		id: 'invitationsSent',
+		description: 'Total Invitations Sent'
+	},
+	inviteMoreUsers: {
+		id: 'inviteMoreUsers',
+		description: 'Invite more users'
+	},
+	totalSignUps: {
+		id: 'totalSignUps',
+		description: 'Total Sign Ups'
+	},
+	seeMoreDetails: {
+		id: 'seeMoreDetails',
+		description: `See more details`
+	},
+	goodToKnow: {
+		id: 'goodToKnow',
+		description: `Good to Know`
+	},
+	accountAdministrator: {
+		id: 'accountAdministrator',
+		description: `Account Administrator`
+	},
+	organizationName: {
+		id: 'organizationName',
+		description: `Organization Name`
+	},
+	title: {
+		id: 'title',
+		description: `Title`
 	}
 }

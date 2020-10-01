@@ -51,10 +51,5 @@ export const FirebaseAuth = ({ children, ...rest }) => {
 		return () => unsubscriber()
 	}, [])
 
-	return cloneElement(children, {
-		authDetails: details,
-		authLoading: loading,
-		authError: error,
-		...rest
-	})
+	return cloneElement(children, { auth: { details, loading, error }, ...rest })
 }

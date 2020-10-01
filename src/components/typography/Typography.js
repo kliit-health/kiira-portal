@@ -17,9 +17,11 @@ export const Typography = props => {
 		h5,
 		h6,
 		h7,
+		h8,
 		blue,
 		white,
 		black,
+		darkBlue,
 		charcoal,
 		gray,
 		light,
@@ -36,7 +38,8 @@ export const Typography = props => {
 		'typography--h4': h4,
 		'typography--h5': h5,
 		'typography--h6': h6,
-		'typography--h7': h7
+		'typography--h7': h7,
+		'typography--h8': h8
 	}
 
 	const colors = {
@@ -44,7 +47,8 @@ export const Typography = props => {
 		'typography--white': white,
 		'typography--black': black,
 		'typography--charcoal': charcoal,
-		'typography--gray': gray
+		'typography--gray': gray,
+		'typography--dark-blue': darkBlue
 	}
 
 	const modifiers = {
