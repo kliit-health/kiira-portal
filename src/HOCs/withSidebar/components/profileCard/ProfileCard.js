@@ -1,7 +1,12 @@
 import { Typography, Avatar } from 'src/components'
 import './styles.scss'
 
-export const ProfileCard = ({ firstName, lastName, email }) => {
+export const ProfileCard = ({
+	firstName,
+	lastName,
+	email,
+	profileImageUrl
+}) => {
 	const styles = {
 		card: 'profile-card',
 		avatar: { root: 'profile-card__avatar' },
@@ -12,7 +17,12 @@ export const ProfileCard = ({ firstName, lastName, email }) => {
 
 	return (
 		<div className={styles.card}>
-			<Avatar small className={styles.avatar} classes={styles.avatar} />
+			<Avatar
+				url={profileImageUrl}
+				small
+				className={styles.avatar}
+				classes={styles.avatar}
+			/>
 			<div className={styles.details}>
 				<Typography
 					classes={styles.name}

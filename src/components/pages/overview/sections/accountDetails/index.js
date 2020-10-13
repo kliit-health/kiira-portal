@@ -36,7 +36,7 @@ const AccountDetails = ({
 							{intl.accountAdministrator.description.toUpperCase()}
 						</Typography>
 						<div className={styles.avatarContainer}>
-							<Avatar small />
+							<Avatar url={profileInfo.profileImageUrl} small />
 							<div className={styles.details}>
 								<Typography
 									charcoal
