@@ -19,24 +19,26 @@ export const List = ({ onClick, limit = 100 }) => {
 			{loading ? (
 				<CircularProgress />
 			) : (
-				<div className={styles.list}>
-					{data.map(item => {
-						const { uid, rating, profileInfo, isOnline } = item
-						return (
-							<Card gradient key={uid} onClick={() => onClick(item)}>
-								<Header
-									divider
-									avatarUrl={profileInfo.profileImageUrl}
-									title={`${profileInfo.firstName} ${profileInfo.lastName}`}
-									subtitle={profileInfo.profession.fullName}
-									status={isOnline}
-								>
-									<Rating value={calculateRating(rating)} />
-								</Header>
-								<Typography>{profileInfo.bio}</Typography>
-							</Card>
-						)
-					})}
+				<div>
+					<div className={styles.list}>
+						{data.map(item => {
+							const { uid, rating, profileInfo, isOnline } = item
+							return (
+								<Card gradient key={uid} onClick={() => onClick(item)}>
+									<Header
+										divider
+										avatarUrl={profileInfo.profileImageUrl}
+										title={`${profileInfo.firstName} ${profileInfo.lastName}`}
+										subtitle={profileInfo.profession.fullName}
+										status={isOnline}
+									>
+										<Rating value={calculateRating(rating)} />
+									</Header>
+									<Typography>{profileInfo.bio}</Typography>
+								</Card>
+							)
+						})}
+					</div>
 					<div className={styles.footer} />
 				</div>
 			)}

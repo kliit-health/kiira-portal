@@ -13,7 +13,7 @@ const calculatePercentage = users => {
 	const active = users.filter(user => user.firstLogin === false).length
 	const increase = (active - total) / total
 	const response = increase * 100 + 100
-	return `${response.toFixed(1)}%`
+	return `${response ? response.toFixed(1) : 0}%`
 }
 
 const SignUps = ({ organizationId }) => {

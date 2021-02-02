@@ -18,7 +18,7 @@ export const Layout = compose(
 		error
 	})),
 	withLoadingIndicator('loading'),
-	withRedirect('/', 'details', 'loading'),
+	withRedirect('/', 'details'),
 	withLogoutButton,
 	withSidebar
 )(LayoutFoundation)

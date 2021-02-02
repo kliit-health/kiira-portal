@@ -19,23 +19,56 @@ export const signIn = (email, password) =>
 
 export const signOut = () => auth.signOut()
 
-export const getUserDetails = (uid, collectionName = 'users') =>
-	new Promise((resolve, reject) => {
-		const collection = firestore.collection(collectionName)
-		const query = collection.doc(uid)
-		query
-			.get()
-			.then(document => {
-				if (document.data()) {
-					resolve(document.data())
-				} else {
-					reject(USER_PROFILE_NOT_FOUND)
-				}
-			})
-			.catch(error => {
+export const getUserDetails = uid =>
+	new Promise((resolve, reject) =>
+		(async function () {
+			try {
+				const document = await firestore.doc(`users/${uid}`).get()
+				const data = document.data()
+				resolve(data)
+			} catch (error) {
 				reject(error)
-			})
-	})
+			}
+		})()
+	)
+
+export const firebaseSingleFetch = (collectionName, id) =>
+	new Promise((resolve, reject) =>
+		(async function () {
+			try {
+				const document = await firestore
+					.collection(collectionName)
+					.doc(id)
+					.get()
+
+				const data = document.data()
+				resolve(data)
+			} catch (error) {
+				reject(error)
+			}
+		})()
+	)
+
+export const firebaseFetch = (collectionName, conditions = [], limit = 5000) =>
+	new Promise((resolve, reject) =>
+		(async function () {
+			try {
+				let query = firestore.collection(collectionName)
+				for (let condition of conditions) {
+					const { key, operator, value } = condition
+					query = query.where(key, operator, value)
+				}
+				const response = await query.limit(limit).get()
+				const data = response.docs.map(item => ({
+					...item.data(),
+					id: item.id
+				}))
+				resolve(data)
+			} catch (error) {
+				reject(error)
+			}
+		})()
+	)
 
 export const firebaseSimpleFetch = (
 	collectionName = 'users',
@@ -98,27 +131,6 @@ export const confirmPasswordReset = (code, newPassword) =>
 			reject(error)
 		}
 	})
-
-export const firebaseFetch = async (
-	collectionName,
-	conditions,
-	limit = 5000
-) => {
-	try {
-		let query = firestore.collection(collectionName)
-		for (let condition of conditions) {
-			const { key, operator, value } = condition
-			query = query.where(key, operator, value)
-		}
-		const response = await query.limit(limit).get()
-		if (response) {
-			const data = response.docs.map(item => item.data())
-			return data
-		}
-	} catch (error) {
-		return error
-	}
-}
 
 export const sendInvitations = async (users, organizationId) => {
 	const addUsersToInvitationList = functions.httpsCallable(

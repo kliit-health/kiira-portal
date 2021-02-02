@@ -1,6 +1,5 @@
 export { auth, firestore } from './initializer'
 export {
-	getUserDetails,
 	signIn,
 	signOut,
 	firebaseSimpleFetch,
@@ -9,6 +8,8 @@ export {
 	confirmPasswordReset,
 	sendPasswordResetEmail,
 	firebaseFetch,
-	sendInvitations
+	sendInvitations,
+	firebaseSingleFetch,
+	getUserDetails
 } from './functions'
 export { FirebaseAuth } from './FirebaseAuth'

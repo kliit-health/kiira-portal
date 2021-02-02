@@ -27,8 +27,7 @@ export const FirebaseAuth = ({ children, ...rest }) => {
 		const unsubscriber = auth.onAuthStateChanged(user => {
 			try {
 				if (user) {
-					const { uid } = user
-					getUserDetails(uid)
+					getUserDetails(user.uid)
 						.then(details => {
 							if (
 								!details.role ||
