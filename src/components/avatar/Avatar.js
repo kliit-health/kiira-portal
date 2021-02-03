@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Typography } from 'src/components'
 import classnames from 'classnames'
 import './styles.scss'
@@ -9,6 +10,7 @@ export const Avatar = ({
 	large,
 	status
 }) => {
+	const [error, setError] = useState(false)
 	const sizes = {
 		'avatar--small': small,
 		'avatar--large': large
@@ -27,7 +29,11 @@ export const Avatar = ({
 
 	return (
 		<div className={styles.avatar}>
-			<img className={styles.image} src={url} />
+			<img
+				className={styles.image}
+				src={error ? '/assets/avatar.svg' : url}
+				onError={() => setError(true)}
+			/>
 			{status && (
 				<div className={styles.label}>
 					<Typography light white classes={styles.font}>

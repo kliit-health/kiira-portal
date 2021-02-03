@@ -5,7 +5,6 @@ import {
 	filterObjectArray,
 	formatPhoneNumber
 } from 'src/helpers/functions'
-import { useFirebaseFetch } from 'src/hooks'
 import { Table } from 'src/components'
 import { Footer } from './footer'
 import { DATE, TEXT, AVATAR } from 'src/helpers/constants'
@@ -15,18 +14,10 @@ import './styles.scss'
 
 const { Column, DateCell, TextCell, AvatarCell } = Table
 
-export const List = ({ organizationId }) => {
+export const List = ({ loading, data }) => {
 	const [formatedData, setFormatedData] = useState([])
 	const [searchData, setSearchData] = useState([])
 	const [searching, setSearching] = useState(false)
-
-	const queryConditions = [
-		{ key: 'organizationId', operator: '==', value: organizationId },
-		{ key: 'role', operator: '==', value: 'User' },
-		{ key: 'firstLogin', operator: '==', value: false }
-	]
-
-	const { data, loading } = useFirebaseFetch('users', queryConditions)
 
 	useEffect(() => {
 		if (data) {

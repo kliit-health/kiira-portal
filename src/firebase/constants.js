@@ -61,8 +61,8 @@ export const ERROR = {
 	UNAUTHORIZED_CONTINUE_URI: 'auth/unauthorized-continue-uri'
 }
 
-export const CLAIMS = {
-	ADMIN: 'admin'
+export const claims = {
+	admin: 'Admin'
 }
 
 export const PERSISTANCE = {

@@ -1,31 +1,25 @@
 import { auth, firestore, functions } from './initializer'
 import { intl } from 'src/i18n'
-import { ERROR, PERSISTANCE } from './constants'
-
-const { USER_PROFILE_NOT_FOUND } = ERROR
+import { PERSISTANCE } from './constants'
 
 export const signIn = (email, password) =>
 	new Promise((resolve, reject) =>
-		auth
-			.setPersistence(PERSISTANCE.SESSION)
-			.then(() =>
-				auth
-					.signInWithEmailAndPassword(email, password)
-					.then(response => resolve(response))
-					.catch(error => reject(error))
-			)
-			.catch(error => reject(error))
+		(async () => {
+			try {
+				await auth.setPersistence(PERSISTANCE.NONE)
+				const response = await auth.signInWithEmailAndPassword(email, password)
+				resolve(response)
+			} catch (error) {
+				reject(error)
+			}
+		})()
 	)
 
-export const signOut = () => auth.signOut()
-
-export const getUserDetails = uid =>
-	new Promise((resolve, reject) =>
-		(async function () {
+export const signOut = () =>
+	new Promise((_, reject) =>
+		(async () => {
 			try {
-				const document = await firestore.doc(`users/${uid}`).get()
-				const data = document.data()
-				resolve(data)
+				await auth.signOut()
 			} catch (error) {
 				reject(error)
 			}
@@ -51,7 +45,7 @@ export const firebaseSingleFetch = (collectionName, id) =>
 
 export const firebaseFetch = (collectionName, conditions = [], limit = 5000) =>
 	new Promise((resolve, reject) =>
-		(async function () {
+		(async () => {
 			try {
 				let query = firestore.collection(collectionName)
 				for (let condition of conditions) {
@@ -70,81 +64,71 @@ export const firebaseFetch = (collectionName, conditions = [], limit = 5000) =>
 		})()
 	)
 
-export const firebaseSimpleFetch = (
-	collectionName = 'users',
-	condition,
-	limit = 5000
-) =>
-	new Promise(async (resolve, reject) => {
-		try {
-			const collection = firestore.collection(collectionName)
-			const query = collection.where(...condition).limit(limit)
-			const response = await query.get()
-			if (response) {
-				const data = response.docs.map(item => item.data())
-				resolve(data)
-			}
-		} catch (error) {
-			reject(error)
-		}
-	})
-
 export const sendPasswordResetEmail = email =>
-	new Promise(async (resolve, reject) => {
-		const sendPasswordResetEmail = functions.httpsCallable(
-			'sendPasswordResetEmail'
-		)
-		try {
-			await sendPasswordResetEmail(email)
-			resolve(intl.linkHasBeenSent.description)
-		} catch (error) {
-			reject(error)
-		}
-	})
+	new Promise((resolve, reject) =>
+		(async () => {
+			const sendPasswordResetEmail = functions.httpsCallable(
+				'sendPasswordResetEmail'
+			)
+			try {
+				await sendPasswordResetEmail(email)
+				resolve(intl.linkHasBeenSent.description)
+			} catch (error) {
+				reject(error)
+			}
+		})()
+	)
 
 export const verifyPasswordResetCode = code =>
-	new Promise(async (resolve, reject) => {
-		try {
-			const response = await auth.verifyPasswordResetCode(code)
-			resolve(response)
-		} catch (error) {
-			reject(error)
-		}
-	})
+	new Promise((resolve, reject) =>
+		(async () => {
+			try {
+				const response = await auth.verifyPasswordResetCode(code)
+				resolve(response)
+			} catch (error) {
+				reject(error)
+			}
+		})()
+	)
 
 export const checkActionCode = code =>
-	new Promise(async (resolve, reject) => {
-		try {
-			const response = await auth.checkActionCode(code)
-			resolve(response)
-		} catch (error) {
-			reject(error)
-		}
-	})
+	new Promise((resolve, reject) =>
+		(async () => {
+			try {
+				const response = await auth.checkActionCode(code)
+				resolve(response)
+			} catch (error) {
+				reject(error)
+			}
+		})()
+	)
 
 export const confirmPasswordReset = (code, newPassword) =>
-	new Promise(async (resolve, reject) => {
-		try {
-			const response = await auth.confirmPasswordReset(code, newPassword)
-			resolve(response)
-		} catch (error) {
-			reject(error)
-		}
-	})
-
-export const sendInvitations = async (users, organizationId) => {
-	const addUsersToInvitationList = functions.httpsCallable(
-		'addUsersToInvitationList'
+	new Promise((resolve, reject) =>
+		(async () => {
+			try {
+				const response = await auth.confirmPasswordReset(code, newPassword)
+				resolve(response)
+			} catch (error) {
+				reject(error)
+			}
+		})()
 	)
-	if (organizationId && users) {
-		try {
-			const response = await addUsersToInvitationList({
-				users,
-				organizationId
-			})
-			return response
-		} catch (error) {
-			return error
-		}
-	}
-}
+
+export const sendInvitations = (users, organizationId) =>
+	new Promise((resolve, reject) =>
+		(async () => {
+			const addUsersToInvitationList = functions.httpsCallable(
+				'addUsersToInvitationList'
+			)
+			try {
+				await addUsersToInvitationList({
+					users,
+					organizationId
+				})
+				resolve('Link has been sent.')
+			} catch (error) {
+				reject(error)
+			}
+		})()
+	)

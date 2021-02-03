@@ -1,13 +1,21 @@
-import { useFirebaseFetch } from 'src/hooks'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getExperts } from 'src/redux/actions'
 import { Card, Typography, CircularProgress } from 'src/components'
 import { calculateRating } from 'src/helpers/functions'
 import './styles.scss'
-
 const { Header, Rating } = Card
 
-export const List = ({ onClick, limit = 100 }) => {
-	const conditions = [{ key: 'role', operator: '==', value: 'Expert' }]
-	const { data, loading } = useFirebaseFetch('users', conditions, limit)
+export const List = ({ onClick }) => {
+	const dispatch = useDispatch()
+
+	const data = useSelector(state => state.experts.data)
+	const loading = useSelector(state => state.experts.loading)
+
+	useEffect(() => {
+		dispatch(getExperts())
+	}, [])
+
 	const styles = {
 		root: 'experts-list',
 		list: 'experts-list__element',

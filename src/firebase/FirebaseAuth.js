@@ -1,54 +1,54 @@
 import { useState, useEffect, cloneElement } from 'react'
-import { auth, getUserDetails, signOut } from '../firebase'
-import { ERROR, CLAIMS } from '../firebase/constants'
+import { useSelector, useDispatch } from 'react-redux'
+import { getUser, setUser } from 'src/redux/actions'
+import { GET_USER_REJECTED } from 'src/redux/types'
+import { claims } from '../firebase/constants'
+import { signOut, auth } from '../firebase'
+import models from 'src/redux/models'
 
 export const FirebaseAuth = ({ children, ...rest }) => {
+	const dispatch = useDispatch()
+
+	const user = useSelector(state => state.user.data)
+	const loading = useSelector(state => state.user.loading)
+	const error = useSelector(state => state.user.error)
+
 	const [details, setDetails] = useState(null)
-	const [loading, setLoading] = useState(true)
-	const [error, setError] = useState(null)
-
-	const setInitialState = () => {
-		setLoading(false)
-	}
-
-	const logInRejected = error => {
-		signOut().then(() => {
-			setError(error)
-			setLoading(false)
-		})
-	}
-
-	const logInFullfilled = details => {
-		setDetails(details)
-		setLoading(false)
-	}
 
 	useEffect(() => {
-		const unsubscriber = auth.onAuthStateChanged(user => {
+		const unsubscriber = auth.onAuthStateChanged(async state => {
 			try {
-				if (user) {
-					getUserDetails(user.uid)
-						.then(details => {
-							if (
-								!details.role ||
-								details.role.toLowerCase() !== CLAIMS.ADMIN
-							) {
-								logInRejected({ code: ERROR.INSUFICIENT_PERMISSION })
-							} else {
-								logInFullfilled(details)
-							}
-						})
-						.catch(error => logInRejected(error))
+				if (state) {
+					dispatch(getUser({ uid: state.uid }))
 				} else {
-					setInitialState()
-					setDetails(null)
+					dispatch(setUser(models.user))
 				}
 			} catch (error) {
-				setError(error)
+				dispatch({
+					type: GET_USER_REJECTED,
+					payload: error
+				})
 			}
 		})
 		return () => unsubscriber()
 	}, [])
 
-	return cloneElement(children, { auth: { details, loading, error }, ...rest })
+	useEffect(() => {
+		const admin = user.role === claims.admin
+		setDetails(admin ? user : null)
+	}, [user])
+
+	useEffect(() => {
+		const logout = async () => {
+			try {
+				await signOut()
+			} catch (error) {
+				console.error(error)
+			}
+		}
+		logout()
+		setDetails(null)
+	}, [error])
+
+	return cloneElement(children, { auth: { error, loading, details }, ...rest })
 }
