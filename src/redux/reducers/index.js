@@ -10,26 +10,25 @@ import { activeUsers } from './activeUsers'
  * https://github.com/kirill-konshin/next-redux-wrapper#motivation
  */
 
-const combinedReducer = combineReducers({
-	router: routerReducer,
+export default combineReducers({
 	user,
 	experts,
 	invitations,
 	activeUsers
 })
 
-export const reducer = (state, action) => {
-	if (action.type === HYDRATE) {
-		const nextState = {
-			...state,
-			...action.payload
-		}
-		if (typeof window !== undefined && state?.router) {
-			// preserve router value on client side navigation
-			nextState.router = state.router
-		}
-		return nextState
-	} else {
-		return combinedReducer(state, action)
-	}
-}
+// export const reducer = (state, action) => {
+// 	if (action.type === HYDRATE) {
+// 		const nextState = {
+// 			...state,
+// 			...action.payload
+// 		}
+// 		if (typeof window !== undefined && state?.router) {
+// 			// preserve router value on client side navigation
+// 			nextState.router = state.router
+// 		}
+// 		return nextState
+// 	} else {
+// 		return combinedReducer(state, action)
+// 	}
+// }

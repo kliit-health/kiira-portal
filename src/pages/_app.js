@@ -5,11 +5,18 @@ import { Layout } from '../layout'
 import { StylesProvider } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { theme } from '../theme'
-import { withRedux } from '../redux/store'
+import { Provider } from 'react-redux'
+import { useStore } from '../redux/store'
+import { persistStore } from 'redux-persist'
+import { PersistGate } from 'redux-persist/integration/react'
 import '../styles/globals.scss'
 
 const App = ({ Component, pageProps }) => {
 	const router = useRouter()
+	const store = useStore(pageProps.initialReduxState)
+	const persistor = persistStore(store, {}, function () {
+		persistor.persist()
+	})
 
 	useEffect(() => {
 		// Remove the server-side injected CSS.
@@ -24,20 +31,24 @@ const App = ({ Component, pageProps }) => {
 	return (
 		<StylesProvider injectFirst>
 			<ThemeProvider theme={theme}>
-				{!layoutDisabled.includes(router.pathname) ? (
-					<FirebaseAuth>
-						<Layout>
-							<Component {...pageProps} />
-						</Layout>
-					</FirebaseAuth>
-				) : (
-					<FirebaseAuth>
-						<Component {...pageProps} />
-					</FirebaseAuth>
-				)}
+				<Provider store={store}>
+					<PersistGate loading={<div>loading</div>} persistor={persistor}>
+						{!layoutDisabled.includes(router.pathname) ? (
+							<FirebaseAuth>
+								<Layout>
+									<Component {...pageProps} />
+								</Layout>
+							</FirebaseAuth>
+						) : (
+							<FirebaseAuth>
+								<Component {...pageProps} />
+							</FirebaseAuth>
+						)}
+					</PersistGate>
+				</Provider>
 			</ThemeProvider>
 		</StylesProvider>
 	)
 }
 
-export default withRedux(App)
+export default App

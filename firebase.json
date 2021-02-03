@@ -16,6 +16,9 @@
 	"firestore": {
 		"rules": "firestore.rules"
 	},
+	"auth": {
+		"ssr": true
+	},
 	"functions": {
 		"source": ".",
 		"ignore": [
