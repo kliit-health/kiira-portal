@@ -8,7 +8,6 @@ import {
 import { Table, Popover } from 'src/components'
 import { Uploader } from '../uploader'
 import { DATE, TEXT, POPOVER } from 'src/helpers/constants'
-import { firebaseFetch } from 'src/firebase'
 import model from './model'
 import { Header } from './header'
 import { Footer } from './footer'
@@ -16,42 +15,25 @@ import './styles.scss'
 
 const { Column, DateCell, TextCell, PopoverCell } = Table
 
-export const List = ({ organizationId }) => {
+export const List = ({ organizationId, data, loading }) => {
 	const popRef = useRef(null)
 	const [anchorEl, setAnchorEl] = useState(null)
 	const [formatedData, setFormatedData] = useState([])
 	const [searchData, setSearchData] = useState([])
-	const [loading, setLoading] = useState(false)
 	const [searching, setSearching] = useState(false)
 
-	const conditions = [
-		{ key: 'organizationId', operator: '==', value: organizationId },
-		{ key: 'role', operator: '==', value: 'User' }
-	]
-
-	const fetchUsers = async () => {
-		setLoading(true)
-		try {
-			const data = await firebaseFetch('invitations', conditions)
-			setFormatedData(
-				data.map(item => {
-					const { profileInfo, ...rest } = item
-
-					return {
-						...profileInfo,
-						...rest,
-						phoneNumber: formatPhoneNumber(profileInfo.phoneNumber)
-					}
-				})
-			)
-			setLoading(false)
-		} catch {
-			setLoading(false)
-		}
-	}
-
 	useEffect(() => {
-		fetchUsers()
+		setFormatedData(
+			data.map(item => {
+				const { profileInfo, ...rest } = item
+
+				return {
+					...profileInfo,
+					...rest,
+					phoneNumber: formatPhoneNumber(profileInfo.phoneNumber)
+				}
+			})
+		)
 	}, [])
 
 	const handleSort = (key, asc) => {

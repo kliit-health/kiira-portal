@@ -21,11 +21,8 @@ const Login = ({ auth }) => {
 	const [showForgotPassword, setShowForgotPassword] = useState(false)
 
 	useEffect(() => {
-		console.log(auth)
-
-		if (auth && auth.error) {
-			const { code } = error
-			setErrorState(code)
+		if (auth.error) {
+			setErrorState(auth.error)
 		}
 	}, [auth, setErrorState])
 

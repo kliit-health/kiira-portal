@@ -16,7 +16,7 @@ export const withSidebar = WrappedComponent => {
 
 		const {
 			email,
-			profileInfo: { firstName, lastName }
+			profileInfo: { firstName, lastName, profileImageUrl }
 		} = props.auth.details
 
 		const handleOnSection = path => {
@@ -62,6 +62,7 @@ export const withSidebar = WrappedComponent => {
 					<LogoCard />
 					<div className={styles.menu}>
 						<ProfileCard
+							profileImageUrl={profileImageUrl}
 							firstName={firstName}
 							lastName={lastName}
 							email={email}

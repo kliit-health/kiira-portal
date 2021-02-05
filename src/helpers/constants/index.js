@@ -35,3 +35,8 @@ export const routes = {
 	invitations: '/invitations',
 	activeUsers: '/dashboard/active-users'
 }
+
+export const collections = {
+	users: 'users',
+	invitations: 'invitations'
+}
