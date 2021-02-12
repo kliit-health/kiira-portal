@@ -27,7 +27,7 @@ const TopExperts = ({ onRefChange }) => {
 
 	return (
 		<div className={styles.section}>
-			<List onClick={handleClick} limit={3} />
+			<List onClick={handleClick} limit={6} />
 			{profileData && (
 				<Profile onClose={handleClose} anchorEl={anchorEl} data={profileData} />
 			)}

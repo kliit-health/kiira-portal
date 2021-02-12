@@ -7,9 +7,9 @@ export const sections = [
 		path: '/dashboard/overview'
 	},
 	{
-		title: intl.activeUsers.description,
-		iconUrl: '/assets/users.svg',
-		path: '/dashboard/active-users'
+		title: intl.invitationsTitle.description,
+		iconUrl: '/assets/envelope.svg',
+		path: '/dashboard/invitations'
 	},
 	{
 		title: intl.careTeam.description,
@@ -17,8 +17,18 @@ export const sections = [
 		path: '/dashboard/experts'
 	},
 	{
-		title: intl.invitationsTitle.description,
+		title: intl.activeUsers.description,
+		iconUrl: '/assets/users.svg',
+		path: '/dashboard/active-users'
+	},
+	{
+		title: intl.questionsAsked.description,
 		iconUrl: '/assets/envelope.svg',
-		path: '/invitations'
+		path: '/dashboard/questions'
+	},
+	{
+		title: intl.appointments.description,
+		iconUrl: '/assets/envelope.svg',
+		path: '/dashboard/appointments'
 	}
 ]

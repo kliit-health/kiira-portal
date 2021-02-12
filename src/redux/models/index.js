@@ -125,9 +125,45 @@ export default {
 	},
 	overview: {
 		invitations: 0,
-		chats: 0,
-		visits: 0,
+		appointments: 0,
+		questions: 0,
 		activeUsers: 0,
 		users: 0
+	},
+	question: {
+		createdAt: Date.now(),
+		expert: {
+			email: '',
+			firstName: '',
+			lastName: '',
+			uid: ''
+		},
+		id: '',
+		organizationId: '',
+		user: {
+			uid: '',
+			email: '',
+			firstName: '',
+			lastName: '',
+			state: {
+				code: '',
+				value: ''
+			}
+		}
+	},
+	appointment: {
+		organizationId: '',
+		createdAt: Date.now(),
+		insurance: '',
+		email: '',
+		firstName: '',
+		lastName: '',
+		reason: '',
+		time: '',
+		expert: {
+			firstName: '',
+			lastName: '',
+			profession: ''
+		}
 	}
 }

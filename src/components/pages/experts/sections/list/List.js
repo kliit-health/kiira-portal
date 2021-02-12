@@ -6,14 +6,14 @@ import { calculateRating } from 'src/helpers/functions'
 import './styles.scss'
 const { Header, Rating } = Card
 
-export const List = ({ onClick }) => {
+export const List = ({ onClick, limit }) => {
 	const dispatch = useDispatch()
 
 	const data = useSelector(state => state.experts.data)
 	const loading = useSelector(state => state.experts.loading)
 
 	useEffect(() => {
-		dispatch(getExperts())
+		dispatch(getExperts({ limit }))
 	}, [])
 
 	const styles = {
@@ -31,6 +31,7 @@ export const List = ({ onClick }) => {
 					<div className={styles.list}>
 						{data.map(item => {
 							const { uid, rating, profileInfo, isOnline } = item
+
 							return (
 								<Card gradient key={uid} onClick={() => onClick(item)}>
 									<Header

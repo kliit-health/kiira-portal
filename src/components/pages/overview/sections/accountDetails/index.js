@@ -35,14 +35,11 @@ const AccountDetails = ({
 						<Typography gray h8 bold>
 							{intl.accountAdministrator.description.toUpperCase()}
 						</Typography>
-						<div className={styles.avatarContainer}>
-							<Avatar url={profileInfo.profileImageUrl} small />
-							<div className={styles.details}>
-								<Typography
-									charcoal
-								>{`${profileInfo.firstName} ${profileInfo.lastName}`}</Typography>
-								<Typography h8>{email}</Typography>
-							</div>
+						<div className={styles.details}>
+							<Typography
+								charcoal
+							>{`${profileInfo.firstName} ${profileInfo.lastName}`}</Typography>
+							<Typography h8>{email}</Typography>
 						</div>
 					</div>
 

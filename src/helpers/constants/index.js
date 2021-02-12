@@ -32,12 +32,16 @@ export const INITIAL = 'Initial'
 export const SUCCESS = 'Success'
 
 export const routes = {
-	invitations: '/invitations',
-	activeUsers: '/dashboard/active-users'
+	invitations: '/dashboard/invitations',
+	activeUsers: '/dashboard/active-users',
+	appointments: '/dashboard/appointments',
+	questions: '/dashboard/questions'
 }
 
 export const collections = {
 	users: 'users',
 	invitations: 'invitations',
-	overview: 'overview'
+	overview: 'overview',
+	questions: 'questionsReport',
+	appointments: 'appointmentsReport'
 }

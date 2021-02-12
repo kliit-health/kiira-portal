@@ -6,7 +6,10 @@ import {
 	TopExperts,
 	InvitationsSent,
 	SignUps,
-	AccountDetails
+	AccountDetails,
+	CommunicationChannel,
+	Appointments,
+	Questions
 } from './sections'
 import { getOverview } from 'src/redux/actions'
 import { SectionContainer } from './components'
@@ -27,7 +30,8 @@ export const Overview = ({ auth }) => {
 
 	const styles = {
 		page: { content: 'overview__page' },
-		container: 'overview__container'
+		container: 'overview__container',
+		mainContainer: 'overview__main-container'
 	}
 
 	return (
@@ -37,13 +41,19 @@ export const Overview = ({ auth }) => {
 			elementRef={ref}
 			classes={styles.page}
 		>
-			<AccountDetails details={auth.details} />
-			<SectionContainer>
+			<div className={styles.mainContainer}>
+				<AccountDetails details={auth.details} />
 				<div className={styles.container}>
 					<InvitationsSent loading={loading} count={data.invitations} />
 					<SignUps loading={loading} data={data} />
+					<Appointments loading={loading} count={data.appointments} />
+					<Questions loading={loading} count={data.questions} />
 				</div>
-			</SectionContainer>
+				<div>
+					<CommunicationChannel data={data} loading={loading} />
+				</div>
+			</div>
+
 			<SectionContainer title={intl.topExperts.description}>
 				<TopExperts onRefChange={setRef} />
 			</SectionContainer>

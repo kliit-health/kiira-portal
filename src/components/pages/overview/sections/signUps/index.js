@@ -43,7 +43,7 @@ const SignUps = ({ loading, data }) => {
 						</Typography>
 					</div>
 					<Button onClick={handleInvite} link classes={styles.button}>
-						{intl.seeMoreDetails.description}
+						{intl.seeDetails.description}
 					</Button>
 				</Fragment>
 			)}

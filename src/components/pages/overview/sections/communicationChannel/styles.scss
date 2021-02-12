@@ -1,0 +1,19 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.assistance-chart {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: $base-white;
+  position: relative;
+  align-items: flex-start;
+  height: 330px;
+  width: 330px;
+  // padding: 20px;
+
+  &__title {
+    position: absolute;
+    padding: 20px
+  }
+}

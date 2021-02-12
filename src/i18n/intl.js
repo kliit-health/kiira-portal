@@ -297,5 +297,37 @@ export const intl = {
 	title: {
 		id: 'title',
 		description: `Title`
+	},
+	appointmentsCreated: {
+		id: 'appointmentsCreated',
+		description: 'Appointments Created'
+	},
+	seeDetails: {
+		id: 'seeDetails',
+		description: 'See Details'
+	},
+	questionsAsked: {
+		id: 'questionsAsked',
+		description: 'Questions Asked'
+	},
+	communicationChannel: {
+		id: 'communicationChannel',
+		description: 'Communication Channel'
+	},
+	appointments: {
+		id: 'appointments',
+		description: 'Appointments'
+	},
+	questions: {
+		id: 'questionsAsked',
+		description: 'Questions Asked'
+	},
+	weAreAvailable: {
+		id: 'weAreAvailable',
+		description: `We make ourselves available.`
+	},
+	weLikeToChat: {
+		id: 'weLikeToChat',
+		description: `We like to chat.`
 	}
 }
