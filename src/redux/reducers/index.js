@@ -5,6 +5,8 @@ import { experts } from './experts'
 import { user } from './user'
 import { invitations } from './invitations'
 import { activeUsers } from './activeUsers'
+import { overview } from './overview'
+
 /**
  * @desc state reconciliation during hydration,find more info on
  * https://github.com/kirill-konshin/next-redux-wrapper#motivation
@@ -14,7 +16,8 @@ export default combineReducers({
 	user,
 	experts,
 	invitations,
-	activeUsers
+	activeUsers,
+	overview
 })
 
 // export const reducer = (state, action) => {

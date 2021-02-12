@@ -1,21 +1,40 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getActiveUsers } from 'src/redux/actions'
+import { getActiveUsers, getMoreActiveUsers } from 'src/redux/actions'
 import { Page } from 'src/components'
 import { List } from './sections'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
 export const ActiveUsers = ({ auth }) => {
-	const { organizationId } = auth.details
 	const dispatch = useDispatch()
+	const { organizationId } = auth.details
+	const [rendered, setRendered] = useState(0)
 
-	const loading = useSelector(state => state.activeUsers.loading)
 	const data = useSelector(state => state.activeUsers.data)
+	const lastDocument = useSelector(state => state.activeUsers.lastDocument)
+	const initialLoading = useSelector(state => state.activeUsers.get.loading)
+	const loading = useSelector(state => state.activeUsers.more.loading)
 
 	useEffect(() => {
-		dispatch(getActiveUsers({ organizationId }))
+		if (!lastDocument) {
+			dispatch(getActiveUsers({ organizationId }))
+		}
 	}, [])
+
+	const handleLoad = (_, stopIndex) =>
+		new Promise(resolve => {
+			if (stopIndex >= rendered) {
+				setRendered(stopIndex)
+
+				if (!loading && lastDocument) {
+					dispatch(getMoreActiveUsers({ organizationId, lastDocument }))
+				}
+				if (!loading) {
+					resolve()
+				}
+			}
+		})
 
 	const styles = {
 		page: { content: 'active-users__page-content' }
@@ -27,7 +46,13 @@ export const ActiveUsers = ({ auth }) => {
 			title={intl.activeUsers.description}
 			subtitle={intl.activatedKiira.description}
 		>
-			<List loading={loading} data={data} />
+			<List
+				organizationId={organizationId}
+				data={data}
+				loading={initialLoading}
+				loadMoreItems={handleLoad}
+				isItemLoaded={index => index < rendered}
+			/>
 		</Page>
 	)
 }

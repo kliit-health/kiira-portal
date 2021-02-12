@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Page } from 'src/components'
 import { intl } from 'src/i18n'
 import {
@@ -7,12 +8,22 @@ import {
 	SignUps,
 	AccountDetails
 } from './sections'
+import { getOverview } from 'src/redux/actions'
 import { SectionContainer } from './components'
 import './styles.scss'
 
 export const Overview = ({ auth }) => {
+	const dispatch = useDispatch()
+
+	const loading = useSelector(state => state.overview.loading)
+	const data = useSelector(state => state.overview.data)
+
 	const [ref, setRef] = useState(null)
 	const { organizationId } = auth.details
+
+	useEffect(() => {
+		dispatch(getOverview({ organizationId }))
+	}, [])
 
 	const styles = {
 		page: { content: 'overview__page' },
@@ -29,8 +40,8 @@ export const Overview = ({ auth }) => {
 			<AccountDetails details={auth.details} />
 			<SectionContainer>
 				<div className={styles.container}>
-					<InvitationsSent organizationId={organizationId} />
-					<SignUps organizationId={organizationId} />
+					<InvitationsSent loading={loading} count={data.invitations} />
+					<SignUps loading={loading} data={data} />
 				</div>
 			</SectionContainer>
 			<SectionContainer title={intl.topExperts.description}>

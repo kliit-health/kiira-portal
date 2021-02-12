@@ -15,7 +15,13 @@ import './styles.scss'
 
 const { Column, DateCell, TextCell, PopoverCell } = Table
 
-export const List = ({ organizationId, data, loading }) => {
+export const List = ({
+	organizationId,
+	data,
+	loading,
+	loadMoreItems,
+	isItemLoaded
+}) => {
 	const popRef = useRef(null)
 	const [anchorEl, setAnchorEl] = useState(null)
 	const [formatedData, setFormatedData] = useState([])
@@ -34,7 +40,7 @@ export const List = ({ organizationId, data, loading }) => {
 				}
 			})
 		)
-	}, [])
+	}, [data, setFormatedData])
 
 	const handleSort = (key, asc) => {
 		let sortedData = orderBy(
@@ -51,10 +57,6 @@ export const List = ({ organizationId, data, loading }) => {
 
 	const handleClose = () => {
 		setAnchorEl(null)
-	}
-
-	const handleSuccess = () => {
-		fetchUsers()
 	}
 
 	const handleSearch = value => {
@@ -88,6 +90,8 @@ export const List = ({ organizationId, data, loading }) => {
 				classes={styles.table}
 				data={searching ? searchData : formatedData}
 				loading={loading}
+				loadMoreItems={loadMoreItems}
+				isItemLoaded={isItemLoaded}
 			>
 				<Header
 					elementRef={popRef}
@@ -117,11 +121,7 @@ export const List = ({ organizationId, data, loading }) => {
 				/>
 			</Table>
 			<Popover {...popoverProps}>
-				<Uploader
-					onSuccess={handleSuccess}
-					onCancel={handleClose}
-					organizationId={organizationId}
-				/>
+				<Uploader onCancel={handleClose} organizationId={organizationId} />
 			</Popover>
 		</div>
 	)

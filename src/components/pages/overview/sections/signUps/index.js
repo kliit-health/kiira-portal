@@ -8,21 +8,14 @@ import { ClickIcon } from 'src/components/icons'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-const calculatePercentage = users => {
-	const total = users.length
-	const active = users.filter(user => user.firstLogin === false).length
+const calculatePercentage = (active, total) => {
 	const increase = (active - total) / total
 	const response = increase * 100 + 100
 	return `${response ? response.toFixed(1) : 0}%`
 }
 
-const SignUps = ({ organizationId }) => {
+const SignUps = ({ loading, data }) => {
 	const router = useRouter()
-	const queryConditions = [
-		{ key: 'organizationId', operator: '==', value: organizationId },
-		{ key: 'role', operator: '==', value: 'User' }
-	]
-	const { loading, data } = useFirebaseFetch(collections.users, queryConditions)
 
 	const handleInvite = () => {
 		router.push(routes.activeUsers)
@@ -46,7 +39,7 @@ const SignUps = ({ organizationId }) => {
 					<div className={styles.container}>
 						<ClickIcon />
 						<Typography darkBlue h4>
-							{calculatePercentage(data)}
+							{calculatePercentage(data.activeUsers, data.users)}
 						</Typography>
 					</div>
 					<Button onClick={handleInvite} link classes={styles.button}>

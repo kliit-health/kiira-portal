@@ -122,5 +122,12 @@ export default {
 		},
 		role: '',
 		status: 'Unknown'
+	},
+	overview: {
+		invitations: 0,
+		chats: 0,
+		visits: 0,
+		activeUsers: 0,
+		users: 0
 	}
 }

@@ -14,7 +14,7 @@ import './styles.scss'
 
 const { Column, DateCell, TextCell, AvatarCell } = Table
 
-export const List = ({ loading, data }) => {
+export const List = ({ loading, data, loadMoreItems, isItemLoaded }) => {
 	const [formatedData, setFormatedData] = useState([])
 	const [searchData, setSearchData] = useState([])
 	const [searching, setSearching] = useState(false)
@@ -24,8 +24,8 @@ export const List = ({ loading, data }) => {
 			setFormatedData(
 				data.map(({ profileInfo, ...rest }) => {
 					return {
-						...profileInfo,
 						...rest,
+						...profileInfo,
 						phoneNumber: formatPhoneNumber(profileInfo.phoneNumber)
 					}
 				})
@@ -61,6 +61,8 @@ export const List = ({ loading, data }) => {
 				classes={styles.table}
 				data={searching ? searchData : formatedData}
 				loading={loading}
+				loadMoreItems={loadMoreItems}
+				isItemLoaded={isItemLoaded}
 			>
 				<Header onSort={handleSort} onSearch={handleSearch} />
 				{model.map(({ dataKey, style, type }, index) => (
@@ -69,8 +71,7 @@ export const List = ({ loading, data }) => {
 							const props = { data, dataKey }
 							return switchCase({
 								[TEXT]: <TextCell {...props} />,
-								[DATE]: <DateCell {...props} />,
-								[AVATAR]: <AvatarCell {...props} />
+								[DATE]: <DateCell {...props} />
 							})(undefined)(type)
 						}}
 					</Column>

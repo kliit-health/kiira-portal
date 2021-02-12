@@ -8,7 +8,7 @@ export const Footer = ({ userCount = 0 }) => {
 
 	return (
 		<div className={styles.root}>
-			<p className={styles.text}>{`Found ${userCount} user(s) `}</p>
+			<p className={styles.text}>{`Loaded ${userCount} user(s) `}</p>
 		</div>
 	)
 }

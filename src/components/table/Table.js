@@ -1,5 +1,8 @@
 import classnames from 'classnames'
-import { VirtualizedList, CircularProgress, Typography } from 'src/components'
+import { FixedSizeList } from 'react-window'
+import InfiniteLoader from 'react-window-infinite-loader'
+import AutoSizer from 'react-virtualized-auto-sizer'
+import { CircularProgress, Typography } from 'src/components'
 import {
 	Header,
 	Row,
@@ -19,7 +22,9 @@ export const Table = ({
 	classes = {},
 	children,
 	rowHeight = 50,
-	loading
+	loading,
+	loadMoreItems,
+	isItemLoaded
 }) => {
 	const styles = {
 		table: classnames('virtualized-list-table', classes.root),
@@ -37,17 +42,43 @@ export const Table = ({
 				{loading ? (
 					<CircularProgress />
 				) : data.length > 0 ? (
-					<VirtualizedList
-						itemData={data}
-						itemCount={data.length}
-						itemSize={rowHeight}
-					>
-						{({ style, index, data }) => (
-							<Row classes={styles.row} key={index} style={style} index={index}>
-								{cloneChild(children, 'Column', { data: data[index] })}
-							</Row>
+					<AutoSizer>
+						{({ height, width }) => (
+							<InfiniteLoader
+								isItemLoaded={isItemLoaded}
+								itemCount={1000000}
+								loadMoreItems={loadMoreItems}
+								minimumBatchSize={50}
+								threshold={10}
+							>
+								{({ onItemsRendered, ref }) => (
+									<FixedSizeList
+										itemData={data}
+										itemCount={data.length}
+										itemSize={rowHeight}
+										ref={ref}
+										height={height}
+										width={width}
+										onItemsRendered={onItemsRendered}
+										overscanCount={50}
+									>
+										{({ style, index, data }) => (
+											<Row
+												classes={styles.row}
+												key={index}
+												style={style}
+												index={index}
+											>
+												{cloneChild(children, 'Column', {
+													data: data[index]
+												})}
+											</Row>
+										)}
+									</FixedSizeList>
+								)}
+							</InfiniteLoader>
 						)}
-					</VirtualizedList>
+					</AutoSizer>
 				) : (
 					<Typography classes={styles.fallback}>
 						{intl.emptyList.description}

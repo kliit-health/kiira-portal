@@ -1,11 +1,29 @@
-import { firebaseFetch } from 'src/firebase'
-import { collections, conditions } from 'src/helpers/constants'
-import { GET_INVITATIONS } from '../types'
+import { firestore } from 'src/firebase'
+import { collections } from 'src/helpers/constants'
+import { GET_INVITATIONS, GET_MORE_INVITATIONS } from '../types'
 
-export const getInvitations = ({ organizationId }) => ({
-	type: GET_INVITATIONS,
-	payload: firebaseFetch(collections.invitations, [
-		{ key: 'organizationId', operator: '==', value: organizationId },
-		{ key: 'role', operator: '==', value: 'User' }
-	])
-})
+export const getInvitations = ({ organizationId }) => {
+	let ref = firestore
+		.collection(collections.invitations)
+		.where('organizationId', '==', organizationId)
+
+	return {
+		type: GET_INVITATIONS,
+		payload: ref.orderBy('invitationDate', 'desc').limit(50).get()
+	}
+}
+
+export const getMoreInvitations = ({ organizationId, lastDocument }) => {
+	let ref = firestore
+		.collection(collections.invitations)
+		.where('organizationId', '==', organizationId)
+
+	return {
+		type: GET_MORE_INVITATIONS,
+		payload: ref
+			.orderBy('invitationDate', 'desc')
+			.startAfter(lastDocument)
+			.limit(50)
+			.get()
+	}
+}

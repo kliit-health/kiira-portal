@@ -8,14 +8,7 @@ import { InvitesIcon } from 'src/components/icons'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-const InvitationsSent = ({ organizationId }) => {
-	const queryConditions = [
-		{ key: 'organizationId', operator: '==', value: organizationId }
-	]
-	const { loading, data } = useFirebaseFetch(
-		collections.invitations,
-		queryConditions
-	)
+const InvitationsSent = ({ loading, count }) => {
 	const router = useRouter()
 
 	const handleInvite = () => {
@@ -40,7 +33,7 @@ const InvitationsSent = ({ organizationId }) => {
 					<div className={styles.container}>
 						<InvitesIcon />
 						<Typography darkBlue h4>
-							{data ? data.length.toLocaleString('en-IN') : 0}
+							{count}
 						</Typography>
 					</div>
 					<Button onClick={handleInvite} link classes={styles.button}>

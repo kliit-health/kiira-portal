@@ -16,10 +16,11 @@ export const signIn = (email, password) =>
 	)
 
 export const signOut = () =>
-	new Promise((_, reject) =>
+	new Promise((resolve, reject) =>
 		(async () => {
 			try {
 				await auth.signOut()
+				resolve()
 			} catch (error) {
 				reject(error)
 			}
@@ -28,7 +29,7 @@ export const signOut = () =>
 
 export const firebaseSingleFetch = (collectionName, id) =>
 	new Promise((resolve, reject) =>
-		(async function () {
+		(async () => {
 			try {
 				const document = await firestore
 					.collection(collectionName)
@@ -37,6 +38,48 @@ export const firebaseSingleFetch = (collectionName, id) =>
 
 				const data = document.data()
 				resolve(data)
+			} catch (error) {
+				reject(error)
+			}
+		})()
+	)
+
+export const firebaseFetchWithPagination = ({
+	collectionName,
+	conditions = [],
+	orderBy = null,
+	limit = 25,
+	startAfter = null
+}) =>
+	new Promise((resolve, reject) =>
+		(async () => {
+			try {
+				let query = firestore.collection(collectionName)
+				for (let condition of conditions) {
+					const { key, operator, value } = condition
+					query = query.where(key, operator, value)
+				}
+
+				// if (limit) {
+				// 	query.limit(limit)
+				// }
+
+				// if (orderBy) {
+				// 	query.orderBy(orderBy.key, orderBy.criteria)
+				// }
+
+				query.orderBy(orderBy.key, orderBy.criteria)
+
+				if (startAfter) {
+					query.startAfter(startAfter)
+				}
+
+				const response = await query.limit(limit).get()
+				const data = response.docs.map(item => ({
+					...item.data(),
+					id: item.id
+				}))
+				resolve({ data, lastDocument: response[response.docs.length - 1] })
 			} catch (error) {
 				reject(error)
 			}

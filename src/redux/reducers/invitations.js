@@ -4,27 +4,62 @@ import models from '../models'
 import {
 	GET_INVITATIONS_PENDING,
 	GET_INVITATIONS_FULFILLED,
-	GET_INVITATIONS_REJECTED
+	GET_INVITATIONS_REJECTED,
+	GET_MORE_INVITATIONS_PENDING,
+	GET_MORE_INVITATIONS_FULFILLED,
+	GET_MORE_INVITATIONS_REJECTED
 } from '../types'
 
 const initialState = {
 	data: [],
-	loading: false,
-	error: null
+	lastDocument: null,
+	get: {
+		loading: false,
+		error: null
+	},
+	more: {
+		loading: false,
+		error: null
+	}
 }
 
 export const invitations = createReducer(initialState, {
 	[GET_INVITATIONS_PENDING]: state => {
-		state.loading = true
-		state.error = null
+		state.get.loading = true
+		state.get.error = null
 	},
 	[GET_INVITATIONS_FULFILLED]: (state, { payload }) => {
-		state.data = payload.map(invitation => merge(models.invitation, invitation))
-		state.loading = false
-		state.error = null
+		state.lastDocument = payload.docs[payload.docs.length - 1]
+		state.data = payload.docs.map(invitation =>
+			merge(models.invitation, invitation.data())
+		)
+		state.get.loading = false
+		state.get.error = null
 	},
 	[GET_INVITATIONS_REJECTED]: state => {
-		state.loading = false
-		state.error = 'Failed to get invitations.'
+		state.get.loading = false
+		state.get.error = 'Failed to get invitations.'
+	},
+	[GET_MORE_INVITATIONS_PENDING]: state => {
+		state.more.loading = true
+		state.more.error = null
+	},
+	[GET_MORE_INVITATIONS_FULFILLED]: (state, { payload }) => {
+		if (payload.docs.length > 0) {
+			state.lastDocument = payload.docs[payload.docs.length - 1]
+			state.data = state.data.concat(
+				payload.docs.map(invitation =>
+					merge(models.invitation, invitation.data())
+				)
+			)
+		} else {
+			state.lastDocument = null
+		}
+		state.more.loading = false
+		state.more.error = null
+	},
+	[GET_MORE_INVITATIONS_REJECTED]: state => {
+		state.more.loading = false
+		state.more.error = 'Failed to get more invitations.'
 	}
 })

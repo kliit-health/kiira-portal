@@ -17,7 +17,7 @@ export default [
 		type: TEXT
 	},
 	{
-		style: { maxWidth: 228.8, flex: 5 },
+		style: { maxWidth: 258.8, flex: 7 },
 		label: 'Email',
 		dataKey: 'email',
 		type: TEXT
@@ -35,7 +35,7 @@ export default [
 		type: TEXT
 	},
 	{
-		style: { maxWidth: 177.8, flex: 3 },
+		style: { maxWidth: 168, flex: 3 },
 		label: 'Status',
 		dataKey: 'status',
 		type: POPOVER

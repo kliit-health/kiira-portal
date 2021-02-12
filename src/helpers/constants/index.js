@@ -38,5 +38,6 @@ export const routes = {
 
 export const collections = {
 	users: 'users',
-	invitations: 'invitations'
+	invitations: 'invitations',
+	overview: 'overview'
 }
