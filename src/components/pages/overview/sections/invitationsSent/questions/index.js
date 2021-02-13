@@ -1,10 +1,8 @@
 import { Fragment } from 'react'
 import { useRouter } from 'next/router'
-import { useFirebaseFetch } from 'src/hooks'
-import { collections } from 'src/firebase/constants'
 import { routes } from 'src/helpers/constants'
 import { Typography, Button, CircularProgress } from 'src/components'
-import { InvitesIcon } from 'src/components/icons'
+import { ChatIcon } from 'src/components/icons'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
@@ -28,10 +26,10 @@ const Questions = ({ loading, count }) => {
 			) : (
 				<Fragment>
 					<Typography gray h8 bold>
-						{intl.questionsAsked.description.toUpperCase()}
+						{intl.chats.description.toUpperCase()}
 					</Typography>
 					<div className={styles.container}>
-						<InvitesIcon />
+						<ChatIcon />
 						<Typography darkBlue h4>
 							{count}
 						</Typography>

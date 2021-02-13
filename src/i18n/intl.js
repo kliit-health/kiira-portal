@@ -266,10 +266,6 @@ export const intl = {
 		description:
 			'Please try again or get in touch with us for further assistence.'
 	},
-	invitationsSent: {
-		id: 'invitationsSent',
-		description: 'Total Invitations Sent'
-	},
 	inviteMoreUsers: {
 		id: 'inviteMoreUsers',
 		description: 'Invite more users'
@@ -329,5 +325,21 @@ export const intl = {
 	weLikeToChat: {
 		id: 'weLikeToChat',
 		description: `We like to chat.`
+	},
+	typeOfInteraction: {
+		id: 'typeOfInteraction',
+		description: 'Type of Interaction'
+	},
+	chats: {
+		id: 'chats',
+		description: 'Chats'
+	},
+	videoVisits: {
+		id: 'videoVisits',
+		description: 'Video Visits'
+	},
+	invitationsSent: {
+		id: 'invitationsSent',
+		description: 'Invitations Sent'
 	}
 }

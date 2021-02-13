@@ -34,7 +34,7 @@ const SignUps = ({ loading, data }) => {
 			) : (
 				<Fragment>
 					<Typography gray h8 bold>
-						{intl.totalSignUps.description.toUpperCase()}
+						{intl.activeUsers.description.toUpperCase()}
 					</Typography>
 					<div className={styles.container}>
 						<ClickIcon />

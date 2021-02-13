@@ -22,13 +22,13 @@ export const sections = [
 		path: '/dashboard/active-users'
 	},
 	{
-		title: intl.questionsAsked.description,
-		iconUrl: '/assets/envelope.svg',
+		title: intl.chats.description,
+		iconUrl: '/assets/chat.svg',
 		path: '/dashboard/questions'
 	},
 	{
-		title: intl.appointments.description,
-		iconUrl: '/assets/envelope.svg',
-		path: '/dashboard/appointments'
+		title: intl.videoVisits.description,
+		iconUrl: '/assets/calendar.svg',
+		path: '/dashboard/calendar'
 	}
 ]

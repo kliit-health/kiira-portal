@@ -65,7 +65,7 @@ export default memo(({ data: other, loading }) => {
 	return (
 		<div className={styles.root}>
 			<Typography classes={styles.title} gray h8 bold>
-				{intl.communicationChannel.description.toUpperCase()}
+				{intl.typeOfInteraction.description.toUpperCase()}
 			</Typography>
 			<PieChart width={330} height={330}>
 				<Pie

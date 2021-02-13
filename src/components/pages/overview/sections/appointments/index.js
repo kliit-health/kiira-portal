@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { useRouter } from 'next/router'
 import { routes } from 'src/helpers/constants'
 import { Typography, Button, CircularProgress } from 'src/components'
-import { InvitesIcon } from 'src/components/icons'
+import { AppointmentIcon } from 'src/components/icons'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
@@ -26,10 +26,10 @@ const Appointments = ({ loading, count }) => {
 			) : (
 				<Fragment>
 					<Typography gray h8 bold>
-						{intl.appointmentsCreated.description.toUpperCase()}
+						{intl.videoVisits.description.toUpperCase()}
 					</Typography>
 					<div className={styles.container}>
-						<InvitesIcon />
+						<AppointmentIcon />
 						<Typography darkBlue h4>
 							{count}
 						</Typography>

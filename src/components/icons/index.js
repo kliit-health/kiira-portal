@@ -4,5 +4,7 @@ export {
 	SearchIcon,
 	CancelCircle,
 	InvitesIcon,
-	ClickIcon
+	ClickIcon,
+	ChatIcon,
+	AppointmentIcon
 } from './Icons'
