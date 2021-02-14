@@ -5,7 +5,7 @@ import { Typography, CircularProgress, Avatar } from 'src/components'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-const AccountDetails = ({
+export const AccountDetails = ({
 	details: { email, title, profileInfo, organizationId }
 }) => {
 	const queryConditions = [
@@ -61,5 +61,3 @@ const AccountDetails = ({
 		</div>
 	)
 }
-
-export default AccountDetails

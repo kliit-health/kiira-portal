@@ -1,7 +1,5 @@
 import { Fragment } from 'react'
 import { useRouter } from 'next/router'
-import { useFirebaseFetch } from 'src/hooks'
-import { collections } from 'src/firebase/constants'
 import { routes } from 'src/helpers/constants'
 import { Typography, Button, CircularProgress } from 'src/components'
 import { ClickIcon } from 'src/components/icons'
@@ -14,7 +12,7 @@ const calculatePercentage = (active, total) => {
 	return `${response ? response.toFixed(1) : 0}%`
 }
 
-const SignUps = ({ loading, data }) => {
+export const SignUps = ({ loading, data }) => {
 	const router = useRouter()
 
 	const handleInvite = () => {
@@ -50,5 +48,3 @@ const SignUps = ({ loading, data }) => {
 		</div>
 	)
 }
-
-export default SignUps

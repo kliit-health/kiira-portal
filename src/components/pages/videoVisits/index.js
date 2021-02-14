@@ -1,27 +1,27 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
-import { getInvitations, getMoreInvitations } from 'src/redux/actions'
+import { getAppointments, getMoreAppointments } from 'src/redux/actions'
 import { Page } from 'src/components'
 import { List } from './sections'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-export const Invitations = ({ auth }) => {
+export const VideoVisits = ({ auth }) => {
 	const dispatch = useDispatch()
 	const { organizationId } = auth.details
 	const [rendered, setRendered] = useState(0)
 
-	const data = useSelector(state => state.invitations.data, shallowEqual)
+	const data = useSelector(state => state.appointments.data, shallowEqual)
 	const lastDocument = useSelector(
-		state => state.invitations.lastDocument,
+		state => state.appointments.lastDocument,
 		shallowEqual
 	)
-	const initialLoading = useSelector(state => state.invitations.get.loading)
-	const loading = useSelector(state => state.invitations.more.loading)
+	const initialLoading = useSelector(state => state.appointments.get.loading)
+	const loading = useSelector(state => state.appointments.more.loading)
 
 	useEffect(() => {
 		if (lastDocument === null) {
-			dispatch(getInvitations({ organizationId }))
+			dispatch(getAppointments({ organizationId }))
 		}
 	}, [])
 
@@ -31,7 +31,7 @@ export const Invitations = ({ auth }) => {
 				setRendered(stopIndex)
 
 				if (!loading && lastDocument) {
-					dispatch(getMoreInvitations({ organizationId, lastDocument }))
+					dispatch(getMoreAppointments({ organizationId, lastDocument }))
 				}
 				if (!loading) {
 					resolve()
@@ -40,14 +40,14 @@ export const Invitations = ({ auth }) => {
 		})
 
 	const styles = {
-		page: { content: 'invitations__page-content' }
+		page: { content: 'appointments__page-content' }
 	}
 
 	return (
 		<Page
 			classes={styles.page}
-			title={intl.invitationsTitle.description}
-			subtitle={intl.onBoard.description}
+			title={intl.videoVisits.description}
+			subtitle={intl.weAreAvailable.description}
 		>
 			<List
 				organizationId={organizationId}

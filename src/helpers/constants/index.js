@@ -34,8 +34,8 @@ export const SUCCESS = 'Success'
 export const routes = {
 	invitations: '/dashboard/invitations',
 	activeUsers: '/dashboard/active-users',
-	appointments: '/dashboard/appointments',
-	questions: '/dashboard/questions'
+	videoVisits: '/dashboard/video-visits',
+	chats: '/dashboard/chats'
 }
 
 export const collections = {

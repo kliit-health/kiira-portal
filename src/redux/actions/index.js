@@ -1,4 +1,4 @@
-export { getUser, setUser } from './user'
+export { getUser } from './user'
 export { getExperts } from './experts'
 export { getInvitations, getMoreInvitations } from './invitations'
 export { getActiveUsers, getMoreActiveUsers } from './activeUsers'

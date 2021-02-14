@@ -24,11 +24,11 @@ export const sections = [
 	{
 		title: intl.chats.description,
 		iconUrl: '/assets/chat.svg',
-		path: '/dashboard/questions'
+		path: '/dashboard/chats'
 	},
 	{
 		title: intl.videoVisits.description,
 		iconUrl: '/assets/calendar.svg',
-		path: '/dashboard/calendar'
+		path: '/dashboard/video-visits'
 	}
 ]

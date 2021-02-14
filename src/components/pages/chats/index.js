@@ -1,27 +1,27 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
-import { getInvitations, getMoreInvitations } from 'src/redux/actions'
+import { getQuestions, getMoreQuestions } from 'src/redux/actions'
 import { Page } from 'src/components'
 import { List } from './sections'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-export const Invitations = ({ auth }) => {
+export const Chats = ({ auth }) => {
 	const dispatch = useDispatch()
 	const { organizationId } = auth.details
 	const [rendered, setRendered] = useState(0)
 
-	const data = useSelector(state => state.invitations.data, shallowEqual)
+	const data = useSelector(state => state.questions.data, shallowEqual)
 	const lastDocument = useSelector(
-		state => state.invitations.lastDocument,
+		state => state.questions.lastDocument,
 		shallowEqual
 	)
-	const initialLoading = useSelector(state => state.invitations.get.loading)
-	const loading = useSelector(state => state.invitations.more.loading)
+	const initialLoading = useSelector(state => state.questions.get.loading)
+	const loading = useSelector(state => state.questions.more.loading)
 
 	useEffect(() => {
 		if (lastDocument === null) {
-			dispatch(getInvitations({ organizationId }))
+			dispatch(getQuestions({ organizationId }))
 		}
 	}, [])
 
@@ -31,7 +31,7 @@ export const Invitations = ({ auth }) => {
 				setRendered(stopIndex)
 
 				if (!loading && lastDocument) {
-					dispatch(getMoreInvitations({ organizationId, lastDocument }))
+					dispatch(getMoreQuestions({ organizationId, lastDocument }))
 				}
 				if (!loading) {
 					resolve()
@@ -40,14 +40,14 @@ export const Invitations = ({ auth }) => {
 		})
 
 	const styles = {
-		page: { content: 'invitations__page-content' }
+		page: { content: 'chats__page-content' }
 	}
 
 	return (
 		<Page
 			classes={styles.page}
-			title={intl.invitationsTitle.description}
-			subtitle={intl.onBoard.description}
+			title={intl.chats.description}
+			subtitle={intl.weLikeToChat.description}
 		>
 			<List
 				organizationId={organizationId}

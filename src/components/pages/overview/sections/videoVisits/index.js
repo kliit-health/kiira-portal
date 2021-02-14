@@ -1,24 +1,22 @@
 import { Fragment } from 'react'
 import { useRouter } from 'next/router'
-import { useFirebaseFetch } from 'src/hooks'
-import { collections } from 'src/firebase/constants'
 import { routes } from 'src/helpers/constants'
 import { Typography, Button, CircularProgress } from 'src/components'
-import { InvitesIcon } from 'src/components/icons'
+import { AppointmentIcon } from 'src/components/icons'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-export const InvitationsSent = ({ loading, count }) => {
+export const VideoVisits = ({ loading, count }) => {
 	const router = useRouter()
 
-	const handleInvite = () => {
-		router.push(routes.invitations)
+	const handleNavigation = () => {
+		router.push(routes.videoVisits)
 	}
 
 	const styles = {
-		root: 'invitations-sent',
-		button: { text: 'invitations-sent__button-text' },
-		container: 'invitations-sent__container'
+		root: 'appointments',
+		button: { text: 'appointments__button-text' },
+		container: 'appointments__container'
 	}
 
 	return (
@@ -28,16 +26,16 @@ export const InvitationsSent = ({ loading, count }) => {
 			) : (
 				<Fragment>
 					<Typography gray h8 bold>
-						{intl.invitationsSent.description.toUpperCase()}
+						{intl.videoVisits.description.toUpperCase()}
 					</Typography>
 					<div className={styles.container}>
-						<InvitesIcon />
+						<AppointmentIcon />
 						<Typography darkBlue h4>
 							{count}
 						</Typography>
 					</div>
-					<Button onClick={handleInvite} link classes={styles.button}>
-						{intl.inviteMoreUsers.description}
+					<Button onClick={handleNavigation} link classes={styles.button}>
+						{intl.seeDetails.description}
 					</Button>
 				</Fragment>
 			)}

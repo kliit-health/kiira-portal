@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { List, Profile } from '../../../experts/sections'
 import './styles.scss'
 
-const TopExperts = ({ onRefChange }) => {
+export const TopExperts = ({ onRefChange }) => {
 	const popRef = useRef(null)
 	const [anchorEl, setAnchorEl] = useState(null)
 	const [profileData, setProfileData] = useState(null)
@@ -34,5 +34,3 @@ const TopExperts = ({ onRefChange }) => {
 		</div>
 	)
 }
-
-export default TopExperts

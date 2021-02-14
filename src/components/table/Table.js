@@ -39,7 +39,7 @@ export const Table = ({
 		<div className={styles.table}>
 			{cloneChild(children, 'Header')}
 			<div className={styles.list}>
-				{loading ? (
+				{loading && !data.length ? (
 					<CircularProgress />
 				) : data.length > 0 ? (
 					<AutoSizer>

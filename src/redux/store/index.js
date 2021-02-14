@@ -3,19 +3,21 @@ import thunk from 'redux-thunk'
 import { useMemo } from 'react'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import promise from 'redux-promise-middleware'
-import combinedReducer from '../reducers'
+import combinedReducer, { resetEnhancer } from '../reducers'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 let store
 
 const persistConfig = {
-	key: 'test1',
-	whitelist: [],
+	key: 'test3',
 	storage // place to select which state you want to persist
 }
 
-const persistedReducer = persistReducer(persistConfig, combinedReducer)
+const persistedReducer = persistReducer(
+	persistConfig,
+	resetEnhancer(combinedReducer)
+)
 
 function initStore(preloadedState = {}) {
 	return createStore(

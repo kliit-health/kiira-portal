@@ -6,7 +6,7 @@ export const signIn = (email, password) =>
 	new Promise((resolve, reject) =>
 		(async () => {
 			try {
-				await auth.setPersistence(PERSISTANCE.NONE)
+				await auth.setPersistence(PERSISTANCE.SESSION)
 				const response = await auth.signInWithEmailAndPassword(email, password)
 				resolve(response)
 			} catch (error) {

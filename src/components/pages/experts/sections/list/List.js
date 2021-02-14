@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { getExperts } from 'src/redux/actions'
 import { Card, Typography, CircularProgress } from 'src/components'
 import { calculateRating } from 'src/helpers/functions'
@@ -9,8 +9,8 @@ const { Header, Rating } = Card
 export const List = ({ onClick, limit }) => {
 	const dispatch = useDispatch()
 
-	const data = useSelector(state => state.experts.data)
-	const loading = useSelector(state => state.experts.loading)
+	const data = useSelector(state => state.experts.data, shallowEqual)
+	const loading = useSelector(state => state.experts.loading, shallowEqual)
 
 	useEffect(() => {
 		dispatch(getExperts({ limit }))
@@ -24,7 +24,7 @@ export const List = ({ onClick, limit }) => {
 
 	return (
 		<div className={styles.root}>
-			{loading ? (
+			{loading & !data.length ? (
 				<CircularProgress />
 			) : (
 				<div>

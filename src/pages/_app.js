@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { FirebaseAuth } from '../firebase'
+import { AuthProvider } from '../firebase'
+import { AccessControl } from 'src/components'
 import { Layout } from '../layout'
 import { StylesProvider } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
@@ -34,15 +35,23 @@ const App = ({ Component, pageProps }) => {
 				<Provider store={store}>
 					<PersistGate loading={<div>loading</div>} persistor={persistor}>
 						{!layoutDisabled.includes(router.pathname) ? (
-							<FirebaseAuth>
-								<Layout>
-									<Component {...pageProps} />
-								</Layout>
-							</FirebaseAuth>
+							<AuthProvider>
+								{props => (
+									<AccessControl {...props}>
+										<Layout>
+											<Component {...props} />
+										</Layout>
+									</AccessControl>
+								)}
+							</AuthProvider>
 						) : (
-							<FirebaseAuth>
-								<Component {...pageProps} />
-							</FirebaseAuth>
+							<AuthProvider>
+								{props => (
+									<AccessControl {...props}>
+										<Component {...props} />
+									</AccessControl>
+								)}
+							</AuthProvider>
 						)}
 					</PersistGate>
 				</Provider>

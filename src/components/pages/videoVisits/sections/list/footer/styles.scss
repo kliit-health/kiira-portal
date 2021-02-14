@@ -1,0 +1,20 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.appointments-table-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 60px;
+  background-color: white;
+  padding: 0 20px;
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+
+  &__text {
+    @include user-select-none;
+    font-size: 1em;
+    font-family: 'Roboto-Regular';
+    color: $base-pink;
+  }
+}
