@@ -10,7 +10,8 @@ import storage from 'redux-persist/lib/storage'
 let store
 
 const persistConfig = {
-	key: 'test3',
+	key: 'test5',
+	whitelist: [],
 	storage // place to select which state you want to persist
 }
 

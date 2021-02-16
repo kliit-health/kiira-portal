@@ -10,10 +10,17 @@
   align-items: flex-start;
   height: 330px;
   width: 330px;
-  // padding: 20px;
 
   &__title {
     position: absolute;
     padding: 20px
+  }
+
+  &__legend {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin: 20px;
+    bottom: 0;
   }
 }

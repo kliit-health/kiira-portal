@@ -18,8 +18,6 @@ export const List = ({ data, loading, loadMoreItems, isItemLoaded }) => {
 			data.map(item => {
 				const { expert, user, ...rest } = item
 
-				console.log(expert)
-
 				return {
 					...user,
 					expertName: `${expert.firstName} ${expert.lastName}`,
