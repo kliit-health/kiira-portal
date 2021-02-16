@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { PieChart, Pie, Cell } from 'recharts'
 import { Typography, CircularProgress, LegendItem } from 'src/components'
 import { intl } from 'src/i18n'
@@ -8,18 +8,21 @@ import './styles.scss'
 const radian = Math.PI / 180
 
 export default memo(({ data: incoming, loading }) => {
-	const data = model.map(({ dataKey, label, color }) => ({
-		value: incoming[dataKey],
-		label,
-		color
-	}))
+	let data = []
+	model.forEach(({ dataKey, label, color }) => {
+		if (incoming[dataKey] > 0) {
+			data.push({
+				value: incoming[dataKey],
+				label,
+				color
+			})
+		}
+	})
 
 	const styles = {
 		root: 'assistance-chart',
 		legend: 'assistance-chart__legend',
-		title: {
-			root: 'assistance-chart__title'
-		},
+		title: { root: 'assistance-chart__title' },
 		message: { root: 'assistance-chart__message' }
 	}
 
@@ -30,7 +33,7 @@ export default memo(({ data: incoming, loading }) => {
 			</Typography>
 			{loading ? (
 				<CircularProgress />
-			) : data.length ? (
+			) : data.length === 0 ? (
 				<Typography classes={styles.message}>
 					{intl.notEnoughData.description}
 				</Typography>

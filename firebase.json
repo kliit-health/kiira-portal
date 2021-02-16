@@ -47,7 +47,7 @@
 	},
 	"hosting": [
 		{
-			"site": "kliit-health-dev",
+			"site": "kiira-health-app",
 			"public": "public/",
 			"cleanUrls": true,
 			"rewrites": [
