@@ -19,7 +19,8 @@ export default memo(({ data: incoming, loading }) => {
 		legend: 'assistance-chart__legend',
 		title: {
 			root: 'assistance-chart__title'
-		}
+		},
+		message: { root: 'assistance-chart__message' }
 	}
 
 	return (
@@ -29,6 +30,10 @@ export default memo(({ data: incoming, loading }) => {
 			</Typography>
 			{loading ? (
 				<CircularProgress />
+			) : data.length ? (
+				<Typography classes={styles.message}>
+					{intl.notEnoughData.description}
+				</Typography>
 			) : (
 				<PieChart width={330} height={330}>
 					<Pie

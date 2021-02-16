@@ -341,5 +341,9 @@ export const intl = {
 	invitationsSent: {
 		id: 'invitationsSent',
 		description: 'Invitations Sent'
+	},
+	notEnoughData: {
+		id: 'notEnoughData',
+		description: `We don't have enough data to display this chart.`
 	}
 }
