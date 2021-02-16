@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import { useMemo } from 'react'
-import { composeWithDevTools } from 'redux-devtools-extension'
+// import { composeWithDevTools } from 'redux-devtools-extension'
 import promise from 'redux-promise-middleware'
 import combinedReducer, { resetEnhancer } from '../reducers'
 import { persistReducer } from 'redux-persist'
@@ -24,7 +24,7 @@ function initStore(preloadedState = {}) {
 	return createStore(
 		persistedReducer,
 		preloadedState,
-		composeWithDevTools(applyMiddleware(thunk, promise))
+		applyMiddleware(thunk, promise)
 	)
 }
 
