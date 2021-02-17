@@ -20,9 +20,7 @@ export const Invitations = ({ auth }) => {
 	const loading = useSelector(state => state.invitations.more.loading)
 
 	useEffect(() => {
-		if (lastDocument === null) {
-			dispatch(getInvitations({ organizationId }))
-		}
+		dispatch(getInvitations({ organizationId }))
 	}, [])
 
 	const handleLoad = (_, stopIndex) =>

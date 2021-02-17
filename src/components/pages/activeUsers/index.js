@@ -20,9 +20,7 @@ export const ActiveUsers = ({ auth }) => {
 	const loading = useSelector(state => state.activeUsers.more.loading)
 
 	useEffect(() => {
-		if (lastDocument === null) {
-			dispatch(getActiveUsers({ organizationId }))
-		}
+		dispatch(getActiveUsers({ organizationId }))
 	}, [])
 
 	const handleLoad = (_, stopIndex) =>

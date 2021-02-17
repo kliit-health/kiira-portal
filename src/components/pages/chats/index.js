@@ -20,9 +20,7 @@ export const Chats = ({ auth }) => {
 	const loading = useSelector(state => state.questions.more.loading)
 
 	useEffect(() => {
-		if (lastDocument === null) {
-			dispatch(getQuestions({ organizationId }))
-		}
+		dispatch(getQuestions({ organizationId }))
 	}, [])
 
 	const handleLoad = (_, stopIndex) =>

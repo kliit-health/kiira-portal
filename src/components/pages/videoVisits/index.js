@@ -20,9 +20,7 @@ export const VideoVisits = ({ auth }) => {
 	const loading = useSelector(state => state.appointments.more.loading)
 
 	useEffect(() => {
-		if (lastDocument === null) {
-			dispatch(getAppointments({ organizationId }))
-		}
+		dispatch(getAppointments({ organizationId }))
 	}, [])
 
 	const handleLoad = (_, stopIndex) =>
