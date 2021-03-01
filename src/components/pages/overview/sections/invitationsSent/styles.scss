@@ -3,17 +3,18 @@
 
 .invitations-sent {
   display: flex;
+  flex: 1;
+  min-width: 185.25px;
   flex-direction: column;
   border-radius: 10px;
   padding: 20px;
   background-color: $base-white;
   position: relative;
-  width: 150px;
-  height: 110px;
   align-items: flex-start;
 
   &__button-text {
     margin-right: auto;
+    font-size: 1.2em;
   }
 
   &__container {
@@ -21,6 +22,6 @@
     flex: 1;
     align-items: center;
     flex-direction: row;
-    font-size: .6;
+    font-size: 1em;
   }
 }

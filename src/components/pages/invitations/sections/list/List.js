@@ -1,10 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { orderBy } from 'lodash'
-import {
-	switchCase,
-	filterObjectArray,
-	formatPhoneNumber
-} from 'src/helpers/functions'
+import { switchCase, formatPhoneNumber } from 'src/helpers/functions'
 import { Table, Popover } from 'src/components'
 import { Uploader } from '../uploader'
 import { DATE, TEXT, POPOVER } from 'src/helpers/constants'
@@ -15,12 +11,16 @@ import './styles.scss'
 
 const { Column, DateCell, TextCell, PopoverCell } = Table
 
-export const List = ({ organizationId, data, loading }) => {
+export const List = ({
+	organizationId,
+	data,
+	loading,
+	loadMoreItems,
+	isItemLoaded
+}) => {
 	const popRef = useRef(null)
 	const [anchorEl, setAnchorEl] = useState(null)
 	const [formatedData, setFormatedData] = useState([])
-	const [searchData, setSearchData] = useState([])
-	const [searching, setSearching] = useState(false)
 
 	useEffect(() => {
 		setFormatedData(
@@ -34,15 +34,11 @@ export const List = ({ organizationId, data, loading }) => {
 				}
 			})
 		)
-	}, [])
+	}, [data, setFormatedData])
 
 	const handleSort = (key, asc) => {
-		let sortedData = orderBy(
-			searching ? searchData : formatedData,
-			key,
-			asc ? 'asc' : 'desc'
-		)
-		searching ? setSearchData(sortedData) : setFormatedData(sortedData)
+		let sortedData = orderBy(formatedData, key, asc ? 'asc' : 'desc')
+		setFormatedData(sortedData)
 	}
 
 	const handleAddUser = () => {
@@ -51,17 +47,6 @@ export const List = ({ organizationId, data, loading }) => {
 
 	const handleClose = () => {
 		setAnchorEl(null)
-	}
-
-	const handleSuccess = () => {
-		fetchUsers()
-	}
-
-	const handleSearch = value => {
-		const isSearching = Boolean(value)
-		const searchResult = filterObjectArray(formatedData, value)
-		setSearching(isSearching)
-		setSearchData(searchResult)
 	}
 
 	const popoverProps = {
@@ -86,14 +71,15 @@ export const List = ({ organizationId, data, loading }) => {
 		<div className={styles.root}>
 			<Table
 				classes={styles.table}
-				data={searching ? searchData : formatedData}
+				data={formatedData}
 				loading={loading}
+				loadMoreItems={loadMoreItems}
+				isItemLoaded={isItemLoaded}
 			>
 				<Header
 					elementRef={popRef}
 					onAddUsers={handleAddUser}
 					onSort={handleSort}
-					onSearch={handleSearch}
 				/>
 				{model.map(({ dataKey, style, type }, index) => (
 					<Column style={style} key={`${index}-${dataKey}`}>
@@ -112,16 +98,10 @@ export const List = ({ organizationId, data, loading }) => {
 						}}
 					</Column>
 				))}
-				<Footer
-					userCount={searching ? searchData.length : formatedData.length}
-				/>
+				<Footer userCount={formatedData.length} />
 			</Table>
 			<Popover {...popoverProps}>
-				<Uploader
-					onSuccess={handleSuccess}
-					onCancel={handleClose}
-					organizationId={organizationId}
-				/>
+				<Uploader onCancel={handleClose} organizationId={organizationId} />
 			</Popover>
 		</div>
 	)

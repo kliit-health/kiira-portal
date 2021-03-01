@@ -266,13 +266,9 @@ export const intl = {
 		description:
 			'Please try again or get in touch with us for further assistence.'
 	},
-	invitationsSent: {
-		id: 'invitationsSent',
-		description: 'Total Invitations Sent'
-	},
 	inviteMoreUsers: {
 		id: 'inviteMoreUsers',
-		description: 'Invite more users'
+		description: 'Invite More Users'
 	},
 	totalSignUps: {
 		id: 'totalSignUps',
@@ -297,5 +293,61 @@ export const intl = {
 	title: {
 		id: 'title',
 		description: `Title`
+	},
+	appointmentsCreated: {
+		id: 'appointmentsCreated',
+		description: 'Appointments Created'
+	},
+	seeDetails: {
+		id: 'seeDetails',
+		description: 'See Details'
+	},
+	questionsAsked: {
+		id: 'questionsAsked',
+		description: 'Questions Asked'
+	},
+	communicationChannel: {
+		id: 'communicationChannel',
+		description: 'Communication Channel'
+	},
+	appointments: {
+		id: 'appointments',
+		description: 'Appointments'
+	},
+	questions: {
+		id: 'questionsAsked',
+		description: 'Questions Asked'
+	},
+	weAreAvailable: {
+		id: 'weAreAvailable',
+		description: `We make ourselves available.`
+	},
+	weLikeToChat: {
+		id: 'weLikeToChat',
+		description: `We like to chat.`
+	},
+	typeOfInteraction: {
+		id: 'typeOfInteraction',
+		description: 'Type of Interaction'
+	},
+	chats: {
+		id: 'chats',
+		description: 'Chats'
+	},
+	videoVisits: {
+		id: 'videoVisits',
+		description: 'Video Visits'
+	},
+	invitationsSent: {
+		id: 'invitationsSent',
+		description: 'Invitations Sent'
+	},
+	notEnoughData: {
+		id: 'notEnoughData',
+		description: `We don't have enough data to display this chart.`
+	},
+	dailyActivity: {
+		id: 'dailyActivity',
+		description: 'Sign Up Activity'
 	}
 }

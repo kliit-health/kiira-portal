@@ -21,7 +21,7 @@ import './styles.scss'
 export const UploaderContext = createContext()
 const { Provider } = UploaderContext
 
-export const Uploader = ({ onCancel, organizationId, onSuccess }) => {
+export const Uploader = ({ onCancel, organizationId }) => {
 	const [response, setResponse] = useState(null)
 	const [screen, setScreen] = useState(INITIAL_SCREEN)
 
@@ -51,11 +51,14 @@ export const Uploader = ({ onCancel, organizationId, onSuccess }) => {
 				sendInvitations(data, organizationId)
 					.then(({ data }) => {
 						handleResponse({ ...data }, REPORT_SCREEN)
-						onSuccess()
 					})
-					.catch(error => handleResponse(error, SERVER_ERROR))
+					.catch(error => {
+						handleResponse(error, SERVER_ERROR_SCREEN)
+					})
 			)
-			.catch(error => handleResponse(error, BAD_FILE_SCREEN))
+			.catch(error => {
+				handleResponse(error, BAD_FILE_SCREEN)
+			})
 	}
 
 	const memoizedValue = useMemo(() => ({ handleRetry, handleDrop, response }), [

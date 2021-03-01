@@ -85,3 +85,29 @@ export const ClickIcon = ({ classes = {} }) => {
 		</div>
 	)
 }
+
+export const ChatIcon = ({ classes = {} }) => {
+	const styles = {
+		icon: classnames('chat-icon', classes.root),
+		element: classnames('chat-icon__image', classes.image)
+	}
+
+	return (
+		<div className={styles.icon}>
+			<img className={styles.image} src="/assets/message.svg" />
+		</div>
+	)
+}
+
+export const AppointmentIcon = ({ classes = {} }) => {
+	const styles = {
+		icon: classnames('appointment-icon', classes.root),
+		element: classnames('cappointment-icon__image', classes.image)
+	}
+
+	return (
+		<div className={styles.icon}>
+			<img className={styles.image} src="/assets/calendar-box.svg" />
+		</div>
+	)
+}

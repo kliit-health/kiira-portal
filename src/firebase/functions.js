@@ -6,7 +6,7 @@ export const signIn = (email, password) =>
 	new Promise((resolve, reject) =>
 		(async () => {
 			try {
-				await auth.setPersistence(PERSISTANCE.NONE)
+				await auth.setPersistence(PERSISTANCE.SESSION)
 				const response = await auth.signInWithEmailAndPassword(email, password)
 				resolve(response)
 			} catch (error) {
@@ -16,10 +16,11 @@ export const signIn = (email, password) =>
 	)
 
 export const signOut = () =>
-	new Promise((_, reject) =>
+	new Promise((resolve, reject) =>
 		(async () => {
 			try {
 				await auth.signOut()
+				resolve()
 			} catch (error) {
 				reject(error)
 			}
@@ -28,7 +29,7 @@ export const signOut = () =>
 
 export const firebaseSingleFetch = (collectionName, id) =>
 	new Promise((resolve, reject) =>
-		(async function () {
+		(async () => {
 			try {
 				const document = await firestore
 					.collection(collectionName)

@@ -41,10 +41,10 @@ export const Header = ({ onAddUsers, elementRef, onSort, onSearch }) => {
 	return (
 		<div className={styles.root}>
 			<div className={styles.controls}>
-				<SearchField
+				{/* <SearchField
 					onSearch={handleSearch}
 					placeholder={intl.searchInvitations.description}
-				/>
+				/> */}
 				<Button elementRef={elementRef} onClick={onAddUsers} link>
 					<PlusIcon classes={styles.icon} />
 					{intl.addUsers.description}

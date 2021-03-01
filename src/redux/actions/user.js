@@ -6,8 +6,3 @@ export const getUser = ({ uid }) => ({
 	type: GET_USER,
 	payload: firebaseSingleFetch(collections.users, uid)
 })
-
-export const setUser = data => ({
-	type: SET_USER,
-	payload: data
-})

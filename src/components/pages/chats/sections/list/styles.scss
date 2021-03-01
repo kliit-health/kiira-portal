@@ -1,0 +1,11 @@
+@import 'src/styles/variables';
+
+.chats-list {
+  display: flex;
+  flex: 1;
+  min-width: 1200px;
+
+  &__list {
+    background-color: lighten($base-gray, 38%);
+  }
+}

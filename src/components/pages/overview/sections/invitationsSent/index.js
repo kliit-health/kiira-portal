@@ -8,14 +8,7 @@ import { InvitesIcon } from 'src/components/icons'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-const InvitationsSent = ({ organizationId }) => {
-	const queryConditions = [
-		{ key: 'organizationId', operator: '==', value: organizationId }
-	]
-	const { loading, data } = useFirebaseFetch(
-		collections.invitations,
-		queryConditions
-	)
+export const InvitationsSent = ({ loading, count }) => {
 	const router = useRouter()
 
 	const handleInvite = () => {
@@ -34,13 +27,13 @@ const InvitationsSent = ({ organizationId }) => {
 				<CircularProgress />
 			) : (
 				<Fragment>
-					<Typography gray h8 bold>
+					<Typography gray h7 bold>
 						{intl.invitationsSent.description.toUpperCase()}
 					</Typography>
 					<div className={styles.container}>
 						<InvitesIcon />
-						<Typography darkBlue h4>
-							{data ? data.length.toLocaleString('en-IN') : 0}
+						<Typography darkBlue h3>
+							{count}
 						</Typography>
 					</div>
 					<Button onClick={handleInvite} link classes={styles.button}>
@@ -51,5 +44,3 @@ const InvitationsSent = ({ organizationId }) => {
 		</div>
 	)
 }
-
-export default InvitationsSent

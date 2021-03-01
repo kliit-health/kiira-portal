@@ -1,0 +1,25 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.legend-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+
+  &__box {
+    display: flex;
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+    border-radius: 20%;
+  }
+
+  &__label {
+    color: black;
+    font-size: 0.9em;
+    color: $base-black;
+    font-family: 'Roboto-Regular';
+  }
+}

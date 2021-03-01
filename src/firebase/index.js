@@ -10,4 +10,4 @@ export {
 	sendInvitations,
 	firebaseSingleFetch
 } from './functions'
-export { FirebaseAuth } from './FirebaseAuth'
+export { AuthProvider } from './AuthProvider'

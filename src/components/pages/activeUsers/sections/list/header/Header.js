@@ -40,10 +40,10 @@ export const Header = ({ onSort, onSearch }) => {
 	return (
 		<div className={styles.root}>
 			<div className={styles.controls}>
-				<SearchField
+				{/* <SearchField
 					onSearch={handleSearch}
 					placeholder={intl.searchActiveUsers.description}
-				/>
+				/> */}
 			</div>
 			<div className={styles.container}>
 				{model.map(({ dataKey, label, style, sorting }) => {

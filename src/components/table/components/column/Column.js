@@ -10,7 +10,7 @@ export const Column = props => {
 
 	return (
 		<div className={styles.root} style={style}>
-			{children && children(rest)}
+			{children && children({ ...rest })}
 		</div>
 	)
 }
