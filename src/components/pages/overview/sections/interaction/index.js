@@ -28,7 +28,7 @@ export default memo(({ data: incoming, loading }) => {
 
 	return (
 		<div className={styles.root}>
-			<Typography classes={styles.title} gray h8 bold>
+			<Typography classes={styles.title} gray h7 bold>
 				{intl.typeOfInteraction.description.toUpperCase()}
 			</Typography>
 			{loading ? (

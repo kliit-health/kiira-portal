@@ -25,12 +25,12 @@ export const VideoVisits = ({ loading, count }) => {
 				<CircularProgress />
 			) : (
 				<Fragment>
-					<Typography gray h8 bold>
+					<Typography gray h7 bold>
 						{intl.videoVisits.description.toUpperCase()}
 					</Typography>
 					<div className={styles.container}>
 						<AppointmentIcon />
-						<Typography darkBlue h4>
+						<Typography darkBlue h3>
 							{count}
 						</Typography>
 					</div>

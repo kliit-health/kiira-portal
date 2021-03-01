@@ -31,12 +31,12 @@ export const SignUps = ({ loading, data }) => {
 				<CircularProgress />
 			) : (
 				<Fragment>
-					<Typography gray h8 bold>
+					<Typography gray h7 bold>
 						{intl.activeUsers.description.toUpperCase()}
 					</Typography>
 					<div className={styles.container}>
 						<ClickIcon />
-						<Typography darkBlue h4>
+						<Typography darkBlue h3>
 							{calculatePercentage(data.activeUsers, data.users)}
 						</Typography>
 					</div>

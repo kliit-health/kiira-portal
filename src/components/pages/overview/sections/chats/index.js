@@ -25,12 +25,12 @@ export const Chats = ({ loading, count }) => {
 				<CircularProgress />
 			) : (
 				<Fragment>
-					<Typography gray h8 bold>
+					<Typography gray h7 bold>
 						{intl.chats.description.toUpperCase()}
 					</Typography>
 					<div className={styles.container}>
 						<ChatIcon />
-						<Typography darkBlue h4>
+						<Typography darkBlue h3>
 							{count}
 						</Typography>
 					</div>

@@ -268,7 +268,7 @@ export const intl = {
 	},
 	inviteMoreUsers: {
 		id: 'inviteMoreUsers',
-		description: 'Invite more users'
+		description: 'Invite More Users'
 	},
 	totalSignUps: {
 		id: 'totalSignUps',
@@ -345,5 +345,9 @@ export const intl = {
 	notEnoughData: {
 		id: 'notEnoughData',
 		description: `We don't have enough data to display this chart.`
+	},
+	dailyActivity: {
+		id: 'dailyActivity',
+		description: 'Sign Up Activity'
 	}
 }
