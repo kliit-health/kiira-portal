@@ -1,0 +1,74 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.selector {
+  @include user-select-none;
+  display: flex;
+  margin-right: auto;
+  align-items: center;
+
+  &__title {
+    font-family: 'Roboto';
+    font-size: 1em;
+    color: $base-blue;
+  }
+
+  &__dropdown-icon {
+    font-size: 24px;
+    color: $base-blue;
+  }
+
+  &:hover {
+    .selector__title {
+      transition: box-shadow .2s ease, color .2s ease;
+      color: lighten($base-blue, 20%);
+    }
+
+    .selector__dropdown-icon {
+      transition: box-shadow .2s ease, color .2s ease;
+      color: lighten($base-blue, 20%);
+    }
+  }
+
+  &__dropdown {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    :not(:last-child) {
+      border-bottom: 1px solid lighten($base-gray, 35%);
+    }
+  }
+
+  &__dropdown-item {
+    @include pointer-on-hover;
+
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      transition: box-shadow .2s ease, background-color .2s ease;
+      background-color: lighten($base-gray, 35%);
+
+      .selector__item-title {
+        transition: box-shadow .2s ease, color .2s ease;
+      }
+    }
+  }
+
+  &__item-title {
+    display: flex;
+    flex: 1;
+    font-family: 'Roboto';
+    font-size: 1em;
+    padding: 10px 20px;
+
+    color: $base-charcoal;
+
+    &--selected {
+      color: $base-blue;
+      background-color: lighten($base-gray, 35%)
+    }
+  }
+
+}

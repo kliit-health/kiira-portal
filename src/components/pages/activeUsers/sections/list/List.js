@@ -7,12 +7,12 @@ import {
 } from 'src/helpers/functions'
 import { Table } from 'src/components'
 import { Footer } from './footer'
-import { DATE, TEXT, AVATAR } from 'src/helpers/constants'
+import { DATE, TEXT } from 'src/helpers/constants'
 import model from './model'
 import { Header } from './header'
 import './styles.scss'
 
-const { Column, DateCell, TextCell, AvatarCell } = Table
+const { Column, DateCell, TextCell } = Table
 
 export const List = ({ loading, data, loadMoreItems, isItemLoaded }) => {
 	const [formatedData, setFormatedData] = useState([])

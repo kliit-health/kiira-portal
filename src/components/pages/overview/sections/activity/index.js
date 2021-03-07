@@ -28,7 +28,7 @@ export const Activity = () => {
 		dispatch(
 			getSignUps({ organizationId, startDate: date.setMonth(oneMonthAgo) })
 		)
-	}, [])
+	}, [organizationId])
 
 	const styles = {
 		root: 'activity',

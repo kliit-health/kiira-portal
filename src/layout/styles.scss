@@ -1,0 +1,30 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+
+  &__main-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__container {
+    display: flex;
+    flex: 1;
+    overflow: scroll;
+  }
+
+  &__logout-button {
+    @include pointer-on-hover;
+    color: $base-gray;
+
+    &:hover {
+      transition: box-shadow .2s ease, color .2s ease;
+      color: $base-blue;
+    }
+  }
+}

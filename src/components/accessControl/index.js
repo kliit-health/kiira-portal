@@ -1,6 +1,6 @@
 import { cloneElement, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUser } from 'src/redux/actions'
+import { getUser, getOrganization, getEntities } from 'src/redux/actions'
 import { GET_USER_PENDING, GET_USER_REJECTED, LOG_OUT } from 'src/redux/types'
 
 export const AccessControl = ({ user, loading, error, children }) => {
@@ -44,6 +44,18 @@ export const AccessControl = ({ user, loading, error, children }) => {
 			})
 		}
 	}, [error])
+
+	useEffect(() => {
+		if (details) {
+			dispatch(getOrganization({ id: details.organizationId }))
+		}
+	}, [details])
+
+	useEffect(() => {
+		if (details && details.entities.length > 0) {
+			dispatch(getEntities({ identifiers: details.entities }))
+		}
+	}, [details])
 
 	return cloneElement(children, {
 		auth: { details, loading: userLoading, error: userError }

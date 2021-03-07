@@ -6,11 +6,11 @@ import { List } from './sections'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-export const Chats = ({ auth }) => {
+export const Chats = () => {
 	const dispatch = useDispatch()
-	const { organizationId } = auth.details
 	const [rendered, setRendered] = useState(0)
 
+	const organizationId = useSelector(state => state.user.data.organizationId)
 	const data = useSelector(state => state.questions.data, shallowEqual)
 	const lastDocument = useSelector(
 		state => state.questions.lastDocument,
@@ -21,7 +21,7 @@ export const Chats = ({ auth }) => {
 
 	useEffect(() => {
 		dispatch(getQuestions({ organizationId }))
-	}, [])
+	}, [organizationId])
 
 	const handleLoad = (_, stopIndex) =>
 		new Promise(resolve => {
@@ -48,7 +48,6 @@ export const Chats = ({ auth }) => {
 			subtitle={intl.weLikeToChat.description}
 		>
 			<List
-				organizationId={organizationId}
 				data={data}
 				loading={initialLoading}
 				loadMoreItems={handleLoad}

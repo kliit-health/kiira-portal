@@ -1,1 +1,0 @@
-export { withSidebar } from './withSidebar'

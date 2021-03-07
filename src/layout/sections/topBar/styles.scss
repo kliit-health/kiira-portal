@@ -1,0 +1,10 @@
+@import 'src/styles/variables';
+
+.top-bar {
+  display: flex;
+  background-color: $base-white;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+  height: 60px;
+}

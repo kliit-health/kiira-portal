@@ -2,31 +2,6 @@ import { auth, firestore, functions } from './initializer'
 import { intl } from 'src/i18n'
 import { PERSISTANCE } from './constants'
 
-export const signIn = (email, password) =>
-	new Promise((resolve, reject) =>
-		(async () => {
-			try {
-				await auth.setPersistence(PERSISTANCE.SESSION)
-				const response = await auth.signInWithEmailAndPassword(email, password)
-				resolve(response)
-			} catch (error) {
-				reject(error)
-			}
-		})()
-	)
-
-export const signOut = () =>
-	new Promise((resolve, reject) =>
-		(async () => {
-			try {
-				await auth.signOut()
-				resolve()
-			} catch (error) {
-				reject(error)
-			}
-		})()
-	)
-
 export const firebaseSingleFetch = (collectionName, id) =>
 	new Promise((resolve, reject) =>
 		(async () => {
@@ -59,6 +34,44 @@ export const firebaseFetch = (collectionName, conditions = [], limit = 5000) =>
 					id: item.id
 				}))
 				resolve(data)
+			} catch (error) {
+				reject(error)
+			}
+		})()
+	)
+
+export const firebaseSingleUpdate = (id, collection, updates, merge = true) =>
+	new Promise((resolve, reject) =>
+		(async () => {
+			const document = firestore.collection(collection).doc(id)
+			try {
+				await document.set(updates, { merge })
+				resolve(updates)
+			} catch (error) {
+				reject(error)
+			}
+		})()
+	)
+
+export const signIn = (email, password) =>
+	new Promise((resolve, reject) =>
+		(async () => {
+			try {
+				await auth.setPersistence(PERSISTANCE.SESSION)
+				const response = await auth.signInWithEmailAndPassword(email, password)
+				resolve(response)
+			} catch (error) {
+				reject(error)
+			}
+		})()
+	)
+
+export const signOut = () =>
+	new Promise((resolve, reject) =>
+		(async () => {
+			try {
+				await auth.signOut()
+				resolve()
 			} catch (error) {
 				reject(error)
 			}
