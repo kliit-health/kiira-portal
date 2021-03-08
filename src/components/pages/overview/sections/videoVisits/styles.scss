@@ -10,6 +10,7 @@
   background-color: $base-white;
   position: relative;
   align-items: flex-start;
+  min-height: 140px;
 
   &__button-text {
     margin-right: auto;
