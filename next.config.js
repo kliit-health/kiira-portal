@@ -16,7 +16,7 @@ module.exports = withFonts(
 			},
 			distDir: 'nextjs',
 			env: {
-				FIREBASE_PROJECT_ID: 'kiira-health-app'
+				FIREBASE_PROJECT_ID: 'kliit-health-dev'
 			},
 			experimental: {
 				sprFlushToDisk: false
