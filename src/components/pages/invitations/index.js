@@ -6,11 +6,11 @@ import { List } from './sections'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-export const Invitations = ({ auth }) => {
+export const Invitations = () => {
 	const dispatch = useDispatch()
-	const { organizationId } = auth.details
 	const [rendered, setRendered] = useState(0)
 
+	const organizationId = useSelector(state => state.user.data.organizationId)
 	const data = useSelector(state => state.invitations.data, shallowEqual)
 	const lastDocument = useSelector(
 		state => state.invitations.lastDocument,
@@ -21,7 +21,7 @@ export const Invitations = ({ auth }) => {
 
 	useEffect(() => {
 		dispatch(getInvitations({ organizationId }))
-	}, [])
+	}, [organizationId])
 
 	const handleLoad = (_, stopIndex) =>
 		new Promise(resolve => {
@@ -48,7 +48,6 @@ export const Invitations = ({ auth }) => {
 			subtitle={intl.onBoard.description}
 		>
 			<List
-				organizationId={organizationId}
 				data={data}
 				loading={initialLoading}
 				loadMoreItems={handleLoad}

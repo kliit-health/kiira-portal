@@ -4,8 +4,6 @@
   display: flex;
   justify-content: center;
   flex: 1;
-  height: 100vh;
-  overflow: scroll;
 
   &__constrains {
     display: flex;
@@ -13,5 +11,14 @@
     max-width: 1280px;
     padding: 50px;
     display: flex;
+  }
+
+  &__anchor {
+    position: absolute;
+    top: 0;
+    left: 260px;
+    right: 0;
+    bottom: 0;
+    z-index: -100;
   }
 }

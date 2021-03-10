@@ -43,5 +43,6 @@ export const collections = {
 	invitations: 'invitations',
 	overview: 'overview',
 	questions: 'questionsReport',
-	appointments: 'appointmentsReport'
+	appointments: 'appointmentsReport',
+	organizations: 'organizations'
 }

@@ -3,10 +3,13 @@
 
 .sidebar-section {
   display: flex;
-  margin: 14px 0px;
-  opacity: 0.6;
-  transition: opacity ease-in-out .2s;
+  transition: ease-in-out .2s;
+  padding: 10px 24px;
   align-items: center;
+
+  &:hover {
+    background-color: lighten($base-blue, 5%);
+  }
 
   &:hover {
     opacity: 1;
@@ -50,7 +53,6 @@
 
 .sidebar-section-item {
   display: flex;
-  margin: 5px 50px;
   opacity: 0;
 
   &--active {
@@ -68,5 +70,8 @@
     .sidebar-section-item__title {
       border-color: white;
     }
+
+
+    background-color: $base-blue;
   }
 }

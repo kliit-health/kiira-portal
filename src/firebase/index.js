@@ -8,6 +8,7 @@ export {
 	sendPasswordResetEmail,
 	firebaseFetch,
 	sendInvitations,
-	firebaseSingleFetch
+	firebaseSingleFetch,
+	firebaseSingleUpdate
 } from './functions'
 export { AuthProvider } from './AuthProvider'

@@ -16,17 +16,17 @@ import { getOverview } from 'src/redux/actions'
 import { SectionContainer } from './components'
 import './styles.scss'
 
-export const Overview = ({ auth }) => {
+export const Overview = () => {
 	const dispatch = useDispatch()
 	const loading = useSelector(state => state.overview.loading)
 	const data = useSelector(state => state.overview.data)
+	const organizationId = useSelector(state => state.user.data.organizationId)
 
 	const [ref, setRef] = useState(null)
-	const { organizationId } = auth.details
 
 	useEffect(() => {
 		dispatch(getOverview({ organizationId }))
-	}, [])
+	}, [organizationId])
 
 	const styles = {
 		page: { content: 'overview__page' },

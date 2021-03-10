@@ -52,8 +52,8 @@ export const Section = ({
 	}
 
 	return (
-		<div className={styles.section}>
-			<div className={styles.panel} onClick={handleOnSection}>
+		<div className={styles.section} onClick={handleOnSection}>
+			<div className={styles.panel}>
 				<img className={styles.icon} src={iconUrl} />
 				<Typography h7 white>
 					{title}

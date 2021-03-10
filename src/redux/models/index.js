@@ -14,6 +14,7 @@ export default {
 		lastName: '',
 		plan: '',
 		prepaid: 0,
+		entities: [],
 		profileInfo: {
 			dob: '',
 			firstName: '',
@@ -165,5 +166,11 @@ export default {
 			lastName: '',
 			profession: ''
 		}
+	},
+	organization: {
+		name: '',
+		planId: '',
+		uid: '',
+		logoUrl: ''
 	}
 }

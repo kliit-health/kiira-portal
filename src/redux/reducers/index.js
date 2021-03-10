@@ -8,7 +8,8 @@ import { overview } from './overview'
 import { questions } from './questions'
 import { appointments } from './appointments'
 import { signUps } from './signUps'
-
+import { organization } from './organization'
+import { entities } from './entities'
 /**
  * @desc state reconciliation during hydration,find more info on
  * https://github.com/kirill-konshin/next-redux-wrapper#motivation
@@ -29,21 +30,7 @@ export default combineReducers({
 	overview,
 	questions,
 	appointments,
-	signUps
+	signUps,
+	organization,
+	entities
 })
-
-// export const reducer = (state, action) => {
-// 	if (action.type === HYDRATE) {
-// 		const nextState = {
-// 			...state,
-// 			...action.payload
-// 		}
-// 		if (typeof window !== undefined && state?.router) {
-// 			// preserve router value on client side navigation
-// 			nextState.router = state.router
-// 		}
-// 		return nextState
-// 	} else {
-// 		return combinedReducer(state, action)
-// 	}
-// }

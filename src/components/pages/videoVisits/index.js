@@ -6,11 +6,11 @@ import { List } from './sections'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-export const VideoVisits = ({ auth }) => {
+export const VideoVisits = () => {
 	const dispatch = useDispatch()
-	const { organizationId } = auth.details
 	const [rendered, setRendered] = useState(0)
 
+	const organizationId = useSelector(state => state.user.data.organizationId)
 	const data = useSelector(state => state.appointments.data, shallowEqual)
 	const lastDocument = useSelector(
 		state => state.appointments.lastDocument,
@@ -21,7 +21,7 @@ export const VideoVisits = ({ auth }) => {
 
 	useEffect(() => {
 		dispatch(getAppointments({ organizationId }))
-	}, [])
+	}, [organizationId])
 
 	const handleLoad = (_, stopIndex) =>
 		new Promise(resolve => {
@@ -48,7 +48,6 @@ export const VideoVisits = ({ auth }) => {
 			subtitle={intl.weAreAvailable.description}
 		>
 			<List
-				organizationId={organizationId}
 				data={data}
 				loading={initialLoading}
 				loadMoreItems={handleLoad}
