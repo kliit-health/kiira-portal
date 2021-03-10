@@ -13,9 +13,6 @@
 			"enabled": true
 		}
 	},
-	"firestore": {
-		"rules": "firestore.rules"
-	},
 	"auth": {
 		"ssr": true
 	},
