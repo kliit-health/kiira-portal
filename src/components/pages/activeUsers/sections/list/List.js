@@ -22,10 +22,11 @@ export const List = ({ loading, data, loadMoreItems, isItemLoaded }) => {
 	useEffect(() => {
 		if (data) {
 			setFormatedData(
-				data.map(({ profileInfo, ...rest }) => {
+				data.map(({ profileInfo, signUpDate, ...rest }) => {
 					return {
 						...rest,
 						...profileInfo,
+						signUpDate: signUpDate.seconds,
 						phoneNumber: formatPhoneNumber(profileInfo.phoneNumber)
 					}
 				})

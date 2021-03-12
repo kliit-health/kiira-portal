@@ -8,7 +8,7 @@ export const DateCell = ({ data, dataKey, classes = {}, calendar }) => {
 		if (calendar) {
 			return moment(date).calendar()
 		} else {
-			return moment(date).format('MM/DD/YYYY')
+			return moment.unix(date).format('MM/DD/YYYY')
 		}
 	}
 	const styles = {

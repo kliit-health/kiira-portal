@@ -38,8 +38,8 @@ export default [
 	},
 	{
 		style: { maxWidth: 218, flex: 4 },
-		label: 'Created At',
-		dataKey: 'createdAt',
+		label: 'Sign Up Date',
+		dataKey: 'signUpDate',
 		type: DATE,
 		sorting: true
 	}

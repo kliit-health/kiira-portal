@@ -1,4 +1,5 @@
 import { Fragment } from 'react'
+import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { routes } from 'src/helpers/constants'
 import { Typography, Button, CircularProgress } from 'src/components'
@@ -6,7 +7,10 @@ import { ChatIcon } from 'src/components/icons'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-export const Chats = ({ loading, count }) => {
+export const Chats = () => {
+	const overview = useSelector(state => state.overview.data)
+	const loading = useSelector(state => state.overview.loading)
+
 	const router = useRouter()
 
 	const handleNavigation = () => {
@@ -31,7 +35,7 @@ export const Chats = ({ loading, count }) => {
 					<div className={styles.container}>
 						<ChatIcon />
 						<Typography darkBlue h3>
-							{count}
+							{overview.questions}
 						</Typography>
 					</div>
 					<Button onClick={handleNavigation} link classes={styles.button}>

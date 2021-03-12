@@ -15,6 +15,7 @@ const initialState = {
 
 export const overview = createReducer(initialState, {
 	[GET_OVERVIEW_PENDING]: state => {
+		state.data = models.overview
 		state.loading = true
 		state.error = null
 	},

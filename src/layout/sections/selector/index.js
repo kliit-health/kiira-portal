@@ -53,7 +53,11 @@ export const Selector = ({ title, data = [], onSelect, selected }) => {
 			<Popover anchorEl={anchorEl} onClose={handleClose} {...config}>
 				<div className={styles.dropdown}>
 					{data.map(({ name, uid }) => (
-						<div className={styles.item} onClick={() => handleSelect(uid)}>
+						<div
+							key={uid}
+							className={styles.item}
+							onClick={() => handleSelect(uid)}
+						>
 							<span
 								className={classnames(styles.itemTitle, {
 									'selector__item-title--selected': name === title

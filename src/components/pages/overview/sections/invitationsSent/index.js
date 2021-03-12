@@ -1,14 +1,16 @@
 import { Fragment } from 'react'
 import { useRouter } from 'next/router'
-import { useFirebaseFetch } from 'src/hooks'
-import { collections } from 'src/firebase/constants'
+import { useSelector } from 'react-redux'
 import { routes } from 'src/helpers/constants'
 import { Typography, Button, CircularProgress } from 'src/components'
 import { InvitesIcon } from 'src/components/icons'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-export const InvitationsSent = ({ loading, count }) => {
+export const InvitationsSent = () => {
+	const overview = useSelector(state => state.overview.data)
+	const loading = useSelector(state => state.overview.loading)
+
 	const router = useRouter()
 
 	const handleInvite = () => {
@@ -33,7 +35,7 @@ export const InvitationsSent = ({ loading, count }) => {
 					<div className={styles.container}>
 						<InvitesIcon />
 						<Typography darkBlue h3>
-							{count}
+							{overview.invitations}
 						</Typography>
 					</div>
 					<Button onClick={handleInvite} link classes={styles.button}>

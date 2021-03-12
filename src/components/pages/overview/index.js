@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Page } from 'src/components'
 import { intl } from 'src/i18n'
-import moment from 'moment'
 import {
 	TopExperts,
 	InvitationsSent,
@@ -19,14 +18,13 @@ import './styles.scss'
 export const Overview = () => {
 	const dispatch = useDispatch()
 	const loading = useSelector(state => state.overview.loading)
-	const data = useSelector(state => state.overview.data)
-	const organizationId = useSelector(state => state.user.data.organizationId)
+	const organization = useSelector(state => state.user.data)
 
 	const [ref, setRef] = useState(null)
 
 	useEffect(() => {
-		dispatch(getOverview({ organizationId }))
-	}, [organizationId])
+		dispatch(getOverview({ ...organization }))
+	}, [organization])
 
 	const styles = {
 		page: { content: 'overview__page' },
@@ -43,13 +41,13 @@ export const Overview = () => {
 		>
 			<div className={styles.chartsContainer}>
 				<Activity />
-				<Interaction data={data} loading={loading} />
+				<Interaction />
 			</div>
 			<div className={styles.container}>
-				<InvitationsSent loading={loading} count={data.invitations} />
-				<SignUps loading={loading} data={data} />
-				<VideoVisits loading={loading} count={data.appointments} />
-				<Chats loading={loading} count={data.questions} />
+				<InvitationsSent />
+				<SignUps />
+				<VideoVisits />
+				<Chats />
 			</div>
 
 			<SectionContainer title={intl.topExperts.description}>
