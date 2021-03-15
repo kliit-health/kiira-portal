@@ -25,27 +25,13 @@ export const List = () => {
 
 	const organizationId = useSelector(state => state.user.data.organizationId)
 	const data = useSelector(state => state.invitations.data)
-	const lastDocument = useSelector(state => state.activeUsers.lastDocument)
-	const loading = useSelector(state => state.activeUsers.get.loading)
-	const initialLoading = useSelector(state => state.invitations.more.loading)
+	const lastDocument = useSelector(state => state.invitations.lastDocument)
+	const initialLoading = useSelector(state => state.invitations.get.loading)
+	const loading = useSelector(state => state.invitations.more.loading)
 
 	useEffect(() => {
 		dispatch(getInvitations({ organizationId }))
 	}, [organizationId])
-
-	const handleLoad = (_, stopIndex) =>
-		new Promise(resolve => {
-			if (stopIndex >= rendered) {
-				setRendered(stopIndex)
-
-				if (!loading && lastDocument) {
-					dispatch(getMoreInvitations({ organizationId, lastDocument }))
-				}
-				if (!loading) {
-					resolve()
-				}
-			}
-		})
 
 	useEffect(() => {
 		setFormatedData(
@@ -60,6 +46,16 @@ export const List = () => {
 			})
 		)
 	}, [data, setFormatedData])
+
+	const handleLoad = (_, stopIndex) => {
+		if (stopIndex >= rendered) {
+			setRendered(stopIndex)
+
+			if (!loading && lastDocument) {
+				dispatch(getMoreInvitations({ organizationId, lastDocument }))
+			}
+		}
+	}
 
 	const handleSort = (key, asc) => {
 		let sortedData = orderBy(formatedData, key, asc ? 'asc' : 'desc')

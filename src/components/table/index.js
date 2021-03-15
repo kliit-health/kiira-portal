@@ -61,7 +61,6 @@ export const Table = ({
 										width={width}
 										onItemsRendered={onItemsRendered}
 										overscanCount={50}
-										style={{ overflow: 'visible' }}
 									>
 										{({ style, index, data }) => (
 											<Row
