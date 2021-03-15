@@ -2,7 +2,7 @@ import { memo, useEffect } from 'react'
 import moment from 'moment'
 import { CircularProgress, Typography } from 'src/components'
 import { getSignUps } from 'src/redux/actions'
-import { useDispatch, useSelector, shallowEqual } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
 	LineChart,
 	Line,
@@ -18,8 +18,8 @@ import './styles.scss'
 export const Activity = () => {
 	const dispatch = useDispatch()
 	const organizationId = useSelector(state => state.user.data.organizationId)
-	const data = useSelector(state => state.signUps.data, shallowEqual)
-	const loading = useSelector(state => state.signUps.loading, shallowEqual)
+	const data = useSelector(state => state.signUps.data)
+	const loading = useSelector(state => state.signUps.loading)
 
 	useEffect(() => {
 		let date = new Date()

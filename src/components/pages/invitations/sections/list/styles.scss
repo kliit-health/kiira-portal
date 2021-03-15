@@ -8,4 +8,12 @@
   &__list {
     background-color: lighten($base-gray, 38%);
   }
+
+  &__add-users-button {
+    height: 35px;
+  }
+
+  &__plus-icon {
+    font-size: 12px;
+  }
 }

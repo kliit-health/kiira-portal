@@ -10,7 +10,7 @@ import storage from 'redux-persist/lib/storage'
 let store
 
 const persistConfig = {
-	key: 'test5',
+	key: 'kiira-portal',
 	whitelist: [],
 	storage // place to select which state you want to persist
 }

@@ -6,7 +6,7 @@ import { HEADER } from 'src/helpers/constants'
 import model from '../model'
 import './styles.scss'
 
-export const Header = ({ onSort }) => {
+export const Header = ({ onSort, onSearch }) => {
 	const [activeKey, setActiveKey] = useState('')
 	const [ascendant, setAscendant] = useState(false)
 

@@ -12,7 +12,6 @@ export const firebaseSingleFetch = (collectionName, id) =>
 					.get()
 
 				const data = document.data()
-				console.log(data)
 				resolve(data)
 			} catch (error) {
 				reject(error)

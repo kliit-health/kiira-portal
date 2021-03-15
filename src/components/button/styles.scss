@@ -60,4 +60,8 @@
     opacity: 0.5;
     pointer-events: none;
   }
+
+  &--squared {
+    border-radius: 5px;
+  }
 }

@@ -5,7 +5,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import './styles.scss'
 import { Fragment } from 'react'
 
-export const Selector = ({ title, data = [], onSelect, selected }) => {
+export const Selector = ({ title, data = [], onSelect }) => {
 	const popRef = useRef(null)
 	const [anchorEl, setAnchorEl] = useState(null)
 

@@ -3,41 +3,35 @@
 
 .active-users-table-header {
   display: flex;
-  width: 100%;
   flex-direction: column;
   border-radius: 6px 6px 0 0;
-  overflow: hidden;
   background-color: $base-white;
 
   &__container {
     display: flex;
-    align-items: center;
-    height: 30px;
     background-color: lighten($base-pink, 20%);
   }
 
   &__controls {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     overflow: hidden;
     border-radius: 6px 6px 0 0;
-    height: 60px;
-    padding: 0px 20px;
+    height: 60px
   }
 
   &__item {
     @include pointer-on-hover;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: space-between;
     height: 100%;
-
-    display: 'inline-flex';
-    white-space: nowrap;
+    display: inline-flex;
     overflow: hidden;
-    text-overflow: ellipsis;
+    padding: 0px 20px;
+    flex: 1;
 
     &:hover {
       background-color: lighten($base-pink, 18%);
@@ -53,7 +47,7 @@
     font-size: .8em;
     transition: all 0.2s ease;
     color: lighten($base-pink, 10%);
-    padding: 0 10px;
+    // padding: 0 20px 0px 20px;
 
     &--active {
       color: $base-pink;
@@ -69,6 +63,11 @@
     font-size: .9em;
     font-family: 'Roboto-Regular';
     color: $base-pink;
-    padding: 0 0 0 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 5px 0;
   }
+
+
 }

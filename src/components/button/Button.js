@@ -11,6 +11,7 @@ export const Button = props => {
 		link,
 		loading,
 		underlined,
+		squared,
 		classes = {}
 	} = props
 
@@ -18,7 +19,8 @@ export const Button = props => {
 		'button--outlined': outlined,
 		'button--link': link,
 		'button--loading': loading,
-		'button--underlined': underlined
+		'button--underlined': underlined,
+		'button--squared': squared
 	}
 
 	const styles = {
