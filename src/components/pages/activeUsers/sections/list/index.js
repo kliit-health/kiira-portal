@@ -8,7 +8,7 @@ import {
 	downloadFile
 } from 'src/helpers/functions'
 import moment from 'moment'
-import { Table, More } from 'src/components'
+import { Table, Dropdown } from 'src/components'
 import { Footer } from './footer'
 import { DATE, TEXT } from 'src/helpers/constants'
 import model from './model'
@@ -16,7 +16,7 @@ import { Header } from './header'
 import './styles.scss'
 
 const { Column, DateCell, TextCell } = Table
-const now = moment().format('MM-DD-YYYY')
+const now = moment().format('l')
 
 export const List = () => {
 	const dispatch = useDispatch()
@@ -70,7 +70,7 @@ export const List = () => {
 		downloadFile({
 			url: `${process.env.BASE_URL}/downloadActiveUsersReport`,
 			data: { organizationId },
-			fileName: `active-users-${now}`
+			fileName: `active-users-${now}.csv`
 		})
 	}
 
@@ -90,7 +90,7 @@ export const List = () => {
 				isItemLoaded={index => index < rendered}
 			>
 				<Header model={model.list} onSort={handleSort}>
-					<More model={model.menu} onSelect={handleSelect} />
+					<Dropdown model={model.menu} generic onSelect={handleSelect} />
 				</Header>
 				{model.list.map(({ dataKey, style, type }, index) => (
 					<Column style={style} key={`${index}-${dataKey}`}>

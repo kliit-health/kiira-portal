@@ -13,6 +13,7 @@ export default memo(() => {
 	const loading = useSelector(state => state.overview.loading)
 
 	let data = []
+
 	model.forEach(({ dataKey, label, color }) => {
 		if (overview[dataKey] > 0) {
 			data.push({

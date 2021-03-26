@@ -1,9 +1,11 @@
 import classnames from 'classnames'
 import { Container, Typography } from 'src/components'
+import { cloneChild, cloneChildren } from 'src/helpers/functions'
 import './styles.scss'
 
 export const Page = props => {
 	const { title, subtitle, elementRef, children, classes = {} } = props
+
 	const styles = {
 		container: {
 			constraints: classnames(classes.container, {
@@ -13,7 +15,8 @@ export const Page = props => {
 		content: classnames('page__content', classes.content),
 		header: classnames('page__header', classes.header),
 		title: { root: classnames('page__title', classes.title) },
-		subtitle: { root: classnames('page__subtitle', classes.subtitle) }
+		subtitle: { root: classnames('page__subtitle', classes.subtitle) },
+		toolbar: classnames('page__toolbar', classes.toolbar)
 	}
 
 	return (
@@ -24,12 +27,16 @@ export const Page = props => {
 						<Typography h4 bold classes={styles.title}>
 							{title}
 						</Typography>
-						<Typography h7 charcoal classes={styles.subtitle}>
-							{subtitle}
-						</Typography>
+						<div className={styles.toolbar}>
+							<Typography h7 charcoal classes={styles.subtitle}>
+								{subtitle}
+							</Typography>
+							{cloneChild(children, 'Dropdown')}
+							{cloneChild(children, 'DateRangePicker')}
+						</div>
 					</div>
 				)}
-				{children}
+				{cloneChildren(children, ['Dropdown', 'DateRangePicker', false])}
 			</div>
 		</Container>
 	)

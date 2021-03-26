@@ -39,7 +39,7 @@ export const VideoVisits = () => {
 						</Typography>
 					</div>
 					<Button onClick={handleNavigation} link classes={styles.button}>
-						{intl.seeDetails.description}
+						{intl.seeAll.description}
 					</Button>
 				</Fragment>
 			)}

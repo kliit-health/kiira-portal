@@ -1,0 +1,42 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.date-range-picker {
+  @include pointer-on-hover;
+  @include user-select-none;
+  display: flex;
+
+  &__icon {
+    display: flex;
+    color: $base-blue;
+    transition: all ease-in .2s;
+    font-size: 24px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: 'Roboto';
+    font-size: 1em;
+    color: $base-blue;
+  }
+
+  &:hover {
+    .date-range-picker__icon {
+      color: lighten($base-blue, 18%);
+      transition: all ease-in .2s;
+    }
+  }
+
+  &__button {
+    margin: 20px;
+    margin-left: auto;
+  }
+
+
+
+}

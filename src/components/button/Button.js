@@ -12,6 +12,7 @@ export const Button = props => {
 		loading,
 		underlined,
 		squared,
+		disabled,
 		classes = {}
 	} = props
 
@@ -20,7 +21,8 @@ export const Button = props => {
 		'button--link': link,
 		'button--loading': loading,
 		'button--underlined': underlined,
-		'button--squared': squared
+		'button--squared': squared,
+		'button--disabled': disabled
 	}
 
 	const styles = {
@@ -30,7 +32,7 @@ export const Button = props => {
 
 	return (
 		<button
-			disabled={loading}
+			disabled={loading || disabled}
 			ref={elementRef}
 			onClick={onClick}
 			className={styles.root}

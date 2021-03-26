@@ -1,24 +1,35 @@
 @import 'src/styles/variables';
 @import 'src/styles/mixins';
 
-.more {
+.dropdown {
   @include pointer-on-hover;
   @include user-select-none;
   display: flex;
-  padding: 0 20px 0 10px;
 
   &__icon {
     color: $base-blue;
     transition: all ease-in .2s;
+    font-size: 24px;
+  }
+
+  &__title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: 'Roboto';
+    font-size: 1em;
+    color: $base-blue;
   }
 
   &:hover {
-    .more__icon {
+    .dropdown__icon {
       color: lighten($base-blue, 18%);
       transition: all ease-in .2s;
     }
   }
-
 
   &__menu {
     display: flex;
@@ -39,7 +50,7 @@
       transition: box-shadow .2s ease, background-color .2s ease;
       background-color: lighten($base-gray, 35%);
 
-      .more__menu-item-title {
+      .dropdown__menu-item-title {
         transition: box-shadow .2s ease, color .2s ease;
         color: $base-blue;
       }

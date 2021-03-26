@@ -39,7 +39,7 @@ export const InvitationsSent = () => {
 						</Typography>
 					</div>
 					<Button onClick={handleInvite} link classes={styles.button}>
-						{intl.inviteMoreUsers.description}
+						{intl.seeAll.description}
 					</Button>
 				</Fragment>
 			)}

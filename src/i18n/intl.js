@@ -349,5 +349,9 @@ export const intl = {
 	dailyActivity: {
 		id: 'dailyActivity',
 		description: 'Sign Up Activity'
+	},
+	seeAll: {
+		id: 'seeAll',
+		description: 'See All'
 	}
 }

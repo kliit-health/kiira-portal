@@ -7,12 +7,6 @@ import { ClickIcon } from 'src/components/icons'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-const calculatePercentage = (active, total) => {
-	const increase = (active - total) / total
-	const response = increase * 100 + 100
-	return `${response ? response.toFixed(1) : 0}%`
-}
-
 export const SignUps = ({}) => {
 	const router = useRouter()
 
@@ -41,11 +35,11 @@ export const SignUps = ({}) => {
 					<div className={styles.container}>
 						<ClickIcon />
 						<Typography darkBlue h3>
-							{calculatePercentage(overview.activeUsers, overview.users)}
+							{overview.activeUsers}
 						</Typography>
 					</div>
 					<Button onClick={handleInvite} link classes={styles.button}>
-						{intl.seeDetails.description}
+						{intl.seeAll.description}
 					</Button>
 				</Fragment>
 			)}

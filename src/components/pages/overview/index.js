@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Page } from 'src/components'
+import { isEmpty } from 'lodash'
+import { Page, DateRangePicker } from 'src/components'
 import { intl } from 'src/i18n'
+import { useLocalStorage } from 'src/hooks'
 import {
 	TopExperts,
 	InvitationsSent,
@@ -11,20 +13,20 @@ import {
 	Chats,
 	Interaction
 } from './sections'
+import moment from 'moment'
 import { getOverview } from 'src/redux/actions'
 import { SectionContainer } from './components'
 import './styles.scss'
 
 export const Overview = () => {
 	const dispatch = useDispatch()
-	const loading = useSelector(state => state.overview.loading)
-	const organization = useSelector(state => state.user.data)
 
-	const [ref, setRef] = useState(null)
+	const start = moment().add({ days: -15 })
+	const end = moment()
 
-	useEffect(() => {
-		dispatch(getOverview({ ...organization }))
-	}, [organization])
+	const organization = useSelector(state => state.organization.data)
+	const [expertsRef, setExpertsRef] = useState(null)
+	const [range, setRange] = useLocalStorage('range', [start, end])
 
 	const styles = {
 		page: { content: 'overview__page' },
@@ -32,13 +34,29 @@ export const Overview = () => {
 		chartsContainer: 'overview__charts-container'
 	}
 
+	const handleSubmit = range => {
+		setRange(range)
+	}
+
+	useEffect(() => {
+		if (range.length > 0) {
+			dispatch(
+				getOverview({
+					organizationId: organization.uid,
+					range
+				})
+			)
+		}
+	}, [range])
+
 	return (
 		<Page
 			title={intl.overview.description}
 			subtitle={intl.everthingInOnePlace.description}
-			elementRef={ref}
+			elementRef={expertsRef}
 			classes={styles.page}
 		>
+			<DateRangePicker onSubmit={handleSubmit} initialValue={range} />
 			<div className={styles.chartsContainer}>
 				<Activity />
 				<Interaction />
@@ -49,9 +67,8 @@ export const Overview = () => {
 				<VideoVisits />
 				<Chats />
 			</div>
-
 			<SectionContainer title={intl.topExperts.description}>
-				<TopExperts onRefChange={setRef} />
+				<TopExperts onRefChange={setExpertsRef} />
 			</SectionContainer>
 		</Page>
 	)
