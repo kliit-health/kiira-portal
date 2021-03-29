@@ -10,6 +10,7 @@ import { appointments } from './appointments'
 import { signUps } from './signUps'
 import { organization } from './organization'
 import { entities } from './entities'
+import { inactiveUsers } from './inactiveUsers'
 /**
  * @desc state reconciliation during hydration,find more info on
  * https://github.com/kirill-konshin/next-redux-wrapper#motivation
@@ -32,5 +33,6 @@ export default combineReducers({
 	appointments,
 	signUps,
 	organization,
-	entities
+	entities,
+	inactiveUsers
 })

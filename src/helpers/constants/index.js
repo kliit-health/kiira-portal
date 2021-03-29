@@ -35,6 +35,7 @@ export const routes = {
 	invitations: '/dashboard/invitations',
 	activeUsers: '/dashboard/active-users',
 	videoVisits: '/dashboard/video-visits',
+	inactiveUsers: '/dashboard/inactive-users',
 	chats: '/dashboard/chats'
 }
 

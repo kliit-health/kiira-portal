@@ -353,5 +353,9 @@ export const intl = {
 	seeAll: {
 		id: 'seeAll',
 		description: 'See All'
+	},
+	inactiveUsers: {
+		id: 'inactiveUsers',
+		description: 'Inactive Users'
 	}
 }

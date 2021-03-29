@@ -23,6 +23,11 @@ export default {
 			path: '/dashboard/active-users'
 		},
 		{
+			title: intl.inactiveUsers.description,
+			iconUrl: '/assets/users.svg',
+			path: '/dashboard/inactive-users'
+		},
+		{
 			title: intl.chats.description,
 			iconUrl: '/assets/chat.svg',
 			path: '/dashboard/chats'

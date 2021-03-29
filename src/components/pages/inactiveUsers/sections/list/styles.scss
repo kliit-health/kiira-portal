@@ -1,0 +1,13 @@
+@import 'src/styles/variables';
+
+.active-users-list {
+  display: flex;
+  flex: 1;
+  min-width: 800px;
+
+
+  &__list {
+    min-width: 800px;
+    background-color: lighten($base-gray, 38%);
+  }
+}
