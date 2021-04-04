@@ -357,5 +357,13 @@ export const intl = {
 	inactiveUsers: {
 		id: 'inactiveUsers',
 		description: 'Inactive Users'
+	},
+	users: {
+		id: 'users',
+		description: 'Users'
+	},
+	pendingActivation: {
+		id: 'pendingActivation',
+		description: 'Find out who has not yet tried out Kiira.'
 	}
 }

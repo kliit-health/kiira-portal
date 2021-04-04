@@ -4,15 +4,13 @@ import { collections } from 'src/helpers/constants'
 import { GET_OVERVIEW } from '../types'
 
 export const getOverview = ({ organizationId, range }) => {
-	const [first, last] = range
-	// const start = moment(first).format('MM/DD/YYYY')
-	// const end = moment(last).format('MM/DD/YYYY')
+	const [start, end] = range
 
 	let ref = firestore
 		.collection(collections.overview)
 		.where('organizationId', '==', organizationId)
-		.where('createdAt', '>=', moment.utc(first).startOf('day').unix())
-		.where('createdAt', '<=', moment.utc(last).endOf('day').unix())
+		.where('createdAt', '>=', moment.utc(start).startOf('day').unix())
+		.where('createdAt', '<=', moment.utc(end).endOf('day').unix())
 
 	return {
 		type: GET_OVERVIEW,

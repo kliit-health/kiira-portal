@@ -8,7 +8,6 @@ import AdapterMoment from '@material-ui/lab/AdapterMoment'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import './styles.scss'
 import moment from 'moment'
-import { useDidMount } from 'src/hooks'
 
 const defaultConfig = {
 	anchorOrigin: {
@@ -81,6 +80,8 @@ export const DateRangePicker = ({
 						onChange={handleSelect}
 						disableFuture
 						renderInput={() => {}}
+						maxDate={moment(range[0]).add(1, 'year')}
+						minDate={moment(range[0]).add(-1, 'year')}
 					/>
 				</LocalizationProvider>
 				<Button

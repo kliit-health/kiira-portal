@@ -59,7 +59,7 @@ export const Overview = () => {
 		>
 			<DateRangePicker onSubmit={handleSubmit} initialValue={range} />
 			<div className={styles.chartsContainer}>
-				<Activity />
+				<Activity range={range} />
 				<Interaction />
 			</div>
 			<div className={styles.container}>

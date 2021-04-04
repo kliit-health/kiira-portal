@@ -12,7 +12,7 @@ export const InactiveUsers = () => {
 		<Page
 			classes={styles.page}
 			title={intl.inactiveUsers.description}
-			subtitle={intl.activatedKiira.description}
+			subtitle={intl.pendingActivation.description}
 		>
 			<List />
 		</Page>

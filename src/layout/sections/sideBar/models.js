@@ -18,15 +18,20 @@ export default {
 			path: '/dashboard/experts'
 		},
 		{
-			title: intl.activeUsers.description,
+			title: intl.users.description,
 			iconUrl: '/assets/users.svg',
-			path: '/dashboard/active-users'
+			items: [
+				{
+					title: intl.activeUsers.description,
+					path: '/dashboard/active-users'
+				},
+				{
+					title: intl.inactiveUsers.description,
+					path: '/dashboard/inactive-users'
+				}
+			]
 		},
-		{
-			title: intl.inactiveUsers.description,
-			iconUrl: '/assets/users.svg',
-			path: '/dashboard/inactive-users'
-		},
+
 		{
 			title: intl.chats.description,
 			iconUrl: '/assets/chat.svg',

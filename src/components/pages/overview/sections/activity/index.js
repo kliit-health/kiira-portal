@@ -1,8 +1,9 @@
-import { memo, useEffect } from 'react'
+import { memo, useEffect, useState } from 'react'
 import moment from 'moment'
 import { CircularProgress, Typography } from 'src/components'
 import { getSignUps } from 'src/redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
+import { switchCase } from 'src/helpers/functions'
 import {
 	LineChart,
 	Line,
@@ -15,20 +16,15 @@ import {
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-export const Activity = () => {
+export const Activity = ({ range }) => {
 	const dispatch = useDispatch()
-	const organizationId = useSelector(state => state.user.data.organizationId)
+	const organization = useSelector(state => state.organization.data)
 	const data = useSelector(state => state.signUps.data)
 	const loading = useSelector(state => state.signUps.loading)
 
 	useEffect(() => {
-		let date = new Date()
-		let oneMonthAgo = date.getMonth() - 1
-
-		dispatch(
-			getSignUps({ organizationId, startDate: date.setMonth(oneMonthAgo) })
-		)
-	}, [organizationId])
+		dispatch(getSignUps({ organizationId: organization.uid, range }))
+	}, [organization, range])
 
 	const styles = {
 		root: 'activity',
@@ -66,7 +62,12 @@ export const Activity = () => {
 								tickLine={false}
 								tickMargin={10}
 								dataKey="date"
-								tick={<DateTick />}
+								tick={({ payload: { value }, ...rest }) => (
+									<DateTick
+										{...data.find(({ date }) => value === date)}
+										{...rest}
+									/>
+								)}
 							/>
 							<YAxis
 								axisLine={false}
@@ -98,9 +99,14 @@ export const Activity = () => {
 	)
 }
 
-const DateTick = ({ x, y, payload }) => {
-	const date = moment(payload.value).format('DD')
-	const day = moment(payload.value).format('ddd')
+const units = {
+	date: 'date',
+	week: 'week',
+	month: 'month'
+}
+
+const DateTick = props => {
+	const { x, y, unit, date, ...rest } = props
 
 	return (
 		<g transform={`translate(${x},${y})`}>
@@ -113,7 +119,11 @@ const DateTick = ({ x, y, payload }) => {
 				fontFamily="Roboto"
 				fontSize={14}
 			>
-				{date}
+				{switchCase({
+					[units.date]: () => moment(date).format('DD'),
+					[units.week]: () => `Week ${moment(date).isoWeek()}`,
+					[units.month]: () => moment(date).format('MMM')
+				})('')(unit)}
 			</text>
 			<text
 				x={0}
@@ -124,7 +134,11 @@ const DateTick = ({ x, y, payload }) => {
 				fontFamily="Roboto"
 				fontSize={14}
 			>
-				{day}
+				{switchCase({
+					[units.date]: () => moment(date).format('ddd'),
+					[units.week]: () => moment(date).isoWeekYear(),
+					[units.month]: () => moment(date).year()
+				})('')(unit)}
 			</text>
 		</g>
 	)

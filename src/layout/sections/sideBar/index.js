@@ -1,4 +1,4 @@
-import { Section, SectionItem } from './components'
+import { Section, Item } from './components'
 import model from './models'
 import './styles.scss'
 
@@ -11,6 +11,12 @@ export const SideBar = ({ onRoute, pathname }) => {
 		image: 'side-bar__logo-image'
 	}
 
+	const handleNavigation = ({ path }) => {
+		if (path) {
+			onRoute(path)
+		}
+	}
+
 	return (
 		<div className={styles.root}>
 			<div className={styles.container}>
@@ -21,22 +27,21 @@ export const SideBar = ({ onRoute, pathname }) => {
 					<Section
 						key={title}
 						title={title}
-						onClick={() => onRoute(path)}
+						onClick={handleNavigation}
 						classes={classes}
+						path={path}
 						active={path === pathname}
 						{...rest}
 					>
 						{items &&
-							items.map(item => {
-								const { title, path } = item
-								return (
-									<SectionItem
-										key={title}
-										title={title}
-										onClick={() => onRoute(path)}
-									/>
-								)
-							})}
+							items.map(({ title, path }) => (
+								<Item
+									key={title}
+									title={title}
+									path={path}
+									onClick={handleNavigation}
+								/>
+							))}
 					</Section>
 				))}
 			</div>

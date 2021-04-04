@@ -1,18 +1,22 @@
-import { useState, cloneElement } from 'react'
+import { useState, Fragment } from 'react'
+import { cloneChildren } from 'src/helpers/functions'
 import { Collapse } from 'react-collapse'
 import { Typography } from 'src/components'
 import classnames from 'classnames'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import './styles.scss'
 
-export const Section = ({
-	iconUrl,
-	title,
-	children,
-	classes = {},
-	onClick,
-	active
-}) => {
+export const Section = props => {
+	const {
+		iconUrl,
+		title,
+		children,
+		classes = {},
+		onClick,
+		active,
+		path
+	} = props
+
 	const [isOpened, setIsOpened] = useState(false)
 	const hasChildren = children instanceof Array
 
@@ -33,52 +37,25 @@ export const Section = ({
 	}
 
 	const handleOnSection = () => {
-		setIsOpened(!isOpened)
-		if (onClick) {
-			onClick()
+		if (path && onClick) {
+			onClick(props)
+		} else {
+			setIsOpened(!isOpened)
 		}
-	}
-
-	const renderItem = () => {
-		if (hasChildren) {
-			return children.map(child => cloneElement(child, { isOpened }))
-		} else if (children) {
-			return cloneElement(children, { isOpened })
-		}
-	}
-
-	const renderChevron = () => {
-		return hasChildren && <ChevronRightIcon className={styles.chevron} />
 	}
 
 	return (
-		<div className={styles.section} onClick={handleOnSection}>
-			<div className={styles.panel}>
+		<Fragment>
+			<div className={styles.section} onClick={handleOnSection}>
 				<img className={styles.icon} src={iconUrl} />
 				<Typography h7 white>
 					{title}
 				</Typography>
-				{renderChevron()}
+				{hasChildren && <ChevronRightIcon className={styles.chevron} />}
 			</div>
 			<Collapse isOpened={isOpened} theme={styles.collapse}>
-				{renderItem()}
+				{hasChildren && cloneChildren(children, _, { isOpened })}
 			</Collapse>
-		</div>
-	)
-}
-
-export const SectionItem = ({ title, onClick, isOpened }) => {
-	const styles = {
-		item: classnames('sidebar-section-item', {
-			'sidebar-section-item--active': isOpened
-		}),
-		title: 'sidebar-section-item__title'
-	}
-	return (
-		<div className={styles.item} onClick={onClick}>
-			<Typography white className={styles.title}>
-				{title}
-			</Typography>
-		</div>
+		</Fragment>
 	)
 }
