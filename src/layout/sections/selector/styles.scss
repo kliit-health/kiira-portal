@@ -4,7 +4,6 @@
 .selector {
   @include user-select-none;
   display: flex;
-  margin-right: auto;
   align-items: center;
 
   &__title {

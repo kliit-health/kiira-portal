@@ -20,7 +20,7 @@ export const Item = props => {
 
 	return (
 		<div className={styles.item} onClick={handleClick}>
-			<Typography white className={styles.title}>
+			<Typography h7 white className={styles.title}>
 				{title}
 			</Typography>
 		</div>
