@@ -46,7 +46,6 @@
 
 
   &--link {
-    padding: 0;
     background-color: transparent;
     min-width: 0px;
     color: $base-blue;
@@ -57,6 +56,15 @@
   }
 
   &--loading {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &--squared {
+    border-radius: 5px;
+  }
+
+  &--disabled {
     opacity: 0.5;
     pointer-events: none;
   }

@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { useMemo } from 'react'
-// import { composeWithDevTools } from 'redux-devtools-extension'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import promise from 'redux-promise-middleware'
 import combinedReducer, { resetEnhancer } from '../reducers'
 import { persistReducer } from 'redux-persist'
@@ -10,7 +10,7 @@ import storage from 'redux-persist/lib/storage'
 let store
 
 const persistConfig = {
-	key: 'test5',
+	key: 'kiira-portal-dev',
 	whitelist: [],
 	storage // place to select which state you want to persist
 }
@@ -24,7 +24,7 @@ function initStore(preloadedState = {}) {
 	return createStore(
 		persistedReducer,
 		preloadedState,
-		compose(applyMiddleware(thunk, promise))
+		composeWithDevTools(applyMiddleware(thunk, promise))
 	)
 }
 

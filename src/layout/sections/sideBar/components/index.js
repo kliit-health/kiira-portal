@@ -1,2 +1,2 @@
-export { ProfileCard } from './profileCard'
-export { Section, SectionItem } from './section'
+export { Section } from './section'
+export { Item } from './item'

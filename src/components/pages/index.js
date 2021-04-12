@@ -1,6 +1,7 @@
 export { PageNotFound } from './pageNotFound'
 export { Dashboard } from './dashboard'
 export { ActiveUsers } from './activeUsers'
+export { InactiveUsers } from './inactiveUsers'
 export { Experts } from './experts'
 export { Overview } from './overview'
 export { Developer } from './developer'

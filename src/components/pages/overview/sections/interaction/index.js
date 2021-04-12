@@ -1,4 +1,5 @@
 import { memo, useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { PieChart, Pie, Cell } from 'recharts'
 import { Typography, CircularProgress, LegendItem } from 'src/components'
 import { intl } from 'src/i18n'
@@ -7,12 +8,16 @@ import './styles.scss'
 
 const radian = Math.PI / 180
 
-export default memo(({ data: incoming, loading }) => {
+export default memo(() => {
+	const overview = useSelector(state => state.overview.data)
+	const loading = useSelector(state => state.overview.loading)
+
 	let data = []
+
 	model.forEach(({ dataKey, label, color }) => {
-		if (incoming[dataKey] > 0) {
+		if (overview[dataKey] > 0) {
 			data.push({
-				value: incoming[dataKey],
+				value: overview[dataKey],
 				label,
 				color
 			})

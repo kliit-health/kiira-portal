@@ -5,7 +5,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import './styles.scss'
 import { Fragment } from 'react'
 
-export const Selector = ({ title, data = [], onSelect, selected }) => {
+export const Selector = ({ title, data = [], onSelect }) => {
 	const popRef = useRef(null)
 	const [anchorEl, setAnchorEl] = useState(null)
 
@@ -53,7 +53,11 @@ export const Selector = ({ title, data = [], onSelect, selected }) => {
 			<Popover anchorEl={anchorEl} onClose={handleClose} {...config}>
 				<div className={styles.dropdown}>
 					{data.map(({ name, uid }) => (
-						<div className={styles.item} onClick={() => handleSelect(uid)}>
+						<div
+							key={uid}
+							className={styles.item}
+							onClick={() => handleSelect(uid)}
+						>
 							<span
 								className={classnames(styles.itemTitle, {
 									'selector__item-title--selected': name === title

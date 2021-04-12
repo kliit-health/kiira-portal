@@ -6,7 +6,7 @@ import { GET_USER_PENDING, GET_USER_REJECTED, LOG_OUT } from 'src/redux/types'
 export const AccessControl = ({ user, loading, error, children }) => {
 	const dispatch = useDispatch()
 
-	const details = useSelector(state => state.user.data)
+	const userDetails = useSelector(state => state.user.data)
 	const userLoading = useSelector(state => state.user.loading)
 	const userError = useSelector(state => state.user.error)
 
@@ -46,18 +46,22 @@ export const AccessControl = ({ user, loading, error, children }) => {
 	}, [error])
 
 	useEffect(() => {
-		if (details) {
-			dispatch(getOrganization({ id: details.organizationId }))
+		if (userDetails && userDetails.role === 'Admin') {
+			dispatch(getOrganization({ id: userDetails.organizationId }))
+		} else {
+			dispatch({
+				type: LOG_OUT
+			})
 		}
-	}, [details])
+	}, [userDetails])
 
 	useEffect(() => {
-		if (details && details.entities.length > 0) {
-			dispatch(getEntities({ identifiers: details.entities }))
+		if (userDetails && userDetails.entities.length > 0) {
+			dispatch(getEntities({ identifiers: userDetails.entities }))
 		}
-	}, [details])
+	}, [userDetails])
 
 	return cloneElement(children, {
-		auth: { details, loading: userLoading, error: userError }
+		auth: { details: userDetails, loading: userLoading, error: userError }
 	})
 }

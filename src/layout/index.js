@@ -1,29 +1,16 @@
 import { compose, withProps } from 'recompose'
 import { cloneElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useRouter } from 'next/router'
-import { Selector, SideBar, TopBar } from './sections'
+import { Selector, SideBar, TopBar, Settings } from './sections'
 import { withRedirect, withLoadingIndicator } from 'src/HOCs'
 import { updateUser } from 'src/redux/actions'
-import ExitToAppIcon from '@material-ui/icons/ExitToApp'
-import { signOut } from 'src/firebase'
-import './styles.scss'
 import './styles.scss'
 
 const LayoutFoundation = ({ children, ...rest }) => {
-	const router = useRouter()
 	const dispatch = useDispatch()
 	const user = useSelector(state => state.user.data)
 	const organization = useSelector(state => state.organization.data)
 	const entities = useSelector(state => state.entities.data)
-
-	const handleNavigation = path => {
-		router.push(path)
-	}
-
-	const handleSignOut = async () => {
-		await signOut()
-	}
 
 	const handleSelection = id => {
 		dispatch(
@@ -45,11 +32,7 @@ const LayoutFoundation = ({ children, ...rest }) => {
 
 	return (
 		<div className={styles.root}>
-			<SideBar
-				pathname={router.pathname}
-				onRoute={handleNavigation}
-				logoUrl={organization.logoUrl}
-			/>
+			<SideBar />
 			<div className={styles.mainContainer}>
 				<TopBar>
 					{entities.length > 0 && (
@@ -59,10 +42,7 @@ const LayoutFoundation = ({ children, ...rest }) => {
 							onSelect={handleSelection}
 						/>
 					)}
-					<ExitToAppIcon
-						classes={styles.logoutButton}
-						onClick={handleSignOut}
-					/>
+					<Settings />
 				</TopBar>
 				<div className={styles.container}>
 					{cloneElement(children, { ...rest })}

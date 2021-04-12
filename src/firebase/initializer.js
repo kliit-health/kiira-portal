@@ -21,3 +21,4 @@ firebase.apps.length
 export const auth = firebase.auth()
 export const firestore = firebase.firestore()
 export const functions = firebase.functions()
+// .useFunctionsEmulator('http://localhost:4000')

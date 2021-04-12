@@ -21,13 +21,13 @@
     height: 60px;
     background-color: white;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     border-right: 1px solid lighten($base-gray, 30%)
   }
 
   &__logo-image {
-    width: auto;
-    height: 30px;
-    margin-left: -20px
+    width: 80px;
+    object-fit: contain;
+    // margin-left: -20px
   }
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector, shallowEqual } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getAppointments, getMoreAppointments } from 'src/redux/actions'
 import { Page } from 'src/components'
 import { List } from './sections'
@@ -11,11 +11,8 @@ export const VideoVisits = () => {
 	const [rendered, setRendered] = useState(0)
 
 	const organizationId = useSelector(state => state.user.data.organizationId)
-	const data = useSelector(state => state.appointments.data, shallowEqual)
-	const lastDocument = useSelector(
-		state => state.appointments.lastDocument,
-		shallowEqual
-	)
+	const data = useSelector(state => state.appointments.data)
+	const lastDocument = useSelector(state => state.appointments.lastDocument)
 	const initialLoading = useSelector(state => state.appointments.get.loading)
 	const loading = useSelector(state => state.appointments.more.loading)
 

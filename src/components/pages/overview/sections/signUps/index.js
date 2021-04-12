@@ -1,19 +1,17 @@
 import { Fragment } from 'react'
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
 import { routes } from 'src/helpers/constants'
 import { Typography, Button, CircularProgress } from 'src/components'
 import { ClickIcon } from 'src/components/icons'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
-const calculatePercentage = (active, total) => {
-	const increase = (active - total) / total
-	const response = increase * 100 + 100
-	return `${response ? response.toFixed(1) : 0}%`
-}
-
-export const SignUps = ({ loading, data }) => {
+export const SignUps = ({}) => {
 	const router = useRouter()
+
+	const overview = useSelector(state => state.overview.data)
+	const loading = useSelector(state => state.overview.loading)
 
 	const handleInvite = () => {
 		router.push(routes.activeUsers)
@@ -37,11 +35,11 @@ export const SignUps = ({ loading, data }) => {
 					<div className={styles.container}>
 						<ClickIcon />
 						<Typography darkBlue h3>
-							{calculatePercentage(data.activeUsers, data.users)}
+							{overview.activeUsers}
 						</Typography>
 					</div>
 					<Button onClick={handleInvite} link classes={styles.button}>
-						{intl.seeDetails.description}
+						{intl.seeAll.description}
 					</Button>
 				</Fragment>
 			)}

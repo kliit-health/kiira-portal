@@ -51,7 +51,8 @@ export default {
 		toUserId: '',
 		uid: '',
 		updatedAt: '',
-		visits: 0
+		visits: 0,
+		title: ''
 	},
 	expert: {
 		calendarID: '',

@@ -1,42 +1,9 @@
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector, shallowEqual } from 'react-redux'
-import { getActiveUsers, getMoreActiveUsers } from 'src/redux/actions'
 import { Page } from 'src/components'
 import { List } from './sections'
 import { intl } from 'src/i18n'
 import './styles.scss'
 
 export const ActiveUsers = () => {
-	const dispatch = useDispatch()
-	const [rendered, setRendered] = useState(0)
-
-	const organizationId = useSelector(state => state.user.data.organizationId)
-	const data = useSelector(state => state.activeUsers.data, shallowEqual)
-	const lastDocument = useSelector(
-		state => state.activeUsers.lastDocument,
-		shallowEqual
-	)
-	const initialLoading = useSelector(state => state.activeUsers.get.loading)
-	const loading = useSelector(state => state.activeUsers.more.loading)
-
-	useEffect(() => {
-		dispatch(getActiveUsers({ organizationId }))
-	}, [organizationId])
-
-	const handleLoad = (_, stopIndex) =>
-		new Promise(resolve => {
-			if (stopIndex >= rendered) {
-				setRendered(stopIndex)
-
-				if (!loading && lastDocument) {
-					dispatch(getMoreActiveUsers({ organizationId, lastDocument }))
-				}
-				if (!loading) {
-					resolve()
-				}
-			}
-		})
-
 	const styles = {
 		page: { content: 'active-users__page-content' }
 	}
@@ -47,12 +14,7 @@ export const ActiveUsers = () => {
 			title={intl.activeUsers.description}
 			subtitle={intl.activatedKiira.description}
 		>
-			<List
-				data={data}
-				loading={initialLoading}
-				loadMoreItems={handleLoad}
-				isItemLoaded={index => index < rendered}
-			/>
+			<List />
 		</Page>
 	)
 }

@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react'
 import classnames from 'classnames'
-import { PlusIcon, ChevronIcon } from 'src/components/icons'
-import { Typography, Button, SearchField } from 'src/components'
-import { intl } from 'src/i18n'
+import { ChevronIcon } from 'src/components/icons'
+import { Typography, More } from 'src/components'
 import { HEADER } from 'src/helpers/constants'
-import model from '../model'
 import './styles.scss'
 
-export const Header = ({ onAddUsers, elementRef, onSort, onSearch }) => {
+export const Header = ({ onSort, children, model }) => {
 	const [activeKey, setActiveKey] = useState('')
 	const [ascendant, setAscendant] = useState(false)
 
@@ -23,19 +21,15 @@ export const Header = ({ onAddUsers, elementRef, onSort, onSearch }) => {
 		setAscendant(!ascendant)
 	}
 
-	const handleSearch = ({ target: { value } }) => {
-		onSearch(value)
-	}
-
-	const root = 'invitations-list-header'
+	const root = 'active-users-table-header'
 	const styles = {
 		root,
 		item: `${root}__item`,
 		title: { root: `${root}__title` },
 		controls: `${root}__controls`,
 		container: `${root}__container`,
-		icon: { root: `${root}__icon` },
-		chevron: `${root}__chevron`
+		chevron: `${root}__chevron`,
+		more: { root: `${root}__more` }
 	}
 
 	return (
@@ -43,15 +37,12 @@ export const Header = ({ onAddUsers, elementRef, onSort, onSearch }) => {
 			<div className={styles.controls}>
 				{/* <SearchField
 					onSearch={handleSearch}
-					placeholder={intl.searchInvitations.description}
+					placeholder={intl.searchActiveUsers.description}
 				/> */}
-				<Button elementRef={elementRef} onClick={onAddUsers} link>
-					<PlusIcon classes={styles.icon} />
-					{intl.addUsers.description}
-				</Button>
+				{children}
 			</div>
 			<div className={styles.container}>
-				{model.map(({ dataKey, label, style }) => {
+				{model.map(({ dataKey, label, style, sorting }) => {
 					const active = dataKey === activeKey
 					const sorted = dataKey === activeKey && ascendant
 
@@ -63,14 +54,16 @@ export const Header = ({ onAddUsers, elementRef, onSort, onSearch }) => {
 							style={style}
 						>
 							<Typography classes={styles.title}>{label}</Typography>
-							<ChevronIcon
-								classes={{
-									root: classnames(styles.chevron, {
-										[`${root}__chevron--sorted`]: sorted,
-										[`${root}__chevron--active`]: active
-									})
-								}}
-							/>
+							{sorting && (
+								<ChevronIcon
+									classes={{
+										root: classnames(styles.chevron, {
+											[`${root}__chevron--sorted`]: sorted,
+											[`${root}__chevron--active`]: active
+										})
+									}}
+								/>
+							)}
 						</div>
 					)
 				})}

@@ -76,3 +76,5 @@ export const collections = {
 	users: 'users',
 	organizations: 'organizations'
 }
+
+export const baseUrl = 'https://us-central1-kliit-health-dev.cloudfunctions.net'

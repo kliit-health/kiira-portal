@@ -1,0 +1,69 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.dropdown {
+  @include pointer-on-hover;
+  @include user-select-none;
+  display: flex;
+
+  &__icon {
+    color: $base-blue;
+    transition: all ease-in .2s;
+    font-size: 24px;
+  }
+
+  &__title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: 'Roboto';
+    font-size: 1em;
+    color: $base-blue;
+  }
+
+  &:hover {
+    .dropdown__icon {
+      color: lighten($base-blue, 18%);
+      transition: all ease-in .2s;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    :not(:last-child) {
+      border-bottom: 1px solid lighten($base-gray, 35%);
+    }
+  }
+
+  &__menu-item {
+    @include pointer-on-hover;
+    align-items: center;
+    display: flex;
+
+    &:hover {
+      transition: box-shadow .2s ease, background-color .2s ease;
+      background-color: lighten($base-gray, 35%);
+
+      .dropdown__menu-item-title {
+        transition: box-shadow .2s ease, color .2s ease;
+        color: $base-blue;
+      }
+    }
+  }
+
+  &__menu-item-title {
+    @include user-select-none;
+    display: flex;
+    flex: 1;
+    font-family: 'Roboto';
+    font-size: 1em;
+    padding: 10px 20px;
+    color: $base-charcoal;
+  }
+}
