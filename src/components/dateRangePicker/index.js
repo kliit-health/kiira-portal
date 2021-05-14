@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState, useEffect } from 'react'
+import { Fragment, useRef, useState } from 'react'
 import classnames from 'classnames'
 import { Popover } from '../popover'
 import { Button } from '../button'

@@ -13,10 +13,6 @@ export const AccessControl = ({ user, loading, error, children }) => {
 	useEffect(() => {
 		if (user) {
 			dispatch(getUser({ uid: user.uid }))
-		} else {
-			dispatch({
-				type: LOG_OUT
-			})
 		}
 	}, [user])
 
