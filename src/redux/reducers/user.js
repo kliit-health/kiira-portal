@@ -11,7 +11,7 @@ import {
 } from '../types'
 
 const initialState = {
-	data: models.user,
+	data: null,
 	loading: false,
 	error: null
 }

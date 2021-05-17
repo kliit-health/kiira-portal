@@ -7,7 +7,7 @@ export const getInactiveUsers = ({ organizationId }) => {
 		.collection(collections.users)
 		.where('organizationId', '==', organizationId)
 		.where('firstLogin', '==', true)
-		.where('role', '==', 'User')
+		.where('role', '==', 'student')
 
 	return {
 		type: GET_INACTIVE_USERS,
@@ -20,7 +20,7 @@ export const getMoreInactiveUsers = ({ organizationId, lastDocument }) => {
 		.collection(collections.users)
 		.where('organizationId', '==', organizationId)
 		.where('firstLogin', '==', true)
-		.where('role', '==', 'User')
+		.where('role', '==', 'student')
 
 	return {
 		type: GET_MORE_INACTIVE_USERS,
