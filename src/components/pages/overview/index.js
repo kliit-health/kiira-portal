@@ -11,8 +11,7 @@ import {
 	Activity,
 	VideoVisits,
 	Chats,
-	Interaction,
-	InactiveUsers
+	Interaction
 } from './sections'
 import moment from 'moment'
 import { getOverview } from 'src/redux/actions'
@@ -67,7 +66,6 @@ export const Overview = () => {
 				<SignUps />
 				<VideoVisits />
 				<Chats />
-				<InactiveUsers />
 			</div>
 			<SectionContainer title={intl.topExperts.description}>
 				<TopExperts onRefChange={setExpertsRef} />

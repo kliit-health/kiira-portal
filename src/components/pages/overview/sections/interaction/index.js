@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react'
+import { memo } from 'react'
 import { useSelector } from 'react-redux'
 import { PieChart, Pie, Cell } from 'recharts'
 import { Typography, CircularProgress, LegendItem } from 'src/components'

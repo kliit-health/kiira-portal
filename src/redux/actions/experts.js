@@ -1,4 +1,3 @@
-import { ListItemText } from '@material-ui/core'
 import { firebaseFetch } from 'src/firebase'
 import { collections } from 'src/helpers/constants'
 import { GET_EXPERTS } from '../types'
