@@ -8,6 +8,7 @@ import './styles.scss'
 
 const LayoutFoundation = ({ children, ...rest }) => {
 	const dispatch = useDispatch()
+
 	const user = useSelector(state => state.user.data)
 	const organization = useSelector(state => state.organization.data)
 	const entities = useSelector(state => state.entities.data)
@@ -53,11 +54,17 @@ const LayoutFoundation = ({ children, ...rest }) => {
 }
 
 export const Layout = compose(
-	withProps(({ auth: { loading, details, error } }) => ({
-		loading,
-		details,
-		error
-	})),
+	withProps(props => {
+		const {
+			auth: { loading, details, error }
+		} = props
+		console.log(props)
+		return {
+			loading,
+			details,
+			error
+		}
+	}),
 	withLoadingIndicator('loading'),
 	withRedirect('/', 'details')
 )(LayoutFoundation)
