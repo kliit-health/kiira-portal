@@ -11,9 +11,7 @@ export const AccessControl = ({ user, loading, error, children }) => {
 	const userError = useSelector(state => state.user.error)
 
 	useEffect(() => {
-		if (user) {
-			dispatch(getUser({ uid: user.uid }))
-		}
+		dispatch(user ? getUser({ uid: user.uid }) : { type: LOG_OUT })
 	}, [user])
 
 	useEffect(() => {
