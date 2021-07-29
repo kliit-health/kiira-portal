@@ -3,25 +3,25 @@ import moment from 'moment'
 import { Typography } from 'src/components'
 import './styles.scss'
 
-export const DateCell = ({ data, dataKey, classes = {}, calendar }) => {
+export const DateCell = ({ data, dataKey, classes = {} }) => {
 	const formatDate = date => {
-		if (calendar) {
-			return moment(date).calendar()
-		} else {
-			return moment.unix(date).format('MM/DD/YYYY')
+		if (typeof date === 'object') {
+			const key = Object.keys(date)[0]
+			return moment.unix(date[key]).format('MM/DD/YYYY')
+		} else if (typeof date === 'number') {
+			return moment(date).format('MM/DD/YYYY')
 		}
 	}
+
 	const styles = {
 		root: classnames('date-cell', classes.root),
 		details: { root: classnames('date-cell__details', classes.details) }
 	}
 
-	const date = data[dataKey]
-
 	return (
 		<div className={styles.root}>
 			<Typography classes={styles.details}>
-				{date ? formatDate(data[dataKey]) : ''}
+				{data ? formatDate(data[dataKey]) : 'invalid'}
 			</Typography>
 		</div>
 	)

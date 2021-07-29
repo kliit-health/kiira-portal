@@ -58,7 +58,7 @@ export const Layout = compose(
 		const {
 			auth: { loading, details, error }
 		} = props
-		console.log(props)
+
 		return {
 			loading,
 			details,

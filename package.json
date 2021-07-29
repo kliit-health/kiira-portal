@@ -12,7 +12,7 @@
 		"deploy": "firebase deploy"
 	},
 	"engines": {
-		"node": "10"
+		"node": "12"
 	},
 	"license": "ISC",
 	"dependencies": {

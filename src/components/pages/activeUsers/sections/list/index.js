@@ -54,7 +54,7 @@ export const List = () => {
 				data.map(({ profileInfo, signUpDate, ...rest }) => ({
 					...rest,
 					...profileInfo,
-					signUpDate: signUpDate.seconds,
+					signUpDate,
 					phoneNumber: formatPhoneNumber(profileInfo.phoneNumber)
 				}))
 			)
